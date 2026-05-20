@@ -8,34 +8,34 @@ const asciiArrow = ['  ?', ' ??', '?????', ' ??', '  ?', '  |', '  |']
 ---
 
 <footer
-  class="footer border-border-subtle bg-surface relative mt-24 border-t px-6 py-16 sm:px-12 sm:py-24"
+  class="footer border-border-subtle bg-surface relative mt-24 border-t px-4 py-12 sm:px-12 sm:py-24"
 >
   <div class="mx-auto max-w-4xl">
     <!-- Footer Content -->
-    <div class="flex flex-col items-center justify-between gap-6 sm:flex-row sm:gap-8">
+    <div class="flex flex-col items-center justify-between gap-4 sm:flex-row sm:gap-8">
       <!-- Left: Brand -->
-      <div class="footer-brand text-center sm:text-left">
-        <p class="text-text-secondary font-mono text-sm">
+      <div class="footer-brand w-full text-center sm:text-left">
+        <p class="text-text-secondary font-mono text-xs sm:text-sm">
           {t['Built For Developers']}
         </p>
-        <p class="text-text-muted mt-1 font-mono text-xs">
+        <p class="text-text-muted mt-1 font-mono text-[10px] sm:text-xs">
           {t['One file. Infinite outputs.']}
         </p>
       </div>
 
       <!-- Right: Links -->
-      <nav class="footer-links flex items-center gap-6" aria-label="Footer navigation">
+      <nav class="footer-links flex w-full flex-wrap items-center justify-center gap-4 sm:justify-end sm:gap-6" aria-label="Footer navigation">
         <a
           href="https://github.com/jannael/devsync"
           target="_blank"
           rel="noopener noreferrer"
-          class="text-text-secondary hover:text-accent font-mono text-sm transition-colors duration-200"
+          class="text-text-secondary hover:text-accent font-mono text-xs sm:text-sm transition-colors duration-200"
         >
           {t['GitHub']}
         </a>
         <a
           href="/getting-started/"
-          class="text-text-secondary hover:text-accent font-mono text-sm transition-colors duration-200"
+          class="text-text-secondary hover:text-accent font-mono text-xs sm:text-sm transition-colors duration-200"
         >
           {t['Docs']}
         </a>
@@ -43,7 +43,7 @@ const asciiArrow = ['  ?', ' ??', '?????', ' ??', '  ?', '  |', '  |']
           href="https://github.com/jannael/devsync/issues"
           target="_blank"
           rel="noopener noreferrer"
-          class="text-text-secondary hover:text-accent font-mono text-sm transition-colors duration-200"
+          class="text-text-secondary hover:text-accent font-mono text-xs sm:text-sm transition-colors duration-200"
         >
           {t['Issues']}
         </a>
@@ -51,9 +51,9 @@ const asciiArrow = ['  ?', ' ??', '?????', ' ??', '  ?', '  |', '  |']
     </div>
 
     <!-- Bottom ASCII Border -->
-    <div class="mt-8 text-center" aria-hidden="true">
+    <div class="mt-6 overflow-x-auto text-center sm:mt-8" aria-hidden="true">
       <pre
-        class="footer-ascii text-accent whitespace-pre font-mono text-[10px] leading-none opacity-30 [text-shadow:0_0_4px_var(--color-accent)] dark:opacity-20">{`?──?──?──?──?──?──?──?──?──?──?──?──?──?──?──?──?──?──?──?`}</pre>
+        class="footer-ascii text-accent mx-auto whitespace-pre font-mono text-[8px] leading-none opacity-30 [text-shadow:0_0_4px_var(--color-accent)] dark:opacity-20 sm:text-[10px]">{`?──?──?──?──?──?──?──?──?──?──?──?──?──?──?──?──?──?──?──?`}</pre>
     </div>
   </div>
 </footer>
