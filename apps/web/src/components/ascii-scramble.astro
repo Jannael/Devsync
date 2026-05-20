@@ -60,14 +60,26 @@ const { lines, scrambleChars = '█▓▒░─═┬┴┤├┴┬┼╔╦╗
 
 <style>
   .ascii-scramble {
-    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'JetBrains Mono', 'Roboto Mono', 'Consolas', 'Courier New', monospace;
+    display: inline-block;
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'JetBrains Mono', 'Roboto Mono',
+      'Consolas', 'Courier New', monospace;
     font-size: inherit;
     line-height: 1;
     letter-spacing: 0;
+    word-spacing: 0;
     font-variant-ligatures: none;
+    font-variant-numeric: tabular-nums;
     font-kerning: none;
+    font-feature-settings:
+      'kern' 0,
+      'liga' 0,
+      'dlig' 0,
+      'hlig' 0,
+      'clig' 0;
     white-space: pre;
     text-rendering: geometricPrecision;
+    text-indent: 0;
+    transform: translateZ(0);
     text-shadow:
       0 0 10px var(--color-shadow-accent),
       0 0 20px var(--color-shadow-accent);

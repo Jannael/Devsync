@@ -48,14 +48,14 @@ const t = getTranslation(lang)
 
   <div class="relative z-10 flex w-full max-w-4xl flex-col items-center text-center">
     <!-- ASCII Logo with scramble animation -->
-    <figure
-      class="hero-ascii mb-5 overflow-x-auto text-[8px] sm:mb-10 sm:text-[11px] md:text-xl"
-      aria-label="Devsync logo in ASCII art"
-    >
-      <div class="inline-block">
+    <div class="hero-ascii-wrapper mb-5 w-full overflow-x-auto">
+      <figure
+        class="hero-ascii mx-auto text-[8px] sm:mb-5 sm:text-[11px] md:text-xl"
+        aria-label="Devsync logo in ASCII art"
+      >
         <AsciiScramble lines={devsyncASCII} />
-      </div>
-    </figure>
+      </figure>
+    </div>
 
     <!-- Tagline -->
     <p
@@ -178,7 +178,13 @@ const t = getTranslation(lang)
     animation: hero-fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
   }
 
-  .hero-ascii,
+  .hero-ascii-wrapper {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: hero-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 0s;
+  }
+
   .hero-tagline,
   .hero-title,
   .hero-description,
@@ -186,10 +192,6 @@ const t = getTranslation(lang)
     opacity: 0;
     transform: translateY(20px);
     animation: hero-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
-
-  .hero-ascii {
-    animation-delay: 0s;
   }
   .hero-tagline {
     animation-delay: 0.15s;
