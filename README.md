@@ -30,6 +30,10 @@ A CLI tool that generates your professional resume, portfolio site, GitHub profi
 bunx @jannael/devsync init
 ```
 
+## Security
+
+This project uses Bun as its runtime and package manager. You don't need to worry about package vulnerabilities — the `bunfig.toml` configuration includes `minimumReleaseAge = 259200` (3 days), which prevents newly published packages from being installed automatically. This protects against supply chain attacks that have become increasingly common in the npm ecosystem.
+
 ## License
 
 [CC-BY-NC-4.0](LICENSE)
