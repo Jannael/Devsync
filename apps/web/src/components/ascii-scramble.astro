@@ -60,10 +60,14 @@ const { lines, scrambleChars = '█▓▒░─═┬┴┤├┴┬┼╔╦╗
 
 <style>
   .ascii-scramble {
-    font-family: monospace;
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'JetBrains Mono', 'Roboto Mono', 'Consolas', 'Courier New', monospace;
     font-size: inherit;
-    line-height: 1.2;
+    line-height: 1;
+    letter-spacing: 0;
+    font-variant-ligatures: none;
+    font-kerning: none;
     white-space: pre;
+    text-rendering: geometricPrecision;
     text-shadow:
       0 0 10px var(--color-shadow-accent),
       0 0 20px var(--color-shadow-accent);
