@@ -24,18 +24,21 @@ const asciiArrow = ['  ?', ' ??', '?????', ' ??', '  ?', '  |', '  |']
       </div>
 
       <!-- Right: Links -->
-      <nav class="footer-links flex w-full flex-wrap items-center justify-center gap-4 sm:justify-end sm:gap-6" aria-label="Footer navigation">
+      <nav
+        class="footer-links flex w-full flex-wrap items-center justify-center gap-4 sm:justify-end sm:gap-6"
+        aria-label="Footer navigation"
+      >
         <a
           href="https://github.com/jannael/devsync"
           target="_blank"
           rel="noopener noreferrer"
-          class="text-text-secondary hover:text-accent font-mono text-xs sm:text-sm transition-colors duration-200"
+          class="text-text-secondary hover:text-accent font-mono text-xs transition-colors duration-200 sm:text-sm"
         >
           {t['GitHub']}
         </a>
         <a
           href="/getting-started/"
-          class="text-text-secondary hover:text-accent font-mono text-xs sm:text-sm transition-colors duration-200"
+          class="text-text-secondary hover:text-accent font-mono text-xs transition-colors duration-200 sm:text-sm"
         >
           {t['Docs']}
         </a>
@@ -43,7 +46,7 @@ const asciiArrow = ['  ?', ' ??', '?????', ' ??', '  ?', '  |', '  |']
           href="https://github.com/jannael/devsync/issues"
           target="_blank"
           rel="noopener noreferrer"
-          class="text-text-secondary hover:text-accent font-mono text-xs sm:text-sm transition-colors duration-200"
+          class="text-text-secondary hover:text-accent font-mono text-xs transition-colors duration-200 sm:text-sm"
         >
           {t['Issues']}
         </a>
@@ -53,7 +56,7 @@ const asciiArrow = ['  ?', ' ??', '?????', ' ??', '  ?', '  |', '  |']
     <!-- Bottom ASCII Border -->
     <div class="mt-6 overflow-x-auto text-center sm:mt-8" aria-hidden="true">
       <pre
-        class="footer-ascii text-accent mx-auto whitespace-pre font-mono text-[8px] leading-none opacity-30 [text-shadow:0_0_4px_var(--color-accent)] dark:opacity-20 sm:text-[10px]">{`?──?──?──?──?──?──?──?──?──?──?──?──?──?──?──?──?──?──?──?`}</pre>
+        class="footer-ascii text-accent mx-auto whitespace-pre font-mono text-[8px] leading-none opacity-30 [text-shadow:0_0_4px_var(--color-accent)] sm:text-[10px] dark:opacity-20">{`?──?──?──?──?──?──?──?──?──?──?──?──?──?──?──?──?──?──?──?`}</pre>
     </div>
   </div>
 </footer>
