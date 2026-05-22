@@ -5,7 +5,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': resolve(__dirname, './apps/cli'),
-      '@devsync': resolve(__dirname, './apps/devsync'),
+      '@devsync/core': resolve(__dirname, './apps/@core/src/devsync/devsync'),
     },
   },
   test: {
