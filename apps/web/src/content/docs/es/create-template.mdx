@@ -105,3 +105,85 @@ Configura un path alias en tu `tsconfig.json` para importar `Devsync` más fáci
 
 - `DEVSYNC.json` no está escrito en piedra; puedes modificarlo para satisfacer tus necesidades. Por ejemplo, si tu portafolio requiere un nuevo campo, simplemente agrégalo y luego actualiza `devsync-validator.ts` en consecuencia.
 - **Devsync Skill**: Usa el agent skill incluido cuando quieras que la IA te asista en construir tu portafolio o actualizar tu perfil.
+
+## Despliegue de una preview
+
+Si quieres desplegar una preview de tu plantilla, no recomiendo hacerlo usando CI/CD (solo para la preview, para tu portafolio personal está perfecto). ¿Por qué no? Porque los CI/CD típicamente usan GitHub Actions para desplegar, y si alguien más usa tu plantilla, esa Action se ejecutaría forzándolos a usar tu mismo proveedor de hosting.
+
+<Aside type="tip">
+Para tu portafolio personal el CI/CD está perfecto. Esta sección es solo para quienes crean plantillas y quieren mostrar una preview sin acoplar a los usuarios a un hosting específico.
+</Aside>
+
+### Recomendación
+
+Usa un despliegue manual como Wrangler. ¿Es más problema? Sí, pero para eso he preparado dos scripts.
+
+<Steps>
+
+1. Crea `/scripts/copy-preview.js`:
+
+    Copia los datos de `preview-DEVSYNC.json` a `DEVSYNC.json`:
+
+    ```js
+    import { readFile, writeFile } from 'node:fs/promises'
+
+    try {
+      const previewContent = await readFile('./preview-DEVSYNC.json', 'utf-8')
+      await writeFile('./DEVSYNC.json', previewContent, 'utf-8')
+      console.log('Copied preview-DEVSYNC.json to DEVSYNC.json')
+    } catch (error) {
+      console.error('Error copying preview-DEVSYNC.json:', error.message)
+    }
+    ```
+
+2. Crea `/scripts/move-cv-pdfs.js`:
+
+    Copia los CVs generados en `public/` a `dist/`:
+
+    ```js
+    import { readdir, copyFile, mkdir } from 'node:fs/promises'
+    import { join } from 'node:path'
+
+    const distDir = './dist'
+    const publicDir = './public'
+
+    const pdfFiles = []
+
+    try {
+      const files = await readdir(publicDir)
+      for (const file of files) {
+        if (file.match(/^CV-\w+\.pdf$/)) {
+          pdfFiles.push({
+            src: join(publicDir, file),
+            dest: join(distDir, file),
+          })
+        }
+      }
+    } catch {
+      // public directory doesn't exist
+    }
+
+    for (const { src, dest } of pdfFiles) {
+      await mkdir(distDir, { recursive: true })
+      await copyFile(src, dest)
+      console.log(`Copied: ${src} -> ${dest}`)
+    }
+
+    if (pdfFiles.length === 0) {
+      console.log('No CV PDF files found to move')
+    }
+    ```
+
+3. Añade el comando `deploy` a tu `package.json`:
+
+    ```json
+    "scripts": {
+      "deploy": "node scripts/copy-preview && bunx @jannael/devsync build && node scripts/move-cv-pdfs.js && git reset --hard && git clean -fd && wrangler pages deploy"
+    }
+    ```
+
+</Steps>
+
+Ahora puedes ejecutar `bun run deploy` para desplegar tu plantilla con la info de `preview-DEVSYNC.json` sin forzar a los usuarios de tu plantilla a usar un proveedor específico.
+
+Puedes ver esta implementación en [devsync-default-template](https://github.com/jannael/devsync-default-template) o en [asciifolio](https://github.com/jannael/asciifolio).
