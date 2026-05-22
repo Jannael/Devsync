@@ -67,19 +67,21 @@ const certificationSchema = z.object({
   skills: z.array(skillsSchema),
 })
 
-export const devsyncObjectSchema = z.object({
-  jobTitle: z.string({ message: 'Job title is required' }),
-  description: z.string({ message: 'Description is required' }),
-  status: z.object({
-    status: z.string({ message: 'Status is required' }),
-    badge: z.string({ message: 'Badge is required' }),
-  }),
-  languages: z.array(languageSchema),
-  experience: z.array(experienceSchema),
-  projects: z.array(projectSchema),
-  education: z.array(educationSchema),
-  certifications: z.array(certificationSchema),
-})
+export const devsyncObjectSchema = z
+  .object({
+    jobTitle: z.string({ message: 'Job title is required' }),
+    description: z.string({ message: 'Description is required' }),
+    status: z.object({
+      status: z.string({ message: 'Status is required' }),
+      badge: z.string({ message: 'Badge is required' }),
+    }),
+    languages: z.array(languageSchema),
+    experience: z.array(experienceSchema),
+    projects: z.array(projectSchema),
+    education: z.array(educationSchema),
+    certifications: z.array(certificationSchema),
+  })
+  .passthrough()
 
 const devsyncSchema = z
   .object({
