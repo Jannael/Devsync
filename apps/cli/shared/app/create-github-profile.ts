@@ -1,4 +1,9 @@
-import { type DevsyncPartial, translations, type availableLangsType } from '@devsync/core'
+import {
+  type DevsyncPartial,
+  getLangData,
+  translations,
+  type availableLangsType,
+} from '@devsync/core'
 import { academicsBadge } from '@/constants/academics-badge'
 import { mdUtilsMixin } from '@/utils/md-utils.ts'
 import { MD_SEPARATOR } from '@/constants/md-separator'
@@ -27,7 +32,7 @@ export function CreateGithubProfileMixin<TBase extends GConstructor>(Base: TBase
     }
 
     private getHeader({ devsync, defaultLang }: { devsync: DevsyncPartial; defaultLang: string }) {
-      const devsyncTranslation = devsync[defaultLang]
+      const devsyncTranslation = getLangData(devsync, defaultLang)
       let md = ''
       md += `# ${devsyncTranslation?.jobTitle ?? 'Professional'}\n\n`
       md += `${devsyncTranslation?.status?.badge ?? 'Active'}\n\n`
@@ -59,7 +64,7 @@ export function CreateGithubProfileMixin<TBase extends GConstructor>(Base: TBase
       devsync: DevsyncPartial
       defaultLang: string
     }) {
-      const devsyncTranslation = devsync[defaultLang]
+      const devsyncTranslation = getLangData(devsync, defaultLang)
       const translation = translations[defaultLang as availableLangsType]
 
       let md = ''
@@ -99,7 +104,7 @@ ${skills}
       devsync: DevsyncPartial
       defaultLang: string
     }) {
-      const devsyncTranslation = devsync[defaultLang]
+      const devsyncTranslation = getLangData(devsync, defaultLang)
       const translation = translations[defaultLang as availableLangsType]
       let md = ''
       md += `## ${translation['Projects']} \n\n`

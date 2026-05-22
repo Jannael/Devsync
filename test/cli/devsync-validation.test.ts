@@ -12,8 +12,11 @@ describe('parseDevsync — custom fields', () => {
     const result = parseDevsync({
       ...MINIMAL_VALID,
       department: 'Engineering',
+      en: { ...MINIMAL_VALID.en, customField: 'Custom value' },
     })
-    expect((result as any).department).toBe(undefined)
+    expect((result as any).name).toBe('John')
+    expect((result as any).en.customField).toBe('Custom value')
+    expect((result as any).department).toBe('Engineering')
   })
 })
 

@@ -67,20 +67,19 @@ const certificationSchema = z.object({
   skills: z.array(skillsSchema),
 })
 
-export const devsyncObjectSchema = z
-  .object({
-    jobTitle: z.string({ message: 'Job title is required' }),
-    description: z.string({ message: 'Description is required' }),
-    status: z.object({
-      status: z.string({ message: 'Status is required' }),
-      badge: z.string({ message: 'Badge is required' }),
-    }),
-    languages: z.array(languageSchema),
-    experience: z.array(experienceSchema),
-    projects: z.array(projectSchema),
-    education: z.array(educationSchema),
-    certifications: z.array(certificationSchema),
-  })
+export const devsyncObjectSchema = z.object({
+  jobTitle: z.string({ message: 'Job title is required' }),
+  description: z.string({ message: 'Description is required' }),
+  status: z.object({
+    status: z.string({ message: 'Status is required' }),
+    badge: z.string({ message: 'Badge is required' }),
+  }),
+  languages: z.array(languageSchema),
+  experience: z.array(experienceSchema),
+  projects: z.array(projectSchema),
+  education: z.array(educationSchema),
+  certifications: z.array(certificationSchema),
+})
 
 const devsyncSchema = z
   .object({
@@ -91,7 +90,7 @@ const devsyncSchema = z
     socialMedia: z.array(linkSchema),
     githubUserName: z.string({ message: 'GitHub username is required' }),
   })
-  .catchall(devsyncObjectSchema.deepPartial())
+  .catchall(z.unknown())
 
 export type Link = z.infer<typeof linkSchema>
 export type Skills = z.infer<typeof skillsSchema>
@@ -99,6 +98,10 @@ export type ListSchema = z.infer<typeof ListSchema>
 export type Devsync = z.infer<typeof devsyncSchema>
 export const devsyncSchemaPartial = devsyncSchema.partial()
 export type DevsyncPartial = z.infer<typeof devsyncSchemaPartial>
+export type DevsyncObjectPartial = z.infer<ReturnType<typeof devsyncObjectSchema.deepPartial>>
 
 export const parseDevsync = (devsync: unknown): DevsyncPartial =>
   devsyncSchemaPartial.safeParse(devsync).data ?? {}
+
+export const getLangData = (devsync: DevsyncPartial, lang: string): DevsyncObjectPartial =>
+  devsyncObjectSchema.deepPartial().safeParse((devsync as Record<string, unknown>)[lang]).data ?? {}

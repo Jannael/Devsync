@@ -1,4 +1,9 @@
-import { type DevsyncPartial, translations, type availableLangsType } from '@devsync/core'
+import {
+  type DevsyncPartial,
+  getLangData,
+  translations,
+  type availableLangsType,
+} from '@devsync/core'
 import { mdUtilsMixin } from '@/utils/md-utils.ts'
 import { MD_SEPARATOR } from '@/constants/md-separator'
 import type { GConstructor } from '@/shared/infra/mixin-constructor'
@@ -30,7 +35,7 @@ export function CreateAcademicsMixin<TBase extends GConstructor>(Base: TBase) {
       devsync: DevsyncPartial
       defaultLang: string
     }) {
-      const devsyncTranslation = devsync[defaultLang]
+      const devsyncTranslation = getLangData(devsync, defaultLang)
       const translation = translations[defaultLang as availableLangsType]
       let md = ''
       md += `# ${translation['academics']} \n\n`
@@ -68,7 +73,7 @@ ${links}
       devsync: DevsyncPartial
       defaultLang: string
     }) {
-      const devsyncTranslation = devsync[defaultLang]
+      const devsyncTranslation = getLangData(devsync, defaultLang)
       const translation = translations[defaultLang as availableLangsType]
       let md = ''
 

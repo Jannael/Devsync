@@ -1,4 +1,9 @@
-import { type DevsyncPartial, translations, type availableLangsType } from '@devsync/core'
+import {
+  type DevsyncPartial,
+  getLangData,
+  translations,
+  type availableLangsType,
+} from '@devsync/core'
 import type { GConstructor } from '@/shared/infra/mixin-constructor'
 import { BOLD, GREEN } from '@/utils/colors'
 import { CHECK, SPACE } from '@/utils/icons-terminal'
@@ -18,7 +23,7 @@ linkedin-es.md
 export function CreateLinkedinMixin<TBase extends GConstructor>(Base: TBase) {
   return class extends writeFileMixin(Base) {
     private getLinkedinSkills({ devsync, lang }: { devsync: DevsyncPartial; lang: string }) {
-      const translation = devsync[lang]
+      const translation = getLangData(devsync, lang)
       const skills = new Set<string>()
       for (const ex of translation?.experience ?? []) {
         for (const skill of ex.skills ?? []) {
@@ -47,7 +52,7 @@ export function CreateLinkedinMixin<TBase extends GConstructor>(Base: TBase) {
 
     private async getMD({ devsync, lang }: { devsync: DevsyncPartial; lang: string }) {
       let md = ''
-      const translation = devsync[lang]
+      const translation = getLangData(devsync, lang)
       const innerTranslation = translations[lang as availableLangsType]
 
       md += `# ${translation?.jobTitle ?? 'Professional Update'}\n\n`
