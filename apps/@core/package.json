@@ -10,8 +10,5 @@
   },
   "devsync": {
     "pathToCompiledCV": "add path to compiled cv"
-  },
-  "peerDependencies": {
-    "typescript": "5"
   }
 }
