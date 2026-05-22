@@ -1,10 +1,5 @@
 import { ZodError } from 'zod'
-import {
-  availableLangs,
-  parseDevsync,
-  type DevsyncPartial,
-  devsyncGlobalFields,
-} from '@devsync/core'
+import { availableLangs, parseDevsync, type DevsyncPartial } from '@devsync/core'
 import type { GConstructor } from '@/shared/infra/mixin-constructor'
 import { DEVSYNC_JSON } from '@/constants/paths'
 import { BadRequest, ServerError } from '@/error/error-instance'
@@ -40,22 +35,12 @@ export function validateDevsyncMixin<TBase extends GConstructor>(Base: TBase) {
 
       try {
         const validated = parseDevsync(parsed)
-        const configuredLangs = Object.keys(validated).filter(
-          (key) => !devsyncGlobalFields.includes(key as (typeof devsyncGlobalFields)[number])
-        )
+        const configuredLangs = Object.keys(validated).filter((key) => availableLangs.includes(key))
 
         if (configuredLangs.length === 0) {
           throw new BadRequest(
             'Invalid DEVSYNC.json structure',
             'Add at least one localized object key (e.g. "en", "es") in DEVSYNC.json'
-          )
-        }
-
-        const unsupportedLang = configuredLangs.find((lang) => !availableLangs.includes(lang))
-        if (unsupportedLang) {
-          throw new BadRequest(
-            'Invalid DEVSYNC.json structure',
-            `Language "${unsupportedLang}" is not supported`
           )
         }
 
