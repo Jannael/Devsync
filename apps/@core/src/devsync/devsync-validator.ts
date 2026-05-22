@@ -100,4 +100,4 @@ export const devsyncSchemaPartial = devsyncSchema.partial()
 export type DevsyncPartial = z.infer<typeof devsyncSchemaPartial>
 
 export const parseDevsync = (devsync: unknown): DevsyncPartial =>
-  devsyncSchemaPartial.parse(devsync)
+  devsyncSchemaPartial.safeParse(devsync).data ?? {}
