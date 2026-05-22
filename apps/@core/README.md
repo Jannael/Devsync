@@ -44,9 +44,7 @@ The file supports multiple languages (default: English and Spanish).
 
 ## Publishing Your Template
 
-Share your customized template with the community:
-
-1. Publish it on [devsync.work](https://devsync.work)
+Share your customized template with the community make a pull request to add it to the [Devsync](https://github.com/jannael/devsync-templates) repository.
 
 ## Support the Project
 
