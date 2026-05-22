@@ -2,6 +2,8 @@
 
 A professional template for generating developer profiles, and portfolios using [Devsync](https://devsync.work).
 
+need help? [docs](https://devsync.work/getting-started)
+
 ## Usage
 
 Initialize a new project with this template:
@@ -29,22 +31,9 @@ Replace `@owner/repo-name` with the GitHub repository where this template is pub
     └── skills/          # AI agent skills and configurations
 ```
 
-## Configuration
-
-Edit `DEVSYNC.json` to customize your profile:
-
-- **Personal info**: name, image, social media links
-- **Professional data**: job title, description, status
-- **Experience**: work history with achievements
-- **Projects**: portfolio items with links and descriptions
-- **Skills**: technologies and tools you use
-- **Languages**: spoken languages
-
-The file supports multiple languages (default: English and Spanish).
-
 ## Publishing Your Template
 
-Share your customized template with the community make a pull request to add it to the [Devsync](https://github.com/jannael/devsync-templates) repository.
+Share your customized template with the community make a pull request to add it to the [Devsync](https://github.com/jannael/devsync) repository.
 
 ## Support the Project
 
