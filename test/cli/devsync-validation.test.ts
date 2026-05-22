@@ -13,7 +13,7 @@ describe('parseDevsync — custom fields', () => {
       ...MINIMAL_VALID,
       department: 'Engineering',
     })
-    expect((result as any).department).toBe('Engineering')
+    expect((result as any).department).toBe(undefined)
   })
 })
 

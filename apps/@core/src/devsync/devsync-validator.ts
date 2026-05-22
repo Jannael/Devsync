@@ -81,7 +81,6 @@ export const devsyncObjectSchema = z
     education: z.array(educationSchema),
     certifications: z.array(certificationSchema),
   })
-  .passthrough()
 
 const devsyncSchema = z
   .object({
@@ -92,7 +91,7 @@ const devsyncSchema = z
     socialMedia: z.array(linkSchema),
     githubUserName: z.string({ message: 'GitHub username is required' }),
   })
-  .passthrough()
+  .catchall(devsyncObjectSchema.deepPartial())
 
 export type Link = z.infer<typeof linkSchema>
 export type Skills = z.infer<typeof skillsSchema>
