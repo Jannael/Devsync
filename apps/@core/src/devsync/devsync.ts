@@ -1,20 +1,12 @@
 import devsync from '../../DEVSYNC.json'
 import { parseDevsync } from './devsync-validator'
+import { availableLangs } from './fields-translations'
 
 export * from './devsync-validator'
 export * from './fields-translations'
 
-export const devsyncGlobalFields = [
-  'name',
-  'img',
-  'socialMedia',
-  'site',
-  'githubUserName',
-  'defaultLang',
-] as const
-
-export const languages = Object.keys(devsync).filter(
-  (key) => !devsyncGlobalFields.includes(key as (typeof devsyncGlobalFields)[number])
+export const languages = Object.keys(devsync).filter((key) =>
+  availableLangs.includes(key as (typeof availableLangs)[number])
 )
 export const defaultLang = devsync.defaultLang
 

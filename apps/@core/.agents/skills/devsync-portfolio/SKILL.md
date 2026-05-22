@@ -277,7 +277,7 @@ Use `parseDevsync(devsync)` from `@devsync/src/devsync/devsync.ts` for validatio
 
 ## Available Exports (devsync.ts)
 ```typescript
-import devsync, { devsyncGlobalFields, languages, defaultLang, parseDevsync } from '@devsync/src/devsync/devsync'
+import devsync, { languages, defaultLang, parseDevsync } from '@devsync/src/devsync/devsync'
 ```
 
 ## Template Folder Structure
