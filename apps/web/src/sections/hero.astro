@@ -86,23 +86,21 @@ const t = getTranslation(lang)
       aria-label="Call to action buttons"
     >
       <!-- Terminal Command Prompt -->
-      <div class="hero-terminal flex flex-col items-center gap-3">
-        <div
-          class="terminal-box border-border/30 bg-surface/80 relative flex items-center gap-2 overflow-x-auto rounded-xl border px-3 py-3 shadow-sm backdrop-blur-md sm:gap-4 sm:px-6 sm:py-5 dark:border-white/10 dark:shadow-md"
-        >
-          <span class="text-accent select-none font-mono text-sm" aria-hidden="true">$</span>
-          <code class="text-text font-mono text-sm sm:text-lg" id="terminalCommand"
-            >bunx @jannael/devsync init</code
+    
+      <div class="flex flex-col items-center gap-4 sm:flex-row sm:gap-6">
+        <!-- Live Demo -->
+        <div class="hero-demo">
+          <a
+            href="https://preview.devsync.work"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="border-accent/30 text-accent hover:bg-accent inline-flex items-center gap-2 rounded-xl border px-6 py-3 text-sm font-semibold transition-all duration-200 hover:scale-105 hover:text-white active:scale-95 sm:px-10 sm:py-3.5 sm:text-base"
           >
-          <button
-            class="terminal-copy-btn text-text-muted hover:text-accent relative inline-flex items-center justify-center rounded p-1 transition-colors duration-200"
-            aria-label="Copy command"
-          >
+            {t['Live Demo']}
             <svg
-              class="copy-icon"
               xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
+              width="14"
+              height="14"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -110,45 +108,37 @@ const t = getTranslation(lang)
               stroke-linecap="round"
               stroke-linejoin="round"
               aria-hidden="true"
-              ><rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect><path
-                d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg
+              ><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline
+                points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg
             >
+          </a>
+        </div>
+
+        <!-- Secondary CTA -->
+        <div class="hero-docs">
+          <a
+            href={getRelativeLocaleUrl(lang, '/getting-started/')}
+            class="border-border/30 text-text-secondary hover:border-accent hover:text-accent inline-flex items-center gap-2 rounded-xl border px-5 py-2.5 text-xs font-semibold transition-all duration-200 hover:scale-105 active:scale-95 sm:px-8 sm:py-3.5 sm:text-base"
+          >
+            {t['Read the Docs']}
             <svg
-              class="check-icon absolute inset-0 m-auto opacity-0"
               xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
+              width="14"
+              height="14"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
               stroke-width="2"
               stroke-linecap="round"
               stroke-linejoin="round"
-              aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg
+              aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg
             >
-          </button>
+          </a>
         </div>
       </div>
+      
 
-      <!-- Secondary CTA -->
-      <a
-        href={getRelativeLocaleUrl(lang, '/getting-started/')}
-        class="border-border/30 text-text-secondary hover:border-accent hover:text-accent inline-flex items-center gap-2 rounded-xl border px-5 py-2.5 text-xs font-semibold transition-all duration-200 hover:scale-105 active:scale-95 sm:px-8 sm:py-3.5 sm:text-base"
-      >
-        {t['Read the Docs']}
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="14"
-          height="14"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg
-        >
-      </a>
+
     </div>
   </div>
 </section>
@@ -187,8 +177,7 @@ const t = getTranslation(lang)
 
   .hero-tagline,
   .hero-title,
-  .hero-description,
-  .hero-ctas {
+  .hero-description {
     opacity: 0;
     transform: translateY(20px);
     animation: hero-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -201,9 +190,6 @@ const t = getTranslation(lang)
   }
   .hero-description {
     animation-delay: 0.45s;
-  }
-  .hero-ctas {
-    animation-delay: 0.6s;
   }
 
   @keyframes hero-fade-up {
@@ -219,6 +205,18 @@ const t = getTranslation(lang)
     transform: translateY(20px);
     animation: hero-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.75s forwards;
   }
+
+  .hero-demo {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: hero-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.85s forwards;
+  }
+
+  .hero-docs {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: hero-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.95s forwards;
+  }
 </style>
 
 <script>
@@ -226,10 +224,10 @@ const t = getTranslation(lang)
 
   if (copyBtn) {
     copyBtn.addEventListener('click', async () => {
-      const commandEl = document.getElementById('terminalCommand')
+      const commandEl = document.getElementById('terminalCommand') as HTMLElement
       const command = commandEl.textContent.trim()
-      const copyIcon = copyBtn.querySelector('.copy-icon')
-      const checkIcon = copyBtn.querySelector('.check-icon')
+      const copyIcon = copyBtn.querySelector('.copy-icon') as HTMLElement
+      const checkIcon = copyBtn.querySelector('.check-icon') as HTMLElement
 
       try {
         await navigator.clipboard.writeText(command)
