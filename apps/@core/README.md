@@ -33,7 +33,7 @@ Replace `@owner/repo-name` with the GitHub repository where this template is pub
 
 ## Publishing Your Template
 
-Share your customized template with the community make a pull request to add it to the [Devsync](https://github.com/jannael/devsync) repository.
+Share your customized template with the community make a pull request to add it to the [Devsync](https://github.com/jannael/devsync) repository see [Docs](https://devsync.work/docs/create-template#publish) for more information.
 
 ## Support the Project
 
