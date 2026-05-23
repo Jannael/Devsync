@@ -25,21 +25,33 @@ export function CreateLinkedinMixin<TBase extends GConstructor>(Base: TBase) {
     private getLinkedinSkills({ devsync, lang }: { devsync: DevsyncPartial; lang: string }) {
       const translation = getLangData(devsync, lang)
       const skills = new Set<string>()
-      for (const ex of translation?.experience ?? []) {
+      const experiences = Array.isArray(translation?.experience)
+        ? translation!.experience
+        : Object.values(translation?.experience ?? {})
+
+      for (const ex of experiences) {
         for (const skill of ex.skills ?? []) {
           if (skill.name) {
             skills.add(skill.name)
           }
         }
       }
-      for (const project of translation?.projects ?? []) {
+      const projects = Array.isArray(translation?.projects)
+        ? translation!.projects
+        : Object.values(translation?.projects ?? {})
+
+      for (const project of projects) {
         for (const skill of project.skills ?? []) {
           if (skill.name) {
             skills.add(skill.name)
           }
         }
       }
-      for (const cert of translation?.certifications ?? []) {
+      const certifications = Array.isArray(translation?.certifications)
+        ? translation!.certifications
+        : Object.values(translation?.certifications ?? {})
+
+      for (const cert of certifications) {
         for (const skill of cert.skills ?? []) {
           if (skill.name) {
             skills.add(skill.name)
@@ -62,10 +74,14 @@ export function CreateLinkedinMixin<TBase extends GConstructor>(Base: TBase) {
         md += `${translation.description}\n\n`
       }
 
-      if ((translation?.experience?.length ?? 0) > 0) {
+      const experiences = Array.isArray(translation?.experience)
+        ? translation.experience
+        : Object.values(translation?.experience ?? {})
+
+      if (experiences.length > 0) {
         md += `## ${innerTranslation['Professional Experience']} \n\n`
 
-        for (const ex of translation?.experience ?? []) {
+        for (const ex of experiences) {
           md += `- **${ex.position ?? 'Position'}** at **${ex.company ?? 'Company'}** (${ex.date ?? 'Date'})\n`
           if (ex.description) {
             md += ` - ${ex.description}\n`
@@ -81,10 +97,14 @@ export function CreateLinkedinMixin<TBase extends GConstructor>(Base: TBase) {
         md += '\n'
       }
 
-      if ((translation?.projects?.length ?? 0) > 0) {
+      const projects = Array.isArray(translation?.projects)
+        ? translation.projects
+        : Object.values(translation?.projects ?? {})
+
+      if (projects.length > 0) {
         md += `## ${innerTranslation['Selected projects']} \n\n`
 
-        for (const project of translation?.projects ?? []) {
+        for (const project of projects) {
           md += `- **${project.name ?? 'Project'}**\n`
           if (project.description) {
             md += ` - ${project.description}\n`
@@ -97,7 +117,7 @@ export function CreateLinkedinMixin<TBase extends GConstructor>(Base: TBase) {
           }
 
           if ((project.links?.length ?? 0) > 0) {
-            md += ` - ${innerTranslation['Links']}: ${(project.links ?? []).map((link) => link.url).join(' | ')}\n`
+            md += ` - ${innerTranslation['Links']}: ${(project.links ?? []).map((link: { url: string }) => link.url).join(' | ')}\n`
           }
         }
 
@@ -111,9 +131,13 @@ export function CreateLinkedinMixin<TBase extends GConstructor>(Base: TBase) {
         md += `${Array.from(skills).join(' | ')}\n\n`
       }
 
-      if ((translation?.certifications?.length ?? 0) > 0) {
+      const certifications = Array.isArray(translation?.certifications)
+        ? translation.certifications
+        : Object.values(translation?.certifications ?? {})
+
+      if (certifications.length > 0) {
         md += `## ${innerTranslation['Certifications']} \n\n`
-        for (const cert of translation?.certifications ?? []) {
+        for (const cert of certifications) {
           md += `- ${cert.name}${cert.url ? ` — ${cert.url}` : ''}\n`
         }
         md += '\n'

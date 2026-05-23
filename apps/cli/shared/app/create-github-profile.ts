@@ -35,13 +35,13 @@ export function CreateGithubProfileMixin<TBase extends GConstructor>(Base: TBase
       const devsyncTranslation = getLangData(devsync, defaultLang)
       let md = ''
       md += `# ${devsyncTranslation?.jobTitle ?? 'Professional'}\n\n`
-      md += `${devsyncTranslation?.status?.badge ?? 'Active'}\n\n`
+      md += `${(devsyncTranslation.status as { badge?: string } | undefined)?.badge ?? 'Active'}\n\n`
       md += `${devsyncTranslation?.description ?? ''}\n\n`
 
       for (const socialMedia of devsync?.socialMedia ?? []) {
         md += this.badgeWithLink({
-          badge: socialMedia.mdBadge,
-          link: socialMedia.url,
+          badge: socialMedia.mdBadge ?? '',
+          link: socialMedia.url ?? '',
         })
       }
 
@@ -50,7 +50,9 @@ export function CreateGithubProfileMixin<TBase extends GConstructor>(Base: TBase
         link: `https://github.com/${devsync?.githubUserName ?? ''}/${devsync?.githubUserName ?? ''}/tree/main/academics`,
       })
 
-      for (const lang of devsyncTranslation?.languages ?? []) {
+      for (const lang of Array.isArray(devsyncTranslation?.languages)
+        ? devsyncTranslation.languages
+        : []) {
         md += lang.mdBadge
       }
       md += '\n\n'
@@ -71,7 +73,9 @@ export function CreateGithubProfileMixin<TBase extends GConstructor>(Base: TBase
       md += `## ${translation['Professional Experience']} \n\n`
       md += '<table>'
 
-      for (const ex of devsyncTranslation?.experience ?? []) {
+      for (const ex of Array.isArray(devsyncTranslation?.experience)
+        ? devsyncTranslation.experience
+        : []) {
         const links = this.getLinks({ links: ex.links })
         const listItems = ex.list?.items ? this.getListItems({ items: ex.list.items }) : ''
         const skills = this.getSkills({ skills: ex.skills })
@@ -110,7 +114,9 @@ ${skills}
       md += `## ${translation['Projects']} \n\n`
       md += '<table>'
 
-      for (const proj of devsyncTranslation?.projects ?? []) {
+      for (const proj of Array.isArray(devsyncTranslation?.projects)
+        ? devsyncTranslation.projects
+        : []) {
         const links = this.getLinks({ links: proj.links })
         const listItems = proj.list?.items ? this.getListItems({ items: proj.list.items }) : ''
         const skills = this.getSkills({ skills: proj.skills })

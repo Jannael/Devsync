@@ -41,7 +41,9 @@ export function CreateAcademicsMixin<TBase extends GConstructor>(Base: TBase) {
       md += `# ${translation['academics']} \n\n`
       md += '<table>'
 
-      for (const ed of devsyncTranslation?.education ?? []) {
+      for (const ed of Array.isArray(devsyncTranslation?.education)
+        ? devsyncTranslation.education
+        : []) {
         const links = this.getLinks({ links: ed.links })
         const listItems = ed.list?.items ? this.getListItems({ items: ed.list.items }) : ''
 
@@ -80,7 +82,9 @@ ${links}
       md += `## ${translation['Certifications']} \n\n`
       md += '<table>'
 
-      for (const cert of devsyncTranslation?.certifications ?? []) {
+      for (const cert of Array.isArray(devsyncTranslation?.certifications)
+        ? devsyncTranslation.certifications
+        : []) {
         const listItems = cert.list?.items ? this.getListItems({ items: cert.list.items }) : ''
         const skills = this.getSkills({ skills: cert.skills })
 

@@ -9,9 +9,9 @@ export function mdUtilsMixin<TBase extends GConstructor>(Base: TBase) {
       return `[${badge}](${link})`
     }
 
-    getListItems({ items }: { items: Partial<ListSchema['items'][number]>[] }) {
+    getListItems({ items }: { items?: Partial<NonNullable<ListSchema['items']>[number]>[] }) {
       let listItems = ''
-      for (const item of items) {
+      for (const item of items ?? []) {
         listItems += `<li><strong>${item.highlight ?? ''}</strong> ${item.description ?? ''}</li>`
       }
       return listItems
