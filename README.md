@@ -32,6 +32,8 @@ bunx @jannael/devsync init
 
 ## Security
 
+Security is a top priority for this project.
+
 This project uses Bun as its runtime and package manager. You don't need to worry about package vulnerabilities — the `bunfig.toml` configuration includes `minimumReleaseAge = 259200` (3 days), which prevents newly published packages from being installed automatically. This protects against supply chain attacks that have become increasingly common in the npm ecosystem.
 
 ## License

@@ -86,7 +86,7 @@ ${links}
           <ul>
             ${listItems}
           </ul>
-          </br>
+          </br>\n
 ${skills}
         </td>
         ${this.getTdImg({ img: ex.img ?? '', link: ex.web ?? '#', alt: ex.company ?? 'Company' })}
@@ -125,7 +125,7 @@ ${links}
           <ul>
             ${listItems}
           </ul>
-          </br>
+          </br>\n
 ${skills}
         </td>
         ${this.getTdImg({ img: proj.img ?? '', link: proj.web ?? '#', alt: proj.name ?? 'Project' })}

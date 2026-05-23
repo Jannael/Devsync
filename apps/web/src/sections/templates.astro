@@ -76,7 +76,7 @@ const featuredTemplates: Template[] = [
                 href={template.preview}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="bg-surface-sunken aspect-1200/630 relative min-h-[160px] overflow-hidden"
+                class="bg-surface-sunken aspect-1200/630 relative min-h-40 overflow-hidden"
               >
                 <img
                   class="block h-full w-full object-contain dark:hidden"
@@ -96,54 +96,53 @@ const featuredTemplates: Template[] = [
               <div class="flex flex-1 flex-col gap-5 p-6">
                 <h3 class="text-text mt-4 text-xl font-semibold">{template.name}</h3>
 
-              <!-- Command block -->
-              <div class="template-command border-border bg-surface-sunken mb-4 flex items-center gap-3 rounded-lg border px-4 py-3">
-                <code class="text-text-secondary font-mono flex-1 min-w-0 truncate text-[0.85rem]">
-                  $ {template.command}
-                </code>
-                <button
-                  type="button"
-                  class="template-copy-btn text-text-secondary hover:text-accent relative ml-auto shrink-0 rounded p-1 transition-colors duration-200 h-10 flex items-center justify-center w-5"
-                  aria-label="Copy command"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="copy-icon transition-opacity duration-200 absolute inset-0 my-auto"
+                <div class="template-command border-border bg-surface-sunken mb-4 flex items-center gap-3 rounded-lg border px-4 py-3">
+                  <code class="text-text-secondary min-w-0 flex-1 truncate font-mono text-[0.85rem]">
+                    $ {template.command}
+                  </code>
+                  <button
+                    type="button"
+                    class="template-copy-btn text-text-secondary hover:text-accent relative ml-auto flex h-10 w-5 shrink-0 items-center justify-center rounded p-1 transition-colors duration-200"
+                    aria-label="Copy command"
                   >
-                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-                  </svg>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="check-icon absolute opacity-0 transition-opacity duration-200 text-accent inset-0 my-auto"
-                  >
-                    <polyline points="20 6 9 17 4 12" />
-                  </svg>
-                </button>
-              </div>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="copy-icon absolute inset-0 my-auto transition-opacity duration-200"
+                    >
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                    </svg>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="check-icon text-accent absolute inset-0 my-auto opacity-0 transition-opacity duration-200"
+                    >
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </button>
+                </div>
 
                 <div class="mt-auto flex flex-wrap gap-3">
                   <a
                     href={template.repo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="border-border text-text-secondary hover:border-accent hover:text-accent inline-flex h-10 items-center gap-2 rounded-lg border px-[1.25rem] py-[0.6rem] text-sm font-semibold transition-all duration-200 hover:scale-105 active:scale-95"
+                    class="border-border text-text-secondary hover:border-accent hover:text-accent inline-flex h-10 items-center gap-2 rounded-lg border px-5 py-[0.6rem] text-sm font-semibold transition-all duration-200 hover:scale-105 active:scale-95"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -166,7 +165,7 @@ const featuredTemplates: Template[] = [
                     href={template.preview}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="border-accent/30 text-accent hover:bg-accent inline-flex h-10 items-center gap-2 rounded-lg border px-[1.25rem] py-[0.6rem] text-sm font-semibold transition-all duration-200 hover:scale-105 hover:text-white active:scale-95"
+                    class="border-accent/30 text-accent hover:bg-accent inline-flex h-10 items-center gap-2 rounded-lg border px-5 py-[0.6rem] text-sm font-semibold transition-all duration-200 hover:scale-105 hover:text-white active:scale-95"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
