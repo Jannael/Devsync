@@ -85,18 +85,18 @@ ${links}
         const skills = this.getSkills({ skills: cert.skills })
 
         md += `
-      <tr>
-        <td>
-          <h3>${cert.name ?? 'Certification'}</h3>
-          ${(cert.list?.title?.length ?? 0) > 1 ? cert.list?.title : MD_SEPARATOR}
-          <ul>
-            ${listItems}
-          </ul>
-          </br>\n
+<tr>
+<td>
+<h3>${cert.name ?? 'Certification'}</h3>
+${(cert.list?.title?.length ?? 0) > 1 ? cert.list?.title : MD_SEPARATOR}
+<ul>
+  ${listItems}
+</ul>
+</br>\n
 ${skills}
-        </td>
-        <td> <a href="${cert.url ?? '#'}" target="_blank">${translation['View Certificate']}</a> </td>
-      </tr>`
+</td>
+<td> <a href="${cert.url ?? '#'}" target="_blank">${translation['View Certificate']}</a> </td>
+</tr>`
       }
 
       md += '</table> \n\n'
