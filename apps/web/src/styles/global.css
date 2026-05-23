@@ -242,6 +242,8 @@
    Every token is overridden for a premium dark experience.
    ═══════════════════════════════════════════════════════════════════ */
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 .dark {
   /* ── Brand ──────────────────────────────────────────────────────── */
   --color-brand: #f5f5f5;
