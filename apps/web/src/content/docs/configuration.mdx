@@ -26,6 +26,9 @@ These fields apply to all languages and outputs:
 | `img` | `string` | Yes | Profile image URL |
 | `socialMedia` | `array` | No | Array of social media profiles |
 | `githubUserName` | `string` | Yes | Your GitHub username |
+| `address` | `string` | Yes | Your location (city, country) |
+| `email` | `string` | Yes | Your email address |
+| `phone` | `string` | Yes | Your phone number |
 
 ### Example: Global Fields
 
@@ -43,7 +46,10 @@ These fields apply to all languages and outputs:
       "mdBadge": "![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)"
     }
   ],
-  "githubUserName": "your-github-username"
+  "githubUserName": "your-github-username",
+  "address": "Your City, Country",
+  "email": "your-email@example.com",
+  "phone": "+1 123 456 7890"
 }
 ```
 
@@ -236,6 +242,9 @@ All fields under language codes (e.g., `en`, `es`, `fr`) are translated per lang
     }
   ],
   "githubUserName": "janedoe",
+  "address": "San Francisco, CA",
+  "email": "jane@example.com",
+  "phone": "+1 555 123 4567",
   "en": {
     "description": "Full-stack developer focused on developer experience and performance.",
     "jobTitle": "Senior Software Engineer",

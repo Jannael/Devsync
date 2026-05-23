@@ -26,6 +26,9 @@ Estos campos aplican a todos los idiomas y salidas:
 | `img` | `string` | Sí | URL de la imagen de perfil |
 | `socialMedia` | `array` | No | Array de perfiles de redes sociales |
 | `githubUserName` | `string` | Sí | Tu nombre de usuario de GitHub |
+| `address` | `string` | Sí | Tu ubicación (ciudad, país) |
+| `email` | `string` | Sí | Tu dirección de correo electrónico |
+| `phone` | `string` | Sí | Tu número de teléfono |
 
 ### Ejemplo: Campos Globales
 
@@ -43,7 +46,10 @@ Estos campos aplican a todos los idiomas y salidas:
       "mdBadge": "![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)"
     }
   ],
-  "githubUserName": "tu-usuario-github"
+  "githubUserName": "tu-usuario-github",
+  "address": "Tu Ciudad, País",
+  "email": "tu-email@example.com",
+  "phone": "+1 123 456 7890"
 }
 ```
 
@@ -236,6 +242,9 @@ Todos los campos bajo códigos de idioma (ej. `en`, `es`, `fr`) se traducen por 
     }
   ],
   "githubUserName": "janedoe",
+  "address": "San Francisco, CA",
+  "email": "jane@example.com",
+  "phone": "+1 555 123 4567",
   "es": {
     "description": "Desarrollador full-stack enfocado en experiencia de desarrollador y rendimiento.",
     "jobTitle": "Ingeniero de Software Senior",
