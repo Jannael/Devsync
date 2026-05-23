@@ -11,7 +11,7 @@ const paragraphs = t['creator description'].split('\n\n')
 
 <section
   id="creator-section"
-  class="creator relative flex flex-col items-center justify-center overflow-hidden px-4 pb-16 pt-8 sm:px-6 sm:pb-24 sm:pt-12"
+  class="creator relative flex flex-col items-center justify-center overflow-hidden px-4 pt-8 pb-16 sm:px-6 sm:pt-12 sm:pb-24"
   aria-labelledby="creator-title"
 >
   <div class="relative z-10 flex w-full max-w-4xl flex-col items-center">
@@ -46,7 +46,7 @@ const paragraphs = t['creator description'].split('\n\n')
           </a>
           <div class="text-accent flex w-full justify-center">
             <pre
-              class="whitespace-pre font-mono text-[0.3rem] leading-[1.05]">
+              class="font-mono text-[0.3rem] leading-[1.05] whitespace-pre">
               {frogASCII.join('\n')}
             </pre>
           </div>
