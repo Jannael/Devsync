@@ -215,38 +215,3 @@ const t = getTranslation(lang)
     animation: hero-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.95s forwards;
   }
 </style>
-
-<script>
-  const copyBtn = document.querySelector('.terminal-copy-btn')
-
-  if (copyBtn) {
-    copyBtn.addEventListener('click', async () => {
-      const commandEl = document.getElementById('terminalCommand') as HTMLElement
-      const command = commandEl.textContent.trim()
-      const copyIcon = copyBtn.querySelector('.copy-icon') as HTMLElement
-      const checkIcon = copyBtn.querySelector('.check-icon') as HTMLElement
-
-      try {
-        await navigator.clipboard.writeText(command)
-        copyBtn.classList.add('text-accent')
-        copyIcon.classList.add('opacity-0')
-        checkIcon.classList.remove('opacity-0')
-
-        setTimeout(() => {
-          copyBtn.classList.remove('text-accent')
-          copyIcon.classList.remove('opacity-0')
-          checkIcon.classList.add('opacity-0')
-        }, 2000)
-      } catch {
-        const textarea = document.createElement('textarea')
-        textarea.value = command
-        textarea.style.position = 'fixed'
-        textarea.style.opacity = '0'
-        document.body.appendChild(textarea)
-        textarea.select()
-        document.execCommand('copy')
-        document.body.removeChild(textarea)
-      }
-    })
-  }
-</script>
