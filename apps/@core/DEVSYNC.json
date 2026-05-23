@@ -12,6 +12,9 @@
     }
   ],
   "githubUserName": "your-github-username",
+  "address": "Your City, Country",
+  "email": "your-email@example.com",
+  "phone": "+1 123 456 7890",
   "en": {
     "description": "Write a short professional summary about yourself. Example: Full-stack developer focused on developer experience, performance, and product quality.",
     "jobTitle": "Your Current Job Title",
