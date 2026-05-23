@@ -1,5 +1,6 @@
 ---
 import { getTranslation } from '@/i18n/translation'
+import { getRelativeLocaleUrl } from 'astro:i18n'
 
 const lang = Astro.currentLocale ?? 'en'
 const t = getTranslation(lang)
@@ -49,8 +50,11 @@ const featuredTemplates: Template[] = [
         id="templates-title"
         class="templates-title text-text mb-4 text-2xl font-semibold tracking-tight sm:text-3xl md:text-4xl"
       >
-        {t['Featured Templates']}
+        {t['Beautiful by Default']}
       </h2>
+      <p class="templates-subtitle text-text-secondary mx-auto max-w-xl text-base sm:text-lg">
+        {t['templates description']}
+      </p>
     </div>
 
     <!-- Templates grid -->
@@ -72,13 +76,13 @@ const featuredTemplates: Template[] = [
                 class="bg-surface-sunken aspect-1200/630 relative overflow-hidden"
               >
                 <img
-                  class="block h-full w-full object-cover dark:hidden"
+                  class="block h-full w-full object-contain dark:hidden"
                   src={lightPoster}
                   alt={`${template.name} poster`}
                   loading="lazy"
                 />
                 <img
-                  class="hidden h-full w-full object-cover dark:block"
+                  class="hidden h-full w-full object-contain dark:block"
                   src={darkPoster}
                   alt={`${template.name} poster`}
                   loading="lazy"
@@ -144,6 +148,29 @@ const featuredTemplates: Template[] = [
         })
       }
     </div>
+
+    <!-- Bottom link -->
+    <a
+      href={getRelativeLocaleUrl(lang, '/create-template/')}
+      class="templates-link text-accent hover:text-accent-hover mt-12 inline-flex items-center gap-2 text-sm font-semibold transition-all duration-200 hover:scale-105 sm:text-base"
+    >
+      {t['Create your own']}
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M5 12h14"></path>
+        <path d="m12 5 7 7-7 7"></path>
+      </svg>
+    </a>
   </div>
 </section>
 
@@ -183,6 +210,15 @@ const featuredTemplates: Template[] = [
     animation: templates-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
 
+  .templates-subtitle {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .templates.animate .templates-subtitle {
+    animation: templates-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+  }
+
   .template-card {
     opacity: 0;
     transform: translateY(20px);
@@ -190,6 +226,15 @@ const featuredTemplates: Template[] = [
 
   .templates.animate .template-card {
     animation: templates-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .templates-link {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  .templates.animate .templates-link {
+    animation: templates-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
   }
 
   @keyframes templates-fade-up {
