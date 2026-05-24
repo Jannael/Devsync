@@ -56,10 +56,100 @@ const asciiArrow = ['  ?', ' ??', '?????', ' ??', '  ?', '  |', '  |']
     <!-- Bottom ASCII Border -->
     <div class="mt-6 overflow-x-auto text-center sm:mt-8" aria-hidden="true">
       <pre
-        class="footer-ascii text-accent mx-auto overflow-y-hidden font-mono text-[8px] leading-none whitespace-pre opacity-30 [text-shadow:0_0_4px_var(--color-accent)] sm:text-[10px] dark:opacity-20">{`?──?──?──?──?──?──?──?──?──?──?──?──?──?──?──?──?──?──?──?`}</pre>
+        id="pacman-anim"
+        class="text-accent/40 font-mono text-xs leading-none"
+        aria-hidden="true"
+        style="min-height: 1.2em;">. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . </pre>
     </div>
   </div>
 </footer>
+
+<script lang="ts">
+  ;(function () {
+    const pre = document.getElementById('pacman-anim')
+    if (!pre) return
+
+    const WIDTH = 60
+    const PACMAN_OPEN = 'C'
+    const PACMAN_CLOSED = '>'
+    const GHOST = 'M'
+    const DOT = '.'
+    const PELLET = '*'
+
+    const dots = Array.from({ length: WIDTH }, () => DOT)
+    dots[15] = PELLET
+    dots[30] = PELLET
+    dots[45] = PELLET
+
+    const ghostPositions = [12, 25, 38, 50]
+    let pacmanPos = 0
+    const SPEED = 6
+    let tick = 0
+    let frame = 0
+    const eatenGhosts = new Set()
+    const eatenDots = new Set()
+
+    function render() {
+      const row = [...dots]
+
+      for (const gp of ghostPositions) {
+        if (!eatenGhosts.has(gp)) {
+          row[gp] = GHOST
+        }
+      }
+
+      for (const dp of eatenDots) {
+        row[dp] = ' '
+      }
+
+      const mouth = frame % 8 < 4 ? PACMAN_OPEN : PACMAN_CLOSED
+      row[pacmanPos] = mouth
+
+      pre.textContent = row.join('')
+    }
+
+    function update() {
+      tick++
+
+      if (tick % SPEED === 0) {
+        if (dots[pacmanPos] === DOT && !eatenDots.has(pacmanPos)) {
+          eatenDots.add(pacmanPos)
+        }
+
+        if (dots[pacmanPos] === PELLET && !eatenDots.has(pacmanPos)) {
+          eatenDots.add(pacmanPos)
+          eatenGhosts.clear()
+        }
+
+        for (const gp of ghostPositions) {
+          if (pacmanPos === gp) {
+            eatenGhosts.add(gp)
+          }
+        }
+
+        const prevPos = pacmanPos
+        pacmanPos = (pacmanPos + 1) % WIDTH
+
+        if (pacmanPos === 0 && prevPos === WIDTH - 1) {
+          eatenDots.clear()
+          eatenGhosts.clear()
+          for (let i = 0; i < WIDTH; i++) {
+            if (dots[i] === DOT || dots[i] === PELLET) {
+              dots[i] = dots[i] === PELLET ? PELLET : DOT
+            }
+          }
+        }
+      }
+
+      frame++
+      render()
+      requestAnimationFrame(update)
+    }
+
+    render()
+    requestAnimationFrame(update)
+  })()
+</script>
 
 <style>
   .terminal-output {
