@@ -1,0 +1,193 @@
+---
+import { getTranslation } from '@/i18n/translation'
+
+const lang = Astro.currentLocale ?? 'en'
+const t = getTranslation(lang)
+---
+
+<footer
+  class="footer border-border-subtle bg-surface relative mt-24 border-t px-4 py-12 sm:px-12 sm:py-24"
+>
+  <div class="mx-auto max-w-4xl">
+    <!-- Footer Content -->
+    <div class="flex flex-col items-center justify-between gap-4 sm:flex-row sm:gap-8">
+      <!-- Left: Brand -->
+      <div class="footer-brand w-full text-center sm:text-left">
+        <p class="text-text-secondary font-mono text-xs sm:text-sm">
+          {t['Built For Developers']}
+        </p>
+        <p class="text-text-muted mt-1 font-mono text-[10px] sm:text-xs">
+          {t['One file. Infinite outputs.']}
+        </p>
+      </div>
+
+      <!-- Right: Links -->
+      <nav
+        class="footer-links flex w-full flex-wrap items-center justify-center gap-4 sm:justify-end sm:gap-6"
+        aria-label="Footer navigation"
+      >
+        <a
+          href="https://github.com/jannael/devsync"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-text-secondary hover:text-accent font-mono text-xs transition-colors duration-200 sm:text-sm"
+        >
+          {t['GitHub']}
+        </a>
+        <a
+          href="/getting-started/"
+          class="text-text-secondary hover:text-accent font-mono text-xs transition-colors duration-200 sm:text-sm"
+        >
+          {t['Docs']}
+        </a>
+        <a
+          href="https://github.com/jannael/devsync/issues"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-text-secondary hover:text-accent font-mono text-xs transition-colors duration-200 sm:text-sm"
+        >
+          {t['Issues']}
+        </a>
+      </nav>
+    </div>
+
+    <div class="mt-6 overflow-x-hidden text-center sm:mt-8" aria-hidden="true">
+      <pre
+        id="pacman-anim"
+        class="text-accent/40 font-mono text-xs leading-none"
+        aria-hidden="true"
+        style="min-height: 1.2em;">. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . </pre>
+    </div>
+  </div>
+</footer>
+
+<script lang="ts">
+  ;(function () {
+    const pre = document.getElementById('pacman-anim')
+    if (!pre) return
+
+    const WIDTH = 60
+    const PACMAN_OPEN = 'C'
+    const PACMAN_CLOSED = '>'
+    const GHOST = 'M'
+    const DOT = '.'
+    const PELLET = '*'
+
+    const dots = Array.from({ length: WIDTH }, () => DOT)
+    dots[15] = PELLET
+    dots[30] = PELLET
+    dots[45] = PELLET
+
+    const ghostPositions = [12, 25, 38, 50]
+    let pacmanPos = 0
+    const SPEED = 6
+    let tick = 0
+    let frame = 0
+    const eatenGhosts = new Set()
+    const eatenDots = new Set()
+
+    function render() {
+      const row = [...dots]
+
+      for (const gp of ghostPositions) {
+        if (!eatenGhosts.has(gp)) {
+          row[gp] = GHOST
+        }
+      }
+
+      for (const dp of eatenDots) {
+        row[dp] = ' '
+      }
+
+      const mouth = frame % 8 < 4 ? PACMAN_OPEN : PACMAN_CLOSED
+      row[pacmanPos] = mouth
+
+      pre.textContent = row.join('')
+    }
+
+    function update() {
+      tick++
+
+      if (tick % SPEED === 0) {
+        if (dots[pacmanPos] === DOT && !eatenDots.has(pacmanPos)) {
+          eatenDots.add(pacmanPos)
+        }
+
+        if (dots[pacmanPos] === PELLET && !eatenDots.has(pacmanPos)) {
+          eatenDots.add(pacmanPos)
+          eatenGhosts.clear()
+        }
+
+        for (const gp of ghostPositions) {
+          if (pacmanPos === gp) {
+            eatenGhosts.add(gp)
+          }
+        }
+
+        const prevPos = pacmanPos
+        pacmanPos = (pacmanPos + 1) % WIDTH
+
+        if (pacmanPos === 0 && prevPos === WIDTH - 1) {
+          eatenDots.clear()
+          eatenGhosts.clear()
+          for (let i = 0; i < WIDTH; i++) {
+            if (dots[i] === DOT || dots[i] === PELLET) {
+              dots[i] = dots[i] === PELLET ? PELLET : DOT
+            }
+          }
+        }
+      }
+
+      frame++
+      render()
+      requestAnimationFrame(update)
+    }
+
+    render()
+    requestAnimationFrame(update)
+  })()
+</script>
+
+<style>
+  .terminal-output {
+    opacity: 0;
+    animation: footer-fade-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+  }
+
+  .ascii-decor {
+    opacity: 0;
+    animation: footer-fade-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+  }
+
+  .footer-brand {
+    opacity: 0;
+    animation: footer-fade-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+  }
+
+  .footer-links {
+    opacity: 0;
+    animation: footer-fade-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
+  }
+
+  .footer-ascii {
+    opacity: 0;
+    animation: footer-fade-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1s forwards;
+  }
+
+  @keyframes footer-fade-in {
+    to {
+      opacity: 1;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .terminal-output,
+    .ascii-decor,
+    .footer-brand,
+    .footer-links,
+    .footer-ascii {
+      opacity: 1;
+      animation: none;
+    }
+  }
+</style>
