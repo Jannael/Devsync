@@ -38,5 +38,6 @@
   "templates description": "Start with a polished template that looks great out of the box. Pick one and make it your own. Or read more about building your own template.",
   "View Repository": "View Repository",
   "Live Preview": "Live Preview",
-  "Create your own": "Create your own template"
+  "Create your own": "Create your own template",
+  "why security": "Security is a top priority. Devsync uses Bun as its runtime and package manager. You don't need to worry about package vulnerabilities — the `bunfig.toml` configuration includes `minimumReleaseAge = 259200` (3 days), which prevents newly published packages from being installed automatically. This protects against supply chain attacks."
 }

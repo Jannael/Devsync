@@ -38,5 +38,6 @@
   "templates description": "Empieza con una plantilla que se ve genial desde el primer momento. Elige una y hazla tuya. O lee más sobre cómo crear tu propia plantilla.",
   "View Repository": "Ver Repositorio",
   "Live Preview": "Demo en vivo",
-  "Create your own": "Crear tu propia plantilla"
+  "Create your own": "Crear tu propia plantilla",
+  "why security": "La seguridad es una prioridad. Devsync usa Bun como su runtime y gestor de paquetes. No tienes que preocuparte por vulnerabilidades de paquetes — la configuración `bunfig.toml` incluye `minimumReleaseAge = 259200` (3 días), lo que evita que paquetes recién publicados se instalen automáticamente. Esto protege contra ataques a la cadena de suministro."
 }
