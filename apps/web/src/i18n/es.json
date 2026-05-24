@@ -47,5 +47,8 @@
   "Browse Templates": "Ver Plantillas",
   "Create from Scratch": "Crear desde Cero",
   "create from scratch description": "Construye una plantilla personalizada con cualquier framework que quieras. Obtén la estructura base y flexibilidad total para hacerla tuya.",
-  "Learn How": "Aprende Cómo"
+  "Learn How": "Aprende Cómo",
+  "Use with AI": "Usar con IA",
+  "use with ai description": "Deja que la IA construya tu portafolio por ti. Devsync incluye una skill de IA que entiende cómo trabajar con tus plantillas.",
+  "View Skill": "Ver Skill"
 }

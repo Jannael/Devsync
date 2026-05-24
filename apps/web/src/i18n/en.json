@@ -47,5 +47,8 @@
   "Browse Templates": "Browse Templates",
   "Create from Scratch": "Create from Scratch",
   "create from scratch description": "Build a custom template with any framework you want. Get the core structure and full flexibility to make it yours.",
-  "Learn How": "Learn How"
+  "Learn How": "Learn How",
+  "Use with AI": "Use with AI",
+  "use with ai description": "Let AI build your portfolio for you. Devsync includes an AI skill that understands how to work with your templates.",
+  "View Skill": "View Skill"
 }

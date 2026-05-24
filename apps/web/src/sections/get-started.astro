@@ -24,7 +24,7 @@ const t = getTranslation(lang)
       </p>
     </div>
 
-    <div class="get-started-grid grid w-full grid-cols-1 gap-8 lg:grid-cols-2">
+    <div class="get-started-grid grid w-full grid-cols-1 gap-8 lg:grid-cols-3">
       <div
         class="get-started-card border-border bg-surface group flex flex-col rounded-2xl border p-8 shadow-sm transition-all duration-300 hover:shadow-md"
       >
@@ -122,71 +122,125 @@ const t = getTranslation(lang)
           </svg>
         </a>
       </div>
+
+      <div
+        class="get-started-card border-border bg-surface group flex flex-col rounded-2xl border p-8 shadow-sm transition-all duration-300 hover:shadow-md"
+      >
+        <div class="bg-accent/10 mb-6 inline-flex h-12 w-12 items-center justify-center rounded-lg">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="text-accent"
+          >
+            <path d="M12 8V4H8"></path>
+            <rect width="16" height="12" x="4" y="8" rx="2"></rect>
+            <path d="M2 14h2"></path>
+            <path d="M20 14h2"></path>
+            <path d="M15 13v2"></path>
+            <path d="M9 13v2"></path>
+          </svg>
+        </div>
+        <h3 class="text-text mb-3 text-xl font-semibold">{t['Use with AI']}</h3>
+        <p class="text-text-secondary mb-6 flex-1 text-sm">
+          {t['use with ai description']}
+        </p>
+        <a
+          href={getRelativeLocaleUrl(lang, '/create-template/')}
+          class="border-accent/30 text-accent hover:bg-accent inline-flex h-10 items-center justify-center gap-2 rounded-lg border px-5 text-sm font-semibold transition-all duration-200 hover:scale-105 hover:text-white active:scale-95"
+        >
+          {t['View Skill']}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M5 12h14"></path>
+            <path d="m12 5 7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
     </div>
   </div>
-</section>
 
-<script>
-  function setupObserver() {
-    const section = document.getElementById('get-started-section')
-    if (!section) return
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            section.classList.add('animate')
-            observer.disconnect()
-          }
-        })
-      },
-      { threshold: 0.1 }
-    )
-    observer.observe(section)
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupObserver)
-  } else {
-    setupObserver()
-  }
-</script>
-
-<style>
-  .get-started-title {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  .get-started.animate .get-started-title {
-    animation: get-started-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
-
-  .get-started-subtitle {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  .get-started.animate .get-started-subtitle {
-    animation: get-started-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
-  }
-
-  .get-started-card {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  .get-started.animate .get-started-card:nth-child(1) {
-    animation: get-started-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
-  }
-
-  .get-started.animate .get-started-card:nth-child(2) {
-    animation: get-started-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.45s forwards;
-  }
-
-  @keyframes get-started-fade-up {
-    to {
-      opacity: 1;
-      transform: translateY(0);
+  <script>
+    function setupObserver() {
+      const section = document.getElementById('get-started-section')
+      if (!section) return
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              section.classList.add('animate')
+              observer.disconnect()
+            }
+          })
+        },
+        { threshold: 0.1 }
+      )
+      observer.observe(section)
     }
-  }
-</style>
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setupObserver)
+    } else {
+      setupObserver()
+    }
+  </script>
+
+  <style>
+    .get-started-title {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .get-started.animate .get-started-title {
+      animation: get-started-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .get-started-subtitle {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .get-started.animate .get-started-subtitle {
+      animation: get-started-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+    }
+
+    .get-started-card {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .get-started.animate .get-started-card:nth-child(1) {
+      animation: get-started-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+    }
+
+    .get-started.animate .get-started-card:nth-child(2) {
+      animation: get-started-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.45s forwards;
+    }
+
+    .get-started.animate .get-started-card:nth-child(3) {
+      animation: get-started-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+    }
+
+    @keyframes get-started-fade-up {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</section>
