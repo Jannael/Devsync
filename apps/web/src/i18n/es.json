@@ -39,5 +39,13 @@
   "View Repository": "Ver Repositorio",
   "Live Preview": "Demo en vivo",
   "Create your own": "Crear tu propia plantilla",
-  "why security": "La seguridad es una prioridad. Devsync usa Bun como su runtime y gestor de paquetes. No tienes que preocuparte por vulnerabilidades de paquetes — la configuración `bunfig.toml` incluye `minimumReleaseAge = 259200` (3 días), lo que evita que paquetes recién publicados se instalen automáticamente. Esto protege contra ataques a la cadena de suministro."
+  "why security": "La seguridad es una prioridad. Devsync usa Bun como su runtime y gestor de paquetes. No tienes que preocuparte por vulnerabilidades de paquetes — la configuración `bunfig.toml` incluye `minimumReleaseAge = 259200` (3 días), lo que evita que paquetes recién publicados se instalen automáticamente. Esto protege contra ataques a la cadena de suministro.",
+  "Choose Your Path": "Elige Tu Camino",
+  "get started description": "Empieza con una plantilla lista o construye la tuya desde cero. Ambos caminos te dan control total.",
+  "Use a Template": "Usar una Plantilla",
+  "use template description": "Elige entre nuestras plantillas seleccionadas y empieza a construir tu portafolio en minutos. Perfecto para empezar rápido.",
+  "Browse Templates": "Ver Plantillas",
+  "Create from Scratch": "Crear desde Cero",
+  "create from scratch description": "Construye una plantilla personalizada con cualquier framework que quieras. Obtén la estructura base y flexibilidad total para hacerla tuya.",
+  "Learn How": "Aprende Cómo"
 }

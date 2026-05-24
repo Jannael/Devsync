@@ -39,5 +39,13 @@
   "View Repository": "View Repository",
   "Live Preview": "Live Preview",
   "Create your own": "Create your own template",
-  "why security": "Security is a top priority. Devsync uses Bun as its runtime and package manager. You don't need to worry about package vulnerabilities — the `bunfig.toml` configuration includes `minimumReleaseAge = 259200` (3 days), which prevents newly published packages from being installed automatically. This protects against supply chain attacks."
+  "why security": "Security is a top priority. Devsync uses Bun as its runtime and package manager. You don't need to worry about package vulnerabilities — the `bunfig.toml` configuration includes `minimumReleaseAge = 259200` (3 days), which prevents newly published packages from being installed automatically. This protects against supply chain attacks.",
+  "Choose Your Path": "Choose Your Path",
+  "get started description": "Start with a ready-made template or build your own from scratch. Both paths give you full control.",
+  "Use a Template": "Use a Template",
+  "use template description": "Pick from our curated templates and start building your portfolio in minutes. Perfect for getting started quickly.",
+  "Browse Templates": "Browse Templates",
+  "Create from Scratch": "Create from Scratch",
+  "create from scratch description": "Build a custom template with any framework you want. Get the core structure and full flexibility to make it yours.",
+  "Learn How": "Learn How"
 }
