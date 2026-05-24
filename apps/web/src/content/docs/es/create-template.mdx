@@ -108,7 +108,7 @@ Configura un path alias en tu `tsconfig.json` para importar `Devsync` más fáci
 
 ## Despliegue de una preview
 
-Si quieres desplegar una preview de tu plantilla, no recomiendo hacerlo usando CI/CD (solo para la preview, para tu portafolio personal está perfecto). ¿Por qué no? Porque los CI/CD típicamente usan GitHub Actions para desplegar, y si alguien más usa tu plantilla, esa Action se ejecutaría forzándolos a usar tu mismo proveedor de hosting.
+Si quieres desplegar una preview de tu plantilla, de preferencia no uses GitHub Actions para despliegues automatizados. Si alguien más usa tu plantilla, esa Action se ejecutaría forzándolos a usar tu mismo proveedor de hosting.
 
 <Aside type="tip">
 Para tu portafolio personal el CI/CD está perfecto. Esta sección es solo para quienes crean plantillas y quieren mostrar una preview sin acoplar a los usuarios a un hosting específico.
@@ -116,7 +116,7 @@ Para tu portafolio personal el CI/CD está perfecto. Esta sección es solo para 
 
 ### Recomendación
 
-Usa un despliegue manual como Wrangler. ¿Es más problema? Sí, pero para eso he preparado dos scripts.
+He preparado dos scripts para ayudarte.
 
 <Steps>
 
@@ -174,7 +174,7 @@ Usa un despliegue manual como Wrangler. ¿Es más problema? Sí, pero para eso h
     }
     ```
 
-3. Añade el comando `deploy` a tu `package.json`:
+3. Añade el comando `deploy` a tu `package.json` (ejemplo usando wrangler pages):
 
     ```json
     "scripts": {
@@ -190,7 +190,7 @@ Puedes ver esta implementación en [devsync-default-template](https://github.com
 
 ## Publicar
 
-Si quieres que tu plantilla aparezca en [devsync.work](https://devsync.work) puedes hacer un pull request a este repositorio y agregarla a la lista de plantillas.
+Si quieres que tu plantilla aparezca en [devsync.work](https://devsync.work) puedes hacer un pull request a este [repositorio](https://github.com/jannael/devsync) y agregarla a la lista de plantillas.
 
 ### Posters
 

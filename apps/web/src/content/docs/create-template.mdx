@@ -108,15 +108,15 @@ Configure a path alias in your `tsconfig.json` to import `Devsync` more easily:
 
 ## Deploying a preview
 
-If you want to deploy a preview of your template, I don't recommend using CI/CD (just for the preview — for your actual portfolio it's perfectly fine). Why not? Because CI/CD typically uses GitHub Actions to deploy, and if someone else uses your template, that Action would run forcing them to use your same hosting provider.
+If you want to deploy a preview of your template, preferably don't use GitHub Actions for automated deployments. If someone else uses your template, that Action would run forcing them to use your same hosting provider.
 
 <Aside type="tip">
 For your personal portfolio, CI/CD is perfectly fine. This section is only for template creators who want to show a preview without coupling users to a specific host.
 </Aside>
 
-### Recommendation
+### Tips
 
-Use a manual deployment tool like Wrangler. Is it more work? Yes, but I've prepared two scripts to help.
+I've prepared two scripts to help.
 
 <Steps>
 
@@ -174,7 +174,7 @@ Use a manual deployment tool like Wrangler. Is it more work? Yes, but I've prepa
     }
     ```
 
-3. Add the `deploy` command to your `package.json`:
+3. Add the `deploy` command to your `package.json` (example using wrangler pages):
 
     ```json
     "scripts": {
@@ -190,7 +190,7 @@ You can see this implemented in [devsync-default-template](https://github.com/ja
 
 ## Publish
 
-If you want your template to appear on [devsync.work](https://devsync.work), you can make a pull request to this repository and add it to the template list.
+If you want your template to appear on [devsync.work](https://devsync.work), you can make a pull request to this [repository](https://github.com/jannael/devsync) and add it to the template list.
 
 ### Posters
 
