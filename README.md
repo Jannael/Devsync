@@ -2,6 +2,7 @@
 
 ![Devsync](apps/web/public/og.png)
 
+![Glinter](https://glinter.jannael.com/badge.svg)
 ![Bun](https://img.shields.io/badge/Bun-fbf0df?logo=bun&logoColor=000)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178c6?logo=typescript&logoColor=fff)
 ![Astro](https://img.shields.io/badge/Astro-FF5D01?logo=astro&logoColor=fff)
