@@ -1,4 +1,8 @@
 ---
+import astroRaw from '@/icons/astro.svg?raw'
+import tailwindRaw from '@/icons/tailwindcss.svg?raw'
+import typescriptRaw from '@/icons/typescript.svg?raw'
+
 export interface Template {
   name: string
   owner: string
@@ -20,6 +24,12 @@ const { template, index, viewRepositoryLabel, livePreviewLabel } = Astro.props
 
 const lightPoster = `https://raw.githubusercontent.com/${template.owner}/${template.repoName}/main/public/poster-light-mode.webp`
 const darkPoster = `https://raw.githubusercontent.com/${template.owner}/${template.repoName}/main/public/poster-dark-mode.webp`
+
+const techConfig: Record<string, { svg: string; iconBg?: string }> = {
+  Astro: { svg: astroRaw, iconBg: 'bg-[#17191E] rounded-[3px] p-[2px]' },
+  'Tailwind CSS': { svg: tailwindRaw },
+  TypeScript: { svg: typescriptRaw },
+}
 ---
 
 <div
@@ -50,6 +60,26 @@ const darkPoster = `https://raw.githubusercontent.com/${template.owner}/${templa
 
   <div class="flex flex-1 flex-col gap-5 p-6">
     <h3 class="text-text mt-4 text-xl font-semibold">{template.name}</h3>
+
+    <div class="flex flex-wrap gap-2">
+      {
+        template.technologies.map((tech) => {
+          const config = techConfig[tech]
+          return (
+            <span class="border-border bg-surface-sunken text-text-secondary inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium">
+              {config?.svg && (
+                <span
+                  class={`h-3.5 w-3.5 shrink-0 [&>svg]:h-full [&>svg]:w-full${config.iconBg ? ` ${config.iconBg}` : ''}`}
+                  aria-hidden="true"
+                  set:html={config.svg}
+                />
+              )}
+              {tech}
+            </span>
+          )
+        })
+      }
+    </div>
 
     <div
       class="template-command border-border bg-surface-sunken mb-4 flex items-center gap-3 rounded-lg border px-4 py-3"
