@@ -14,7 +14,7 @@ const { label, message, color, style, logo, logoColor, className } = Astro.props
 const src = `https://img.shields.io/badge/${label && label + '-'}${message}-${color}.svg?style=${style}&logo=${logo}&logoColor=${logoColor}`
 ---
 
-<span class="badge-copy-wrapper relative inline-flex">
+<span class="badge-copy-wrapper relative flex w-30 items-center justify-center h-fit border border-border">
   <button
     type="button"
     class="badge-copy-btn group relative cursor-pointer p-3 leading-0"
