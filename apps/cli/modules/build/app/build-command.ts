@@ -40,7 +40,7 @@ class UpdateCommand extends CreateLinkedinMixin(
       const defaultLang = devsync.defaultLang ?? 'en'
 
       for (const lang of languages) {
-        await this.buildCV({ lang })
+        await this.buildCV({ name: devsync.name, lang })
         await this.createLinkedin({ devsync, lang })
       }
       await this.createGithubProfile({ devsync, defaultLang })

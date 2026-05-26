@@ -15,6 +15,6 @@ export const DEFAULT_TEMPLATE_URL = 'https://github.com/jannael/devsync-default-
 
 // Multi-language outputs
 export const LINKEDIN = (lang: string) => `./linkedin-${lang}.md`
-export const CV_PDF = (lang: string) => `./public/CV-${lang}.pdf`
+export const CV_PDF = (name: string, lang: string) => `./public/${name}-${lang}.pdf`
 export const CV_ROUTE_OUTPUT = (lang: string) =>
   resolve(process.cwd(), 'dist', lang, 'cv', 'index.html')
