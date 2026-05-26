@@ -1,13 +1,46 @@
 ---
 import Layout from '@/layouts/Layout.astro'
-import NavTheme from '@/components/nav-theme.astro'
+import BackgroundGrid from '@/components/background-grid.astro'
 import Badge from '@/components/badge.astro'
+import GitHub from '@/assets/github-svg.astro'
+import LanguageSelector from '@/components/language-selector.astro'
+import NavTheme from '@/components/nav-theme.astro'
 ---
 
 <Layout
   title="Badge Builder — Devsync"
   description="Create beautiful shields.io badges for your GitHub profile, README, and more."
 >
+  <header
+    class="nav-bar absolute top-0 z-40 m-auto flex w-full max-w-5xl items-center justify-end gap-3 px-4 pt-4 sm:gap-5 sm:px-6 sm:pt-5"
+  >
+    <div
+      class="nav-bar-inner border-border/30 bg-surface/80 flex items-center gap-1 rounded-full border px-3 py-2 shadow-sm backdrop-blur-md sm:gap-2 sm:px-4 sm:py-2.5 dark:border-white/10 dark:shadow-md"
+    >
+      <a
+        href="https://github.com/jannael/devsync"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="nav-item text-text-secondary hover:text-accent inline-flex items-center justify-center rounded-full p-2 transition-colors duration-200"
+        aria-label="View source on GitHub"
+      >
+        <GitHub />
+      </a>
+      <div class="nav-divider bg-border/30 h-4 w-px" aria-hidden="true"></div>
+      <LanguageSelector />
+      <div class="nav-divider bg-border/30 h-4 w-px" aria-hidden="true"></div>
+      <NavTheme />
+    </div>
+  </header>
+  <BackgroundGrid />
+
+  <!-- Radial glow behind ASCII -->
+  <div
+    class="hero-glow pointer-events-none absolute top-1/3 left-1/2 z-0 h-75 w-75 -translate-x-1/2 -translate-y-1/2 opacity-[0.04] blur-[80px] sm:h-75 sm:w-150 dark:opacity-[0.06]"
+    aria-hidden="true"
+  >
+  </div>
+
   <div class="relative flex min-h-screen w-full items-center justify-center">
     <main class="flex w-full max-w-6xl gap-10">
       <!-- ── Form ── -->
