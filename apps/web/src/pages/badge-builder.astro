@@ -27,9 +27,11 @@ const b = t['builder']
   <div
     class="relative flex min-h-screen w-full flex-col items-center justify-start pt-24 pb-20 sm:pt-35 sm:pb-28"
   >
-    <main class=" relative flex w-full max-w-7xl flex-col gap-14 px-4 sm:px-6 lg:gap-16 items-center justify-center">
+    <main
+      class="relative flex w-full max-w-7xl flex-col items-center justify-center gap-14 px-4 sm:px-6 lg:gap-16"
+    >
       <header
-        class="nav-bar fixed top-0 z-40 flex w-full max-w-7xl items-center justify-end px-4 pt-4 sm:px-6 mx-auto lg:px-10"
+        class="nav-bar fixed top-0 z-40 mx-auto flex w-full max-w-7xl items-center justify-end px-4 pt-4 sm:px-6 lg:px-10"
       >
         <div
           class="nav-bar-inner border-border/40 bg-surface/90 flex items-center gap-1 rounded-full border px-3 py-2 shadow-lg backdrop-blur-xl sm:gap-2 sm:px-4 sm:py-2.5 dark:border-white/15 dark:shadow-2xl"
@@ -65,9 +67,9 @@ const b = t['builder']
             <GitHub />
           </a>
           <div class="nav-divider bg-border/30 h-4 w-px" aria-hidden="true"></div>
-          <LanguageSelector />
-          <div class="nav-divider bg-border/30 h-4 w-px" aria-hidden="true"></div>
           <NavTheme />
+          <div class="nav-divider bg-border/30 h-4 w-px" aria-hidden="true"></div>
+          <LanguageSelector />
         </div>
       </header>
 
@@ -229,7 +231,7 @@ const b = t['builder']
         </section>
 
         <!-- ── Right: Preview ── -->
-        <section class="min-w-0 flex-1" aria-label={b['previewLabel']}>
+        <section class="min-w-0 flex-1 bg-bg" aria-label={b['previewLabel']}>
           <div class="flex items-center justify-between">
             <h2 class="text-text-secondary mb-5 text-xs font-semibold tracking-widest uppercase">
               Badge preview
@@ -237,12 +239,9 @@ const b = t['builder']
           </div>
 
           <div
-            class="border-border/50 bg-surface/30 flex flex-wrap content-start items-start gap-4 rounded-xl border p-5 sm:gap-5 sm:p-6"
+            class="border-border bg-surface/30 flex flex-wrap content-start justify-center gap-4 rounded-xl border p-5 sm:gap-5 sm:p-6"
           >
-            <!-- Live input badge -->
             <Badge label="" message="DEVSYNC" color="4ade80" style="flat" className="input-badge" />
-
-            <!-- Fixed palette badges, grouped by color -->
             <FixedBadges />
           </div>
         </section>
