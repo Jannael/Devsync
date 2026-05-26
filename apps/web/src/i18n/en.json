@@ -54,11 +54,11 @@
   "use with ai description": "Let AI build your portfolio for you. Devsync includes an AI skill that understands how to work with your templates.",
   "View Skill": "View Skill",
   "builder": {
-    "title": "Badge Builder — Devsync",
+    "title": "MD Badge Builder — Devsync",
     "description": "Create beautiful shields.io badges for your GitHub profile, README, and more.",
     "viewSource": "View source on GitHub",
     "formLabel": "Badge configuration",
-    "heading": "Badge Builder",
+    "heading": "MD Badge Builder",
     "poweredBy": "powered by shields.io",
     "labelHelp": "Left-side text (e.g. build, version, license)",
     "messageHelp": "Right-side text (e.g. passing, v1.0, MIT)",
