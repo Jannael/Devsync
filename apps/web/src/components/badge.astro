@@ -1,0 +1,80 @@
+---
+interface Props {
+  label?: string
+  message: string
+  color: string
+  style?: string
+  logo?: string
+  logoColor?: string
+  className?: string
+}
+
+const { label, message, color, style, logo, logoColor, className } = Astro.props
+
+const src = `https://img.shields.io/badge/${label && label + '-'}${message}-${color}.svg?style=${style}&logo=${logo}&logoColor=${logoColor}`
+---
+
+<span class="badge-copy-wrapper relative inline-flex">
+  <button
+    type="button"
+    class="badge-copy-btn group relative cursor-pointer p-3 leading-0"
+    aria-label="Copy badge markdown"
+  >
+    <img
+      src={src}
+      alt={label}
+      data-label={label}
+      data-message={message}
+      data-color={color}
+      data-logo={logo}
+      data-logoColor={logoColor}
+      data-style={style}
+      class={`h-7 sm:h-8 ${className}`}
+      draggable="false"
+      decoding="async"
+      loading="lazy"
+    />
+    <span
+      class="badge-copied bg-accent text-accent-foreground pointer-events-none absolute -top-5 left-1/2 z-10 -translate-x-1/2 rounded-md px-2 py-1 text-xs font-medium opacity-0 shadow-sm transition-opacity duration-200"
+    >
+      Copied!
+    </span>
+  </button>
+</span>
+
+<script>
+  document.querySelectorAll('.badge-copy-btn').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const img = btn.querySelector('img')!
+      const alt = img.getAttribute('alt')
+      const src = img.getAttribute('src')
+      const message = img.getAttribute('data-message')
+
+      const md = `![${alt ?? message}](${src})`
+      await showCopy({ md, btn: btn as HTMLButtonElement })
+    })
+  })
+
+  async function showCopy({ md, btn }: { md: string; btn: HTMLButtonElement }) {
+    try {
+      await navigator.clipboard.writeText(md)
+    } catch {
+      const ta = document.createElement('textarea')
+      ta.value = md
+      ta.style.position = 'fixed'
+      ta.style.opacity = '0'
+      document.body.appendChild(ta)
+      ta.select()
+      document.execCommand('copy')
+      document.body.removeChild(ta)
+    }
+
+    const toast = btn.querySelector('.badge-copied') as HTMLElement
+    toast.classList.remove('opacity-0')
+    toast.classList.add('opacity-100')
+    setTimeout(() => {
+      toast.classList.remove('opacity-100')
+      toast.classList.add('opacity-0')
+    }, 1500)
+  }
+</script>

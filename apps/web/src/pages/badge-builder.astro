@@ -1,0 +1,228 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import NavTheme from '@/components/nav-theme.astro'
+import Badge from '@/components/badge.astro'
+---
+
+<Layout
+  title="Badge Builder — Devsync"
+  description="Create beautiful shields.io badges for your GitHub profile, README, and more."
+>
+  <div class="relative flex min-h-screen w-full items-center justify-center">
+    <main class="flex w-full max-w-6xl gap-10">
+      <!-- ── Form ── -->
+      <section class="w-1/3" aria-label="Badge configuration">
+        <form id="badge-form" class="space-y-5" autocomplete="off">
+          <!-- Label -->
+          <div>
+            <label for="input-label" class="text-text mb-1.5 block text-sm font-medium">
+              Label
+            </label>
+            <input
+              id="input-label"
+              type="text"
+              value=""
+              placeholder="e.g. build"
+              class="border-border bg-input-bg text-input-text placeholder:text-input-placeholder focus:border-border-focus focus:ring-ring w-full rounded-lg border px-3.5 py-2.5 text-sm transition-colors outline-none focus:ring-[3px]"
+            />
+          </div>
+
+          <!-- Message -->
+          <div>
+            <label for="input-message" class="text-text mb-1.5 block text-sm font-medium">
+              Message
+            </label>
+            <input
+              id="input-message"
+              type="text"
+              value=""
+              placeholder="e.g. passing"
+              class="border-border bg-input-bg text-input-text placeholder:text-input-placeholder focus:border-border-focus focus:ring-ring w-full rounded-lg border px-3.5 py-2.5 text-sm transition-colors outline-none focus:ring-[3px]"
+            />
+          </div>
+
+          <!-- Color -->
+          <div class="flex gap-5">
+            <div class="flex flex-col">
+              <label for="input-color" class="text-text mb-1.5 block text-sm font-medium">
+                Color
+              </label>
+              <input
+                id="input-color-picker"
+                type="color"
+                value="#4ade80"
+                class="border-border h-11 w-11 shrink-0 cursor-pointer rounded-lg border bg-transparent p-1"
+              />
+            </div>
+            <div> 
+              <label for="input-logo-color" class="text-text mb-1.5 block text-sm font-medium">
+                Logo
+              </label>
+              <div class="flex gap-3">
+                <input
+                  id="input-logo-color-picker"
+                  type="color"
+                  value="#ffffff"
+                  class="border-border h-11 w-11 shrink-0 cursor-pointer rounded-lg border bg-transparent p-1"
+                />
+              </div>
+            </div>
+            <div class="flex flex-col">
+              <label for="input-style" class="text-text mb-1.5 block text-sm font-medium">
+                Style
+              </label>
+              <select
+                id="input-style"
+                class="border-border bg-input-bg text-input-text focus:border-border-focus focus:ring-ring h-full w-full rounded-lg border px-3.5 text-sm transition-colors outline-none focus:ring-[3px]"
+              >
+                <option value="flat">Flat</option>
+                <option value="flat-square">Flat Square</option>
+                <option value="plastic">Plastic</option>
+                <option value="for-the-badge">For the Badge</option>
+                <option value="social">Social</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Style -->
+
+          <!-- Divider -->
+          <div class="border-divider/50 border-t pt-5">
+            <p class="text-text-secondary mb-4 text-xl uppercase">Optional</p>
+
+            <!-- Logo -->
+            <div class="mb-5">
+              <label for="input-logo" class="text-text mb-1.5 block text-sm font-medium">
+                Logo
+              </label>
+              <input
+                id="input-logo"
+                type="text"
+                placeholder="e.g. github, typescript, tailwindcss"
+                class="border-border bg-input-bg text-input-text placeholder:text-input-placeholder focus:border-border-focus focus:ring-ring w-full rounded-lg border px-3.5 py-2.5 text-sm transition-colors outline-none focus:ring-[3px]"
+              />
+              <p class="text-text-muted mt-1 text-xs">
+                SimpleIcons slug — <a
+                  href="https://simpleicons.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-text-link hover:text-text-link-hover underline">browse icons</a
+                >
+              </p>
+            </div>
+
+            <!-- Logo Color -->
+            <div class="mb-5">
+              
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <section
+        class="bg-badge-neutral border-accent flex w-full flex-wrap items-start gap-5 rounded-lg border p-5"
+        aria-label="Badge preview and code output"
+      >
+        <!-- Preview -->
+        <Badge
+          label=""
+          message="DEVSYNC"
+          color="4ade80"
+          style="flat"
+          className="input-badge"
+        />
+        <Badge label="" message="passing" color="000000" style="flat" logoColor="ffffff" />
+        <Badge label="" message="passing" color="ffffff" style="flat" logoColor="000000" />
+        <Badge label="" message="passing" color="3f7" style="flat" />
+        <Badge label="" message="passing" color="ffffff" style="flat" />
+        <Badge label="" message="passing" color="ffffff" style="flat" />
+      </section>
+    </main>
+  </div>
+</Layout>
+
+<script>
+  const labelInput = document.getElementById('input-label') as HTMLInputElement
+  const messageInput = document.getElementById('input-message') as HTMLInputElement
+  const colorInput = document.getElementById('input-color-picker') as HTMLInputElement
+  const styleInput = document.getElementById('input-style') as HTMLSelectElement
+  const logoInput = document.getElementById('input-logo') as HTMLInputElement
+  const logoColorInput = document.getElementById('input-logo-color-picker') as HTMLInputElement
+
+  const specialBadge = document.querySelector('.input-badge') as HTMLImageElement
+  const allBadges = document.querySelectorAll('.badge-copy-btn img') as NodeListOf<HTMLImageElement>
+
+  const inputs = [colorInput, styleInput, logoColorInput]
+
+  let logo = ''
+
+  inputs.forEach((input) => {
+    input.addEventListener('input', () => {
+      specialBadge.setAttribute('src', getBadgeUrl({ ...getInputValues() }))
+    })
+
+    input.addEventListener('change', () => {
+      specialBadge.setAttribute('src', getBadgeUrl({ ...getInputValues() }))
+    })
+  })
+
+  labelInput.addEventListener('input', () => {
+    specialBadge.setAttribute('src', getBadgeUrl({ ...getInputValues() }))
+    updateAllBadges()
+  })
+
+  logoInput.addEventListener('input', () => {
+    logo = logoInput.value
+    specialBadge.setAttribute('src', getBadgeUrl({ ...getInputValues() }))
+    updateAllBadges()
+  })
+
+  messageInput.addEventListener('input', () => {
+    logo = messageInput.value
+    specialBadge.setAttribute('src', getBadgeUrl({ ...getInputValues() }))
+    updateAllBadges()
+  })
+
+  function updateAllBadges() {
+    allBadges.forEach((badge) => {
+      const color = badge.getAttribute('data-color') ?? '000000'
+      const style = badge.getAttribute('data-style') ?? 'flat'
+      const logoColor = badge.getAttribute('data-logoColor') ?? 'ffffff'
+
+      badge.setAttribute('src', getBadgeUrl({ ...getInputValues(), color, style, logoColor }))
+    })
+  }
+
+  function getInputValues() {
+    specialBadge.setAttribute('data-color', colorInput.value.replace('#', ''))
+    specialBadge.setAttribute('data-style', styleInput.value)
+    specialBadge.setAttribute('data-logoColor', logoColorInput.value.replace('#', ''))
+
+    return {
+      label: labelInput.value,
+      message: messageInput.value || 'DEVSYNC',
+      color: colorInput.value.replace('#', ''),
+      style: styleInput.value,
+      logo: logo.length > 1 ? logo : logoInput.value,
+      logoColor: logoColorInput.value.replace('#', ''),
+    }
+  }
+
+  function getBadgeUrl({
+    label,
+    message,
+    color,
+    style,
+    logo,
+    logoColor,
+  }: {
+    label?: string
+    message: string
+    color: string
+    style: string
+    logo?: string
+    logoColor?: string
+  }) {
+    return `https://img.shields.io/badge/${label && label + '-'}${message}-${color}.svg?style=${style}${logo && `&logo=${logo}`}${logoColor && `&logoColor=${logoColor}`}`
+  }
+</script>
