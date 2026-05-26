@@ -58,6 +58,7 @@
     "description": "Create beautiful shields.io badges for your GitHub profile, README, and more.",
     "viewSource": "View source on GitHub",
     "formLabel": "Badge configuration",
+    "heading": "Badge Builder, powered by shields.io",
     "label": "Label",
     "labelPlaceholder": "e.g. build",
     "message": "Message",

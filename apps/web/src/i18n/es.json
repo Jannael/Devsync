@@ -58,6 +58,7 @@
     "description": "Crea insignias de shields.io para tu perfil de GitHub, README y más.",
     "viewSource": "Ver código fuente en GitHub",
     "formLabel": "Configuración de insignia",
+    "heading": "Creador de Insignias, con la tecnología de shields.io",
     "label": "Etiqueta",
     "labelPlaceholder": "ej. construir",
     "message": "Mensaje",
