@@ -52,5 +52,28 @@
   "Learn How": "Learn How",
   "Use with AI": "Use with AI",
   "use with ai description": "Let AI build your portfolio for you. Devsync includes an AI skill that understands how to work with your templates.",
-  "View Skill": "View Skill"
+  "View Skill": "View Skill",
+  "builder": {
+    "title": "Badge Builder — Devsync",
+    "description": "Create beautiful shields.io badges for your GitHub profile, README, and more.",
+    "viewSource": "View source on GitHub",
+    "formLabel": "Badge configuration",
+    "label": "Label",
+    "labelPlaceholder": "e.g. build",
+    "message": "Message",
+    "messagePlaceholder": "e.g. passing",
+    "color": "Color",
+    "logo": "Logo",
+    "style": "Style",
+    "styleFlat": "Flat",
+    "styleFlatSquare": "Flat Square",
+    "stylePlastic": "Plastic",
+    "styleForTheBadge": "For the Badge",
+    "styleSocial": "Social",
+    "optional": "Optional",
+    "logoPlaceholder": "e.g. github, typescript, tailwindcss",
+    "simpleIconsSlug": "SimpleIcons slug —",
+    "browseIcons": "browse icons",
+    "previewLabel": "Badge preview"
+  }
 }

@@ -52,5 +52,28 @@
   "Learn How": "Aprende Cómo",
   "Use with AI": "Usar con IA",
   "use with ai description": "Deja que la IA construya tu portafolio por ti. Devsync incluye una skill de IA que entiende cómo trabajar con tus plantillas.",
-  "View Skill": "Ver Skill"
+  "View Skill": "Ver Skill",
+  "builder": {
+    "title": "Creador de Insignias — Devsync",
+    "description": "Crea insignias de shields.io para tu perfil de GitHub, README y más.",
+    "viewSource": "Ver código fuente en GitHub",
+    "formLabel": "Configuración de insignia",
+    "label": "Etiqueta",
+    "labelPlaceholder": "ej. build",
+    "message": "Mensaje",
+    "messagePlaceholder": "ej. passing",
+    "color": "Color",
+    "logo": "Logo",
+    "style": "Estilo",
+    "styleFlat": "Plano",
+    "styleFlatSquare": "Cuadrado Plano",
+    "stylePlastic": "Plástico",
+    "styleForTheBadge": "Para la Insignia",
+    "styleSocial": "Social",
+    "optional": "Opcional",
+    "logoPlaceholder": "ej. github, typescript, tailwindcss",
+    "simpleIconsSlug": "Slug de SimpleIcons —",
+    "browseIcons": "explorar iconos",
+    "previewLabel": "Vista previa de insignia"
+  }
 }
