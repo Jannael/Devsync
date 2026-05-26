@@ -74,14 +74,14 @@ const b = t['builder']
       </header>
 
       <div class="mx-auto max-w-2xl text-center">
-        <h1 class="text-text text-4xl font-bold tracking-tight sm:text-5xl">Badge Builder</h1>
-        <p class="text-text-secondary mt-2 sm:text-lg">powered by shields.io</p>
+        <h1 class="text-text text-4xl font-bold tracking-tight sm:text-5xl">{b['heading']}</h1>
+        <p class="text-text-secondary mt-2 sm:text-lg">{b['poweredBy']}</p>
       </div>
       <div class="flex flex-col gap-12 lg:flex-row lg:gap-16">
         <section class="w-full shrink-0 lg:w-80" aria-label={b['formLabel']}>
-          <h2 class="text-text-secondary mb-5 text-xs font-semibold tracking-widest uppercase">
-            Badge configuration
-          </h2>
+            <h2 class="text-text-secondary mb-5 text-xs font-semibold tracking-widest uppercase">
+              {b['formLabel']}
+            </h2>
           <form id="badge-form" class="space-y-5" autocomplete="off">
             <!-- Label -->
             <div>
@@ -91,7 +91,7 @@ const b = t['builder']
               >
                 <span>{b['label']}</span>
                 <span class="text-text-muted font-normal"
-                  >Left-side text (e.g. build, version, license)</span
+                  >{b['labelHelp']}</span
                 >
               </label>
               <input
@@ -111,7 +111,7 @@ const b = t['builder']
               >
                 <span>{b['message']}</span>
                 <span class="text-text-muted font-normal"
-                  >Right-side text (e.g. passing, v1.0, MIT)</span
+                  >{b['messageHelp']}</span
                 >
               </label>
               <input
@@ -149,7 +149,7 @@ const b = t['builder']
               </div>
               <div class="flex-1">
                 <label for="input-logo-color" class="text-text mb-1.5 block text-sm font-medium">
-                  Logo Color
+                  {b['logoColor']}
                 </label>
                 <div class="flex items-center gap-2.5">
                   <div class="relative shrink-0">
@@ -179,7 +179,7 @@ const b = t['builder']
               >
                 <span>{b['style']}</span>
                 <span class="text-text-muted font-normal"
-                  >Changes badge shape, borders, and shading</span
+                  >{b['styleHelp']}</span
                 >
               </label>
               <select
@@ -207,7 +207,7 @@ const b = t['builder']
                   class="text-text mb-1.5 flex items-center justify-between text-sm font-medium"
                 >
                   <span>{b['logo']}</span>
-                  <span class="text-text-muted font-normal">SimpleIcons slug for an icon</span>
+                  <span class="text-text-muted font-normal">{b['logHelp']}</span>
                 </label>
                 <input
                   id="input-logo"
@@ -234,7 +234,7 @@ const b = t['builder']
         <section class="min-w-0 flex-1 bg-bg" aria-label={b['previewLabel']}>
           <div class="flex items-center justify-between">
             <h2 class="text-text-secondary mb-5 text-xs font-semibold tracking-widest uppercase">
-              Badge preview
+              {b['previewLabel']}
             </h2>
           </div>
 
