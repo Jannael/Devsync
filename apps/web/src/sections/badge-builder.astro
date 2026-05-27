@@ -140,28 +140,67 @@ const t = getTranslation(lang)
     </div>
 
     <div class="badge-builder-preview flex w-full shrink-0 items-center justify-center lg:w-auto">
-      <div class="border-border/70 group relative inline-flex items-center justify-center rounded-lg border">
-        <button
-          type="button"
-          id="badge-copy-btn"
-          class="relative cursor-pointer p-3 leading-0"
-          aria-label="Copy badge markdown"
-        >
-          <img
-            id="badge-preview-img"
-            src="https://img.shields.io/badge/DEVSYNC-4ade80.svg?style=for-the-badge&logo=typescript&logoColor=ffffff"
-            alt="DEVSYNC"
-            class="h-9 sm:h-10"
-            draggable="false"
-            decoding="async"
-          />
-          <span
-            id="badge-copied-toast"
-            class="bg-accent text-accent-foreground pointer-events-none absolute -top-5 left-1/2 z-10 -translate-x-1/2 rounded-md px-2 py-1 text-xs font-medium opacity-0 shadow-sm transition-opacity duration-200"
+      <div class="border-border bg-surface flex flex-col items-center gap-5 rounded-xl border p-6 shadow-sm">
+        <div class="border-border/70 inline-flex rounded-lg border">
+          <button
+            type="button"
+            id="badge-copy-btn"
+            class="group relative cursor-pointer p-3 leading-0"
+            aria-label="Copy badge markdown"
           >
-            Copied!
-          </span>
-        </button>
+            <img
+              id="badge-preview-img"
+              src="https://img.shields.io/badge/DEVSYNC-4ade80.svg?style=for-the-badge&logo=typescript&logoColor=ffffff"
+              alt="DEVSYNC"
+              class="h-9 sm:h-10"
+              draggable="false"
+              decoding="async"
+            />
+            <span
+              id="badge-copied-toast"
+              class="bg-accent text-accent-foreground pointer-events-none absolute -top-5 left-1/2 z-10 -translate-x-1/2 rounded-md px-2 py-1 text-xs font-medium opacity-0 shadow-sm transition-opacity duration-200"
+            >
+              Copied!
+            </span>
+          </button>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <div class="flex items-center gap-2">
+            <label for="mini-color" class="text-text-muted text-xs font-medium">Color</label>
+            <input
+              id="mini-color"
+              type="color"
+              value="#4ade80"
+              class="border-border h-8 w-8 cursor-pointer rounded border p-0.5"
+            />
+          </div>
+          <div class="flex items-center gap-2">
+            <label for="mini-style" class="text-text-muted text-xs font-medium">Style</label>
+            <select
+              id="mini-style"
+              class="border-input-border bg-input-bg text-input-text text-xs h-8 rounded border px-2 outline-none"
+            >
+              <option value="flat">Flat</option>
+              <option value="flat-square">Square</option>
+              <option value="plastic">Plastic</option>
+              <option value="for-the-badge" selected>Badge</option>
+              <option value="social">Social</option>
+            </select>
+          </div>
+          <div class="flex items-center gap-2">
+            <label for="mini-logo" class="text-text-muted text-xs font-medium">Logo</label>
+            <select
+              id="mini-logo"
+              class="border-input-border bg-input-bg text-input-text text-xs h-8 rounded border px-2 outline-none"
+            >
+              <option value="">None</option>
+              <option value="typescript" selected>TS</option>
+              <option value="github">GitHub</option>
+              <option value="docker">Docker</option>
+            </select>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -169,7 +208,25 @@ const t = getTranslation(lang)
   <script>
     const btn = document.getElementById('badge-copy-btn')
     const toast = document.getElementById('badge-copied-toast')
-    const img = document.getElementById('badge-preview-img')
+    const img = document.getElementById('badge-preview-img') as HTMLImageElement
+    const colorInput = document.getElementById('mini-color') as HTMLInputElement
+    const styleInput = document.getElementById('mini-style') as HTMLSelectElement
+    const logoInput = document.getElementById('mini-logo') as HTMLSelectElement
+
+    function buildUrl() {
+      const color = colorInput.value.replace('#', '')
+      const style = styleInput.value
+      const logo = logoInput.value
+      return `https://img.shields.io/badge/DEVSYNC-${color}.svg?style=${style}${logo ? `&logo=${logo}&logoColor=ffffff` : ''}`
+    }
+
+    function updateBadge() {
+      if (img) img.src = buildUrl()
+    }
+
+    colorInput?.addEventListener('input', updateBadge)
+    styleInput?.addEventListener('change', updateBadge)
+    logoInput?.addEventListener('change', updateBadge)
 
     btn?.addEventListener('click', async () => {
       const src = img?.getAttribute('src')
