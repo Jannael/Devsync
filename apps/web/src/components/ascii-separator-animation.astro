@@ -1,126 +1,100 @@
 ---
 interface Props {
-  variant?: "wave" | "matrix" | "glitch" | "pulse";
-  color?: string;
+  text?: string
+  speed?: number
 }
 
-const { variant = "wave", color } = Astro.props
+const {
+  text = 'devsync · one file · infinite outputs · ',
+  speed = 0.5,
+} = Astro.props
 ---
 
-<div class="ascii-separator" data-variant={variant}>
-  <canvas id="ascii-canvas"></canvas>
+<div
+  class="section-divider relative my-16 w-full overflow-hidden py-3"
+  aria-hidden="true"
+>
+  <div class="divider-fade-left pointer-events-none absolute inset-y-0 left-0 z-10 w-16" />
+  <div class="divider-fade-right pointer-events-none absolute inset-y-0 right-0 z-10 w-16" />
+  <pre
+    class="divider-pre text-accent/40 hover:text-accent/70 m-0 whitespace-nowrap font-mono text-[11px] leading-none transition-colors duration-500 sm:text-xs"
+    data-text={text}
+    data-speed={speed}
+  />
 </div>
 
-<style define:vars={{ color }}>
-  .ascii-separator {
-    width: 100%;
-    overflow: hidden;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    margin: 2rem 0;
-    color: var(--color-accent);
+<style>
+  .section-divider {
+    border-top: 1px solid color-mix(in srgb, var(--color-accent, #00ff88) 10%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--color-accent, #00ff88) 10%, transparent);
   }
 
-  canvas {
-    display: block;
-    width: 100%;
-    height: 100%;
+  .divider-fade-left {
+    background: linear-gradient(to right, var(--color-bg, #0a0a0a), transparent);
   }
+
+  .divider-fade-right {
+    background: linear-gradient(to left, var(--color-bg, #0a0a0a), transparent);
+  }
+
+  /* @media (prefers-reduced-motion: reduce) {
+    .divider-pre {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  } */
 </style>
 
-<script define:vars={{ variant, color }}>
-  const canvas = document.getElementById("ascii-canvas");
-  const ctx = canvas.getContext("2d");
-  const resolvedColor = color || getComputedStyle(canvas.parentElement).color;
+<script>
+  const dividers = document.querySelectorAll<HTMLPreElement>('.divider-pre')
 
-  const CHARS = {
-    wave:   "~≈∿〜∼≀⌇⌒",
-    matrix: "ｦｧｨｩｪｫｬｭｮｯｰｱｲｳｴｵｶｷｸｹｺ01",
-    glitch: "░▒▓█▄▀■□▪▫▬▭▮▯",
-    pulse:  "·•◦○◌◍◎●◉○◌",
-  };
+  dividers.forEach((pre) => {
+    const baseText = (pre.dataset.text ?? 'devsync · ').repeat(6)
+    const speed = parseFloat(pre.dataset.speed ?? '0.5')
 
-  const charSet = CHARS[variant] || CHARS.wave;
+    pre.textContent = baseText + baseText
 
-  let frame = 0;
-  let cols = 0;
-  let fontSize = 14;
-  let animId;
+    let offset = 0
+    const singleLen = baseText.length
 
-  function resize() {
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
-    cols = Math.floor(canvas.width / (fontSize * 0.6));
-  }
+    let charWidth = 0
+    let animId: number
 
-  function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.font = `${fontSize}px "Courier New", monospace`;
-    ctx.textBaseline = "middle";
-
-    const t = frame / 60;
-
-    for (let i = 0; i < cols; i++) {
-      const x = i * fontSize * 0.6;
-      let y, alpha, charIdx;
-
-      if (variant === "wave") {
-        const wave1 = Math.sin(t * 1.8 + i * 0.25) * 0.4;
-        const wave2 = Math.sin(t * 0.9 + i * 0.15 + 1.2) * 0.2;
-        y = canvas.height / 2 + (wave1 + wave2) * canvas.height * 0.35;
-        alpha = 0.35 + Math.abs(wave1 + wave2) * 0.65;
-        charIdx = Math.floor(
-          (Math.sin(t * 2 + i * 0.4) * 0.5 + 0.5) * (charSet.length - 1)
-        );
-      } else if (variant === "matrix") {
-        const speed = 0.3 + ((i * 7919) % 17) / 17 * 0.7;
-        y = ((t * speed * canvas.height * 0.5 + i * 31) % canvas.height);
-        alpha = 0.2 + Math.sin(t * 3 + i) * 0.4 + 0.4;
-        charIdx = Math.floor(((t * 5 + i * 3) % 1) * charSet.length);
-      } else if (variant === "glitch") {
-        const band = Math.floor(t * 4 + i * 0.3) % 5;
-        y = (band / 5) * canvas.height + fontSize;
-        alpha = Math.random() > 0.85 ? 1 : 0.15 + Math.sin(t * 8 + i) * 0.15 + 0.15;
-        charIdx = Math.floor(Math.random() * charSet.length);
-      } else if (variant === "pulse") {
-        const cx = cols / 2;
-        const dist = Math.abs(i - cx) / (cols / 2);
-        const pulse = Math.sin(t * 3 - dist * 8) * 0.5 + 0.5;
-        y = canvas.height / 2 + Math.sin(dist * Math.PI) * pulse * canvas.height * 0.25;
-        alpha = (1 - dist * 0.6) * pulse * 0.9 + 0.1;
-        charIdx = Math.floor(pulse * (charSet.length - 1));
-      }
-
-      ctx.globalAlpha = Math.max(0, Math.min(1, alpha));
-      ctx.fillStyle = resolvedColor;
-      ctx.fillText(charSet[charIdx] || charSet[0], x, y);
+    function measure() {
+      const span = document.createElement('span')
+      span.style.cssText =
+        'position:absolute;visibility:hidden;white-space:nowrap;font:inherit;font-size:inherit;'
+      span.textContent = baseText
+      pre.appendChild(span)
+      charWidth = span.offsetWidth
+      pre.removeChild(span)
     }
 
-    ctx.globalAlpha = 1;
-    frame++;
-    animId = requestAnimationFrame(draw);
-  }
+    function tick() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
-  resize();
-  window.addEventListener("resize", () => {
-    cancelAnimationFrame(animId);
-    resize();
-    draw();
-  });
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        draw();
-      } else {
-        cancelAnimationFrame(animId);
+      offset += speed
+      if (charWidth > 0 && offset >= charWidth) {
+        offset -= charWidth
       }
-    });
-  });
-  observer.observe(canvas);
+      pre.style.transform = `translateX(-${offset}px)`
+      animId = requestAnimationFrame(tick)
+    }
 
-  draw();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            if (!charWidth) measure()
+            tick()
+          } else {
+            cancelAnimationFrame(animId)
+          }
+        })
+      },
+      { threshold: 0 }
+    )
+
+    observer.observe(pre)
+  })
 </script>
