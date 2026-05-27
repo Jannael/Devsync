@@ -1,0 +1,124 @@
+---
+interface Props {
+  variant?: "wave" | "matrix" | "glitch" | "pulse";
+  color?: string;
+}
+
+const { variant = "wave", color = "#00ff88" } = Astro.props;
+---
+
+<div class="ascii-separator" data-variant={variant}>
+  <canvas id="ascii-canvas"></canvas>
+</div>
+
+<style define:vars={{ color }}>
+  .ascii-separator {
+    width: 100%;
+    overflow: hidden;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    margin: 2rem 0;
+  }
+
+  canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+</style>
+
+<script define:vars={{ variant, color }}>
+  const canvas = document.getElementById("ascii-canvas");
+  const ctx = canvas.getContext("2d");
+
+  const CHARS = {
+    wave:   "~≈∿〜∼≀⌇⌒",
+    matrix: "ｦｧｨｩｪｫｬｭｮｯｰｱｲｳｴｵｶｷｸｹｺ01",
+    glitch: "░▒▓█▄▀■□▪▫▬▭▮▯",
+    pulse:  "·•◦○◌◍◎●◉○◌",
+  };
+
+  const charSet = CHARS[variant] || CHARS.wave;
+
+  let frame = 0;
+  let cols = 0;
+  let fontSize = 14;
+  let animId;
+
+  function resize() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+    cols = Math.floor(canvas.width / (fontSize * 0.6));
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.font = `${fontSize}px "Courier New", monospace`;
+    ctx.textBaseline = "middle";
+
+    const t = frame / 60;
+
+    for (let i = 0; i < cols; i++) {
+      const x = i * fontSize * 0.6;
+      let y, alpha, charIdx;
+
+      if (variant === "wave") {
+        const wave1 = Math.sin(t * 1.8 + i * 0.25) * 0.4;
+        const wave2 = Math.sin(t * 0.9 + i * 0.15 + 1.2) * 0.2;
+        y = canvas.height / 2 + (wave1 + wave2) * canvas.height * 0.35;
+        alpha = 0.35 + Math.abs(wave1 + wave2) * 0.65;
+        charIdx = Math.floor(
+          (Math.sin(t * 2 + i * 0.4) * 0.5 + 0.5) * (charSet.length - 1)
+        );
+      } else if (variant === "matrix") {
+        const speed = 0.3 + ((i * 7919) % 17) / 17 * 0.7;
+        y = ((t * speed * canvas.height * 0.5 + i * 31) % canvas.height);
+        alpha = 0.2 + Math.sin(t * 3 + i) * 0.4 + 0.4;
+        charIdx = Math.floor(((t * 5 + i * 3) % 1) * charSet.length);
+      } else if (variant === "glitch") {
+        const band = Math.floor(t * 4 + i * 0.3) % 5;
+        y = (band / 5) * canvas.height + fontSize;
+        alpha = Math.random() > 0.85 ? 1 : 0.15 + Math.sin(t * 8 + i) * 0.15 + 0.15;
+        charIdx = Math.floor(Math.random() * charSet.length);
+      } else if (variant === "pulse") {
+        const cx = cols / 2;
+        const dist = Math.abs(i - cx) / (cols / 2);
+        const pulse = Math.sin(t * 3 - dist * 8) * 0.5 + 0.5;
+        y = canvas.height / 2 + Math.sin(dist * Math.PI) * pulse * canvas.height * 0.25;
+        alpha = (1 - dist * 0.6) * pulse * 0.9 + 0.1;
+        charIdx = Math.floor(pulse * (charSet.length - 1));
+      }
+
+      ctx.globalAlpha = Math.max(0, Math.min(1, alpha));
+      ctx.fillStyle = color;
+      ctx.fillText(charSet[charIdx] || charSet[0], x, y);
+    }
+
+    ctx.globalAlpha = 1;
+    frame++;
+    animId = requestAnimationFrame(draw);
+  }
+
+  resize();
+  window.addEventListener("resize", () => {
+    cancelAnimationFrame(animId);
+    resize();
+    draw();
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        draw();
+      } else {
+        cancelAnimationFrame(animId);
+      }
+    });
+  });
+  observer.observe(canvas);
+
+  draw();
+</script>
