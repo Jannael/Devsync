@@ -4,7 +4,7 @@ interface Props {
   color?: string;
 }
 
-const { variant = "wave", color = "#00ff88" } = Astro.props;
+const { variant = "wave", color } = Astro.props
 ---
 
 <div class="ascii-separator" data-variant={variant}>
@@ -21,6 +21,7 @@ const { variant = "wave", color = "#00ff88" } = Astro.props;
     justify-content: center;
     background: transparent;
     margin: 2rem 0;
+    color: var(--color-accent);
   }
 
   canvas {
@@ -33,6 +34,7 @@ const { variant = "wave", color = "#00ff88" } = Astro.props;
 <script define:vars={{ variant, color }}>
   const canvas = document.getElementById("ascii-canvas");
   const ctx = canvas.getContext("2d");
+  const resolvedColor = color || getComputedStyle(canvas.parentElement).color;
 
   const CHARS = {
     wave:   "~≈∿〜∼≀⌇⌒",
@@ -93,7 +95,7 @@ const { variant = "wave", color = "#00ff88" } = Astro.props;
       }
 
       ctx.globalAlpha = Math.max(0, Math.min(1, alpha));
-      ctx.fillStyle = color;
+      ctx.fillStyle = resolvedColor;
       ctx.fillText(charSet[charIdx] || charSet[0], x, y);
     }
 
