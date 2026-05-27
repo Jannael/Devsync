@@ -16,7 +16,9 @@ const t = getTranslation(lang)
   >
   </div>
 
-  <div class="relative z-10 flex w-full max-w-5xl flex-col items-center gap-12 lg:flex-row lg:items-start lg:gap-16">
+  <div
+    class="relative z-10 flex w-full max-w-5xl flex-col items-center gap-12 lg:flex-row lg:items-start lg:gap-16"
+  >
     <div class="flex w-full max-w-lg flex-col items-center text-center lg:items-start lg:text-left">
       <h2
         id="badge-builder-title"
@@ -139,8 +141,12 @@ const t = getTranslation(lang)
       </a>
     </div>
 
-    <div class="badge-builder-preview flex w-full shrink-0 items-center justify-center lg:w-auto">
-      <div class="border-border bg-surface flex flex-col items-center gap-5 rounded-xl border p-6 shadow-sm">
+    <div
+      class="badge-builder-preview flex w-full items-center justify-center lg:flex-1 lg:self-center"
+    >
+      <div
+        class="border-border bg-surface flex flex-col items-center gap-5 rounded-xl border p-6 shadow-sm"
+      >
         <div class="border-border/70 inline-flex rounded-lg border">
           <button
             type="button"
@@ -179,7 +185,7 @@ const t = getTranslation(lang)
             <label for="mini-style" class="text-text-muted text-xs font-medium">Style</label>
             <select
               id="mini-style"
-              class="border-input-border bg-input-bg text-input-text text-xs h-8 rounded border px-2 outline-none"
+              class="border-input-border bg-input-bg text-input-text h-8 rounded border px-2 text-xs outline-none"
             >
               <option value="flat">Flat</option>
               <option value="flat-square">Square</option>
@@ -192,7 +198,7 @@ const t = getTranslation(lang)
             <label for="mini-logo" class="text-text-muted text-xs font-medium">Logo</label>
             <select
               id="mini-logo"
-              class="border-input-border bg-input-bg text-input-text text-xs h-8 rounded border px-2 outline-none"
+              class="border-input-border bg-input-bg text-input-text h-8 rounded border px-2 text-xs outline-none"
             >
               <option value="">None</option>
               <option value="typescript" selected>TS</option>
