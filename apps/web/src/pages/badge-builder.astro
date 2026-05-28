@@ -268,8 +268,12 @@ const b = t['builder']
     }
   }
 
-  const refreshSpecial = () =>
+  const refreshSpecial = () => {
     specialBadge.setAttribute('src', getBadgeUrl({ ...getInputValues() }))
+    specialBadge.setAttribute('data-message', messageInput.value)
+    specialBadge.setAttribute('alt', labelInput.value)
+  }
+
   const refreshAll = () => {
     refreshSpecial()
     updateAllBadges()
@@ -301,6 +305,8 @@ const b = t['builder']
       const logoColor = badge.getAttribute('data-logoColor') ?? 'ffffff'
 
       badge.setAttribute('src', getBadgeUrl({ ...getInputValues(), color, style, logoColor }))
+      badge.setAttribute('data-message', messageInput.value)
+      badge.setAttribute('alt', labelInput.value)
     })
   }
 

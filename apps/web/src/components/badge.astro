@@ -52,7 +52,7 @@ const src = `https://img.shields.io/badge/${label && label + '-'}${message}-${co
       const src = img.getAttribute('src')
       const message = img.getAttribute('data-message')
 
-      const md = `![${alt ?? message}](${src})`
+      const md = `![${alt && alt.length > 1 ? alt : message}](${src})`
       await showCopy({ md, btn: btn as HTMLButtonElement })
     })
   })
