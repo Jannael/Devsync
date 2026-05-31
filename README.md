@@ -16,6 +16,7 @@
 ![Puppeteer](https://img.shields.io/badge/Puppeteer-f8fafc.svg?style=flat-square&logo=Puppeteer&logoColor=000000)
 ![Zod](https://img.shields.io/badge/Zod-3b82f6.svg?style=flat&logo=Zod&logoColor=ffffff)
 ![Cloudflare](https://img.shields.io/badge/Cloudflare-f59e0b.svg?style=flat&logo=Cloudflare&logoColor=ffffff)
+![Config](https://img.shields.io/badge/Config-000000.svg?style=flat&logo=Config&logoColor=ffffff)
 
 One file to keep your portfolio, CV, GitHub and LinkedIn in sync.
 
