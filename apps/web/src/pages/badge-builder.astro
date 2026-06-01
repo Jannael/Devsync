@@ -340,6 +340,6 @@ const b = t['builder']
     logo?: string
     logoColor?: string
   }) {
-    return `https://img.shields.io/badge/${label && label + '-'}${message.replace(' ', '%20')}-${color}.svg?style=${style}${logo && `&logo=${logo.replace(' ', '%20')}`}${logoColor && `&logoColor=${logoColor}`}`
+    return `https://img.shields.io/badge/${label && label + '-'}${message.replaceAll(' ', '%20')}-${color}.svg?style=${style}${logo && `&logo=${logo.replaceAll(' ', '%20')}`}${logoColor && `&logoColor=${logoColor}`}`
   }
 </script>
