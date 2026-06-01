@@ -106,6 +106,7 @@ const devsyncSchema = z
     name: z.string({ message: 'Name is required' }),
     img: z.string({ message: 'Image is required' }),
     socialMedia: z.array(linkSchema),
+    coreSkills: z.array(z.string({ message: 'Core skill is required' })),
     githubUserName: z.string({ message: 'GitHub username is required' }),
     address: z.string({ message: 'Address is required' }),
     email: z.string({ message: 'Email is required' }),
