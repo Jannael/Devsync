@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'DEVSYNC.json'
+  workflow_dispatch:
 
 permissions:
   contents: write
