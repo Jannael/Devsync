@@ -40,7 +40,7 @@
 		"build": "bun build ./apps/cli/index.ts --outfile=./dist/index.js --target=bun && bun run copy-template",
 		"copy-template": "node -e \"const fs = require('fs'); fs.cpSync('apps/@core', 'dist/@core', {recursive: true, filter: (src) => !src.endsWith('node_modules') && !src.includes('node_modules/') && !src.includes('\\\\node_modules')})\"",
 		"prepublishOnly": "bun run build",
-		"test": "vitest",
+		"test": "bun test",
 		"lint": "eslint .",
 		"lint:fix": "eslint --fix .",
 		"fmt": "prettier --write .",
@@ -61,8 +61,7 @@
 		"prettier": "3.8.3",
 		"prettier-plugin-astro": "0.14.1",
 		"prettier-plugin-tailwindcss": "0.8.0",
-		"typescript-eslint": "8.60.1",
-		"vitest": "4.1.8"
+		"typescript-eslint": "8.60.1"
 	},
 	"peerDependencies": {
 		"typescript": "6.0.3"
