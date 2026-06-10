@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { describe, it, expect, vi, beforeEach } from 'bun:test'
 import { writeFileMixin } from '@/shared/infra/write-file'
 import { mkdir, writeFile as fsWriteFile } from 'node:fs/promises'
 import { resolve, dirname } from 'node:path'
@@ -8,11 +8,11 @@ vi.mock('node:fs/promises', () => ({
 	writeFile: vi.fn(),
 }))
 
-const mockMkdir = vi.mocked(mkdir)
-const mockWriteFile = vi.mocked(fsWriteFile)
+const mockMkdir = mkdir as unknown as ReturnType<typeof vi.fn>
+const mockWriteFile = fsWriteFile as unknown as ReturnType<typeof vi.fn>
 
 class Base {}
-const WriteFileClass = writeFileMixin(Base)
+const WritefileClass = writeFileMixin(Base)
 
 describe('writeFileMixin', () => {
 	beforeEach(() => {
@@ -23,7 +23,7 @@ describe('writeFileMixin', () => {
 		mockMkdir.mockResolvedValue(undefined)
 		mockWriteFile.mockResolvedValue(undefined)
 
-		const instance = new WriteFileClass()
+		const instance = new WritefileClass()
 		await instance.writeFile({ path: 'output/file.txt', data: 'hello world' })
 
 		const fullPath = resolve(process.cwd(), 'output/file.txt')
@@ -36,7 +36,7 @@ describe('writeFileMixin', () => {
 		mockMkdir.mockResolvedValue(undefined)
 		mockWriteFile.mockResolvedValue(undefined)
 
-		const instance = new WriteFileClass()
+		const instance = new WritefileClass()
 		await instance.writeFile({ path: 'some/nested/path/file.json', data: '{}' })
 
 		const expected = resolve(process.cwd(), 'some/nested/path/file.json')
@@ -46,7 +46,7 @@ describe('writeFileMixin', () => {
 	it('ServerError when mkdir fails', async () => {
 		mockMkdir.mockRejectedValue(new Error('permission denied'))
 
-		const instance = new WriteFileClass()
+		const instance = new WritefileClass()
 
 		await expect(instance.writeFile({ path: 'output/file.txt', data: 'data' })).rejects.toThrow('Failed to write file')
 	})
@@ -55,7 +55,7 @@ describe('writeFileMixin', () => {
 		mockMkdir.mockResolvedValue(undefined)
 		mockWriteFile.mockRejectedValue(new Error('disk full'))
 
-		const instance = new WriteFileClass()
+		const instance = new WritefileClass()
 
 		await expect(instance.writeFile({ path: 'output/file.txt', data: 'data' })).rejects.toThrow('Failed to write file')
 	})

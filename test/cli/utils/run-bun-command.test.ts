@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { describe, it, expect, vi, beforeEach } from 'bun:test'
 import { runBunCommand } from '@/utils/run-bun-command.ts'
 import { spawn } from 'node:child_process'
 import { EventEmitter } from 'node:events'
@@ -7,7 +7,7 @@ vi.mock('node:child_process', () => ({
 	spawn: vi.fn(),
 }))
 
-const mockSpawn = vi.mocked(spawn)
+const mockSpawn = spawn as unknown as ReturnType<typeof vi.fn>
 
 const createChildMock = () => {
 	const child = new EventEmitter() as EventEmitter & { stdin: null }

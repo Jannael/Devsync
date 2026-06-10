@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { describe, it, expect, vi, beforeEach } from 'bun:test'
 import { createPDFMixin } from '@/shared/infra/create-pdf'
 
 const mockLaunch = vi.fn()
@@ -38,9 +38,9 @@ describe('createPDFMixin', () => {
 		expect(instance.greet()).toBe('hello')
 		await instance.createPDF({ html: '<h1>Test</h1>', path: 'output.pdf' })
 
-		expect(mockLaunch).toHaveBeenCalledOnce()
-		expect(mockBrowser.newPage).toHaveBeenCalledOnce()
-		expect(mockBrowser.close).toHaveBeenCalledOnce()
+		expect(mockLaunch).toHaveBeenCalledTimes(1)
+		expect(mockBrowser.newPage).toHaveBeenCalledTimes(1)
+		expect(mockBrowser.close).toHaveBeenCalledTimes(1)
 	})
 
 	it('throws ServerError when puppeteer fails', async () => {

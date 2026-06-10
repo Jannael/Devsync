@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { describe, it, expect, vi, beforeEach } from 'bun:test'
 import { getHTMLMixin } from '@/shared/infra/get-html'
 import { readFile as fsReadFile } from 'node:fs/promises'
 
@@ -14,7 +14,7 @@ vi.mock('node:fs', () => ({
 	existsSync: vi.fn(() => true),
 }))
 
-const mockFsReadFile = vi.mocked(fsReadFile)
+const mockFsReadFile = fsReadFile as unknown as ReturnType<typeof vi.fn>
 
 describe('getHTML from cv component Mixin', () => {
 	beforeEach(() => {
