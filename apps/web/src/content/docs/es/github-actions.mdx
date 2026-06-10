@@ -26,6 +26,7 @@ on:
   push:
     paths:
       - 'DEVSYNC.json'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -83,6 +84,7 @@ on:
   push:
     paths:
       - 'DEVSYNC.json'
+  workflow_dispatch:
 ```
 
 Se activa solo cuando `DEVSYNC.json` cambia, evitando ejecuciones innecesarias.

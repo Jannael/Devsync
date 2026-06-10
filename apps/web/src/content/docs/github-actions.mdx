@@ -24,6 +24,7 @@ on:
   push:
     paths:
       - 'DEVSYNC.json'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -81,6 +82,7 @@ on:
   push:
     paths:
       - 'DEVSYNC.json'
+  workflow_dispatch:
 ```
 
 Triggers only when `DEVSYNC.json` changes, avoiding unnecessary runs.
