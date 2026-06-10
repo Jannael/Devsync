@@ -6,7 +6,7 @@ import createTemplate from '@/modules/create-template/main'
 type CommandHandler = (args: string[]) => Promise<void>
 
 export const COMMANDS_FN: Record<CommandNames, CommandHandler> = {
-  init,
-  build,
-  'create-template': createTemplate,
+	init,
+	build,
+	'create-template': createTemplate,
 } as const

@@ -1,3 +1,3 @@
 export interface GitHubRepository {
-  cloneRepository(url: string): void
+	cloneRepository(url: string): void
 }

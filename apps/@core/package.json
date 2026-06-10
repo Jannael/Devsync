@@ -1,14 +1,14 @@
 {
-  "name": "@devsync/template",
-  "version": "0.0.1",
-  "type": "module",
-  "scripts": {
-    "build": "echo 'add build command'"
-  },
-  "dependencies": {
-    "zod": "4.4.3"
-  },
-  "devsync": {
-    "pathToCompiledCV": "add path to compiled cv"
-  }
+	"name": "@devsync/template",
+	"version": "0.0.1",
+	"type": "module",
+	"scripts": {
+		"build": "echo 'add build command'"
+	},
+	"dependencies": {
+		"zod": "4.4.3"
+	},
+	"devsync": {
+		"pathToCompiledCV": "add path to compiled cv"
+	}
 }

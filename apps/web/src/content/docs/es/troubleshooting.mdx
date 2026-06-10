@@ -28,7 +28,8 @@ sudo apt-get install -y \
 ```
 
 <Aside type="note">
-En macOS, Puppeteer generalmente funciona sin configuración adicional. En Windows, asegúrate de tener lo último en Visual C++ Redistributable instalado.
+	En macOS, Puppeteer generalmente funciona sin configuración adicional. En Windows, asegúrate de tener lo último en Visual C++ Redistributable
+	instalado.
 </Aside>
 
 ### Bun No Encontrado (Local)
@@ -184,9 +185,9 @@ bunx @jannael/devsync init
 
 ```json
 {
-  "devsync": {
-    "pathToCompiledCV": "./dist/[lang]/cv/index.html"
-  }
+	"devsync": {
+		"pathToCompiledCV": "./dist/[lang]/cv/index.html"
+	}
 }
 ```
 
@@ -263,13 +264,13 @@ Agrega todas las dependencias requeridas:
 
 ## Mensajes de Error Comunes
 
-| Error | Causa | Solución |
-|-------|-------|----------|
-| `ENOENT: no such file or directory` | Ruta de archivo no existe | Verifica rutas en config |
-| `EACCES: permission denied` | Problema de permisos de archivo | Verifica permisos de archivo |
-| `ETIMEDOUT` | Tiempo de red agotado | Verifica red, reintenta |
-| `Invalid URL` | URL malformada en config | Corrige formato de URL |
-| `ZodError` | Validación falló | Verifica tipos/valores de campo |
+| Error                               | Causa                           | Solución                        |
+| ----------------------------------- | ------------------------------- | ------------------------------- |
+| `ENOENT: no such file or directory` | Ruta de archivo no existe       | Verifica rutas en config        |
+| `EACCES: permission denied`         | Problema de permisos de archivo | Verifica permisos de archivo    |
+| `ETIMEDOUT`                         | Tiempo de red agotado           | Verifica red, reintenta         |
+| `Invalid URL`                       | URL malformada en config        | Corrige formato de URL          |
+| `ZodError`                          | Validación falló                | Verifica tipos/valores de campo |
 
 ## Obteniendo Ayuda
 

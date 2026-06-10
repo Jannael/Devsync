@@ -2,11 +2,11 @@
 
 ## Quick Commands
 
-| Command                     | Description                       |
-| --------------------------- | --------------------------------- |
-| `bun install`               | Install dependencies              |
-| `bun run build`             | Build CLI (outputs to `dist/`)    |
-| `bun test`                  | Vitest (test path mirrors source) |
+| Command         | Description                       |
+| --------------- | --------------------------------- |
+| `bun install`   | Install dependencies              |
+| `bun run build` | Build CLI (outputs to `dist/`)    |
+| `bun test`      | Vitest (test path mirrors source) |
 
 **Single test:** `bun test test/cli/utils/run-bun-command.test.ts`  
 **Web docs:** `cd apps/web && bun dev`

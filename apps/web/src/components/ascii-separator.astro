@@ -4,34 +4,29 @@ const width = 250
 const lines = 5
 
 function generateSeparator() {
-  const result: string[] = []
+	const result: string[] = []
 
-  for (let i = 0; i < lines; i++) {
-    const line = Array.from(
-      { length: width },
-      () => chars[Math.floor(Math.random() * chars.length)]
-    ).join('')
-    result.push(line)
-  }
+	for (let i = 0; i < lines; i++) {
+		const line = Array.from({ length: width }, () => chars[Math.floor(Math.random() * chars.length)]).join('')
+		result.push(line)
+	}
 
-  return result.join('\n')
+	return result.join('\n')
 }
 
 const separatorASCII = generateSeparator()
 ---
 
 <div class="w-full overflow-hidden py-8" aria-hidden="true">
-  <div
-    class="ascii-separator mx-auto w-screen max-w-none origin-center transform-[skewY(-2deg)_rotate(-1deg)]"
-  >
-    <pre
-      class="text-accent text-center font-mono text-xs leading-[1.2] whitespace-pre [text-shadow:0_0_8px_var(--color-accent)] dark:opacity-40">{separatorASCII}</pre>
-  </div>
+	<div class="ascii-separator mx-auto w-screen max-w-none origin-center transform-[skewY(-2deg)_rotate(-1deg)]">
+		<pre
+			class="text-accent text-center font-mono text-xs leading-[1.2] whitespace-pre [text-shadow:0_0_8px_var(--color-accent)] dark:opacity-40">{separatorASCII}</pre>
+	</div>
 </div>
 
 <style>
-  .ascii-separator {
-    transform: skewY(-2deg) rotate(-1deg);
-    transform-origin: center;
-  }
+	.ascii-separator {
+		transform: skewY(-2deg) rotate(-1deg);
+		transform-origin: center;
+	}
 </style>

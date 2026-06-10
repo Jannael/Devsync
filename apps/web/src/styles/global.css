@@ -1,63 +1,63 @@
 @import 'tailwindcss';
 
 @theme {
-  --breakpoint-smallest: 20rem;
+	--breakpoint-smallest: 20rem;
 
-  /* ── Accent (primary action color) ──────────────────────────────── */
-  --color-accent: #338e5e;
-  --color-accent-hover: #2b7a51;
-  --color-accent-foreground: #ffffff;
+	/* ── Accent (primary action color) ──────────────────────────────── */
+	--color-accent: #338e5e;
+	--color-accent-hover: #2b7a51;
+	--color-accent-foreground: #ffffff;
 
-  /* ── Backgrounds ────────────────────────────────────────────────── */
-  --color-bg: #ffffff;
-  --color-bg-alt: #f0f0f0;
+	/* ── Backgrounds ────────────────────────────────────────────────── */
+	--color-bg: #ffffff;
+	--color-bg-alt: #f0f0f0;
 
-  /* ── Surfaces (cards, panels, modals) ───────────────────────────── */
-  --color-surface: #ffffff;
-  --color-surface-sunken: #f5f5f5;
+	/* ── Surfaces (cards, panels, modals) ───────────────────────────── */
+	--color-surface: #ffffff;
+	--color-surface-sunken: #f5f5f5;
 
-  /* ── Text ───────────────────────────────────────────────────────── */
-  --color-text: #000000;
-  --color-text-secondary: #262626;
-  --color-text-muted: #525252;
-  --color-text-link: #338e5e;
-  --color-text-link-hover: #2b7a51;
+	/* ── Text ───────────────────────────────────────────────────────── */
+	--color-text: #000000;
+	--color-text-secondary: #262626;
+	--color-text-muted: #525252;
+	--color-text-link: #338e5e;
+	--color-text-link-hover: #2b7a51;
 
-  /* ── Borders ────────────────────────────────────────────────────── */
-  --color-border: #a3a3a3;
-  --color-border-subtle: #d4d4d4;
-  --color-border-strong: #737373;
+	/* ── Borders ────────────────────────────────────────────────────── */
+	--color-border: #a3a3a3;
+	--color-border-subtle: #d4d4d4;
+	--color-border-strong: #737373;
 
-  /* ── Rings / Focus ──────────────────────────────────────────────── */
-  --color-ring: rgba(51, 142, 94, 0.35);
+	/* ── Rings / Focus ──────────────────────────────────────────────── */
+	--color-ring: rgba(51, 142, 94, 0.35);
 
-  /* ── Buttons — Primary ──────────────────────────────────────────── */
-  --color-btn-primary: #111111;
-  --color-btn-primary-hover: #2a2a2a;
-  --color-btn-primary-foreground: #ffffff;
+	/* ── Buttons — Primary ──────────────────────────────────────────── */
+	--color-btn-primary: #111111;
+	--color-btn-primary-hover: #2a2a2a;
+	--color-btn-primary-foreground: #ffffff;
 
-  /* ── Status — Success ───────────────────────────────────────────── */
-  --color-success: #338e5e;
+	/* ── Status — Success ───────────────────────────────────────────── */
+	--color-success: #338e5e;
 
-  /* ── Status — Warning ───────────────────────────────────────────── */
-  --color-warning: #f59e0b;
+	/* ── Status — Warning ───────────────────────────────────────────── */
+	--color-warning: #f59e0b;
 
-  /* ── Status — Error / Danger ────────────────────────────────────── */
-  --color-error: #ef4444;
+	/* ── Status — Error / Danger ────────────────────────────────────── */
+	--color-error: #ef4444;
 
-  /* ── Inputs / Forms ─────────────────────────────────────────────── */
-  --color-input-bg: #ffffff;
-  --color-input-border: #737373;
-  --color-input-border-hover: #525252;
-  --color-input-border-focus: #338e5e;
-  --color-input-placeholder: #525252;
-  --color-input-text: #000000;
+	/* ── Inputs / Forms ─────────────────────────────────────────────── */
+	--color-input-bg: #ffffff;
+	--color-input-border: #737373;
+	--color-input-border-hover: #525252;
+	--color-input-border-focus: #338e5e;
+	--color-input-placeholder: #525252;
+	--color-input-text: #000000;
 
-  /* ── Shadows ────────────────────────────────────────────────────── */
-  --color-shadow-accent: rgba(51, 142, 94, 0.2);
+	/* ── Shadows ────────────────────────────────────────────────────── */
+	--color-shadow-accent: rgba(51, 142, 94, 0.2);
 
-  /* ── Divider ────────────────────────────────────────────────────── */
-  --color-divider: #a3a3a3;
+	/* ── Divider ────────────────────────────────────────────────────── */
+	--color-divider: #a3a3a3;
 }
 
 /* ═══════════════════════════════════════════════════════════════════
@@ -68,93 +68,93 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 .dark {
-  /* ── Accent ─────────────────────────────────────────────────────── */
-  --color-accent: #4ade80;
-  --color-accent-hover: #86efac;
-  --color-accent-foreground: #0a0a0a;
+	/* ── Accent ─────────────────────────────────────────────────────── */
+	--color-accent: #4ade80;
+	--color-accent-hover: #86efac;
+	--color-accent-foreground: #0a0a0a;
 
-  /* ── Backgrounds ────────────────────────────────────────────────── */
-  --color-bg: #0a0a0a;
-  --color-bg-alt: #0f0f0f;
+	/* ── Backgrounds ────────────────────────────────────────────────── */
+	--color-bg: #0a0a0a;
+	--color-bg-alt: #0f0f0f;
 
-  /* ── Surfaces ───────────────────────────────────────────────────── */
-  --color-surface: #141414;
-  --color-surface-sunken: #0f0f0f;
+	/* ── Surfaces ───────────────────────────────────────────────────── */
+	--color-surface: #141414;
+	--color-surface-sunken: #0f0f0f;
 
-  /* ── Text ───────────────────────────────────────────────────────── */
-  --color-text: #f5f5f5;
-  --color-text-secondary: #a3a3a3;
-  --color-text-muted: #525252;
-  --color-text-link: #4ade80;
-  --color-text-link-hover: #86efac;
+	/* ── Text ───────────────────────────────────────────────────────── */
+	--color-text: #f5f5f5;
+	--color-text-secondary: #a3a3a3;
+	--color-text-muted: #525252;
+	--color-text-link: #4ade80;
+	--color-text-link-hover: #86efac;
 
-  /* ── Borders ────────────────────────────────────────────────────── */
-  --color-border: #262626;
-  --color-border-subtle: #1a1a1a;
-  --color-border-strong: #404040;
+	/* ── Borders ────────────────────────────────────────────────────── */
+	--color-border: #262626;
+	--color-border-subtle: #1a1a1a;
+	--color-border-strong: #404040;
 
-  /* ── Rings / Focus ──────────────────────────────────────────────── */
-  --color-ring: rgba(74, 222, 128, 0.35);
+	/* ── Rings / Focus ──────────────────────────────────────────────── */
+	--color-ring: rgba(74, 222, 128, 0.35);
 
-  /* ── Buttons — Primary ──────────────────────────────────────────── */
-  --color-btn-primary: #f5f5f5;
-  --color-btn-primary-hover: #e5e5e5;
-  --color-btn-primary-foreground: #0a0a0a;
+	/* ── Buttons — Primary ──────────────────────────────────────────── */
+	--color-btn-primary: #f5f5f5;
+	--color-btn-primary-hover: #e5e5e5;
+	--color-btn-primary-foreground: #0a0a0a;
 
-  /* ── Status — Success ───────────────────────────────────────────── */
-  --color-success: #4ade80;
+	/* ── Status — Success ───────────────────────────────────────────── */
+	--color-success: #4ade80;
 
-  /* ── Status — Warning ───────────────────────────────────────────── */
-  --color-warning: #fbbf24;
+	/* ── Status — Warning ───────────────────────────────────────────── */
+	--color-warning: #fbbf24;
 
-  /* ── Status — Error / Danger ────────────────────────────────────── */
-  --color-error: #f87171;
+	/* ── Status — Error / Danger ────────────────────────────────────── */
+	--color-error: #f87171;
 
-  /* ── Inputs / Forms ─────────────────────────────────────────────── */
-  --color-input-bg: #141414;
-  --color-input-border: #303030;
-  --color-input-border-hover: #525252;
-  --color-input-border-focus: #4ade80;
-  --color-input-placeholder: #525252;
-  --color-input-text: #f5f5f5;
+	/* ── Inputs / Forms ─────────────────────────────────────────────── */
+	--color-input-bg: #141414;
+	--color-input-border: #303030;
+	--color-input-border-hover: #525252;
+	--color-input-border-focus: #4ade80;
+	--color-input-placeholder: #525252;
+	--color-input-text: #f5f5f5;
 
-  /* ── Shadows ────────────────────────────────────────────────────── */
-  --color-shadow-accent: rgba(74, 222, 128, 0.15);
+	/* ── Shadows ────────────────────────────────────────────────────── */
+	--color-shadow-accent: rgba(74, 222, 128, 0.15);
 
-  /* ── Divider ────────────────────────────────────────────────────── */
-  --color-divider: #262626;
+	/* ── Divider ────────────────────────────────────────────────────── */
+	--color-divider: #262626;
 }
 
 /* ── Accessibility Utilities ──────────────────────────────────────── */
 .sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border-width: 0;
 }
 
 .skip-link {
-  position: absolute;
-  top: -40px;
-  left: 0;
-  background: var(--color-accent);
-  color: var(--color-accent-foreground);
-  padding: 8px 16px;
-  z-index: 100;
-  transition: top 0.2s;
+	position: absolute;
+	top: -40px;
+	left: 0;
+	background: var(--color-accent);
+	color: var(--color-accent-foreground);
+	padding: 8px 16px;
+	z-index: 100;
+	transition: top 0.2s;
 }
 
 .skip-link:focus {
-  top: 0;
+	top: 0;
 }
 
 /* ── Dark mode native select options ─────────────────── */
 .dark select option {
-  background: var(--color-bg);
-  color: var(--color-text);
+	background: var(--color-bg);
+	color: var(--color-text);
 }

@@ -1,9 +1,4 @@
-import {
-  type DevsyncPartial,
-  getLangData,
-  translations,
-  type availableLangsType,
-} from '@devsync/core'
+import { type DevsyncPartial, getLangData, translations, type availableLangsType } from '@devsync/core'
 import { mdUtilsMixin } from '@/utils/md-utils.ts'
 import { MD_SEPARATOR } from '@/constants/md-separator'
 import type { GConstructor } from '@/shared/infra/mixin-constructor'
@@ -13,41 +8,27 @@ import { CHECK, SPACE } from '@/utils/icons-terminal'
 import { ACADEMICS } from '@/constants/paths'
 
 export function CreateAcademicsMixin<TBase extends GConstructor>(Base: TBase) {
-  return class extends mdUtilsMixin(writeFileMixin(Base)) {
-    private async createAcademicsMd({
-      devsync,
-      defaultLang,
-    }: {
-      devsync: DevsyncPartial
-      defaultLang: string
-    }) {
-      let md = ''
-      md += this.getEducationTimeline({ devsync, defaultLang })
-      md += this.getCertifications({ devsync, defaultLang })
+	return class extends mdUtilsMixin(writeFileMixin(Base)) {
+		private async createAcademicsMd({ devsync, defaultLang }: { devsync: DevsyncPartial; defaultLang: string }) {
+			let md = ''
+			md += this.getEducationTimeline({ devsync, defaultLang })
+			md += this.getCertifications({ devsync, defaultLang })
 
-      return md
-    }
+			return md
+		}
 
-    private getEducationTimeline({
-      devsync,
-      defaultLang,
-    }: {
-      devsync: DevsyncPartial
-      defaultLang: string
-    }) {
-      const devsyncTranslation = getLangData(devsync, defaultLang)
-      const translation = translations[defaultLang as availableLangsType]
-      let md = ''
-      md += `# ${translation['academics']} \n\n`
-      md += '<table>'
+		private getEducationTimeline({ devsync, defaultLang }: { devsync: DevsyncPartial; defaultLang: string }) {
+			const devsyncTranslation = getLangData(devsync, defaultLang)
+			const translation = translations[defaultLang as availableLangsType]
+			let md = ''
+			md += `# ${translation['academics']} \n\n`
+			md += '<table>'
 
-      for (const ed of Array.isArray(devsyncTranslation?.education)
-        ? devsyncTranslation.education
-        : []) {
-        const links = this.getLinks({ links: ed.links })
-        const listItems = ed.list?.items ? this.getListItems({ items: ed.list.items }) : ''
+			for (const ed of Array.isArray(devsyncTranslation?.education) ? devsyncTranslation.education : []) {
+				const links = this.getLinks({ links: ed.links })
+				const listItems = ed.list?.items ? this.getListItems({ items: ed.list.items }) : ''
 
-        md += `
+				md += `
       <tr>
         <td>
           <h3>${ed.name ?? 'Name'} | ${ed.degree ?? 'Degree'} | ${ed.date ?? 'Date'}</h3>\n
@@ -61,34 +42,26 @@ ${links}
         </td>
         ${this.getTdImg({ img: ed.img ?? '', link: '#', alt: ed.degree ?? 'Degree' })}
       </tr>`
-      }
+			}
 
-      md += '</table> \n\n'
+			md += '</table> \n\n'
 
-      return md
-    }
+			return md
+		}
 
-    private getCertifications({
-      devsync,
-      defaultLang,
-    }: {
-      devsync: DevsyncPartial
-      defaultLang: string
-    }) {
-      const devsyncTranslation = getLangData(devsync, defaultLang)
-      const translation = translations[defaultLang as availableLangsType]
-      let md = ''
+		private getCertifications({ devsync, defaultLang }: { devsync: DevsyncPartial; defaultLang: string }) {
+			const devsyncTranslation = getLangData(devsync, defaultLang)
+			const translation = translations[defaultLang as availableLangsType]
+			let md = ''
 
-      md += `## ${translation['Certifications']} \n\n`
-      md += '<table>'
+			md += `## ${translation['Certifications']} \n\n`
+			md += '<table>'
 
-      for (const cert of Array.isArray(devsyncTranslation?.certifications)
-        ? devsyncTranslation.certifications
-        : []) {
-        const listItems = cert.list?.items ? this.getListItems({ items: cert.list.items }) : ''
-        const skills = this.getSkills({ skills: cert.skills })
+			for (const cert of Array.isArray(devsyncTranslation?.certifications) ? devsyncTranslation.certifications : []) {
+				const listItems = cert.list?.items ? this.getListItems({ items: cert.list.items }) : ''
+				const skills = this.getSkills({ skills: cert.skills })
 
-        md += `
+				md += `
 <tr>
 <td>
 <h3>${cert.name ?? 'Certification'}</h3>
@@ -101,26 +74,20 @@ ${skills}
 </td>
 <td> <a href="${cert.url ?? '#'}" target="_blank">${translation['View Certificate']}</a> </td>
 </tr>`
-      }
+			}
 
-      md += '</table> \n\n'
+			md += '</table> \n\n'
 
-      return md
-    }
+			return md
+		}
 
-    async createAcademics({
-      devsync,
-      defaultLang,
-    }: {
-      devsync: DevsyncPartial
-      defaultLang: string
-    }) {
-      console.log(`${SPACE}${GREEN('-')} Generating academics README...`)
-      // create certifications md
-      const academics = await this.createAcademicsMd({ devsync, defaultLang })
-      await this.writeFile({ path: ACADEMICS, data: academics })
-      console.log(`${SPACE}${CHECK(`Academics file generated at ${BOLD(ACADEMICS)}`)}`)
-      console.log('')
-    }
-  }
+		async createAcademics({ devsync, defaultLang }: { devsync: DevsyncPartial; defaultLang: string }) {
+			console.log(`${SPACE}${GREEN('-')} Generating academics README...`)
+			// create certifications md
+			const academics = await this.createAcademicsMd({ devsync, defaultLang })
+			await this.writeFile({ path: ACADEMICS, data: academics })
+			console.log(`${SPACE}${CHECK(`Academics file generated at ${BOLD(ACADEMICS)}`)}`)
+			console.log('')
+		}
+	}
 }

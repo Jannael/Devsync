@@ -15,42 +15,38 @@ get defaultLang and languages from cwd
 class BaseUpdateCommand {}
 
 class UpdateCommand extends CreateLinkedinMixin(
-  CreateAcademicsMixin(
-    createCVMixin(CreateGithubProfileMixin(validateDevsyncMixin(BaseUpdateCommand)))
-  )
+	CreateAcademicsMixin(createCVMixin(CreateGithubProfileMixin(validateDevsyncMixin(BaseUpdateCommand)))),
 ) {
-  constructor() {
-    super()
-  }
+	constructor() {
+		super()
+	}
 
-  async execute(): Promise<void> {
-    try {
-      console.log(`${SPACE}${GREEN('-')} Installing dependencies...`)
-      await runBunCommand(['install'])
-      console.log(`${SPACE}${CHECK(`${BOLD('Dependencies installed.')}`)}`)
+	async execute(): Promise<void> {
+		try {
+			console.log(`${SPACE}${GREEN('-')} Installing dependencies...`)
+			await runBunCommand(['install'])
+			console.log(`${SPACE}${CHECK(`${BOLD('Dependencies installed.')}`)}`)
 
-      console.log(`${SPACE}${GREEN('-')} Building...`)
-      await runBunCommand(['run', 'build'])
-      console.log(`${SPACE}${CHECK(`${BOLD('Built successfully.')}`)}`)
+			console.log(`${SPACE}${GREEN('-')} Building...`)
+			await runBunCommand(['run', 'build'])
+			console.log(`${SPACE}${CHECK(`${BOLD('Built successfully.')}`)}`)
 
-      const devsync = await this.validateDevsync()
-      const languages = Object.keys(devsync).filter((key) =>
-        availableLangs.includes(key as (typeof availableLangs)[number])
-      )
-      const defaultLang = devsync.defaultLang ?? 'en'
+			const devsync = await this.validateDevsync()
+			const languages = Object.keys(devsync).filter((key) => availableLangs.includes(key as (typeof availableLangs)[number]))
+			const defaultLang = devsync.defaultLang ?? 'en'
 
-      for (const lang of languages) {
-        await this.buildCV({ name: devsync.name, lang })
-        await this.createLinkedin({ devsync, lang })
-      }
-      await this.createGithubProfile({ devsync, defaultLang })
-      await this.createAcademics({ devsync, defaultLang })
+			for (const lang of languages) {
+				await this.buildCV({ name: devsync.name, lang })
+				await this.createLinkedin({ devsync, lang })
+			}
+			await this.createGithubProfile({ devsync, defaultLang })
+			await this.createAcademics({ devsync, defaultLang })
 
-      console.log(`${SPACE}${CHECK(`${BOLD('Build process completed successfully.')}`)}`)
-    } catch (e) {
-      errorHandler(e)
-    }
-  }
+			console.log(`${SPACE}${CHECK(`${BOLD('Build process completed successfully.')}`)}`)
+		} catch (e) {
+			errorHandler(e)
+		}
+	}
 }
 
 export default UpdateCommand

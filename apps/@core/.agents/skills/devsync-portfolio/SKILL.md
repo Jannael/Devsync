@@ -6,16 +6,20 @@ description: Create portfolios using Devsync template with automated CV, GitHub,
 # Devsync Portfolio Creation Skill
 
 ## Purpose
+
 Create and maintain developer portfolios using the Devsync template system. This skill guides you through building portfolios where all content comes from `DEVSYNC.json` - never hardcode text in templates.
 
 ## Core Principle: Zero Hardcoded Text
+
 All UI text must use `translations[lang]['key']` from `@devsync/src/devsync/fields-translations.ts`. Never write `<h3>Projects</h3>` - use `<h3>{translations[lang]['Projects']}</h3>`.
 
 ## Template Framework
-Templates are framework-agnostic. The developer chooses their own stack 
+
+Templates are framework-agnostic. The developer chooses their own stack
 (Astro, Next.js, SvelteKit, Vue, vanilla HTML, etc.).
 
 When generating a template, always ask:
+
 - Which framework?
 
 Infer multilingual support directly unless user specifies otherwise.
@@ -23,161 +27,163 @@ Infer multilingual support directly unless user specifies otherwise.
 ## DEVSYNC.json Structure
 
 ### Global Fields (required, language-agnostic)
+
 ```json
 {
-  "defaultLang": "en",
-  "site": "https://your-site.com",
-  "name": "Your Name",
-  "img": "https://image-url.com/photo.jpg",
-  "socialMedia": [{ "name": "LinkedIn", "url": "...", "icon": "...", "mdBadge": "..." }],
-  "githubUserName": "your-username"
+	"defaultLang": "en",
+	"site": "https://your-site.com",
+	"name": "Your Name",
+	"img": "https://image-url.com/photo.jpg",
+	"socialMedia": [{ "name": "LinkedIn", "url": "...", "icon": "...", "mdBadge": "..." }],
+	"githubUserName": "your-username"
 }
 ```
 
 ### DEVSYNC.json Example
+
 ```json
 {
-  "defaultLang": "en",
-  "site": "https://devsync.work",
-  "name": "Your Full Name",
-  "img": "https://your-image-url.com/your-image.jpg",
-  "socialMedia": [
-    {
-      "name": "LinkedIn",
-      "url": "https://www.linkedin.com/in/your-linkedin-handle",
-      "icon": "/icons/linkedin.svg",
-      "mdBadge": "![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)"
-    }
-  ],
-  "githubUserName": "your-github-username",
-  "en": {
-    "description": "Write a short professional summary about yourself. Example: Full-stack developer focused on developer experience, performance, and product quality.",
-    "jobTitle": "Your Current Job Title",
-    "status": {
-      "status": "your-status",
-      "badge": "![Status](https://img.shields.io/badge/Status-Your%20Status-blue)"
-    },
-    "languages": [
-      {
-        "name": "Your Language 1 / Your Language 2",
-        "mdBadge": "![Languages](https://img.shields.io/badge/Languages-Your%20Languages-1f6feb)",
-        "icon": "https://cdn.simpleicons.org/googletranslate"
-      }
-    ],
-    "experience": [
-      {
-        "company": "Your Company Name",
-        "position": "Your Position Title",
-        "img": "https://your-image-url.com/company-image.jpg",
-        "web": "https://your-company-website.com",
-        "description": "Describe your role and impact in one concise sentence.",
-        "date": "MM/YY - Present",
-        "links": [
-          {
-            "name": "Company Website",
-            "url": "https://your-company-website.com",
-            "mdBadge": "![Company](https://img.shields.io/badge/Company-Website-0ea5e9)",
-            "icon": "https://cdn.simpleicons.org/googlechrome"
-          }
-        ],
-        "list": {
-          "title": "key-achievements",
-          "items": [
-            {
-              "highlight": "Achievement headline",
-              "description": "Describe one measurable result you delivered (performance, revenue, growth, reliability, etc.)."
-            }
-          ]
-        },
-        "skills": [
-          {
-            "name": "Your Key Skill",
-            "mdBadge": "![Skill](https://img.shields.io/badge/Skill-Your%20Skill-339933)",
-            "icon": "https://cdn.simpleicons.org/codeforces"
-          }
-        ]
-      }
-    ],
-    "projects": [
-      {
-        "name": "Your Project Name",
-        "img": "https://your-image-url.com/project-image.jpg",
-        "web": "https://your-project-url.com",
-        "links": [
-          {
-            "name": "GitHub",
-            "url": "https://github.com/your-github-username/your-project-repo",
-            "mdBadge": "![GitHub Repo](https://img.shields.io/badge/Repo-GitHub-181717?logo=github&logoColor=white)",
-            "icon": "/icons/github.svg"
-          }
-        ],
-        "description": "Describe what the project does and why it matters.",
-        "list": {
-          "title": "project-highlights",
-          "items": [
-            {
-              "highlight": "Technical highlight",
-              "description": "Describe one concrete technical decision or outcome from this project."
-            }
-          ]
-        },
-        "skills": [
-          {
-            "name": "Project Skill",
-            "mdBadge": "![Skill](https://img.shields.io/badge/Skill-Project%20Skill-61DAFB)",
-            "icon": "https://cdn.simpleicons.org/git"
-          }
-        ]
-      }
-    ],
-    "education": [
-      {
-        "name": "Your University or Institution",
-        "degree": "Your Degree / Program",
-        "img": "https://your-image-url.com/education-image.jpg",
-        "date": "MM/YY - MM/YY",
-        "links": [
-          {
-            "name": "Program URL",
-            "url": "https://your-program-link.com",
-            "mdBadge": "![Program](https://img.shields.io/badge/Program-Details-b45309)",
-            "icon": "https://cdn.simpleicons.org/googlechrome"
-          }
-        ],
-        "list": {
-          "title": "education-highlights",
-          "items": [
-            {
-              "highlight": "Academic highlight",
-              "description": "Describe a relevant course, thesis, capstone, or achievement."
-            }
-          ]
-        }
-      }
-    ],
-    "certifications": [
-      {
-        "name": "Your Certification Name",
-        "url": "https://your-certification-url.com",
-        "list": {
-          "title": "what-this-validates",
-          "items": [
-            {
-              "highlight": "Validated area",
-              "description": "Describe what this certification validates for your profile."
-            }
-          ]
-        },
-        "skills": [
-          {
-            "name": "Certification Skill",
-            "mdBadge": "![Certification Skill](https://img.shields.io/badge/Skill-Certification-232F3E)",
-            "icon": "https://cdn.simpleicons.org/coursera"
-          }
-        ]
-      }
-    ]
-  }
+	"defaultLang": "en",
+	"site": "https://devsync.work",
+	"name": "Your Full Name",
+	"img": "https://your-image-url.com/your-image.jpg",
+	"socialMedia": [
+		{
+			"name": "LinkedIn",
+			"url": "https://www.linkedin.com/in/your-linkedin-handle",
+			"icon": "/icons/linkedin.svg",
+			"mdBadge": "![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)"
+		}
+	],
+	"githubUserName": "your-github-username",
+	"en": {
+		"description": "Write a short professional summary about yourself. Example: Full-stack developer focused on developer experience, performance, and product quality.",
+		"jobTitle": "Your Current Job Title",
+		"status": {
+			"status": "your-status",
+			"badge": "![Status](https://img.shields.io/badge/Status-Your%20Status-blue)"
+		},
+		"languages": [
+			{
+				"name": "Your Language 1 / Your Language 2",
+				"mdBadge": "![Languages](https://img.shields.io/badge/Languages-Your%20Languages-1f6feb)",
+				"icon": "https://cdn.simpleicons.org/googletranslate"
+			}
+		],
+		"experience": [
+			{
+				"company": "Your Company Name",
+				"position": "Your Position Title",
+				"img": "https://your-image-url.com/company-image.jpg",
+				"web": "https://your-company-website.com",
+				"description": "Describe your role and impact in one concise sentence.",
+				"date": "MM/YY - Present",
+				"links": [
+					{
+						"name": "Company Website",
+						"url": "https://your-company-website.com",
+						"mdBadge": "![Company](https://img.shields.io/badge/Company-Website-0ea5e9)",
+						"icon": "https://cdn.simpleicons.org/googlechrome"
+					}
+				],
+				"list": {
+					"title": "key-achievements",
+					"items": [
+						{
+							"highlight": "Achievement headline",
+							"description": "Describe one measurable result you delivered (performance, revenue, growth, reliability, etc.)."
+						}
+					]
+				},
+				"skills": [
+					{
+						"name": "Your Key Skill",
+						"mdBadge": "![Skill](https://img.shields.io/badge/Skill-Your%20Skill-339933)",
+						"icon": "https://cdn.simpleicons.org/codeforces"
+					}
+				]
+			}
+		],
+		"projects": [
+			{
+				"name": "Your Project Name",
+				"img": "https://your-image-url.com/project-image.jpg",
+				"web": "https://your-project-url.com",
+				"links": [
+					{
+						"name": "GitHub",
+						"url": "https://github.com/your-github-username/your-project-repo",
+						"mdBadge": "![GitHub Repo](https://img.shields.io/badge/Repo-GitHub-181717?logo=github&logoColor=white)",
+						"icon": "/icons/github.svg"
+					}
+				],
+				"description": "Describe what the project does and why it matters.",
+				"list": {
+					"title": "project-highlights",
+					"items": [
+						{
+							"highlight": "Technical highlight",
+							"description": "Describe one concrete technical decision or outcome from this project."
+						}
+					]
+				},
+				"skills": [
+					{
+						"name": "Project Skill",
+						"mdBadge": "![Skill](https://img.shields.io/badge/Skill-Project%20Skill-61DAFB)",
+						"icon": "https://cdn.simpleicons.org/git"
+					}
+				]
+			}
+		],
+		"education": [
+			{
+				"name": "Your University or Institution",
+				"degree": "Your Degree / Program",
+				"img": "https://your-image-url.com/education-image.jpg",
+				"date": "MM/YY - MM/YY",
+				"links": [
+					{
+						"name": "Program URL",
+						"url": "https://your-program-link.com",
+						"mdBadge": "![Program](https://img.shields.io/badge/Program-Details-b45309)",
+						"icon": "https://cdn.simpleicons.org/googlechrome"
+					}
+				],
+				"list": {
+					"title": "education-highlights",
+					"items": [
+						{
+							"highlight": "Academic highlight",
+							"description": "Describe a relevant course, thesis, capstone, or achievement."
+						}
+					]
+				}
+			}
+		],
+		"certifications": [
+			{
+				"name": "Your Certification Name",
+				"url": "https://your-certification-url.com",
+				"list": {
+					"title": "what-this-validates",
+					"items": [
+						{
+							"highlight": "Validated area",
+							"description": "Describe what this certification validates for your profile."
+						}
+					]
+				},
+				"skills": [
+					{
+						"name": "Certification Skill",
+						"mdBadge": "![Certification Skill](https://img.shields.io/badge/Skill-Certification-232F3E)",
+						"icon": "https://cdn.simpleicons.org/coursera"
+					}
+				]
+			}
+		]
+	}
 }
 ```
 
@@ -187,9 +193,9 @@ Infer multilingual support directly unless user specifies otherwise.
 
 ```json
 {
-  "devsync": {
-    "pathToCompiledCV": "src/[lang]/cv.html"
-  }
+	"devsync": {
+		"pathToCompiledCV": "src/[lang]/cv.html"
+	}
 }
 ```
 
@@ -212,7 +218,9 @@ The CLI command (`bunx devsync build`) executes:
 ## Translation System
 
 ### Current Keys (fields-translations.ts)
+
 Available in 8 languages (en, es, fr, pt, de, zh, ja, ko):
+
 - `Description`, `jobTitle`, `Status`, `Languages`
 - `Professional Experience`, `Projects`, `Education`, `Certifications`
 - `Core Skills`, `credential`, `academics`
@@ -230,18 +238,18 @@ When a template needs UI text not covered by existing keys, add it to `src/devsy
 ```typescript
 // fields-translations.ts
 export const translations = {
-  en: {
-    // ... existing keys
-    'Open to work': 'Open to work',   // ← add here
-  },
-  es: {
-    // ... existing keys
-    'Open to work': 'Disponible para trabajar',
-  },
-  fr: {
-    'Open to work': 'Disponible',
-  },
-  // ... repeat for pt, de, zh, ja, ko
+	en: {
+		// ... existing keys
+		'Open to work': 'Open to work', // ← add here
+	},
+	es: {
+		// ... existing keys
+		'Open to work': 'Disponible para trabajar',
+	},
+	fr: {
+		'Open to work': 'Disponible',
+	},
+	// ... repeat for pt, de, zh, ja, ko
 } as const
 ```
 
@@ -252,9 +260,10 @@ export const translations = {
 ## GitHub Actions Automation
 
 `.github/workflows/update-on-devsync-change.yml` triggers on `DEVSYNC.json` pushes:
+
 ```yaml
-- run: bunx devsync build  # Updates CV, README, LinkedIn, academics
-- uses: git-auto-commit-action  # Commits changes
+- run: bunx devsync build # Updates CV, README, LinkedIn, academics
+- uses: git-auto-commit-action # Commits changes
 ```
 
 ## Validation
@@ -269,6 +278,7 @@ export const translations = {
 ## Validation Schema
 
 Zod schema in `src/devsync/devsync-validator.ts` validates:
+
 - Required fields per section
 - Array structures (links, skills, list items)
 - Type safety for all DEVSYNC.json entries
@@ -276,6 +286,7 @@ Zod schema in `src/devsync/devsync-validator.ts` validates:
 Use `parseDevsync(devsync)` from `@devsync/src/devsync/devsync.ts` for validation.
 
 ## Available Exports (devsync.ts)
+
 ```typescript
 import devsync, { languages, defaultLang, parseDevsync } from '@devsync/src/devsync/devsync'
 ```
@@ -303,6 +314,7 @@ your-template/
 ```
 
 **Required files**:
+
 - `public/poster-*.webp` - Preview images for template gallery
 - `src/devsync/` - Core Devsync modules for translations and validation
 - `.github/workflows/update-on-devsync-change.yml` - Auto-update workflow
@@ -310,6 +322,7 @@ your-template/
 - `package.json` - With `devsync.pathToCompiledCV` and `devsync.poster` config
 
 **Optional**:
+
 - `public/icons/` - Custom icon SVGs referenced in `socialMedia[].icon` and `links[].icon`
 
 ## Publishing Templates
@@ -318,14 +331,15 @@ When publishing your Devsync template, include poster images for preview:
 
 ```json
 {
-  "name": "@your-username/devsync-template",
-  "devsync": {
-    "pathToCompiledCV": "src/[lang]/cv.html"
-  }
+	"name": "@your-username/devsync-template",
+	"devsync": {
+		"pathToCompiledCV": "src/[lang]/cv.html"
+	}
 }
 ```
 
 **Poster images** (required for template preview):
+
 - `public/poster-light-mode.webp` - Light theme preview (recommended: 600x315px)
 - `public/poster-dark-mode.webp` - Dark theme preview (recommended: 600x315px)
 

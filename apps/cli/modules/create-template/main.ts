@@ -7,15 +7,15 @@ import { BOLD, YELLOW } from '@/utils/colors'
 import corePackageJson from './../../../@core/package.json'
 
 export default async function createTemplate() {
-  PrintASCII()
-  let message: string | undefined
-  console.log(`${SPACE}Creating template...`)
+	PrintASCII()
+	let message: string | undefined
+	console.log(`${SPACE}Creating template...`)
 
-  if (existsSync('./package.json')) {
-    message = `\n${SPACE}- ${YELLOW('you need to install zod')} run ${BOLD(`npm i zod@${corePackageJson.dependencies.zod} -E`)}`
-  }
+	if (existsSync('./package.json')) {
+		message = `\n${SPACE}- ${YELLOW('you need to install zod')} run ${BOLD(`npm i zod@${corePackageJson.dependencies.zod} -E`)}`
+	}
 
-  await copyDirectory(DEVSYNC_DIRECTORY, process.cwd())
-  console.log(`${SPACE}${CHECK('Template created successfully!')}`)
-  if (message) console.log(message)
+	await copyDirectory(DEVSYNC_DIRECTORY, process.cwd())
+	console.log(`${SPACE}${CHECK('Template created successfully!')}`)
+	if (message) console.log(message)
 }

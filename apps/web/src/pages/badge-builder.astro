@@ -15,331 +15,296 @@ const b = t['builder']
 ---
 
 <Layout title={b['title']} description={b['description']}>
-  <BackgroundGrid />
+	<BackgroundGrid />
 
-  <!-- Radial glow -->
-  <div
-    class="hero-glow pointer-events-none fixed top-1/3 left-1/2 z-0 h-75 w-75 -translate-x-1/2 -translate-y-1/2 opacity-[0.04] blur-[80px] sm:h-75 sm:w-150 dark:opacity-[0.06]"
-    aria-hidden="true"
-  >
-  </div>
+	<!-- Radial glow -->
+	<div
+		class="hero-glow pointer-events-none fixed top-1/3 left-1/2 z-0 h-75 w-75 -translate-x-1/2 -translate-y-1/2 opacity-[0.04] blur-[80px] sm:h-75 sm:w-150 dark:opacity-[0.06]"
+		aria-hidden="true"
+	>
+	</div>
 
-  <main
-    class="relative mx-auto flex w-full max-w-7xl flex-col items-center justify-center gap-14 px-4 py-24 sm:px-6 lg:gap-16"
-  >
-    <header
-      class="nav-bar fixed top-0 z-40 mx-auto flex w-full max-w-7xl items-center justify-end px-4 pt-4 sm:px-6 lg:px-10"
-    >
-      <div
-        class="nav-bar-inner border-border/40 bg-surface/90 flex items-center gap-1 rounded-full border px-3 py-2 shadow-lg backdrop-blur-xl sm:gap-2 sm:px-4 sm:py-2.5 dark:border-white/15 dark:shadow-2xl"
-      >
-        <a
-          href="/"
-          class="nav-item text-text-secondary hover:text-accent mr-1 inline-flex items-center gap-1.5 rounded-full px-2 py-1 text-xs font-medium transition-colors duration-200 sm:mr-2 sm:text-sm"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="shrink-0"
-          >
-            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-            <polyline points="9 22 9 12 15 12 15 22"></polyline>
-          </svg>
-        </a>
-        <div class="nav-divider bg-border/30 h-4 w-px" aria-hidden="true"></div>
-        <a
-          href="https://github.com/jannael/devsync"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="nav-item text-text-secondary hover:text-accent inline-flex items-center justify-center rounded-full p-2 transition-colors duration-200"
-          aria-label={b['viewSource']}
-        >
-          <GitHub />
-        </a>
-        <div class="nav-divider bg-border/30 h-4 w-px" aria-hidden="true"></div>
-        <NavTheme />
-        <div class="nav-divider bg-border/30 h-4 w-px" aria-hidden="true"></div>
-        <LanguageSelector />
-      </div>
-    </header>
+	<main class="relative mx-auto flex w-full max-w-7xl flex-col items-center justify-center gap-14 px-4 py-24 sm:px-6 lg:gap-16">
+		<header class="nav-bar fixed top-0 z-40 mx-auto flex w-full max-w-7xl items-center justify-end px-4 pt-4 sm:px-6 lg:px-10">
+			<div
+				class="nav-bar-inner border-border/40 bg-surface/90 flex items-center gap-1 rounded-full border px-3 py-2 shadow-lg backdrop-blur-xl sm:gap-2 sm:px-4 sm:py-2.5 dark:border-white/15 dark:shadow-2xl"
+			>
+				<a
+					href="/"
+					class="nav-item text-text-secondary hover:text-accent mr-1 inline-flex items-center gap-1.5 rounded-full px-2 py-1 text-xs font-medium transition-colors duration-200 sm:mr-2 sm:text-sm"
+				>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="24"
+						height="24"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						class="shrink-0"
+					>
+						<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+						<polyline points="9 22 9 12 15 12 15 22"></polyline>
+					</svg>
+				</a>
+				<div class="nav-divider bg-border/30 h-4 w-px" aria-hidden="true"></div>
+				<a
+					href="https://github.com/jannael/devsync"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="nav-item text-text-secondary hover:text-accent inline-flex items-center justify-center rounded-full p-2 transition-colors duration-200"
+					aria-label={b['viewSource']}
+				>
+					<GitHub />
+				</a>
+				<div class="nav-divider bg-border/30 h-4 w-px" aria-hidden="true"></div>
+				<NavTheme />
+				<div class="nav-divider bg-border/30 h-4 w-px" aria-hidden="true"></div>
+				<LanguageSelector />
+			</div>
+		</header>
 
-    <div class="mx-auto max-w-2xl text-center">
-      <h1 class="text-text text-4xl font-bold tracking-tight sm:text-5xl">{b['heading']}</h1>
-      <p class="text-text-secondary mt-2 sm:text-lg">{b['poweredBy']}</p>
-    </div>
+		<div class="mx-auto max-w-2xl text-center">
+			<h1 class="text-text text-4xl font-bold tracking-tight sm:text-5xl">{b['heading']}</h1>
+			<p class="text-text-secondary mt-2 sm:text-lg">{b['poweredBy']}</p>
+		</div>
 
-    <div class="flex w-full flex-col items-center gap-10 lg:flex-row">
-      <section class="w-full lg:w-7/20" aria-label={b['formLabel']}>
-        <h2 class="text-text-secondary mb-5 text-xs font-semibold tracking-widest uppercase">
-          {b['formLabel']}
-        </h2>
-        <form id="badge-form" class="space-y-5" autocomplete="off">
-          <!-- Label -->
-          <div>
-            <label
-              for="input-label"
-              class="text-text mb-1.5 flex items-center justify-between text-sm font-medium"
-            >
-              <span>{b['label']}</span>
-              <span class="text-text-muted font-normal">{b['labelHelp']}</span>
-            </label>
-            <input
-              id="input-label"
-              type="text"
-              value=""
-              placeholder={b['labelPlaceholder']}
-              class="border-input-border bg-input-bg text-input-text placeholder:text-input-placeholder hover:border-input-border-hover focus:border-input-border-focus focus:ring-ring w-full rounded-lg border px-3.5 py-2.5 text-sm transition-colors outline-none focus:ring-[3px]"
-            />
-          </div>
+		<div class="flex w-full flex-col items-center gap-10 lg:flex-row">
+			<section class="w-full lg:w-7/20" aria-label={b['formLabel']}>
+				<h2 class="text-text-secondary mb-5 text-xs font-semibold tracking-widest uppercase">
+					{b['formLabel']}
+				</h2>
+				<form id="badge-form" class="space-y-5" autocomplete="off">
+					<!-- Label -->
+					<div>
+						<label for="input-label" class="text-text mb-1.5 flex items-center justify-between text-sm font-medium">
+							<span>{b['label']}</span>
+							<span class="text-text-muted font-normal">{b['labelHelp']}</span>
+						</label>
+						<input
+							id="input-label"
+							type="text"
+							value=""
+							placeholder={b['labelPlaceholder']}
+							class="border-input-border bg-input-bg text-input-text placeholder:text-input-placeholder hover:border-input-border-hover focus:border-input-border-focus focus:ring-ring w-full rounded-lg border px-3.5 py-2.5 text-sm transition-colors outline-none focus:ring-[3px]"
+						/>
+					</div>
 
-          <!-- Message -->
-          <div>
-            <label
-              for="input-message"
-              class="text-text mb-1.5 flex items-center justify-between text-sm font-medium"
-            >
-              <span>{b['message']}</span>
-              <span class="text-text-muted font-normal">{b['messageHelp']}</span>
-            </label>
-            <input
-              id="input-message"
-              type="text"
-              value=""
-              placeholder={b['messagePlaceholder']}
-              class="border-input-border bg-input-bg text-input-text placeholder:text-input-placeholder hover:border-input-border-hover focus:border-input-border-focus focus:ring-ring w-full rounded-lg border px-3.5 py-2.5 text-sm transition-colors outline-none focus:ring-[3px]"
-            />
-          </div>
+					<!-- Message -->
+					<div>
+						<label for="input-message" class="text-text mb-1.5 flex items-center justify-between text-sm font-medium">
+							<span>{b['message']}</span>
+							<span class="text-text-muted font-normal">{b['messageHelp']}</span>
+						</label>
+						<input
+							id="input-message"
+							type="text"
+							value=""
+							placeholder={b['messagePlaceholder']}
+							class="border-input-border bg-input-bg text-input-text placeholder:text-input-placeholder hover:border-input-border-hover focus:border-input-border-focus focus:ring-ring w-full rounded-lg border px-3.5 py-2.5 text-sm transition-colors outline-none focus:ring-[3px]"
+						/>
+					</div>
 
-          <!-- Color + Logo Color -->
-          <div class="flex gap-5">
-            <div class="flex-1">
-              <label for="input-color" class="text-text mb-1.5 block text-sm font-medium">
-                {b['color']}
-              </label>
-              <div class="flex items-center gap-2.5">
-                <div class="relative shrink-0">
-                  <input
-                    id="input-color-picker"
-                    type="color"
-                    value="#4ade80"
-                    class="border-border h-12 w-12 cursor-pointer rounded-lg border p-1"
-                  />
-                  <div
-                    class="pointer-events-none absolute inset-0 rounded-lg ring-1 ring-white/10 ring-inset"
-                  >
-                  </div>
-                </div>
-                <code id="color-hex" class="text-text-muted min-w-[5ch] font-mono text-xs"
-                  >#4ade80</code
-                >
-              </div>
-            </div>
-            <div class="flex-1">
-              <label for="input-logo-color" class="text-text mb-1.5 block text-sm font-medium">
-                {b['logoColor']}
-              </label>
-              <div class="flex items-center gap-2.5">
-                <div class="relative shrink-0">
-                  <input
-                    id="input-logo-color-picker"
-                    type="color"
-                    value="#ffffff"
-                    class="border-border h-12 w-12 cursor-pointer rounded-lg border p-1"
-                  />
-                  <div
-                    class="pointer-events-none absolute inset-0 rounded-lg ring-1 ring-white/10 ring-inset"
-                  >
-                  </div>
-                </div>
-                <code id="logo-color-hex" class="text-text-muted min-w-[5ch] font-mono text-xs"
-                  >#ffffff</code
-                >
-              </div>
-            </div>
-          </div>
+					<!-- Color + Logo Color -->
+					<div class="flex gap-5">
+						<div class="flex-1">
+							<label for="input-color" class="text-text mb-1.5 block text-sm font-medium">
+								{b['color']}
+							</label>
+							<div class="flex items-center gap-2.5">
+								<div class="relative shrink-0">
+									<input id="input-color-picker" type="color" value="#4ade80" class="border-border h-12 w-12 cursor-pointer rounded-lg border p-1" />
+									<div class="pointer-events-none absolute inset-0 rounded-lg ring-1 ring-white/10 ring-inset"></div>
+								</div>
+								<code id="color-hex" class="text-text-muted min-w-[5ch] font-mono text-xs">#4ade80</code>
+							</div>
+						</div>
+						<div class="flex-1">
+							<label for="input-logo-color" class="text-text mb-1.5 block text-sm font-medium">
+								{b['logoColor']}
+							</label>
+							<div class="flex items-center gap-2.5">
+								<div class="relative shrink-0">
+									<input
+										id="input-logo-color-picker"
+										type="color"
+										value="#ffffff"
+										class="border-border h-12 w-12 cursor-pointer rounded-lg border p-1"
+									/>
+									<div class="pointer-events-none absolute inset-0 rounded-lg ring-1 ring-white/10 ring-inset"></div>
+								</div>
+								<code id="logo-color-hex" class="text-text-muted min-w-[5ch] font-mono text-xs">#ffffff</code>
+							</div>
+						</div>
+					</div>
 
-          <!-- Style -->
-          <div>
-            <label
-              for="input-style"
-              class="text-text mb-1.5 flex items-center justify-between text-sm font-medium"
-            >
-              <span>{b['style']}</span>
-              <span class="text-text-muted font-normal">{b['styleHelp']}</span>
-            </label>
-            <select
-              id="input-style"
-              class="border-input-border bg-input-bg text-input-text hover:border-input-border-hover focus:border-input-border-focus focus:ring-ring w-full rounded-lg border px-3.5 py-2.5 text-sm transition-colors outline-none focus:ring-[3px]"
-            >
-              <option value="flat">{b['styleFlat']}</option>
-              <option value="flat-square">{b['styleFlatSquare']}</option>
-              <option value="plastic">{b['stylePlastic']}</option>
-              <option value="for-the-badge">{b['styleForTheBadge']}</option>
-              <option value="social">{b['styleSocial']}</option>
-            </select>
-          </div>
+					<!-- Style -->
+					<div>
+						<label for="input-style" class="text-text mb-1.5 flex items-center justify-between text-sm font-medium">
+							<span>{b['style']}</span>
+							<span class="text-text-muted font-normal">{b['styleHelp']}</span>
+						</label>
+						<select
+							id="input-style"
+							class="border-input-border bg-input-bg text-input-text hover:border-input-border-hover focus:border-input-border-focus focus:ring-ring w-full rounded-lg border px-3.5 py-2.5 text-sm transition-colors outline-none focus:ring-[3px]"
+						>
+							<option value="flat">{b['styleFlat']}</option>
+							<option value="flat-square">{b['styleFlatSquare']}</option>
+							<option value="plastic">{b['stylePlastic']}</option>
+							<option value="for-the-badge">{b['styleForTheBadge']}</option>
+							<option value="social">{b['styleSocial']}</option>
+						</select>
+					</div>
 
-          <!-- Divider + Optional -->
-          <div class="border-divider/50 border-t pt-6">
-            <p class="text-text-muted mb-4 text-[10px] font-semibold tracking-widest uppercase">
-              {b['optional']}
-            </p>
+					<!-- Divider + Optional -->
+					<div class="border-divider/50 border-t pt-6">
+						<p class="text-text-muted mb-4 text-[10px] font-semibold tracking-widest uppercase">
+							{b['optional']}
+						</p>
 
-            <!-- Logo slug -->
-            <div class="mb-5">
-              <label
-                for="input-logo"
-                class="text-text mb-1.5 flex items-center justify-between text-sm font-medium"
-              >
-                <span>{b['logo']}</span>
-                <span class="text-text-muted font-normal">{b['logHelp']}</span>
-              </label>
-              <input
-                id="input-logo"
-                type="text"
-                placeholder={b['logoPlaceholder']}
-                class="border-input-border bg-input-bg text-input-text placeholder:text-input-placeholder hover:border-input-border-hover focus:border-input-border-focus focus:ring-ring w-full rounded-lg border px-3.5 py-2.5 text-sm transition-colors outline-none focus:ring-[3px]"
-              />
-              <p class="text-text-muted mt-1.5 text-xs">
-                {b['simpleIconsSlug']}
-                <a
-                  href="https://simpleicons.org"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="text-text-link hover:text-text-link-hover underline">{b['browseIcons']}</a
-                >
-              </p>
-            </div>
-          </div>
-        </form>
-      </section>
+						<!-- Logo slug -->
+						<div class="mb-5">
+							<label for="input-logo" class="text-text mb-1.5 flex items-center justify-between text-sm font-medium">
+								<span>{b['logo']}</span>
+								<span class="text-text-muted font-normal">{b['logHelp']}</span>
+							</label>
+							<input
+								id="input-logo"
+								type="text"
+								placeholder={b['logoPlaceholder']}
+								class="border-input-border bg-input-bg text-input-text placeholder:text-input-placeholder hover:border-input-border-hover focus:border-input-border-focus focus:ring-ring w-full rounded-lg border px-3.5 py-2.5 text-sm transition-colors outline-none focus:ring-[3px]"
+							/>
+							<p class="text-text-muted mt-1.5 text-xs">
+								{b['simpleIconsSlug']}
+								<a
+									href="https://simpleicons.org"
+									target="_blank"
+									rel="noopener noreferrer"
+									class="text-text-link hover:text-text-link-hover underline">{b['browseIcons']}</a
+								>
+							</p>
+						</div>
+					</div>
+				</form>
+			</section>
 
-      <!-- ── Right: Preview ── -->
-      <section class="bg-bg lg:flex-1" aria-label={b['previewLabel']}>
-        <div class="flex items-center justify-between">
-          <h2 class="text-text-secondary mb-5 text-xs font-semibold tracking-widest uppercase">
-            {b['previewLabel']}
-          </h2>
-        </div>
+			<!-- ── Right: Preview ── -->
+			<section class="bg-bg lg:flex-1" aria-label={b['previewLabel']}>
+				<div class="flex items-center justify-between">
+					<h2 class="text-text-secondary mb-5 text-xs font-semibold tracking-widest uppercase">
+						{b['previewLabel']}
+					</h2>
+				</div>
 
-        <div
-          class="border-border bg-surface/30 flex flex-wrap content-start justify-center gap-4 rounded-xl border p-5 sm:gap-5 sm:p-6"
-        >
-          <Badge label="" message="DEVSYNC" color="4ade80" style="flat" className="input-badge" />
-          <FixedBadges />
-        </div>
-      </section>
-    </div>
-  </main>
+				<div class="border-border bg-surface/30 flex flex-wrap content-start justify-center gap-4 rounded-xl border p-5 sm:gap-5 sm:p-6">
+					<Badge label="" message="DEVSYNC" color="4ade80" style="flat" className="input-badge" />
+					<FixedBadges />
+				</div>
+			</section>
+		</div>
+	</main>
 
-  <Footer />
+	<Footer />
 </Layout>
 
 <script>
-  const labelInput = document.getElementById('input-label') as HTMLInputElement
-  const messageInput = document.getElementById('input-message') as HTMLInputElement
-  const colorInput = document.getElementById('input-color-picker') as HTMLInputElement
-  const styleInput = document.getElementById('input-style') as HTMLSelectElement
-  const logoInput = document.getElementById('input-logo') as HTMLInputElement
-  const logoColorInput = document.getElementById('input-logo-color-picker') as HTMLInputElement
+	const labelInput = document.getElementById('input-label') as HTMLInputElement
+	const messageInput = document.getElementById('input-message') as HTMLInputElement
+	const colorInput = document.getElementById('input-color-picker') as HTMLInputElement
+	const styleInput = document.getElementById('input-style') as HTMLSelectElement
+	const logoInput = document.getElementById('input-logo') as HTMLInputElement
+	const logoColorInput = document.getElementById('input-logo-color-picker') as HTMLInputElement
 
-  const specialBadge = document.querySelector('.input-badge') as HTMLImageElement
-  const allBadges = document.querySelectorAll('.badge-copy-btn img') as NodeListOf<HTMLImageElement>
+	const specialBadge = document.querySelector('.input-badge') as HTMLImageElement
+	const allBadges = document.querySelectorAll('.badge-copy-btn img') as NodeListOf<HTMLImageElement>
 
-  const inputs = [colorInput, styleInput, logoColorInput]
+	const inputs = [colorInput, styleInput, logoColorInput]
 
-  let logo = ''
+	let logo = ''
 
-  function debounce<T extends (...args: any[]) => void>(
-    fn: T,
-    ms: number
-  ): (...args: Parameters<T>) => void {
-    let timer: ReturnType<typeof setTimeout>
-    return (...args) => {
-      clearTimeout(timer)
-      timer = setTimeout(() => fn(...args), ms)
-    }
-  }
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	function debounce<T extends (...args: any[]) => void>(fn: T, ms: number): (...args: Parameters<T>) => void {
+		let timer: ReturnType<typeof setTimeout>
+		return (...args) => {
+			clearTimeout(timer)
+			timer = setTimeout(() => fn(...args), ms)
+		}
+	}
 
-  const refreshSpecial = () => {
-    specialBadge.setAttribute('src', getBadgeUrl({ ...getInputValues() }))
-    specialBadge.setAttribute('data-message', messageInput.value)
-    specialBadge.setAttribute('alt', labelInput.value)
-  }
+	const refreshSpecial = () => {
+		specialBadge.setAttribute('src', getBadgeUrl({ ...getInputValues() }))
+		specialBadge.setAttribute('data-message', messageInput.value)
+		specialBadge.setAttribute('alt', labelInput.value)
+	}
 
-  const refreshAll = () => {
-    refreshSpecial()
-    updateAllBadges()
-  }
+	const refreshAll = () => {
+		refreshSpecial()
+		updateAllBadges()
+	}
 
-  const debouncedRefreshAll = debounce(refreshAll, 500)
+	const debouncedRefreshAll = debounce(refreshAll, 500)
 
-  inputs.forEach((input) => {
-    input.addEventListener('input', refreshSpecial)
-    input.addEventListener('change', refreshSpecial)
-  })
+	inputs.forEach((input) => {
+		input.addEventListener('input', refreshSpecial)
+		input.addEventListener('change', refreshSpecial)
+	})
 
-  labelInput.addEventListener('input', debouncedRefreshAll)
+	labelInput.addEventListener('input', debouncedRefreshAll)
 
-  logoInput.addEventListener('input', () => {
-    logo = logoInput.value
-    debouncedRefreshAll()
-  })
+	logoInput.addEventListener('input', () => {
+		logo = logoInput.value
+		debouncedRefreshAll()
+	})
 
-  messageInput.addEventListener('input', () => {
-    logo = messageInput.value
-    debouncedRefreshAll()
-  })
+	messageInput.addEventListener('input', () => {
+		logo = messageInput.value
+		debouncedRefreshAll()
+	})
 
-  function updateAllBadges() {
-    allBadges.forEach((badge) => {
-      const color = badge.getAttribute('data-color') ?? '000000'
-      const style = badge.getAttribute('data-style') ?? 'flat'
-      const logoColor = badge.getAttribute('data-logoColor') ?? 'ffffff'
+	function updateAllBadges() {
+		allBadges.forEach((badge) => {
+			const color = badge.getAttribute('data-color') ?? '000000'
+			const style = badge.getAttribute('data-style') ?? 'flat'
+			const logoColor = badge.getAttribute('data-logoColor') ?? 'ffffff'
 
-      badge.setAttribute('src', getBadgeUrl({ ...getInputValues(), color, style, logoColor }))
-      badge.setAttribute('data-message', messageInput.value)
-      badge.setAttribute('alt', labelInput.value)
-    })
-  }
+			badge.setAttribute('src', getBadgeUrl({ ...getInputValues(), color, style, logoColor }))
+			badge.setAttribute('data-message', messageInput.value)
+			badge.setAttribute('alt', labelInput.value)
+		})
+	}
 
-  function getInputValues() {
-    specialBadge.setAttribute('data-color', colorInput.value.replace('#', ''))
-    specialBadge.setAttribute('data-style', styleInput.value)
-    specialBadge.setAttribute('data-logoColor', logoColorInput.value.replace('#', ''))
+	function getInputValues() {
+		specialBadge.setAttribute('data-color', colorInput.value.replace('#', ''))
+		specialBadge.setAttribute('data-style', styleInput.value)
+		specialBadge.setAttribute('data-logoColor', logoColorInput.value.replace('#', ''))
 
-    return {
-      label: labelInput.value,
-      message: messageInput.value || 'DEVSYNC',
-      color: colorInput.value.replace('#', ''),
-      style: styleInput.value,
-      logo: logo.length > 1 ? logo : logoInput.value,
-      logoColor: logoColorInput.value.replace('#', ''),
-    }
-  }
+		return {
+			label: labelInput.value,
+			message: messageInput.value || 'DEVSYNC',
+			color: colorInput.value.replace('#', ''),
+			style: styleInput.value,
+			logo: logo.length > 1 ? logo : logoInput.value,
+			logoColor: logoColorInput.value.replace('#', ''),
+		}
+	}
 
-  function getBadgeUrl({
-    label,
-    message,
-    color,
-    style,
-    logo,
-    logoColor,
-  }: {
-    label?: string
-    message: string
-    color: string
-    style: string
-    logo?: string
-    logoColor?: string
-  }) {
-    return `https://img.shields.io/badge/${label && label + '-'}${message.replaceAll(' ', '%20')}-${color}.svg?style=${style}${logo && `&logo=${logo.replaceAll(' ', '%20')}`}${logoColor && `&logoColor=${logoColor}`}`
-  }
+	function getBadgeUrl({
+		label,
+		message,
+		color,
+		style,
+		logo,
+		logoColor,
+	}: {
+		label?: string
+		message: string
+		color: string
+		style: string
+		logo?: string
+		logoColor?: string
+	}) {
+		return `https://img.shields.io/badge/${label && label + '-'}${message.replaceAll(' ', '%20')}-${color}.svg?style=${style}${logo && `&logo=${logo.replaceAll(' ', '%20')}`}${logoColor && `&logoColor=${logoColor}`}`
+	}
 </script>

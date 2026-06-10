@@ -4,73 +4,72 @@ description: Si quieres crear tu propia plantilla y usarla con Devsync, o si ya 
 tableOfContents: true
 ---
 
-import {Steps} from '@astrojs/starlight/components'
-import { FileTree } from '@astrojs/starlight/components';
-import { Aside } from '@astrojs/starlight/components';
+import { Steps } from '@astrojs/starlight/components'
+import { FileTree } from '@astrojs/starlight/components'
+import { Aside } from '@astrojs/starlight/components'
 
 Las plantillas de Devsync no requieren un framework específico siempre y cuando compilen a HTML. Y seamos honestos—si estás considerando SSR (Server-Side Rendering) para un portafolio, ¿todo está bien en casa?
 
 <Aside type="note">
-Si ya tienes un portafolio, puedes migrarlo para usar `Devsync` siguiendo esta guía; sin embargo, necesitarás instalar `zod` manualmente.
+	Si ya tienes un portafolio, puedes migrarlo para usar `Devsync` siguiendo esta guía; sin embargo, necesitarás instalar `zod` manualmente.
 </Aside>
 
 <Steps>
 
 1. Ejecuta el comando `create-template`:
 
-    ```sh
-    bunx @jannael/devsync create-template
-    ```
+   ```sh
+   bunx @jannael/devsync create-template
+   ```
 
 2. Esto generará una estructura de plantilla como esta:
 
-    <FileTree>
-    
-    - .agents
-      - skills
-        - devsync-portfolio
-          - SKILL.md
-    - .github
-      - workflows
-        - update-on-devsync-change.yml
-    - public
-      - poster-dark-mode.webp
-      - poster-light-mode.webp
-    - src
-      - devsync
-        - devsync-validator.ts
-        - devsync.ts
-        - fields-translations.ts
-    - DEVSYNC.json
-    - package.json
-    
-    </FileTree>
-    
-    Los archivos importantes son:
-    
-    - **`fields-translations.ts`**: Este archivo contiene las traducciones que el `Devsync CLI` usa para construir el `Perfil de GitHub`, `LinkedIn`, `CV`, y `académicos`. Esto define qué idiomas están disponibles para el build.
-    - **`skills`**: Este directorio contiene un agent skill que ayuda a la IA a entender cómo operar la plantilla y construir portafolios desde prompts.
-    - **`update-on-devsync-change.yml`**: Esta es una GitHub Action que actualiza automáticamente tu `Perfil de GitHub`, `LinkedIn`, `CV`, y `académicos` cada vez que actualizas el archivo `DEVSYNC.json`.
-    - **`devsync.ts`**: Este archivo exporta todo lo necesario para usar la plantilla dentro de tu proyecto.
+   <FileTree>
+   - .agents
+     - skills
+       - devsync-portfolio
+         - SKILL.md
+   - .github
+     - workflows
+       - update-on-devsync-change.yml
+   - public
+     - poster-dark-mode.webp
+     - poster-light-mode.webp
+   - src
+     - devsync
+       - devsync-validator.ts
+       - devsync.ts
+       - fields-translations.ts
+   - DEVSYNC.json
+   - package.json
+
+   </FileTree>
+
+   Los archivos importantes son:
+   - **`fields-translations.ts`**: Este archivo contiene las traducciones que el `Devsync CLI` usa para construir el `Perfil de GitHub`, `LinkedIn`, `CV`, y `académicos`. Esto define qué idiomas están disponibles para el build.
+   - **`skills`**: Este directorio contiene un agent skill que ayuda a la IA a entender cómo operar la plantilla y construir portafolios desde prompts.
+   - **`update-on-devsync-change.yml`**: Esta es una GitHub Action que actualiza automáticamente tu `Perfil de GitHub`, `LinkedIn`, `CV`, y `académicos` cada vez que actualizas el archivo `DEVSYNC.json`.
+   - **`devsync.ts`**: Este archivo exporta todo lo necesario para usar la plantilla dentro de tu proyecto.
 
 3. Crea tu portafolio o refactoriza tu portafolio actual para usar `Devsync`, puedes usar el `skill` para pedirle a la IA que lo haga por ti.
 
 4. Agrega la configuración `devsync` a tu `package.json`:
 
-    ```json
-    "devsync": {
-      "pathToCompiledCV": "./dist/[lang]/cv/index.html"
-    },
-    ```
-    
-    `Devsync` genera el PDF del CV desde HTML puro, así que asegúrate de que esta ruta apunte al archivo HTML que contiene tu CV.
-    
-    Si estás usando internacionalización para tu plantilla, el placeholder `[lang]` será reemplazado con los códigos de idioma definidos en `DEVSYNC.json`. Si no necesitas esta característica, simplemente elimina `[lang]` de la ruta y apúntala directamente a tu archivo CV.
+   ```json
+   "devsync": {
+     "pathToCompiledCV": "./dist/[lang]/cv/index.html"
+   },
+   ```
+
+   `Devsync` genera el PDF del CV desde HTML puro, así que asegúrate de que esta ruta apunte al archivo HTML que contiene tu CV.
+
+   Si estás usando internacionalización para tu plantilla, el placeholder `[lang]` será reemplazado con los códigos de idioma definidos en `DEVSYNC.json`. Si no necesitas esta característica, simplemente elimina `[lang]` de la ruta y apúntala directamente a tu archivo CV.
 
 </Steps>
 
 <Aside>
-**GitHub Action**: La GitHub Action solo incluye la configuración de Bun y Node.js. Si tu portafolio requiere dependencias del sistema adicionales para realizar el `build`, necesitarás instalarlas dentro de la GitHub Action.
+	**GitHub Action**: La GitHub Action solo incluye la configuración de Bun y Node.js. Si tu portafolio requiere dependencias del sistema adicionales
+	para realizar el `build`, necesitarás instalarlas dentro de la GitHub Action.
 </Aside>
 
 ## Usando Devsync con tipos
@@ -93,11 +92,11 @@ Configura un path alias en tu `tsconfig.json` para importar `Devsync` más fáci
 
 ```json
 {
-  "compilerOptions": {
-    "paths": {
-      "@core": ["./src/devsync/devsync"],
-    }
-  }
+	"compilerOptions": {
+		"paths": {
+			"@core": ["./src/devsync/devsync"]
+		}
+	}
 }
 ```
 
@@ -111,7 +110,8 @@ Configura un path alias en tu `tsconfig.json` para importar `Devsync` más fáci
 Si quieres desplegar una preview de tu plantilla, de preferencia no uses GitHub Actions para despliegues automatizados. Si alguien más usa tu plantilla, esa Action se ejecutaría forzándolos a usar tu mismo proveedor de hosting.
 
 <Aside type="tip">
-Para tu portafolio personal el CI/CD está perfecto. Esta sección es solo para quienes crean plantillas y quieren mostrar una preview sin acoplar a los usuarios a un hosting específico.
+	Para tu portafolio personal el CI/CD está perfecto. Esta sección es solo para quienes crean plantillas y quieren mostrar una preview sin acoplar a
+	los usuarios a un hosting específico.
 </Aside>
 
 ### Recomendación
@@ -122,66 +122,66 @@ He preparado dos scripts para ayudarte.
 
 1. Crea `/scripts/copy-preview.js`:
 
-    Copia los datos de `preview-DEVSYNC.json` a `DEVSYNC.json`:
+   Copia los datos de `preview-DEVSYNC.json` a `DEVSYNC.json`:
 
-    ```js
-    import { readFile, writeFile } from 'node:fs/promises'
+   ```js
+   import { readFile, writeFile } from 'node:fs/promises'
 
-    try {
-      const previewContent = await readFile('./preview-DEVSYNC.json', 'utf-8')
-      await writeFile('./DEVSYNC.json', previewContent, 'utf-8')
-      console.log('Copied preview-DEVSYNC.json to DEVSYNC.json')
-    } catch (error) {
-      console.error('Error copying preview-DEVSYNC.json:', error.message)
-    }
-    ```
+   try {
+   	const previewContent = await readFile('./preview-DEVSYNC.json', 'utf-8')
+   	await writeFile('./DEVSYNC.json', previewContent, 'utf-8')
+   	console.log('Copied preview-DEVSYNC.json to DEVSYNC.json')
+   } catch (error) {
+   	console.error('Error copying preview-DEVSYNC.json:', error.message)
+   }
+   ```
 
 2. Crea `/scripts/move-cv-pdfs.js`:
 
-    Copia los CVs generados en `public/` a `dist/`:
+   Copia los CVs generados en `public/` a `dist/`:
 
-    ```js
-    import { readdir, copyFile, mkdir } from 'node:fs/promises'
-    import { join } from 'node:path'
-    import devsync from '../DEVSYNC.json' with { type: 'json' }
+   ```js
+   import { readdir, copyFile, mkdir } from 'node:fs/promises'
+   import { join } from 'node:path'
+   import devsync from '../DEVSYNC.json' with { type: 'json' }
 
-    const distDir = './dist'
-    const publicDir = './public'
+   const distDir = './dist'
+   const publicDir = './public'
 
-    const pdfFiles = []
+   const pdfFiles = []
 
-    try {
-      const files = await readdir(publicDir)
-      for (const file of files) {
-        if (file.startsWith(devsync.name) && file.match(/-\w+\.pdf$/)) {
-          pdfFiles.push({
-            src: join(publicDir, file),
-            dest: join(distDir, file),
-          })
-        }
-      }
-    } catch {
-      // public directory doesn't exist
-    }
+   try {
+   	const files = await readdir(publicDir)
+   	for (const file of files) {
+   		if (file.startsWith(devsync.name) && file.match(/-\w+\.pdf$/)) {
+   			pdfFiles.push({
+   				src: join(publicDir, file),
+   				dest: join(distDir, file),
+   			})
+   		}
+   	}
+   } catch {
+   	// public directory doesn't exist
+   }
 
-    for (const { src, dest } of pdfFiles) {
-      await mkdir(distDir, { recursive: true })
-      await copyFile(src, dest)
-      console.log(`Copied: ${src} -> ${dest}`)
-    }
+   for (const { src, dest } of pdfFiles) {
+   	await mkdir(distDir, { recursive: true })
+   	await copyFile(src, dest)
+   	console.log(`Copied: ${src} -> ${dest}`)
+   }
 
-    if (pdfFiles.length === 0) {
-      console.log('No CV PDF files found to move')
-    }
-    ```
+   if (pdfFiles.length === 0) {
+   	console.log('No CV PDF files found to move')
+   }
+   ```
 
 3. Añade el comando `deploy` a tu `package.json` (ejemplo usando wrangler pages):
 
-    ```json
-    "scripts": {
-      "deploy": "node scripts/copy-preview && bunx @jannael/devsync build && node scripts/move-cv-pdfs.js && git reset --hard && git clean -fd && wrangler pages deploy"
-    }
-    ```
+   ```json
+   "scripts": {
+     "deploy": "node scripts/copy-preview && bunx @jannael/devsync build && node scripts/move-cv-pdfs.js && git reset --hard && git clean -fd && wrangler pages deploy"
+   }
+   ```
 
 </Steps>
 

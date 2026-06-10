@@ -13,205 +13,192 @@ const t = getTranslation(lang)
 ---
 
 <section
-  class="hero relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 py-16 sm:px-6 sm:py-24"
-  aria-labelledby="hero-title"
+	class="hero relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 py-16 sm:px-6 sm:py-24"
+	aria-labelledby="hero-title"
 >
-  <header
-    class="nav-bar absolute top-0 z-40 m-auto flex w-full max-w-5xl items-center justify-end gap-3 px-4 pt-4 sm:gap-5 sm:px-6 sm:pt-5"
-  >
-    <div
-      class="nav-bar-inner border-border/30 bg-surface/80 flex items-center gap-1 rounded-full border px-3 py-2 shadow-sm backdrop-blur-md sm:gap-2 sm:px-4 sm:py-2.5 dark:border-white/10 dark:shadow-md"
-    >
-      <a
-        href="https://github.com/jannael/devsync"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="nav-item text-text-secondary hover:text-accent inline-flex items-center justify-center rounded-full p-2 transition-colors duration-200"
-        aria-label="View source on GitHub"
-      >
-        <GitHub />
-      </a>
-      <div class="nav-divider bg-border/30 h-4 w-px" aria-hidden="true"></div>
-      <LanguageSelector />
-      <div class="nav-divider bg-border/30 h-4 w-px" aria-hidden="true"></div>
-      <NavTheme />
-    </div>
-  </header>
-  <BackgroundGrid />
+	<header class="nav-bar absolute top-0 z-40 m-auto flex w-full max-w-5xl items-center justify-end gap-3 px-4 pt-4 sm:gap-5 sm:px-6 sm:pt-5">
+		<div
+			class="nav-bar-inner border-border/30 bg-surface/80 flex items-center gap-1 rounded-full border px-3 py-2 shadow-sm backdrop-blur-md sm:gap-2 sm:px-4 sm:py-2.5 dark:border-white/10 dark:shadow-md"
+		>
+			<a
+				href="https://github.com/jannael/devsync"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="nav-item text-text-secondary hover:text-accent inline-flex items-center justify-center rounded-full p-2 transition-colors duration-200"
+				aria-label="View source on GitHub"
+			>
+				<GitHub />
+			</a>
+			<div class="nav-divider bg-border/30 h-4 w-px" aria-hidden="true"></div>
+			<LanguageSelector />
+			<div class="nav-divider bg-border/30 h-4 w-px" aria-hidden="true"></div>
+			<NavTheme />
+		</div>
+	</header>
+	<BackgroundGrid />
 
-  <!-- Radial glow behind ASCII -->
-  <div
-    class="hero-glow pointer-events-none absolute top-1/3 left-1/2 z-0 h-75 w-75 -translate-x-1/2 -translate-y-1/2 opacity-[0.04] blur-[80px] sm:h-75 sm:w-150 dark:opacity-[0.06]"
-    aria-hidden="true"
-  >
-  </div>
+	<!-- Radial glow behind ASCII -->
+	<div
+		class="hero-glow pointer-events-none absolute top-1/3 left-1/2 z-0 h-75 w-75 -translate-x-1/2 -translate-y-1/2 opacity-[0.04] blur-[80px] sm:h-75 sm:w-150 dark:opacity-[0.06]"
+		aria-hidden="true"
+	>
+	</div>
 
-  <div class="relative z-10 flex w-full max-w-4xl flex-col items-center text-center">
-    <!-- ASCII Logo with scramble animation -->
-    <div class="hero-ascii-wrapper mb-5 w-full overflow-x-auto">
-      <figure
-        class="hero-ascii smallest:text-[8px] mx-auto text-[5px] sm:mb-5 sm:text-[11px] md:text-xl"
-        aria-label="Devsync logo in ASCII art"
-      >
-        <AsciiScramble lines={devsyncASCII} />
-      </figure>
-    </div>
+	<div class="relative z-10 flex w-full max-w-4xl flex-col items-center text-center">
+		<!-- ASCII Logo with scramble animation -->
+		<div class="hero-ascii-wrapper mb-5 w-full overflow-x-auto">
+			<figure class="hero-ascii smallest:text-[8px] mx-auto text-[5px] sm:mb-5 sm:text-[11px] md:text-xl" aria-label="Devsync logo in ASCII art">
+				<AsciiScramble lines={devsyncASCII} />
+			</figure>
+		</div>
 
-    <!-- Tagline -->
-    <p
-      class="hero-tagline text-accent mb-5 text-xs font-semibold tracking-[0.15em] uppercase sm:mb-16 sm:text-sm sm:tracking-[0.3em]"
-    >
-      <small>{t['Resume. Portfolio. GitHub profile.']}</small>
-    </p>
+		<!-- Tagline -->
+		<p class="hero-tagline text-accent mb-5 text-xs font-semibold tracking-[0.15em] uppercase sm:mb-16 sm:text-sm sm:tracking-[0.3em]">
+			<small>{t['Resume. Portfolio. GitHub profile.']}</small>
+		</p>
 
-    <!-- Main headline -->
-    <h1
-      id="hero-title"
-      class="hero-title text-text mb-3 text-xl font-semibold tracking-tight sm:mb-6 sm:text-2xl md:text-4xl lg:text-5xl"
-    >
-      {t['Synchronization tool for developers']}
-    </h1>
+		<!-- Main headline -->
+		<h1 id="hero-title" class="hero-title text-text mb-3 text-xl font-semibold tracking-tight sm:mb-6 sm:text-2xl md:text-4xl lg:text-5xl">
+			{t['Synchronization tool for developers']}
+		</h1>
 
-    <!-- Description -->
-    <p
-      class="hero-description text-text-secondary mx-auto mb-6 max-w-2xl text-sm leading-relaxed text-balance sm:mb-16 sm:text-lg md:text-xl"
-    >
-      {t['Generate your professional resume...']}
-    </p>
+		<!-- Description -->
+		<p class="hero-description text-text-secondary mx-auto mb-6 max-w-2xl text-sm leading-relaxed text-balance sm:mb-16 sm:text-lg md:text-xl">
+			{t['Generate your professional resume...']}
+		</p>
 
-    <!-- CTAs -->
-    <div
-      class="hero-ctas flex flex-col items-center gap-4"
-      role="group"
-      aria-label="Call to action buttons"
-    >
-      <!-- Terminal Command Prompt -->
+		<!-- CTAs -->
+		<div class="hero-ctas flex flex-col items-center gap-4" role="group" aria-label="Call to action buttons">
+			<!-- Terminal Command Prompt -->
 
-      <div class="flex flex-col items-center gap-4 sm:flex-row sm:gap-6">
-        <!-- Live Demo -->
-        <div class="hero-demo">
-          <a
-            href="https://preview.devsync.work"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="border-accent/30 text-accent hover:bg-accent inline-flex items-center gap-2 rounded-xl border px-6 py-3 text-sm font-semibold transition-all duration-200 hover:scale-105 hover:text-white active:scale-95 sm:px-10 sm:py-3.5 sm:text-base"
-          >
-            {t['Live Demo']}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"
-              ><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline
-                points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg
-            >
-          </a>
-        </div>
+			<div class="flex flex-col items-center gap-4 sm:flex-row sm:gap-6">
+				<!-- Live Demo -->
+				<div class="hero-demo">
+					<a
+						href="https://preview.devsync.work"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="border-accent/30 text-accent hover:bg-accent inline-flex items-center gap-2 rounded-xl border px-6 py-3 text-sm font-semibold transition-all duration-200 hover:scale-105 hover:text-white active:scale-95 sm:px-10 sm:py-3.5 sm:text-base"
+					>
+						{t['Live Demo']}
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="14"
+							height="14"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							aria-hidden="true"
+							><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line
+								x1="10"
+								y1="14"
+								x2="21"
+								y2="3"></line></svg
+						>
+					</a>
+				</div>
 
-        <!-- Secondary CTA -->
-        <div class="hero-docs">
-          <a
-            href={getRelativeLocaleUrl(lang, '/getting-started/')}
-            class="border-border/30 text-text-secondary hover:border-accent hover:text-accent inline-flex items-center gap-2 rounded-xl border px-5 py-2.5 text-xs font-semibold transition-all duration-200 hover:scale-105 active:scale-95 sm:px-8 sm:py-3.5 sm:text-base"
-          >
-            {t['Read the Docs']}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg
-            >
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
+				<!-- Secondary CTA -->
+				<div class="hero-docs">
+					<a
+						href={getRelativeLocaleUrl(lang, '/getting-started/')}
+						class="border-border/30 text-text-secondary hover:border-accent hover:text-accent inline-flex items-center gap-2 rounded-xl border px-5 py-2.5 text-xs font-semibold transition-all duration-200 hover:scale-105 active:scale-95 sm:px-8 sm:py-3.5 sm:text-base"
+					>
+						{t['Read the Docs']}
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="14"
+							height="14"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg
+						>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
 </section>
 
 <style>
-  .hero-glow {
-    background: radial-gradient(circle, var(--color-accent) 0%, transparent 70%);
-  }
+	.hero-glow {
+		background: radial-gradient(circle, var(--color-accent) 0%, transparent 70%);
+	}
 
-  .nav-bar select {
-    appearance: none;
-    -webkit-appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23a3a3a3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 0.25rem center;
-    padding-right: 1.25rem;
-  }
+	.nav-bar select {
+		appearance: none;
+		-webkit-appearance: none;
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23a3a3a3' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+		background-repeat: no-repeat;
+		background-position: right 0.25rem center;
+		padding-right: 1.25rem;
+	}
 
-  :global(.dark) .nav-bar select {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23737373' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
-  }
+	:global(.dark) .nav-bar select {
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23737373' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+	}
 
-  /* ── Entrance animations ───────────────────────────── */
-  .nav-bar-inner {
-    opacity: 0;
-    transform: translateY(-10px);
-    animation: hero-fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
-  }
+	/* ── Entrance animations ───────────────────────────── */
+	.nav-bar-inner {
+		opacity: 0;
+		transform: translateY(-10px);
+		animation: hero-fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+	}
 
-  .hero-ascii-wrapper {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: hero-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    animation-delay: 0s;
-  }
+	.hero-ascii-wrapper {
+		opacity: 0;
+		transform: translateY(20px);
+		animation: hero-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+		animation-delay: 0s;
+	}
 
-  .hero-tagline,
-  .hero-title,
-  .hero-description {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: hero-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
-  .hero-tagline {
-    animation-delay: 0.15s;
-  }
-  .hero-title {
-    animation-delay: 0.3s;
-  }
-  .hero-description {
-    animation-delay: 0.45s;
-  }
+	.hero-tagline,
+	.hero-title,
+	.hero-description {
+		opacity: 0;
+		transform: translateY(20px);
+		animation: hero-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+	}
+	.hero-tagline {
+		animation-delay: 0.15s;
+	}
+	.hero-title {
+		animation-delay: 0.3s;
+	}
+	.hero-description {
+		animation-delay: 0.45s;
+	}
 
-  @keyframes hero-fade-up {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+	@keyframes hero-fade-up {
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
 
-  /* Terminal entrance animation */
-  .hero-terminal {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: hero-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.75s forwards;
-  }
+	/* Terminal entrance animation */
+	.hero-terminal {
+		opacity: 0;
+		transform: translateY(20px);
+		animation: hero-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.75s forwards;
+	}
 
-  .hero-demo {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: hero-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.85s forwards;
-  }
+	.hero-demo {
+		opacity: 0;
+		transform: translateY(20px);
+		animation: hero-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.85s forwards;
+	}
 
-  .hero-docs {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: hero-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.95s forwards;
-  }
+	.hero-docs {
+		opacity: 0;
+		transform: translateY(20px);
+		animation: hero-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.95s forwards;
+	}
 </style>

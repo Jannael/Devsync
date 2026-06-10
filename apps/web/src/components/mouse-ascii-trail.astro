@@ -1,48 +1,48 @@
 <div id="mouse-glow" class="pointer-events-none fixed inset-0 z-9999" aria-hidden="true"></div>
 
 <script>
-  const canvas = document.createElement('canvas')
-  const ctx = canvas.getContext('2d')!
+	const canvas = document.createElement('canvas')
+	const ctx = canvas.getContext('2d')!
 
-  function resize() {
-    canvas.width = window.innerWidth
-    canvas.height = window.innerHeight
-  }
+	function resize() {
+		canvas.width = window.innerWidth
+		canvas.height = window.innerHeight
+	}
 
-  resize()
-  window.addEventListener('resize', resize)
+	resize()
+	window.addEventListener('resize', resize)
 
-  canvas.style.cssText = 'display:block;width:100%;height:100%;mix-blend-mode:screen'
+	canvas.style.cssText = 'display:block;width:100%;height:100%;mix-blend-mode:screen'
 
-  let mouseX = -9999
-  let mouseY = -9999
-  const radius = 200
+	let mouseX = -9999
+	let mouseY = -9999
+	const radius = 200
 
-  document.addEventListener(
-    'mousemove',
-    (e) => {
-      mouseX = e.clientX
-      mouseY = e.clientY
-    },
-    { passive: true }
-  )
+	document.addEventListener(
+		'mousemove',
+		(e) => {
+			mouseX = e.clientX
+			mouseY = e.clientY
+		},
+		{ passive: true },
+	)
 
-  function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height)
+	function animate() {
+		ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-    const gradient = ctx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, radius)
-    gradient.addColorStop(0, 'rgba(34, 197, 94, 0.12)')
-    gradient.addColorStop(0.3, 'rgba(34, 197, 94, 0.06)')
-    gradient.addColorStop(0.6, 'rgba(34, 197, 94, 0.02)')
-    gradient.addColorStop(1, 'rgba(34, 197, 94, 0)')
+		const gradient = ctx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, radius)
+		gradient.addColorStop(0, 'rgba(34, 197, 94, 0.12)')
+		gradient.addColorStop(0.3, 'rgba(34, 197, 94, 0.06)')
+		gradient.addColorStop(0.6, 'rgba(34, 197, 94, 0.02)')
+		gradient.addColorStop(1, 'rgba(34, 197, 94, 0)')
 
-    ctx.fillStyle = gradient
-    ctx.fillRect(mouseX - radius, mouseY - radius, radius * 2, radius * 2)
+		ctx.fillStyle = gradient
+		ctx.fillRect(mouseX - radius, mouseY - radius, radius * 2, radius * 2)
 
-    requestAnimationFrame(animate)
-  }
+		requestAnimationFrame(animate)
+	}
 
-  animate()
+	animate()
 
-  document.getElementById('mouse-glow')?.appendChild(canvas)
+	document.getElementById('mouse-glow')?.appendChild(canvas)
 </script>

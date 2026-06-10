@@ -28,7 +28,7 @@ sudo apt-get install -y \
 ```
 
 <Aside type="note">
-On macOS, Puppeteer usually works out of the box. On Windows, ensure you have the latest Visual C++ Redistributable installed.
+	On macOS, Puppeteer usually works out of the box. On Windows, ensure you have the latest Visual C++ Redistributable installed.
 </Aside>
 
 ### Bun Not Found (Local)
@@ -117,7 +117,6 @@ Example invalid vs valid:
 
 `pnpm` has strict security rules for script execution that might prevent `create-template` from working out of the box. I recommend using `bunx` instead. Since `bunx` only uses built-in Bun features to copy the `@core` folder, there are no security concerns.
 
-
 ## Git Issues
 
 ### Permission Denied When Pushing
@@ -185,9 +184,9 @@ bunx @jannael/devsync init
 
 ```json
 {
-  "devsync": {
-    "pathToCompiledCV": "./dist/[lang]/cv/index.html"
-  }
+	"devsync": {
+		"pathToCompiledCV": "./dist/[lang]/cv/index.html"
+	}
 }
 ```
 
@@ -222,7 +221,7 @@ bunx @jannael/devsync init
 on:
   push:
     paths:
-      - 'DEVSYNC.json'  # Exact match required
+      - 'DEVSYNC.json' # Exact match required
 ```
 
 ### Job Fails on Ubuntu
@@ -264,13 +263,13 @@ Add all required dependencies:
 
 ## Common Error Messages
 
-| Error | Cause | Solution |
-|-------|-------|----------|
-| `ENOENT: no such file or directory` | File path doesn't exist | Check paths in config |
-| `EACCES: permission denied` | File permissions issue | Check file permissions |
-| `ETIMEDOUT` | Network timeout | Check network, retry |
-| `Invalid URL` | Malformed URL in config | Fix URL format |
-| `ZodError` | Validation failed | Check field types/values |
+| Error                               | Cause                   | Solution                 |
+| ----------------------------------- | ----------------------- | ------------------------ |
+| `ENOENT: no such file or directory` | File path doesn't exist | Check paths in config    |
+| `EACCES: permission denied`         | File permissions issue  | Check file permissions   |
+| `ETIMEDOUT`                         | Network timeout         | Check network, retry     |
+| `Invalid URL`                       | Malformed URL in config | Fix URL format           |
+| `ZodError`                          | Validation failed       | Check field types/values |
 
 ## Getting Help
 

@@ -8,195 +8,187 @@ const lang = Astro.currentLocale ?? 'en'
 const t = getTranslation(lang)
 
 const featuredTemplates: Template[] = [
-  {
-    name: 'Devsync Template',
-    owner: 'jannael',
-    repoName: 'devsync-default-template',
-    repo: 'https://github.com/jannael/devsync-default-template',
-    technologies: ['Astro', 'Tailwind CSS', 'TypeScript'],
-    preview: 'https://preview.devsync.work',
-    command: 'bunx @jannael/devsync init',
-  },
-  {
-    name: 'Asciifolio',
-    owner: 'jannael',
-    repoName: 'asciifolio',
-    repo: 'https://github.com/jannael/asciifolio',
-    technologies: ['Astro', 'Tailwind CSS', 'TypeScript'],
-    preview: 'https://asciifolio.pages.dev',
-    command: 'bunx @jannael/devsync init --template @jannael/asciifolio',
-  },
+	{
+		name: 'Devsync Template',
+		owner: 'jannael',
+		repoName: 'devsync-default-template',
+		repo: 'https://github.com/jannael/devsync-default-template',
+		technologies: ['Astro', 'Tailwind CSS', 'TypeScript'],
+		preview: 'https://preview.devsync.work',
+		command: 'bunx @jannael/devsync init',
+	},
+	{
+		name: 'Asciifolio',
+		owner: 'jannael',
+		repoName: 'asciifolio',
+		repo: 'https://github.com/jannael/asciifolio',
+		technologies: ['Astro', 'Tailwind CSS', 'TypeScript'],
+		preview: 'https://asciifolio.pages.dev',
+		command: 'bunx @jannael/devsync init --template @jannael/asciifolio',
+	},
 ]
 ---
 
 <section
-  id="templates-section"
-  class="templates relative flex flex-col items-center justify-center overflow-hidden px-4 py-16 sm:px-6 sm:py-24"
-  aria-labelledby="templates-title"
+	id="templates-section"
+	class="templates relative flex flex-col items-center justify-center overflow-hidden px-4 py-16 sm:px-6 sm:py-24"
+	aria-labelledby="templates-title"
 >
-  <!-- Radial glow -->
-  <div
-    class="pointer-events-none absolute top-1/3 left-1/2 z-0 h-75 w-75 -translate-x-1/2 -translate-y-1/2 opacity-[0.04] blur-[80px] sm:h-150 sm:w-150 dark:opacity-[0.06]"
-    aria-hidden="true"
-  >
-  </div>
+	<!-- Radial glow -->
+	<div
+		class="pointer-events-none absolute top-1/3 left-1/2 z-0 h-75 w-75 -translate-x-1/2 -translate-y-1/2 opacity-[0.04] blur-[80px] sm:h-150 sm:w-150 dark:opacity-[0.06]"
+		aria-hidden="true"
+	>
+	</div>
 
-  <div class="relative z-10 flex w-full max-w-5xl flex-col items-center">
-    <!-- Section header -->
-    <div class="mb-12 flex flex-col items-center text-center sm:mb-16">
-      <h2
-        id="templates-title"
-        class="templates-title text-text mb-4 text-2xl font-semibold tracking-tight sm:text-3xl md:text-4xl"
-      >
-        {t['Beautiful by Default']}
-      </h2>
-      <p class="templates-subtitle text-text-secondary mx-auto max-w-xl text-base sm:text-lg">
-        {t['templates description']}
-      </p>
-    </div>
+	<div class="relative z-10 flex w-full max-w-5xl flex-col items-center">
+		<!-- Section header -->
+		<div class="mb-12 flex flex-col items-center text-center sm:mb-16">
+			<h2 id="templates-title" class="templates-title text-text mb-4 text-2xl font-semibold tracking-tight sm:text-3xl md:text-4xl">
+				{t['Beautiful by Default']}
+			</h2>
+			<p class="templates-subtitle text-text-secondary mx-auto max-w-xl text-base sm:text-lg">
+				{t['templates description']}
+			</p>
+		</div>
 
-    <!-- Templates grid -->
-    <div class="templates-grid grid w-full grid-cols-1 gap-8 sm:grid-cols-2 lg:gap-10">
-      {
-        featuredTemplates.map((template, index) => (
-          <TemplateCard
-            template={template}
-            index={index}
-            viewRepositoryLabel={t['View Repository']}
-            livePreviewLabel={t['Live Preview']}
-          />
-        ))
-      }
-    </div>
+		<!-- Templates grid -->
+		<div class="templates-grid grid w-full grid-cols-1 gap-8 sm:grid-cols-2 lg:gap-10">
+			{
+				featuredTemplates.map((template, index) => (
+					<TemplateCard template={template} index={index} viewRepositoryLabel={t['View Repository']} livePreviewLabel={t['Live Preview']} />
+				))
+			}
+		</div>
 
-    <!-- Bottom link -->
-    <a
-      href={getRelativeLocaleUrl(lang, '/create-template/')}
-      class="templates-link text-accent hover:text-accent-hover mt-12 inline-flex items-center gap-2 text-sm font-semibold transition-all duration-200 hover:scale-105 sm:text-base"
-    >
-      {t['Create your own']}
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="16"
-        height="16"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        aria-hidden="true"
-      >
-        <path d="M5 12h14"></path>
-        <path d="m12 5 7 7-7 7"></path>
-      </svg>
-    </a>
-  </div>
+		<!-- Bottom link -->
+		<a
+			href={getRelativeLocaleUrl(lang, '/create-template/')}
+			class="templates-link text-accent hover:text-accent-hover mt-12 inline-flex items-center gap-2 text-sm font-semibold transition-all duration-200 hover:scale-105 sm:text-base"
+		>
+			{t['Create your own']}
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				width="16"
+				height="16"
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				aria-hidden="true"
+			>
+				<path d="M5 12h14"></path>
+				<path d="m12 5 7 7-7 7"></path>
+			</svg>
+		</a>
+	</div>
 </section>
 
 <script>
-  function setupObserver() {
-    const section = document.getElementById('templates-section')
-    if (!section) return
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            section.classList.add('animate')
-            observer.disconnect()
-          }
-        })
-      },
-      { threshold: 0.1 }
-    )
-    observer.observe(section)
-  }
+	function setupObserver() {
+		const section = document.getElementById('templates-section')
+		if (!section) return
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						section.classList.add('animate')
+						observer.disconnect()
+					}
+				})
+			},
+			{ threshold: 0.1 },
+		)
+		observer.observe(section)
+	}
 
-  function setupCopyButtons() {
-    const copyButtons = document.querySelectorAll('.template-copy-btn')
-    copyButtons.forEach((button) => {
-      button.addEventListener('click', async () => {
-        const commandEl = button.parentElement?.querySelector('code')
-        const command = commandEl?.textContent?.replace('$ ', '').trim()
-        if (!command) return
+	function setupCopyButtons() {
+		const copyButtons = document.querySelectorAll('.template-copy-btn')
+		copyButtons.forEach((button) => {
+			button.addEventListener('click', async () => {
+				const commandEl = button.parentElement?.querySelector('code')
+				const command = commandEl?.textContent?.replace('$ ', '').trim()
+				if (!command) return
 
-        const copyIcon = button.querySelector('.copy-icon') as HTMLElement
-        const checkIcon = button.querySelector('.check-icon') as HTMLElement
+				const copyIcon = button.querySelector('.copy-icon') as HTMLElement
+				const checkIcon = button.querySelector('.check-icon') as HTMLElement
 
-        try {
-          await navigator.clipboard.writeText(command)
-          copyIcon.classList.add('opacity-0')
-          checkIcon.classList.remove('opacity-0')
+				try {
+					await navigator.clipboard.writeText(command)
+					copyIcon.classList.add('opacity-0')
+					checkIcon.classList.remove('opacity-0')
 
-          setTimeout(() => {
-            copyIcon.classList.remove('opacity-0')
-            checkIcon.classList.add('opacity-0')
-          }, 2000)
-        } catch {
-          const textarea = document.createElement('textarea')
-          textarea.value = command
-          textarea.style.position = 'fixed'
-          textarea.style.opacity = '0'
-          document.body.appendChild(textarea)
-          textarea.select()
-          document.execCommand('copy')
-          document.body.removeChild(textarea)
-        }
-      })
-    })
-  }
+					setTimeout(() => {
+						copyIcon.classList.remove('opacity-0')
+						checkIcon.classList.add('opacity-0')
+					}, 2000)
+				} catch {
+					const textarea = document.createElement('textarea')
+					textarea.value = command
+					textarea.style.position = 'fixed'
+					textarea.style.opacity = '0'
+					document.body.appendChild(textarea)
+					textarea.select()
+					document.execCommand('copy')
+					document.body.removeChild(textarea)
+				}
+			})
+		})
+	}
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupObserver)
-    document.addEventListener('DOMContentLoaded', setupCopyButtons)
-  } else {
-    setupObserver()
-    setupCopyButtons()
-  }
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', setupObserver)
+		document.addEventListener('DOMContentLoaded', setupCopyButtons)
+	} else {
+		setupObserver()
+		setupCopyButtons()
+	}
 </script>
 
 <style>
-  /* ── Entrance animations ── */
-  .templates-title {
-    opacity: 0;
-    transform: translateY(20px);
-  }
+	/* ── Entrance animations ── */
+	.templates-title {
+		opacity: 0;
+		transform: translateY(20px);
+	}
 
-  .templates.animate .templates-title {
-    animation: templates-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
+	.templates.animate .templates-title {
+		animation: templates-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+	}
 
-  .templates-subtitle {
-    opacity: 0;
-    transform: translateY(20px);
-  }
+	.templates-subtitle {
+		opacity: 0;
+		transform: translateY(20px);
+	}
 
-  .templates.animate .templates-subtitle {
-    animation: templates-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
-  }
+	.templates.animate .templates-subtitle {
+		animation: templates-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+	}
 
-  .template-card {
-    opacity: 0;
-    transform: translateY(20px);
-  }
+	.template-card {
+		opacity: 0;
+		transform: translateY(20px);
+	}
 
-  .templates.animate .template-card {
-    animation: templates-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
+	.templates.animate .template-card {
+		animation: templates-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+	}
 
-  .templates-link {
-    opacity: 0;
-    transform: translateY(10px);
-  }
+	.templates-link {
+		opacity: 0;
+		transform: translateY(10px);
+	}
 
-  .templates.animate .templates-link {
-    animation: templates-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
-  }
+	.templates.animate .templates-link {
+		animation: templates-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+	}
 
-  @keyframes templates-fade-up {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+	@keyframes templates-fade-up {
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
 </style>

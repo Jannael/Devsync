@@ -11,9 +11,7 @@ import { Steps } from '@astrojs/starlight/components'
 
 Devsync is designed to work seamlessly with GitHub Actions. You can automatically update your LinkedIn profile, GitHub README, CV, and academics whenever you change `DEVSYNC.json`.
 
-<Aside type="tip">
-  The `build` command is primarily intended for CI/CD, but you can run it locally if you have Bun and Puppeteer installed.
-</Aside>
+<Aside type="tip">The `build` command is primarily intended for CI/CD, but you can run it locally if you have Bun and Puppeteer installed.</Aside>
 
 ## Complete Workflow Example
 
@@ -115,6 +113,7 @@ Triggers only when `DEVSYNC.json` changes, avoiding unnecessary runs.
 ```
 
 Both Bun and Node.js are required:
+
 - **Bun** - Runs the CLI and builds the project
 - **Node.js** - Required by Puppeteer for PDF generation
 
@@ -135,7 +134,7 @@ Both Bun and Node.js are required:
 These are Chrome/Chromium libraries needed for headless PDF generation.
 
 <Aside type="caution">
-  Don't skip the system dependencies step! Without them, PDF generation will fail with errors like "Chrome not found" or "Cannot start Chrome".
+	Don't skip the system dependencies step! Without them, PDF generation will fail with errors like "Chrome not found" or "Cannot start Chrome".
 </Aside>
 
 ### 5. Install Dependencies
@@ -155,6 +154,7 @@ Installs project dependencies including Puppeteer.
 ```
 
 This command:
+
 1. Validates `DEVSYNC.json`
 2. Builds CV for each language
 3. Creates LinkedIn profile
@@ -225,7 +225,7 @@ jobs:
 
 ```yaml
 permissions:
-  contents: write  # Required to push changes
+  contents: write # Required to push changes
 ```
 
 Only grant the minimum permissions needed. For Devsync, `contents: write` is required to commit generated files.

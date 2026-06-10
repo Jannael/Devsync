@@ -5,29 +5,29 @@ const currentLang = Astro.currentLocale ?? 'en'
 ---
 
 <div role="group" aria-label="Language selection" class="language-selector">
-  <label for="lang-select" class="sr-only">Select language</label>
-  <select
-    id="lang-select"
-    class="text-text hover:text-accent cursor-pointer border-none bg-transparent px-2 py-1 text-xs font-medium transition-colors focus:outline-none sm:px-3 sm:text-sm"
-  >
-    {
-      Object.keys(translations).map((lang) => (
-        <option value={lang} selected={lang === currentLang}>
-          {lang.toUpperCase()}
-        </option>
-      ))
-    }
-  </select>
+	<label for="lang-select" class="sr-only">Select language</label>
+	<select
+		id="lang-select"
+		class="text-text hover:text-accent cursor-pointer border-none bg-transparent px-2 py-1 text-xs font-medium transition-colors focus:outline-none sm:px-3 sm:text-sm"
+	>
+		{
+			Object.keys(translations).map((lang) => (
+				<option value={lang} selected={lang === currentLang}>
+					{lang.toUpperCase()}
+				</option>
+			))
+		}
+	</select>
 </div>
 
 <script>
-  const select = document.getElementById('lang-select') as HTMLSelectElement
-  if (select) {
-    select.addEventListener('change', (e) => {
-      const newLang = (e.target as HTMLSelectElement).value
-      const currentPath = window.location.pathname
-      const pathWithoutLang = currentPath.replace(/^\/(en|es)/, '')
-      window.location.href = `/${newLang}${pathWithoutLang || '/'}`
-    })
-  }
+	const select = document.getElementById('lang-select') as HTMLSelectElement
+	if (select) {
+		select.addEventListener('change', (e) => {
+			const newLang = (e.target as HTMLSelectElement).value
+			const currentPath = window.location.pathname
+			const pathWithoutLang = currentPath.replace(/^\/(en|es)/, '')
+			window.location.href = `/${newLang}${pathWithoutLang || '/'}`
+		})
+	}
 </script>

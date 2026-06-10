@@ -9,43 +9,40 @@ import { BOLD, GREEN } from '@/utils/colors'
 
 // Mixins pattern for shared infrastructure code
 export function getHTMLMixin<TBase extends GConstructor>(Base: TBase) {
-  return class extends Base {
-    async getHTML({ path }: { path: string }): Promise<string> {
-      if (!existsSync(CWD_PACKAGE_JSON)) {
-        throw new NotFound(
-          'Package.json not found',
-          `${SPACE}${SPACE}${GREEN('1.')} Run ${BOLD('devsync init')}\n` +
-            `${SPACE}${SPACE}${GREEN('2.')} Fill ${BOLD('DEVSYNC.json')} with your information\n` +
-            `${SPACE}${SPACE}${GREEN('3.')} Run ${BOLD('devsync build')}`
-        )
-      }
+	return class extends Base {
+		async getHTML({ path }: { path: string }): Promise<string> {
+			if (!existsSync(CWD_PACKAGE_JSON)) {
+				throw new NotFound(
+					'Package.json not found',
+					`${SPACE}${SPACE}${GREEN('1.')} Run ${BOLD('devsync init')}\n` +
+						`${SPACE}${SPACE}${GREEN('2.')} Fill ${BOLD('DEVSYNC.json')} with your information\n` +
+						`${SPACE}${SPACE}${GREEN('3.')} Run ${BOLD('devsync build')}`,
+				)
+			}
 
-      try {
-        const html = await fsReadFile(path, 'utf8')
-        const stylesheetRegex = /<link[^>]*rel=["']stylesheet["'][^>]*href=["']([^"']+)["'][^>]*>/gi
-        const stylesheetLinks = Array.from(html.matchAll(stylesheetRegex))
-        let inlinedHTML = html
+			try {
+				const html = await fsReadFile(path, 'utf8')
+				const stylesheetRegex = /<link[^>]*rel=["']stylesheet["'][^>]*href=["']([^"']+)["'][^>]*>/gi
+				const stylesheetLinks = Array.from(html.matchAll(stylesheetRegex))
+				let inlinedHTML = html
 
-        for (const linkMatch of stylesheetLinks) {
-          const [linkTag, href] = linkMatch
+				for (const linkMatch of stylesheetLinks) {
+					const [linkTag, href] = linkMatch
 
-          const cssPath = href?.startsWith('/')
-            ? resolve(process.cwd(), 'dist', href.slice(1))
-            : resolve(dirname(path), href ?? '')
+					const cssPath = href?.startsWith('/') ? resolve(process.cwd(), 'dist', href.slice(1)) : resolve(dirname(path), href ?? '')
 
-          const css = await fsReadFile(cssPath, 'utf8')
-          inlinedHTML = inlinedHTML.replace(linkTag, `<style>${css}</style>`)
-        }
+					const css = await fsReadFile(cssPath, 'utf8')
+					inlinedHTML = inlinedHTML.replace(linkTag, `<style>${css}</style>`)
+				}
 
-        return inlinedHTML
-      } catch (e) {
-        console.log(e)
-        throw new ServerError(
-          'CV build failed',
-          `${SPACE}${SPACE}Check if the build process completed successfully.\n` +
-            `${SPACE}${SPACE}Verify that all required files exist.`
-        )
-      }
-    }
-  }
+				return inlinedHTML
+			} catch (e) {
+				console.log(e)
+				throw new ServerError(
+					'CV build failed',
+					`${SPACE}${SPACE}Check if the build process completed successfully.\n` + `${SPACE}${SPACE}Verify that all required files exist.`,
+				)
+			}
+		}
+	}
 }

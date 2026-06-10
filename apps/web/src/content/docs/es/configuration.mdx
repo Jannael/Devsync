@@ -11,45 +11,46 @@ import { Aside } from '@astrojs/starlight/components'
 `DEVSYNC.json` es la única fuente de verdad para tu portafolio, CV, perfil de GitHub, LinkedIn y académicos. Toda tu información se define aquí y se sincroniza en todas las plataformas.
 
 <Aside type="tip">
-Puedes omitir campos que no necesites. La plantilla simplemente no los mostrará. Sin embargo, la capacidad de generar salidas depende de la plantilla que estés usando.
+	Puedes omitir campos que no necesites. La plantilla simplemente no los mostrará. Sin embargo, la capacidad de generar salidas depende de la
+	plantilla que estés usando.
 </Aside>
 
 ## Campos Globales
 
 Estos campos aplican a todos los idiomas y salidas:
 
-| Campo | Tipo | Requerido | Descripción |
-|-------|------|----------|-------------|
-| `defaultLang` | `string` | Sí | Código de idioma predeterminado (ej. `"en"`, `"es"`, `"fr"`) |
-| `site` | `string` | Sí | URL de tu sitio web del portafolio |
-| `name` | `string` | Sí | Tu nombre completo |
-| `img` | `string` | Sí | URL de la imagen de perfil |
-| `socialMedia` | `array` | No | Array de perfiles de redes sociales |
-| `githubUserName` | `string` | Sí | Tu nombre de usuario de GitHub |
-| `address` | `string` | Sí | Tu ubicación (ciudad, país) |
-| `email` | `string` | Sí | Tu dirección de correo electrónico |
-| `phone` | `string` | Sí | Tu número de teléfono |
+| Campo            | Tipo     | Requerido | Descripción                                                  |
+| ---------------- | -------- | --------- | ------------------------------------------------------------ |
+| `defaultLang`    | `string` | Sí        | Código de idioma predeterminado (ej. `"en"`, `"es"`, `"fr"`) |
+| `site`           | `string` | Sí        | URL de tu sitio web del portafolio                           |
+| `name`           | `string` | Sí        | Tu nombre completo                                           |
+| `img`            | `string` | Sí        | URL de la imagen de perfil                                   |
+| `socialMedia`    | `array`  | No        | Array de perfiles de redes sociales                          |
+| `githubUserName` | `string` | Sí        | Tu nombre de usuario de GitHub                               |
+| `address`        | `string` | Sí        | Tu ubicación (ciudad, país)                                  |
+| `email`          | `string` | Sí        | Tu dirección de correo electrónico                           |
+| `phone`          | `string` | Sí        | Tu número de teléfono                                        |
 
 ### Ejemplo: Campos Globales
 
 ```json
 {
-  "defaultLang": "en",
-  "site": "https://devsync.work",
-  "name": "Tu Nombre Completo",
-  "img": "https://your-image-url.com/your-image.jpg",
-  "socialMedia": [
-    {
-      "name": "LinkedIn",
-      "url": "https://www.linkedin.com/in/your-linkedin-handle",
-      "icon": "/icons/linkedin.svg",
-      "mdBadge": "![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)"
-    }
-  ],
-  "githubUserName": "tu-usuario-github",
-  "address": "Tu Ciudad, País",
-  "email": "tu-email@example.com",
-  "phone": "+1 123 456 7890"
+	"defaultLang": "en",
+	"site": "https://devsync.work",
+	"name": "Tu Nombre Completo",
+	"img": "https://your-image-url.com/your-image.jpg",
+	"socialMedia": [
+		{
+			"name": "LinkedIn",
+			"url": "https://www.linkedin.com/in/your-linkedin-handle",
+			"icon": "/icons/linkedin.svg",
+			"mdBadge": "![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)"
+		}
+	],
+	"githubUserName": "tu-usuario-github",
+	"address": "Tu Ciudad, País",
+	"email": "tu-email@example.com",
+	"phone": "+1 123 456 7890"
 }
 ```
 
@@ -76,38 +77,38 @@ Todos los campos bajo códigos de idioma (ej. `en`, `es`, `fr`) se traducen por 
 
 ### Referencia de Campos
 
-| Campo | Tipo | Requerido | Descripción |
-|-------|------|----------|-------------|
-| `description` | `string` | Sí | Resumen profesional/biografía |
-| `jobTitle` | `string` | Sí | Título de trabajo actual |
-| `status` | `object` | No | Estado de disponibilidad actual con badge |
-| `languages` | `array` | No | Idiomas hablados |
-| `experience` | `array` | No | Experiencias laborales |
-| `projects` | `array` | No | Proyectos |
-| `education` | `array` | No | Educación |
-| `certifications` | `array` | No | Certificaciones |
+| Campo            | Tipo     | Requerido | Descripción                               |
+| ---------------- | -------- | --------- | ----------------------------------------- |
+| `description`    | `string` | Sí        | Resumen profesional/biografía             |
+| `jobTitle`       | `string` | Sí        | Título de trabajo actual                  |
+| `status`         | `object` | No        | Estado de disponibilidad actual con badge |
+| `languages`      | `array`  | No        | Idiomas hablados                          |
+| `experience`     | `array`  | No        | Experiencias laborales                    |
+| `projects`       | `array`  | No        | Proyectos                                 |
+| `education`      | `array`  | No        | Educación                                 |
+| `certifications` | `array`  | No        | Certificaciones                           |
 
 ## Objeto de Estado
 
 ```json
 {
-  "status": "Abierto a ofertas",
-  "badge": "![Estado](https://img.shields.io/badge/Estado-Abierto%20a%20ofertas-green)"
+	"status": "Abierto a ofertas",
+	"badge": "![Estado](https://img.shields.io/badge/Estado-Abierto%20a%20ofertas-green)"
 }
 ```
 
-| Campo | Tipo | Descripción |
-|-------|------|-------------|
+| Campo    | Tipo     | Descripción                                           |
+| -------- | -------- | ----------------------------------------------------- |
 | `status` | `string` | Texto de estado (ej. "Abierto a ofertas", "Empleado") |
-| `badge` | `string` | Badge markdown para el estado |
+| `badge`  | `string` | Badge markdown para el estado                         |
 
 ## Entrada de Idioma (Hablado)
 
 ```json
 {
-  "name": "Español / Inglés",
-  "mdBadge": "![Idiomas](https://img.shields.io/badge/Idiomas-Espa%C3%B1ol%2C%20Ingl%C3%A9s-1f6feb)",
-  "icon": "https://cdn.simpleicons.org/googletranslate"
+	"name": "Español / Inglés",
+	"mdBadge": "![Idiomas](https://img.shields.io/badge/Idiomas-Espa%C3%B1ol%2C%20Ingl%C3%A9s-1f6feb)",
+	"icon": "https://cdn.simpleicons.org/googletranslate"
 }
 ```
 
@@ -130,25 +131,25 @@ Todos los campos bajo códigos de idioma (ej. `en`, `es`, `fr`) se traducen por 
 }
 ```
 
-| Campo | Tipo | Requerido | Descripción |
-|-------|------|----------|-------------|
-| `company` | `string` | Sí | Nombre de la empresa |
-| `position` | `string` | Sí | Tu título de trabajo |
-| `img` | `string` | No | URL del logo de la empresa |
-| `web` | `string` | No | Sitio web de la empresa |
-| `description` | `string` | Sí | Descripción del rol |
-| `date` | `string` | Sí | Rango de fechas (ej. "01/23 - Presente") |
-| `links` | `array` | No | Enlaces adicionales |
-| `list.title` | `string` | No | Título de la sección |
-| `list.items` | `array` | No | Elementos de logros |
-| `skills` | `array` | No | Habilidades usadas |
+| Campo         | Tipo     | Requerido | Descripción                              |
+| ------------- | -------- | --------- | ---------------------------------------- |
+| `company`     | `string` | Sí        | Nombre de la empresa                     |
+| `position`    | `string` | Sí        | Tu título de trabajo                     |
+| `img`         | `string` | No        | URL del logo de la empresa               |
+| `web`         | `string` | No        | Sitio web de la empresa                  |
+| `description` | `string` | Sí        | Descripción del rol                      |
+| `date`        | `string` | Sí        | Rango de fechas (ej. "01/23 - Presente") |
+| `links`       | `array`  | No        | Enlaces adicionales                      |
+| `list.title`  | `string` | No        | Título de la sección                     |
+| `list.items`  | `array`  | No        | Elementos de logros                      |
+| `skills`      | `array`  | No        | Habilidades usadas                       |
 
 ### Elemento de Logro
 
 ```json
 {
-  "highlight": "Título del logro",
-  "description": "Describe un resultado medible que lograste"
+	"highlight": "Título del logro",
+	"description": "Describe un resultado medible que lograste"
 }
 ```
 
@@ -169,15 +170,15 @@ Todos los campos bajo códigos de idioma (ej. `en`, `es`, `fr`) se traducen por 
 }
 ```
 
-| Campo | Tipo | Requerido | Descripción |
-|-------|------|----------|-------------|
-| `name` | `string` | Sí | Nombre del proyecto |
-| `img` | `string` | No | URL de imagen del proyecto |
-| `web` | `string` | No | Sitio web del proyecto |
-| `links` | `array` | No | Enlaces relacionados (GitHub, demo, etc.) |
-| `description` | `string` | Sí | Descripción del proyecto |
-| `list` | `object` | No | Sección de aspectos destacados |
-| `skills` | `array` | No | Habilidades/tecnologías usadas |
+| Campo         | Tipo     | Requerido | Descripción                               |
+| ------------- | -------- | --------- | ----------------------------------------- |
+| `name`        | `string` | Sí        | Nombre del proyecto                       |
+| `img`         | `string` | No        | URL de imagen del proyecto                |
+| `web`         | `string` | No        | Sitio web del proyecto                    |
+| `links`       | `array`  | No        | Enlaces relacionados (GitHub, demo, etc.) |
+| `description` | `string` | Sí        | Descripción del proyecto                  |
+| `list`        | `object` | No        | Sección de aspectos destacados            |
+| `skills`      | `array`  | No        | Habilidades/tecnologías usadas            |
 
 ## Entrada de Educación
 
@@ -195,14 +196,14 @@ Todos los campos bajo códigos de idioma (ej. `en`, `es`, `fr`) se traducen por 
 }
 ```
 
-| Campo | Tipo | Requerido | Descripción |
-|-------|------|----------|-------------|
-| `name` | `string` | Sí | Nombre de la institución |
-| `degree` | `string` | Sí | Título o programa |
-| `img` | `string` | No | Logo de la institución |
-| `date` | `string` | Sí | Rango de fechas |
-| `links` | `array` | No | Enlaces del programa |
-| `list` | `object` | No | Sección de aspectos destacados |
+| Campo    | Tipo     | Requerido | Descripción                    |
+| -------- | -------- | --------- | ------------------------------ |
+| `name`   | `string` | Sí        | Nombre de la institución       |
+| `degree` | `string` | Sí        | Título o programa              |
+| `img`    | `string` | No        | Logo de la institución         |
+| `date`   | `string` | Sí        | Rango de fechas                |
+| `links`  | `array`  | No        | Enlaces del programa           |
+| `list`   | `object` | No        | Sección de aspectos destacados |
 
 ## Entrada de Certificación
 
@@ -218,90 +219,90 @@ Todos los campos bajo códigos de idioma (ej. `en`, `es`, `fr`) se traducen por 
 }
 ```
 
-| Campo | Tipo | Requerido | Descripción |
-|-------|------|----------|-------------|
-| `name` | `string` | Sí | Nombre de la certificación |
-| `url` | `string` | Sí | URL de la certificación |
-| `list` | `object` | No | Lo que valida |
-| `skills` | `array` | No | Habilidades relacionadas |
+| Campo    | Tipo     | Requerido | Descripción                |
+| -------- | -------- | --------- | -------------------------- |
+| `name`   | `string` | Sí        | Nombre de la certificación |
+| `url`    | `string` | Sí        | URL de la certificación    |
+| `list`   | `object` | No        | Lo que valida              |
+| `skills` | `array`  | No        | Habilidades relacionadas   |
 
 ## Ejemplo Completo
 
 ```json
 {
-  "defaultLang": "es",
-  "site": "https://devsync.work",
-  "name": "Jane Doe",
-  "img": "https://example.com/jane.jpg",
-  "socialMedia": [
-    {
-      "name": "LinkedIn",
-      "url": "https://linkedin.com/in/janedoe",
-      "icon": "/icons/linkedin.svg",
-      "mdBadge": "![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)"
-    }
-  ],
-  "githubUserName": "janedoe",
-  "address": "San Francisco, CA",
-  "email": "jane@example.com",
-  "phone": "+1 555 123 4567",
-  "es": {
-    "description": "Desarrollador full-stack enfocado en experiencia de desarrollador y rendimiento.",
-    "jobTitle": "Ingeniero de Software Senior",
-    "status": {
-      "status": "Abierto a ofertas",
-      "badge": "![Estado](https://img.shields.io/badge/Estado-Abierto%20a%20ofertas-green)"
-    },
-    "languages": [
-      {
-        "name": "Español / Inglés",
-        "mdBadge": "![Idiomas](https://img.shields.io/badge/Idiomas-Espa%C3%B1ol%2C%20Ingl%C3%A9s-1f6feb)",
-        "icon": "https://cdn.simpleicons.org/googletranslate"
-      }
-    ],
-    "experience": [
-      {
-        "company": "Tech Corp",
-        "position": "Desarrollador Senior",
-        "img": "https://techcorp.com/logo.jpg",
-        "web": "https://techcorp.com",
-        "description": "Liderando arquitectura frontend para productos principales.",
-        "date": "01/23 - Presente",
-        "links": [
-          {
-            "name": "Sitio Web de la Empresa",
-            "url": "https://techcorp.com",
-            "mdBadge": "![Empresa](https://img.shields.io/badge/Empresa-SitioWeb-0ea5e9)",
-            "icon": "https://cdn.simpleicons.org/googlechrome"
-          }
-        ],
-        "list": {
-          "title": "logros-clave",
-          "items": [
-            {
-              "highlight": "Mejora del rendimiento del 40%",
-              "description": "Reduje el tamaño del bundle y optimicé los ciclos de renderizado."
-            }
-          ]
-        },
-        "skills": [
-          {
-            "name": "React",
-            "mdBadge": "![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB)",
-            "icon": "https://cdn.simpleicons.org/react"
-          }
-        ]
-      }
-    ],
-    "projects": [],
-    "education": [],
-    "certifications": []
-  }
+	"defaultLang": "es",
+	"site": "https://devsync.work",
+	"name": "Jane Doe",
+	"img": "https://example.com/jane.jpg",
+	"socialMedia": [
+		{
+			"name": "LinkedIn",
+			"url": "https://linkedin.com/in/janedoe",
+			"icon": "/icons/linkedin.svg",
+			"mdBadge": "![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)"
+		}
+	],
+	"githubUserName": "janedoe",
+	"address": "San Francisco, CA",
+	"email": "jane@example.com",
+	"phone": "+1 555 123 4567",
+	"es": {
+		"description": "Desarrollador full-stack enfocado en experiencia de desarrollador y rendimiento.",
+		"jobTitle": "Ingeniero de Software Senior",
+		"status": {
+			"status": "Abierto a ofertas",
+			"badge": "![Estado](https://img.shields.io/badge/Estado-Abierto%20a%20ofertas-green)"
+		},
+		"languages": [
+			{
+				"name": "Español / Inglés",
+				"mdBadge": "![Idiomas](https://img.shields.io/badge/Idiomas-Espa%C3%B1ol%2C%20Ingl%C3%A9s-1f6feb)",
+				"icon": "https://cdn.simpleicons.org/googletranslate"
+			}
+		],
+		"experience": [
+			{
+				"company": "Tech Corp",
+				"position": "Desarrollador Senior",
+				"img": "https://techcorp.com/logo.jpg",
+				"web": "https://techcorp.com",
+				"description": "Liderando arquitectura frontend para productos principales.",
+				"date": "01/23 - Presente",
+				"links": [
+					{
+						"name": "Sitio Web de la Empresa",
+						"url": "https://techcorp.com",
+						"mdBadge": "![Empresa](https://img.shields.io/badge/Empresa-SitioWeb-0ea5e9)",
+						"icon": "https://cdn.simpleicons.org/googlechrome"
+					}
+				],
+				"list": {
+					"title": "logros-clave",
+					"items": [
+						{
+							"highlight": "Mejora del rendimiento del 40%",
+							"description": "Reduje el tamaño del bundle y optimicé los ciclos de renderizado."
+						}
+					]
+				},
+				"skills": [
+					{
+						"name": "React",
+						"mdBadge": "![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB)",
+						"icon": "https://cdn.simpleicons.org/react"
+					}
+				]
+			}
+		],
+		"projects": [],
+		"education": [],
+		"certifications": []
+	}
 }
 ```
 
 <Aside type="note">
-**URLs de Badges**: Devsync usa badges de shields.io. Puedes personalizar colores y texto, o eliminar los badges completamente si no los necesitas.
+	**URLs de Badges**: Devsync usa badges de shields.io. Puedes personalizar colores y texto, o eliminar los badges completamente si no los necesitas.
 </Aside>
 
 ## Validación

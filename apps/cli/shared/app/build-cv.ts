@@ -9,19 +9,16 @@ import { $ } from 'bun'
 // to get the CV route we get it from package.json (devsync.pathToCompiledCv)
 // and we replace [lang] with the current language
 export function createCVMixin<TBase extends GConstructor>(Base: TBase) {
-  return class extends getHTMLMixin(createPDFMixin(Base)) {
-    async buildCV({ name = 'CV', lang }: { name: string | undefined; lang: string }) {
-      const CVPath = (await $`bun pm pkg get devsync.pathToCompiledCV`.text())
-        .trim()
-        .replace('[lang]', lang)
-        .replace(/"/g, '')
+	return class extends getHTMLMixin(createPDFMixin(Base)) {
+		async buildCV({ name = 'CV', lang }: { name: string | undefined; lang: string }) {
+			const CVPath = (await $`bun pm pkg get devsync.pathToCompiledCV`.text()).trim().replace('[lang]', lang).replace(/"/g, '')
 
-      console.log(`${SPACE}${GREEN('-')} Building CV and generating PDF...`)
-      const html = await this.getHTML({ path: CVPath })
-      await this.createPDF({ html, path: CV_PDF(name, lang) })
+			console.log(`${SPACE}${GREEN('-')} Building CV and generating PDF...`)
+			const html = await this.getHTML({ path: CVPath })
+			await this.createPDF({ html, path: CV_PDF(name, lang) })
 
-      console.log(`${SPACE}${CHECK(`CV generated at ${BOLD(CV_PDF(name, lang))}`)}`)
-      console.log('')
-    }
-  }
+			console.log(`${SPACE}${CHECK(`CV generated at ${BOLD(CV_PDF(name, lang))}`)}`)
+			console.log('')
+		}
+	}
 }

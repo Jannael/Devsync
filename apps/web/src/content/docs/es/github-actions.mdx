@@ -12,7 +12,7 @@ import { Steps } from '@astrojs/starlight/components'
 Devsync está diseñado para funcionar perfectamente con GitHub Actions. Puedes actualizar automáticamente tu perfil de LinkedIn, README de GitHub, CV y académicos cada vez que cambies `DEVSYNC.json`.
 
 <Aside type="tip">
-El comando `build` está pensado principalmente para CI/CD, pero puedes ejecutarlo localmente si tienes Bun y Puppeteer instalados.
+	El comando `build` está pensado principalmente para CI/CD, pero puedes ejecutarlo localmente si tienes Bun y Puppeteer instalados.
 </Aside>
 
 ## Ejemplo de Flujo Completo
@@ -115,6 +115,7 @@ Se activa solo cuando `DEVSYNC.json` cambia, evitando ejecuciones innecesarias.
 ```
 
 Tanto Bun como Node.js son requeridos:
+
 - **Bun** - Ejecuta el CLI y construye el proyecto
 - **Node.js** - Requerido por Puppeteer para generación de PDF
 
@@ -135,7 +136,7 @@ Tanto Bun como Node.js son requeridos:
 Estas son librerías de Chrome/Chromium necesarias para generación de PDF en modo headless.
 
 <Aside type="caution">
-¡No saltes el paso de dependencias del sistema! Sin ellas, la generación de PDF fallará con errores como "Chrome not found" o "Cannot start Chrome".
+	¡No saltes el paso de dependencias del sistema! Sin ellas, la generación de PDF fallará con errores como "Chrome not found" o "Cannot start Chrome".
 </Aside>
 
 ### 5. Instalar Dependencias
@@ -155,6 +156,7 @@ Instala las dependencias del proyecto incluyendo Puppeteer.
 ```
 
 Este comando:
+
 1. Valida `DEVSYNC.json`
 2. Construye el CV para cada idioma
 3. Crea el perfil de LinkedIn

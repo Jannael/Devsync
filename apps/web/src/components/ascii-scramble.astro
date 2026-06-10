@@ -1,9 +1,9 @@
 ---
 interface Props {
-  lines: string[]
-  scrambleChars?: string
-  batchSize?: number
-  delay?: number
+	lines: string[]
+	scrambleChars?: string
+	batchSize?: number
+	delay?: number
 }
 
 const { lines, scrambleChars = '█▓▒░─═┬┴┤├┴┬┼╔╦╗╠╬╣╚╩╝║╬', batchSize = 5, delay = 1 } = Astro.props
@@ -12,77 +12,73 @@ const { lines, scrambleChars = '█▓▒░─═┬┴┤├┴┬┼╔╦╗
 <pre class="ascii-scramble text-accent" id="asciiArt"></pre>
 
 <script define:vars={{ lines, scrambleChars, batchSize, delay }}>
-  const container = document.getElementById('asciiArt')
+	const container = document.getElementById('asciiArt')
 
-  const maxLen = Math.max(...lines.map((line) => line.length))
-  const paddedLines = lines.map((line) => line.padEnd(maxLen, ' '))
+	const maxLen = Math.max(...lines.map((line) => line.length))
+	const paddedLines = lines.map((line) => line.padEnd(maxLen, ' '))
 
-  let displayLines = paddedLines.map((line) =>
-    line.split('').map(() => scrambleChars[Math.floor(Math.random() * scrambleChars.length)])
-  )
+	const displayLines = paddedLines.map((line) => line.split('').map(() => scrambleChars[Math.floor(Math.random() * scrambleChars.length)]))
 
-  const totalChars = paddedLines.reduce((sum, line) => sum + line.length, 0)
-  let revealedCount = 0
-  const revealTotal = totalChars
+	const totalChars = paddedLines.reduce((sum, line) => sum + line.length, 0)
+	let revealedCount = 0
+	const revealTotal = totalChars
 
-  function getRandomPosition() {
-    const lineIdx = Math.floor(Math.random() * paddedLines.length)
-    const line = paddedLines[lineIdx]
-    const colIdx = Math.floor(Math.random() * line.length)
-    return { lineIdx, colIdx, char: line[colIdx] }
-  }
+	function getRandomPosition() {
+		const lineIdx = Math.floor(Math.random() * paddedLines.length)
+		const line = paddedLines[lineIdx]
+		const colIdx = Math.floor(Math.random() * line.length)
+		return { lineIdx, colIdx, char: line[colIdx] }
+	}
 
-  function updateDisplay() {
-    container.textContent = displayLines.map((line) => line.join('')).join('\n')
-  }
+	function updateDisplay() {
+		container.textContent = displayLines.map((line) => line.join('')).join('\n')
+	}
 
-  let currentBatchCount = 0
+	let currentBatchCount = 0
 
-  function animate() {
-    if (revealedCount < revealTotal) {
-      while (currentBatchCount < batchSize && revealedCount < revealTotal) {
-        const { lineIdx, colIdx, char } = getRandomPosition()
-        if (displayLines[lineIdx][colIdx] !== char) {
-          displayLines[lineIdx][colIdx] = char
-          revealedCount++
-        }
-        currentBatchCount++
-      }
-      currentBatchCount = 0
-      updateDisplay()
-      setTimeout(animate, 0)
-    }
-  }
+	function animate() {
+		if (revealedCount < revealTotal) {
+			while (currentBatchCount < batchSize && revealedCount < revealTotal) {
+				const { lineIdx, colIdx, char } = getRandomPosition()
+				if (displayLines[lineIdx][colIdx] !== char) {
+					displayLines[lineIdx][colIdx] = char
+					revealedCount++
+				}
+				currentBatchCount++
+			}
+			currentBatchCount = 0
+			updateDisplay()
+			setTimeout(animate, 0)
+		}
+	}
 
-  updateDisplay()
-  setTimeout(animate, delay)
+	updateDisplay()
+	setTimeout(animate, delay)
 </script>
 
 <style>
-  .ascii-scramble {
-    display: inline-block;
-    font-family:
-      'SF Mono', 'Fira Code', 'Cascadia Code', 'JetBrains Mono', 'Roboto Mono', 'Consolas',
-      'Courier New', monospace;
-    font-size: inherit;
-    line-height: 1;
-    letter-spacing: 0;
-    word-spacing: 0;
-    font-variant-ligatures: none;
-    font-variant-numeric: tabular-nums;
-    font-kerning: none;
-    font-feature-settings:
-      'kern' 0,
-      'liga' 0,
-      'dlig' 0,
-      'hlig' 0,
-      'clig' 0;
-    white-space: pre;
-    text-rendering: geometricPrecision;
-    text-indent: 0;
-    transform: translateZ(0);
-    text-shadow:
-      0 0 10px var(--color-shadow-accent),
-      0 0 20px var(--color-shadow-accent);
-  }
+	.ascii-scramble {
+		display: inline-block;
+		font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'JetBrains Mono', 'Roboto Mono', 'Consolas', 'Courier New', monospace;
+		font-size: inherit;
+		line-height: 1;
+		letter-spacing: 0;
+		word-spacing: 0;
+		font-variant-ligatures: none;
+		font-variant-numeric: tabular-nums;
+		font-kerning: none;
+		font-feature-settings:
+			'kern' 0,
+			'liga' 0,
+			'dlig' 0,
+			'hlig' 0,
+			'clig' 0;
+		white-space: pre;
+		text-rendering: geometricPrecision;
+		text-indent: 0;
+		transform: translateZ(0);
+		text-shadow:
+			0 0 10px var(--color-shadow-accent),
+			0 0 20px var(--color-shadow-accent);
+	}
 </style>

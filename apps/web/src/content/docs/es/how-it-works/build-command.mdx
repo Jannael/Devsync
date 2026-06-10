@@ -1,8 +1,9 @@
 ---
-title: "Cómo Funciona el Comando Build"
-description: "Aprende sobre el comando build y cómo funciona."
+title: 'Cómo Funciona el Comando Build'
+description: 'Aprende sobre el comando build y cómo funciona.'
 tableOfContents: false
 ---
+
 import { Steps, Aside } from '@astrojs/starlight/components'
 
 ## Comando Build
@@ -10,7 +11,7 @@ import { Steps, Aside } from '@astrojs/starlight/components'
 El comando `build` genera todos los artefactos de tu portafolio desde `DEVSYNC.json`.
 
 <Aside type="note">
-Este comando está pensado principalmente para GitHub Actions, pero puedes ejecutarlo localmente si tienes Bun y Puppeteer instalados.
+	Este comando está pensado principalmente para GitHub Actions, pero puedes ejecutarlo localmente si tienes Bun y Puppeteer instalados.
 </Aside>
 
 <Steps>
@@ -40,6 +41,4 @@ Después de ejecutar `build`, tendrás:
 - **GitHub Profile README** - Tu `README.md` para perfil de GitHub
 - **Academics profile** - Credenciales académicas en markdown
 
-<Aside type="tip">
-Revisa tu `package.json` para el campo `devsync.pathToCompiledCV` para ver dónde se genera tu CV HTML.
-</Aside>
+<Aside type="tip">Revisa tu `package.json` para el campo `devsync.pathToCompiledCV` para ver dónde se genera tu CV HTML.</Aside>

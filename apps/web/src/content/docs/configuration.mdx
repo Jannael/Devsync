@@ -11,45 +11,46 @@ import { Aside } from '@astrojs/starlight/components'
 `DEVSYNC.json` is the single source of truth for your portfolio, CV, GitHub profile, LinkedIn, and academics. All your information is defined here and synchronized across platforms.
 
 <Aside type="tip">
-You can omit fields you don't need. The template will simply not display them. However, the ability to generate outputs depends on the template you're using.
+	You can omit fields you don't need. The template will simply not display them. However, the ability to generate outputs depends on the template
+	you're using.
 </Aside>
 
 ## Global Fields
 
 These fields apply to all languages and outputs:
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `defaultLang` | `string` | Yes | Default language code (e.g., `"en"`, `"es"`, `"fr"`) |
-| `site` | `string` | Yes | Your portfolio website URL |
-| `name` | `string` | Yes | Your full name |
-| `img` | `string` | Yes | Profile image URL |
-| `socialMedia` | `array` | No | Array of social media profiles |
-| `githubUserName` | `string` | Yes | Your GitHub username |
-| `address` | `string` | Yes | Your location (city, country) |
-| `email` | `string` | Yes | Your email address |
-| `phone` | `string` | Yes | Your phone number |
+| Field            | Type     | Required | Description                                          |
+| ---------------- | -------- | -------- | ---------------------------------------------------- |
+| `defaultLang`    | `string` | Yes      | Default language code (e.g., `"en"`, `"es"`, `"fr"`) |
+| `site`           | `string` | Yes      | Your portfolio website URL                           |
+| `name`           | `string` | Yes      | Your full name                                       |
+| `img`            | `string` | Yes      | Profile image URL                                    |
+| `socialMedia`    | `array`  | No       | Array of social media profiles                       |
+| `githubUserName` | `string` | Yes      | Your GitHub username                                 |
+| `address`        | `string` | Yes      | Your location (city, country)                        |
+| `email`          | `string` | Yes      | Your email address                                   |
+| `phone`          | `string` | Yes      | Your phone number                                    |
 
 ### Example: Global Fields
 
 ```json
 {
-  "defaultLang": "en",
-  "site": "https://devsync.work",
-  "name": "Your Full Name",
-  "img": "https://your-image-url.com/your-image.jpg",
-  "socialMedia": [
-    {
-      "name": "LinkedIn",
-      "url": "https://www.linkedin.com/in/your-linkedin-handle",
-      "icon": "/icons/linkedin.svg",
-      "mdBadge": "![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)"
-    }
-  ],
-  "githubUserName": "your-github-username",
-  "address": "Your City, Country",
-  "email": "your-email@example.com",
-  "phone": "+1 123 456 7890"
+	"defaultLang": "en",
+	"site": "https://devsync.work",
+	"name": "Your Full Name",
+	"img": "https://your-image-url.com/your-image.jpg",
+	"socialMedia": [
+		{
+			"name": "LinkedIn",
+			"url": "https://www.linkedin.com/in/your-linkedin-handle",
+			"icon": "/icons/linkedin.svg",
+			"mdBadge": "![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)"
+		}
+	],
+	"githubUserName": "your-github-username",
+	"address": "Your City, Country",
+	"email": "your-email@example.com",
+	"phone": "+1 123 456 7890"
 }
 ```
 
@@ -76,38 +77,38 @@ All fields under language codes (e.g., `en`, `es`, `fr`) are translated per lang
 
 ### Fields Reference
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `description` | `string` | Yes | Professional summary/bio |
-| `jobTitle` | `string` | Yes | Current job title |
-| `status` | `object` | No | Current availability status with badge |
-| `languages` | `array` | No | Spoken languages |
-| `experience` | `array` | No | Work experience entries |
-| `projects` | `array` | No | Project entries |
-| `education` | `array` | No | Education entries |
-| `certifications` | `array` | No | Certification entries |
+| Field            | Type     | Required | Description                            |
+| ---------------- | -------- | -------- | -------------------------------------- |
+| `description`    | `string` | Yes      | Professional summary/bio               |
+| `jobTitle`       | `string` | Yes      | Current job title                      |
+| `status`         | `object` | No       | Current availability status with badge |
+| `languages`      | `array`  | No       | Spoken languages                       |
+| `experience`     | `array`  | No       | Work experience entries                |
+| `projects`       | `array`  | No       | Project entries                        |
+| `education`      | `array`  | No       | Education entries                      |
+| `certifications` | `array`  | No       | Certification entries                  |
 
 ## Status Object
 
 ```json
 {
-  "status": "Open to work",
-  "badge": "![Status](https://img.shields.io/badge/Status-Open%20to%20Work-green)"
+	"status": "Open to work",
+	"badge": "![Status](https://img.shields.io/badge/Status-Open%20to%20Work-green)"
 }
 ```
 
-| Field | Type | Description |
-|-------|------|-------------|
+| Field    | Type     | Description                                    |
+| -------- | -------- | ---------------------------------------------- |
 | `status` | `string` | Status text (e.g., "Open to work", "Employed") |
-| `badge` | `string` | Markdown badge for the status |
+| `badge`  | `string` | Markdown badge for the status                  |
 
 ## Language Entry (Spoken)
 
 ```json
 {
-  "name": "English / Spanish",
-  "mdBadge": "![Languages](https://img.shields.io/badge/Languages-English%2C%20Spanish-1f6feb)",
-  "icon": "https://cdn.simpleicons.org/googletranslate"
+	"name": "English / Spanish",
+	"mdBadge": "![Languages](https://img.shields.io/badge/Languages-English%2C%20Spanish-1f6feb)",
+	"icon": "https://cdn.simpleicons.org/googletranslate"
 }
 ```
 
@@ -130,25 +131,25 @@ All fields under language codes (e.g., `en`, `es`, `fr`) are translated per lang
 }
 ```
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `company` | `string` | Yes | Company name |
-| `position` | `string` | Yes | Your job title |
-| `img` | `string` | No | Company logo URL |
-| `web` | `string` | No | Company website |
-| `description` | `string` | Yes | Role description |
-| `date` | `string` | Yes | Date range (e.g., "01/23 - Present") |
-| `links` | `array` | No | Additional links |
-| `list.title` | `string` | No | Section title |
-| `list.items` | `array` | No | Achievement items |
-| `skills` | `array` | No | Skills used |
+| Field         | Type     | Required | Description                          |
+| ------------- | -------- | -------- | ------------------------------------ |
+| `company`     | `string` | Yes      | Company name                         |
+| `position`    | `string` | Yes      | Your job title                       |
+| `img`         | `string` | No       | Company logo URL                     |
+| `web`         | `string` | No       | Company website                      |
+| `description` | `string` | Yes      | Role description                     |
+| `date`        | `string` | Yes      | Date range (e.g., "01/23 - Present") |
+| `links`       | `array`  | No       | Additional links                     |
+| `list.title`  | `string` | No       | Section title                        |
+| `list.items`  | `array`  | No       | Achievement items                    |
+| `skills`      | `array`  | No       | Skills used                          |
 
 ### Achievement Item
 
 ```json
 {
-  "highlight": "Achievement headline",
-  "description": "Describe one measurable result you delivered"
+	"highlight": "Achievement headline",
+	"description": "Describe one measurable result you delivered"
 }
 ```
 
@@ -169,15 +170,15 @@ All fields under language codes (e.g., `en`, `es`, `fr`) are translated per lang
 }
 ```
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `name` | `string` | Yes | Project name |
-| `img` | `string` | No | Project image URL |
-| `web` | `string` | No | Project website |
-| `links` | `array` | No | Related links (GitHub, demo, etc.) |
-| `description` | `string` | Yes | Project description |
-| `list` | `object` | No | Highlights section |
-| `skills` | `array` | No | Skills/technologies used |
+| Field         | Type     | Required | Description                        |
+| ------------- | -------- | -------- | ---------------------------------- |
+| `name`        | `string` | Yes      | Project name                       |
+| `img`         | `string` | No       | Project image URL                  |
+| `web`         | `string` | No       | Project website                    |
+| `links`       | `array`  | No       | Related links (GitHub, demo, etc.) |
+| `description` | `string` | Yes      | Project description                |
+| `list`        | `object` | No       | Highlights section                 |
+| `skills`      | `array`  | No       | Skills/technologies used           |
 
 ## Education Entry
 
@@ -195,14 +196,14 @@ All fields under language codes (e.g., `en`, `es`, `fr`) are translated per lang
 }
 ```
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `name` | `string` | Yes | Institution name |
-| `degree` | `string` | Yes | Degree or program |
-| `img` | `string` | No | Institution logo |
-| `date` | `string` | Yes | Date range |
-| `links` | `array` | No | Program links |
-| `list` | `object` | No | Highlights section |
+| Field    | Type     | Required | Description        |
+| -------- | -------- | -------- | ------------------ |
+| `name`   | `string` | Yes      | Institution name   |
+| `degree` | `string` | Yes      | Degree or program  |
+| `img`    | `string` | No       | Institution logo   |
+| `date`   | `string` | Yes      | Date range         |
+| `links`  | `array`  | No       | Program links      |
+| `list`   | `object` | No       | Highlights section |
 
 ## Certification Entry
 
@@ -218,85 +219,85 @@ All fields under language codes (e.g., `en`, `es`, `fr`) are translated per lang
 }
 ```
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `name` | `string` | Yes | Certification name |
-| `url` | `string` | Yes | Certification URL |
-| `list` | `object` | No | What it validates |
-| `skills` | `array` | No | Related skills |
+| Field    | Type     | Required | Description        |
+| -------- | -------- | -------- | ------------------ |
+| `name`   | `string` | Yes      | Certification name |
+| `url`    | `string` | Yes      | Certification URL  |
+| `list`   | `object` | No       | What it validates  |
+| `skills` | `array`  | No       | Related skills     |
 
 ## Complete Example
 
 ```json
 {
-  "defaultLang": "en",
-  "site": "https://devsync.work",
-  "name": "Jane Doe",
-  "img": "https://example.com/jane.jpg",
-  "socialMedia": [
-    {
-      "name": "LinkedIn",
-      "url": "https://linkedin.com/in/janedoe",
-      "icon": "/icons/linkedin.svg",
-      "mdBadge": "![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)"
-    }
-  ],
-  "githubUserName": "janedoe",
-  "address": "San Francisco, CA",
-  "email": "jane@example.com",
-  "phone": "+1 555 123 4567",
-  "en": {
-    "description": "Full-stack developer focused on developer experience and performance.",
-    "jobTitle": "Senior Software Engineer",
-    "status": {
-      "status": "Open to work",
-      "badge": "![Status](https://img.shields.io/badge/Status-Open%20to%20Work-green)"
-    },
-    "languages": [
-      {
-        "name": "English / Spanish",
-        "mdBadge": "![Languages](https://img.shields.io/badge/Languages-English%2C%20Spanish-1f6feb)",
-        "icon": "https://cdn.simpleicons.org/googletranslate"
-      }
-    ],
-    "experience": [
-      {
-        "company": "Tech Corp",
-        "position": "Senior Developer",
-        "img": "https://techcorp.com/logo.jpg",
-        "web": "https://techcorp.com",
-        "description": "Leading frontend architecture for core products.",
-        "date": "01/23 - Present",
-        "links": [
-          {
-            "name": "Company Website",
-            "url": "https://techcorp.com",
-            "mdBadge": "![Company](https://img.shields.io/badge/Company-Website-0ea5e9)",
-            "icon": "https://cdn.simpleicons.org/googlechrome"
-          }
-        ],
-        "list": {
-          "title": "key-achievements",
-          "items": [
-            {
-              "highlight": "Improved performance by 40%",
-              "description": "Reduced bundle size and optimized render cycles."
-            }
-          ]
-        },
-        "skills": [
-          {
-            "name": "React",
-            "mdBadge": "![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB)",
-            "icon": "https://cdn.simpleicons.org/react"
-          }
-        ]
-      }
-    ],
-    "projects": [],
-    "education": [],
-    "certifications": []
-  }
+	"defaultLang": "en",
+	"site": "https://devsync.work",
+	"name": "Jane Doe",
+	"img": "https://example.com/jane.jpg",
+	"socialMedia": [
+		{
+			"name": "LinkedIn",
+			"url": "https://linkedin.com/in/janedoe",
+			"icon": "/icons/linkedin.svg",
+			"mdBadge": "![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?logo=linkedin&logoColor=white)"
+		}
+	],
+	"githubUserName": "janedoe",
+	"address": "San Francisco, CA",
+	"email": "jane@example.com",
+	"phone": "+1 555 123 4567",
+	"en": {
+		"description": "Full-stack developer focused on developer experience and performance.",
+		"jobTitle": "Senior Software Engineer",
+		"status": {
+			"status": "Open to work",
+			"badge": "![Status](https://img.shields.io/badge/Status-Open%20to%20Work-green)"
+		},
+		"languages": [
+			{
+				"name": "English / Spanish",
+				"mdBadge": "![Languages](https://img.shields.io/badge/Languages-English%2C%20Spanish-1f6feb)",
+				"icon": "https://cdn.simpleicons.org/googletranslate"
+			}
+		],
+		"experience": [
+			{
+				"company": "Tech Corp",
+				"position": "Senior Developer",
+				"img": "https://techcorp.com/logo.jpg",
+				"web": "https://techcorp.com",
+				"description": "Leading frontend architecture for core products.",
+				"date": "01/23 - Present",
+				"links": [
+					{
+						"name": "Company Website",
+						"url": "https://techcorp.com",
+						"mdBadge": "![Company](https://img.shields.io/badge/Company-Website-0ea5e9)",
+						"icon": "https://cdn.simpleicons.org/googlechrome"
+					}
+				],
+				"list": {
+					"title": "key-achievements",
+					"items": [
+						{
+							"highlight": "Improved performance by 40%",
+							"description": "Reduced bundle size and optimized render cycles."
+						}
+					]
+				},
+				"skills": [
+					{
+						"name": "React",
+						"mdBadge": "![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB)",
+						"icon": "https://cdn.simpleicons.org/react"
+					}
+				]
+			}
+		],
+		"projects": [],
+		"education": [],
+		"certifications": []
+	}
 }
 ```
 

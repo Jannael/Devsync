@@ -9,148 +9,139 @@ const paragraphs = t['why description'].split('\n\n')
 ---
 
 <section
-  id="why-section"
-  class="why relative flex flex-col items-center justify-center overflow-hidden px-4 py-16 sm:px-6 sm:py-24"
-  aria-labelledby="why-title"
+	id="why-section"
+	class="why relative flex flex-col items-center justify-center overflow-hidden px-4 py-16 sm:px-6 sm:py-24"
+	aria-labelledby="why-title"
 >
-  <div class="relative z-10 flex w-full max-w-5xl flex-col items-center">
-    <!-- Section header -->
-    <div class="mb-12 flex flex-col items-center text-center sm:mb-16">
-      <h2
-        id="why-title"
-        class="why-title text-text mb-4 text-2xl font-semibold tracking-tight sm:text-3xl md:text-4xl"
-      >
-        {t['Why?']}
-      </h2>
-    </div>
+	<div class="relative z-10 flex w-full max-w-5xl flex-col items-center">
+		<!-- Section header -->
+		<div class="mb-12 flex flex-col items-center text-center sm:mb-16">
+			<h2 id="why-title" class="why-title text-text mb-4 text-2xl font-semibold tracking-tight sm:text-3xl md:text-4xl">
+				{t['Why?']}
+			</h2>
+		</div>
 
-    <!-- Content with floating ASCII -->
-    <div
-      class="why-content text-text-secondary mx-auto max-w-4xl text-base leading-relaxed sm:text-lg"
-    >
-      <!-- Floating ASCII illustration -->
-      <figure
-        class="why-ascii text-accent float-left mt-2 mr-6 mb-4 hidden shrink-0 font-extrabold sm:block"
-        aria-label="Idea ASCII art"
-      >
-        <pre
-          class="font-mono text-[0.4rem] leading-[1.1] whitespace-pre sm:text-[0.55rem]">
+		<!-- Content with floating ASCII -->
+		<div class="why-content text-text-secondary mx-auto max-w-4xl text-base leading-relaxed sm:text-lg">
+			<!-- Floating ASCII illustration -->
+			<figure class="why-ascii text-accent float-left mt-2 mr-6 mb-4 hidden shrink-0 font-extrabold sm:block" aria-label="Idea ASCII art">
+				<pre class="font-mono text-[0.4rem] leading-[1.1] whitespace-pre sm:text-[0.55rem]">
           {ideaASCII.join('\n')}
         </pre>
-      </figure>
+			</figure>
 
-      <p class="why-description">{paragraphs[0]}</p>
-      <p class="why-description-2 mt-4">{paragraphs[1]}</p>
-      <p class="why-description-3 mt-4">{paragraphs[2]}</p>
-      <p class="why-security mt-4">{t['why security']}</p>
-    </div>
-  </div>
+			<p class="why-description">{paragraphs[0]}</p>
+			<p class="why-description-2 mt-4">{paragraphs[1]}</p>
+			<p class="why-description-3 mt-4">{paragraphs[2]}</p>
+			<p class="why-security mt-4">{t['why security']}</p>
+		</div>
+	</div>
 </section>
 
 <script>
-  function setupObserver() {
-    const section = document.getElementById('why-section')
-    if (!section) return
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            section.classList.add('animate')
-            observer.disconnect()
-          }
-        })
-      },
-      { threshold: 0.1 }
-    )
-    observer.observe(section)
-  }
+	function setupObserver() {
+		const section = document.getElementById('why-section')
+		if (!section) return
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						section.classList.add('animate')
+						observer.disconnect()
+					}
+				})
+			},
+			{ threshold: 0.1 },
+		)
+		observer.observe(section)
+	}
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupObserver)
-  } else {
-    setupObserver()
-  }
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', setupObserver)
+	} else {
+		setupObserver()
+	}
 </script>
 
 <style>
-  /* ── Entrance animations ── */
-  .why-title {
-    opacity: 0;
-    transform: translateY(20px);
-  }
+	/* ── Entrance animations ── */
+	.why-title {
+		opacity: 0;
+		transform: translateY(20px);
+	}
 
-  .why.animate .why-title {
-    animation: why-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
+	.why.animate .why-title {
+		animation: why-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+	}
 
-  .why-ascii {
-    opacity: 0;
-  }
+	.why-ascii {
+		opacity: 0;
+	}
 
-  .why.animate .why-ascii {
-    animation: why-fade-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
-  }
+	.why.animate .why-ascii {
+		animation: why-fade-in 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+	}
 
-  .why-description {
-    opacity: 0;
-    transform: translateY(20px);
-  }
+	.why-description {
+		opacity: 0;
+		transform: translateY(20px);
+	}
 
-  .why.animate .why-description {
-    animation: why-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
-  }
+	.why.animate .why-description {
+		animation: why-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+	}
 
-  .why-description-2 {
-    opacity: 0;
-    transform: translateY(20px);
-  }
+	.why-description-2 {
+		opacity: 0;
+		transform: translateY(20px);
+	}
 
-  .why.animate .why-description-2 {
-    animation: why-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
-  }
+	.why.animate .why-description-2 {
+		animation: why-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+	}
 
-  .why-description-3 {
-    opacity: 0;
-    transform: translateY(20px);
-  }
+	.why-description-3 {
+		opacity: 0;
+		transform: translateY(20px);
+	}
 
-  .why.animate .why-description-3 {
-    animation: why-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards;
-  }
+	.why.animate .why-description-3 {
+		animation: why-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards;
+	}
 
-  .why-security {
-    opacity: 0;
-    transform: translateY(20px);
-  }
+	.why-security {
+		opacity: 0;
+		transform: translateY(20px);
+	}
 
-  .why.animate .why-security {
-    animation: why-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.9s forwards;
-  }
+	.why.animate .why-security {
+		animation: why-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.9s forwards;
+	}
 
-  @keyframes why-fade-up {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+	@keyframes why-fade-up {
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
 
-  @keyframes why-fade-in {
-    to {
-      opacity: 1;
-    }
-  }
+	@keyframes why-fade-in {
+		to {
+			opacity: 1;
+		}
+	}
 
-  /* ── Dark mode glow ── */
-  :global(.dark) .why-ascii {
-    text-shadow: 0 0 10px var(--color-shadow-accent);
-  }
+	/* ── Dark mode glow ── */
+	:global(.dark) .why-ascii {
+		text-shadow: 0 0 10px var(--color-shadow-accent);
+	}
 
-  /* ── Clear float on small screens ── */
-  @media (max-width: 640px) {
-    .why-ascii {
-      float: none;
-      margin: 1.5rem auto;
-      text-align: center;
-    }
-  }
+	/* ── Clear float on small screens ── */
+	@media (max-width: 640px) {
+		.why-ascii {
+			float: none;
+			margin: 1.5rem auto;
+			text-align: center;
+		}
+	}
 </style>

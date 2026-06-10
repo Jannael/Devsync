@@ -1,37 +1,37 @@
 ---
 interface Props {
-  text?: string
-  speed?: number
+	text?: string
+	speed?: number
 }
 
 const { text = 'devsync · one file · infinite outputs · ', speed = 0.5 } = Astro.props
 ---
 
 <div class="section-divider relative my-16 w-full overflow-hidden py-3" aria-hidden="true">
-  <div class="divider-fade-left pointer-events-none absolute inset-y-0 left-0 z-10 w-16"></div>
-  <div class="divider-fade-right pointer-events-none absolute inset-y-0 right-0 z-10 w-16"></div>
-  <pre
-    class="divider-pre text-accent/40 hover:text-accent/70 m-0 font-mono text-[11px] leading-none whitespace-nowrap transition-colors duration-500 sm:text-xs"
-    data-text={text}
-    data-speed={speed}>
-  </pre>
+	<div class="divider-fade-left pointer-events-none absolute inset-y-0 left-0 z-10 w-16"></div>
+	<div class="divider-fade-right pointer-events-none absolute inset-y-0 right-0 z-10 w-16"></div>
+	<pre
+		class="divider-pre text-accent/40 hover:text-accent/70 m-0 font-mono text-[11px] leading-none whitespace-nowrap transition-colors duration-500 sm:text-xs"
+		data-text={text}
+		data-speed={speed}>
+	</pre>
 </div>
 
 <style>
-  .section-divider {
-    border-top: 1px solid color-mix(in srgb, var(--color-accent, #00ff88) 10%, transparent);
-    border-bottom: 1px solid color-mix(in srgb, var(--color-accent, #00ff88) 10%, transparent);
-  }
+	.section-divider {
+		border-top: 1px solid color-mix(in srgb, var(--color-accent, #00ff88) 10%, transparent);
+		border-bottom: 1px solid color-mix(in srgb, var(--color-accent, #00ff88) 10%, transparent);
+	}
 
-  .divider-fade-left {
-    background: linear-gradient(to right, var(--color-bg, #0a0a0a), transparent);
-  }
+	.divider-fade-left {
+		background: linear-gradient(to right, var(--color-bg, #0a0a0a), transparent);
+	}
 
-  .divider-fade-right {
-    background: linear-gradient(to left, var(--color-bg, #0a0a0a), transparent);
-  }
+	.divider-fade-right {
+		background: linear-gradient(to left, var(--color-bg, #0a0a0a), transparent);
+	}
 
-  /* @media (prefers-reduced-motion: reduce) {
+	/* @media (prefers-reduced-motion: reduce) {
     .divider-pre {
       overflow: hidden;
       text-overflow: ellipsis;
@@ -40,55 +40,52 @@ const { text = 'devsync · one file · infinite outputs · ', speed = 0.5 } = As
 </style>
 
 <script>
-  const dividers = document.querySelectorAll<HTMLPreElement>('.divider-pre')
+	const dividers = document.querySelectorAll<HTMLPreElement>('.divider-pre')
 
-  dividers.forEach((pre) => {
-    const baseText = (pre.dataset.text ?? 'devsync · ').repeat(6)
-    const speed = parseFloat(pre.dataset.speed ?? '0.5')
+	dividers.forEach((pre) => {
+		const baseText = (pre.dataset.text ?? 'devsync · ').repeat(6)
+		const speed = parseFloat(pre.dataset.speed ?? '0.5')
 
-    pre.textContent = baseText + baseText
+		pre.textContent = baseText + baseText
 
-    let offset = 0
-    const singleLen = baseText.length
+		let offset = 0
+		let charWidth = 0
+		let animId: number
 
-    let charWidth = 0
-    let animId: number
+		function measure() {
+			const span = document.createElement('span')
+			span.style.cssText = 'position:absolute;visibility:hidden;white-space:nowrap;font:inherit;font-size:inherit;'
+			span.textContent = baseText
+			pre.appendChild(span)
+			charWidth = span.offsetWidth
+			pre.removeChild(span)
+		}
 
-    function measure() {
-      const span = document.createElement('span')
-      span.style.cssText =
-        'position:absolute;visibility:hidden;white-space:nowrap;font:inherit;font-size:inherit;'
-      span.textContent = baseText
-      pre.appendChild(span)
-      charWidth = span.offsetWidth
-      pre.removeChild(span)
-    }
+		function tick() {
+			if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
 
-    function tick() {
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+			offset += speed
+			if (charWidth > 0 && offset >= charWidth) {
+				offset -= charWidth
+			}
+			pre.style.transform = `translateX(-${offset}px)`
+			animId = requestAnimationFrame(tick)
+		}
 
-      offset += speed
-      if (charWidth > 0 && offset >= charWidth) {
-        offset -= charWidth
-      }
-      pre.style.transform = `translateX(-${offset}px)`
-      animId = requestAnimationFrame(tick)
-    }
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						if (!charWidth) measure()
+						tick()
+					} else {
+						cancelAnimationFrame(animId)
+					}
+				})
+			},
+			{ threshold: 0 },
+		)
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            if (!charWidth) measure()
-            tick()
-          } else {
-            cancelAnimationFrame(animId)
-          }
-        })
-      },
-      { threshold: 0 }
-    )
-
-    observer.observe(pre)
-  })
+		observer.observe(pre)
+	})
 </script>

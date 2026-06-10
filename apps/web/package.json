@@ -1,25 +1,25 @@
 {
-  "name": "@devsync/web",
-  "type": "module",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro",
-    "deploy": "astro build && wrangler pages deploy"
-  },
-  "dependencies": {
-    "@astrojs/starlight": "0.39.2",
-    "@fontsource-variable/bitter": "5.2.10",
-    "@tailwindcss/vite": "4.3.0",
-    "astro": "6.3.7",
-    "sharp": "0.34.5",
-    "tailwindcss": "4.3.0",
-    "wrangler": "4.95.0"
-  },
-  "devDependencies": {
-    "@astrojs/compiler-rs": "0.2.1"
-  }
+	"name": "@devsync/web",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "astro dev",
+		"start": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"astro": "astro",
+		"deploy": "astro build && wrangler pages deploy"
+	},
+	"dependencies": {
+		"@astrojs/starlight": "0.39.2",
+		"@fontsource-variable/bitter": "5.2.10",
+		"@tailwindcss/vite": "4.3.0",
+		"astro": "6.3.7",
+		"sharp": "0.34.5",
+		"tailwindcss": "4.3.0",
+		"wrangler": "4.95.0"
+	},
+	"devDependencies": {
+		"@astrojs/compiler-rs": "0.2.1"
+	}
 }

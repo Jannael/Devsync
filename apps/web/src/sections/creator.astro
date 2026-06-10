@@ -10,124 +10,119 @@ const paragraphs = t['creator description'].split('\n\n')
 ---
 
 <section
-  id="creator-section"
-  class="creator relative flex flex-col items-center justify-center overflow-hidden px-4 pt-8 pb-16 sm:px-6 sm:pt-12 sm:pb-24"
-  aria-labelledby="creator-title"
+	id="creator-section"
+	class="creator relative flex flex-col items-center justify-center overflow-hidden px-4 pt-8 pb-16 sm:px-6 sm:pt-12 sm:pb-24"
+	aria-labelledby="creator-title"
 >
-  <div class="relative z-10 flex w-full max-w-4xl flex-col items-center">
-    <!-- Terminal-style card -->
-    <div
-      class="creator-card border-border bg-surface w-full overflow-hidden rounded-xl border shadow-sm"
-    >
-      <!-- Terminal header -->
-      <div
-        class="border-border bg-surface-sunken flex items-center gap-2 border-b px-4 py-2.5 sm:px-5"
-      >
-        <div class="flex gap-1.5">
-          <span class="bg-error/60 h-3 w-3 rounded-full"></span>
-          <span class="bg-warning/60 h-3 w-3 rounded-full"></span>
-          <span class="bg-success/60 h-3 w-3 rounded-full"></span>
-        </div>
-        <span class="text-text-muted ml-2 font-mono text-xs sm:text-sm">~/devsync/creator</span>
-      </div>
+	<div class="relative z-10 flex w-full max-w-4xl flex-col items-center">
+		<!-- Terminal-style card -->
+		<div class="creator-card border-border bg-surface w-full overflow-hidden rounded-xl border shadow-sm">
+			<!-- Terminal header -->
+			<div class="border-border bg-surface-sunken flex items-center gap-2 border-b px-4 py-2.5 sm:px-5">
+				<div class="flex gap-1.5">
+					<span class="bg-error/60 h-3 w-3 rounded-full"></span>
+					<span class="bg-warning/60 h-3 w-3 rounded-full"></span>
+					<span class="bg-success/60 h-3 w-3 rounded-full"></span>
+				</div>
+				<span class="text-text-muted ml-2 font-mono text-xs sm:text-sm">~/devsync/creator</span>
+			</div>
 
-      <!-- Terminal body -->
-      <div class="flex flex-col gap-6 p-5 sm:flex-row sm:items-center sm:gap-8 sm:p-8">
-        <!-- Left: GitHub Link + Frog ASCII -->
-        <div class="flex flex-col items-center gap-4 sm:w-56 sm:shrink-0">
-          <a
-            href="https://github.com/jannael"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-accent hover:text-accent-hover mb-3 inline-flex items-center gap-1.5 font-mono text-sm transition-colors"
-          >
-            <GitHub class="h-4 w-4" />
-            <span>Jannael</span>
-          </a>
-          <div class="text-accent flex w-full justify-center">
-            <pre
-              class="font-mono text-[0.3rem] leading-[1.05] whitespace-pre">
+			<!-- Terminal body -->
+			<div class="flex flex-col gap-6 p-5 sm:flex-row sm:items-center sm:gap-8 sm:p-8">
+				<!-- Left: GitHub Link + Frog ASCII -->
+				<div class="flex flex-col items-center gap-4 sm:w-56 sm:shrink-0">
+					<a
+						href="https://github.com/jannael"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="text-accent hover:text-accent-hover mb-3 inline-flex items-center gap-1.5 font-mono text-sm transition-colors"
+					>
+						<GitHub class="h-4 w-4" />
+						<span>Jannael</span>
+					</a>
+					<div class="text-accent flex w-full justify-center">
+						<pre class="font-mono text-[0.3rem] leading-[1.05] whitespace-pre">
               {frogASCII.join('\n')}
             </pre>
-          </div>
-        </div>
-        <div class="flex flex-col gap-4">
-          <h2 id="creator-title" class="creator-title text-text text-lg font-semibold sm:text-xl">
-            {t['The Creator']}
-          </h2>
-          <div class="creator-content text-text-secondary text-base leading-relaxed sm:text-lg">
-            <p class="creator-description">{paragraphs[0]}</p>
-            <p class="creator-description-2 mt-4">{paragraphs[1]}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+					</div>
+				</div>
+				<div class="flex flex-col gap-4">
+					<h2 id="creator-title" class="creator-title text-text text-lg font-semibold sm:text-xl">
+						{t['The Creator']}
+					</h2>
+					<div class="creator-content text-text-secondary text-base leading-relaxed sm:text-lg">
+						<p class="creator-description">{paragraphs[0]}</p>
+						<p class="creator-description-2 mt-4">{paragraphs[1]}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </section>
 
 <script>
-  function setupObserver() {
-    const section = document.getElementById('creator-section')
-    if (!section) return
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            section.classList.add('animate')
-            observer.disconnect()
-          }
-        })
-      },
-      { threshold: 0.1 }
-    )
-    observer.observe(section)
-  }
+	function setupObserver() {
+		const section = document.getElementById('creator-section')
+		if (!section) return
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						section.classList.add('animate')
+						observer.disconnect()
+					}
+				})
+			},
+			{ threshold: 0.1 },
+		)
+		observer.observe(section)
+	}
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupObserver)
-  } else {
-    setupObserver()
-  }
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', setupObserver)
+	} else {
+		setupObserver()
+	}
 </script>
 
 <style>
-  /* ── Entrance animations ─ */
-  .creator-card {
-    opacity: 0;
-    transform: translateY(20px);
-  }
+	/* ── Entrance animations ─ */
+	.creator-card {
+		opacity: 0;
+		transform: translateY(20px);
+	}
 
-  .creator.animate .creator-card {
-    animation: creator-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
+	.creator.animate .creator-card {
+		animation: creator-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+	}
 
-  .creator-description {
-    opacity: 0;
-    transform: translateY(10px);
-  }
+	.creator-description {
+		opacity: 0;
+		transform: translateY(10px);
+	}
 
-  .creator.animate .creator-description {
-    animation: creator-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
-  }
+	.creator.animate .creator-description {
+		animation: creator-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+	}
 
-  .creator-description-2 {
-    opacity: 0;
-    transform: translateY(10px);
-  }
+	.creator-description-2 {
+		opacity: 0;
+		transform: translateY(10px);
+	}
 
-  .creator.animate .creator-description-2 {
-    animation: creator-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
-  }
+	.creator.animate .creator-description-2 {
+		animation: creator-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+	}
 
-  @keyframes creator-fade-up {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+	@keyframes creator-fade-up {
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
 
-  /* ── Dark mode card adjustments ── */
-  :global(.dark) .creator-card {
-    border-color: color-mix(in srgb, var(--color-border) 50%, transparent);
-  }
+	/* ── Dark mode card adjustments ── */
+	:global(.dark) .creator-card {
+		border-color: color-mix(in srgb, var(--color-border) 50%, transparent);
+	}
 </style>

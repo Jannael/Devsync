@@ -1,9 +1,4 @@
-import {
-  type DevsyncPartial,
-  getLangData,
-  translations,
-  type availableLangsType,
-} from '@devsync/core'
+import { type DevsyncPartial, getLangData, translations, type availableLangsType } from '@devsync/core'
 import { academicsBadge } from '@/constants/academics-badge'
 import { mdUtilsMixin } from '@/utils/md-utils.ts'
 import { MD_SEPARATOR } from '@/constants/md-separator'
@@ -14,73 +9,57 @@ import { writeFileMixin } from '../infra/write-file'
 import type { GConstructor } from '../infra/mixin-constructor'
 
 export function CreateGithubProfileMixin<TBase extends GConstructor>(Base: TBase) {
-  return class extends writeFileMixin(mdUtilsMixin(Base)) {
-    private async createGithubProfileMd({
-      devsync,
-      defaultLang,
-    }: {
-      devsync: DevsyncPartial
-      defaultLang: string
-    }) {
-      let md = ''
+	return class extends writeFileMixin(mdUtilsMixin(Base)) {
+		private async createGithubProfileMd({ devsync, defaultLang }: { devsync: DevsyncPartial; defaultLang: string }) {
+			let md = ''
 
-      md += this.getHeader({ devsync, defaultLang })
-      md += this.getExperienceSection({ devsync, defaultLang })
-      md += this.getProjectsSection({ devsync, defaultLang })
+			md += this.getHeader({ devsync, defaultLang })
+			md += this.getExperienceSection({ devsync, defaultLang })
+			md += this.getProjectsSection({ devsync, defaultLang })
 
-      return md
-    }
+			return md
+		}
 
-    private getHeader({ devsync, defaultLang }: { devsync: DevsyncPartial; defaultLang: string }) {
-      const devsyncTranslation = getLangData(devsync, defaultLang)
-      let md = ''
-      md += `# ${devsyncTranslation?.jobTitle ?? 'Professional'}\n\n`
-      md += `${(devsyncTranslation.status as { badge?: string } | undefined)?.badge ?? 'Active'}\n\n`
-      md += `${devsyncTranslation?.description ?? ''}\n\n`
+		private getHeader({ devsync, defaultLang }: { devsync: DevsyncPartial; defaultLang: string }) {
+			const devsyncTranslation = getLangData(devsync, defaultLang)
+			let md = ''
+			md += `# ${devsyncTranslation?.jobTitle ?? 'Professional'}\n\n`
+			md += `${(devsyncTranslation.status as { badge?: string } | undefined)?.badge ?? 'Active'}\n\n`
+			md += `${devsyncTranslation?.description ?? ''}\n\n`
 
-      for (const socialMedia of devsync?.socialMedia ?? []) {
-        md += this.badgeWithLink({
-          badge: socialMedia.mdBadge ?? '',
-          link: socialMedia.url ?? '',
-        })
-      }
+			for (const socialMedia of devsync?.socialMedia ?? []) {
+				md += this.badgeWithLink({
+					badge: socialMedia.mdBadge ?? '',
+					link: socialMedia.url ?? '',
+				})
+			}
 
-      md += this.badgeWithLink({
-        badge: academicsBadge,
-        link: `https://github.com/${devsync?.githubUserName ?? ''}/${devsync?.githubUserName ?? ''}/tree/main/academics`,
-      })
+			md += this.badgeWithLink({
+				badge: academicsBadge,
+				link: `https://github.com/${devsync?.githubUserName ?? ''}/${devsync?.githubUserName ?? ''}/tree/main/academics`,
+			})
 
-      for (const lang of Array.isArray(devsyncTranslation?.languages)
-        ? devsyncTranslation.languages
-        : []) {
-        md += lang.mdBadge
-      }
-      md += '\n\n'
-      return md
-    }
+			for (const lang of Array.isArray(devsyncTranslation?.languages) ? devsyncTranslation.languages : []) {
+				md += lang.mdBadge
+			}
+			md += '\n\n'
+			return md
+		}
 
-    private getExperienceSection({
-      devsync,
-      defaultLang,
-    }: {
-      devsync: DevsyncPartial
-      defaultLang: string
-    }) {
-      const devsyncTranslation = getLangData(devsync, defaultLang)
-      const translation = translations[defaultLang as availableLangsType]
+		private getExperienceSection({ devsync, defaultLang }: { devsync: DevsyncPartial; defaultLang: string }) {
+			const devsyncTranslation = getLangData(devsync, defaultLang)
+			const translation = translations[defaultLang as availableLangsType]
 
-      let md = ''
-      md += `## ${translation['Professional Experience']} \n\n`
-      md += '<table>'
+			let md = ''
+			md += `## ${translation['Professional Experience']} \n\n`
+			md += '<table>'
 
-      for (const ex of Array.isArray(devsyncTranslation?.experience)
-        ? devsyncTranslation.experience
-        : []) {
-        const links = this.getLinks({ links: ex.links })
-        const listItems = ex.list?.items ? this.getListItems({ items: ex.list.items }) : ''
-        const skills = this.getSkills({ skills: ex.skills })
+			for (const ex of Array.isArray(devsyncTranslation?.experience) ? devsyncTranslation.experience : []) {
+				const links = this.getLinks({ links: ex.links })
+				const listItems = ex.list?.items ? this.getListItems({ items: ex.list.items }) : ''
+				const skills = this.getSkills({ skills: ex.skills })
 
-        md += `
+				md += `
       <tr>
         <td>
           <h3>${ex.company ?? 'Company'}</h3>\n
@@ -95,33 +74,25 @@ ${skills}
         </td>
         ${this.getTdImg({ img: ex.img ?? '', link: ex.web ?? '#', alt: ex.company ?? 'Company' })}
       </tr>`
-      }
-      md += '</table> \n\n'
+			}
+			md += '</table> \n\n'
 
-      return md
-    }
+			return md
+		}
 
-    private getProjectsSection({
-      devsync,
-      defaultLang,
-    }: {
-      devsync: DevsyncPartial
-      defaultLang: string
-    }) {
-      const devsyncTranslation = getLangData(devsync, defaultLang)
-      const translation = translations[defaultLang as availableLangsType]
-      let md = ''
-      md += `## ${translation['Projects']} \n\n`
-      md += '<table>'
+		private getProjectsSection({ devsync, defaultLang }: { devsync: DevsyncPartial; defaultLang: string }) {
+			const devsyncTranslation = getLangData(devsync, defaultLang)
+			const translation = translations[defaultLang as availableLangsType]
+			let md = ''
+			md += `## ${translation['Projects']} \n\n`
+			md += '<table>'
 
-      for (const proj of Array.isArray(devsyncTranslation?.projects)
-        ? devsyncTranslation.projects
-        : []) {
-        const links = this.getLinks({ links: proj.links })
-        const listItems = proj.list?.items ? this.getListItems({ items: proj.list.items }) : ''
-        const skills = this.getSkills({ skills: proj.skills })
+			for (const proj of Array.isArray(devsyncTranslation?.projects) ? devsyncTranslation.projects : []) {
+				const links = this.getLinks({ links: proj.links })
+				const listItems = proj.list?.items ? this.getListItems({ items: proj.list.items }) : ''
+				const skills = this.getSkills({ skills: proj.skills })
 
-        md += `
+				md += `
       <tr>
         <td>
           <h3>${proj.name ?? 'Project'}</h3>\n
@@ -136,25 +107,19 @@ ${skills}
         </td>
         ${this.getTdImg({ img: proj.img ?? '', link: proj.web ?? '#', alt: proj.name ?? 'Project' })}
       </tr>`
-      }
+			}
 
-      md += '</table> \n\n'
+			md += '</table> \n\n'
 
-      return md
-    }
+			return md
+		}
 
-    async createGithubProfile({
-      devsync,
-      defaultLang,
-    }: {
-      devsync: DevsyncPartial
-      defaultLang: string
-    }) {
-      console.log(`${SPACE}${GREEN('-')} Generating GitHub profile README...`)
-      const README = await this.createGithubProfileMd({ devsync, defaultLang })
-      await this.writeFile({ path: README_PATH, data: README })
-      console.log(`${SPACE}${CHECK(`README generated at ${BOLD(README_PATH)}`)}`)
-      console.log('')
-    }
-  }
+		async createGithubProfile({ devsync, defaultLang }: { devsync: DevsyncPartial; defaultLang: string }) {
+			console.log(`${SPACE}${GREEN('-')} Generating GitHub profile README...`)
+			const README = await this.createGithubProfileMd({ devsync, defaultLang })
+			await this.writeFile({ path: README_PATH, data: README })
+			console.log(`${SPACE}${CHECK(`README generated at ${BOLD(README_PATH)}`)}`)
+			console.log('')
+		}
+	}
 }

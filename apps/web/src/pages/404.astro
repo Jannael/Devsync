@@ -11,106 +11,93 @@ const t = getTranslation(lang)
 ---
 
 <Layout title="404 - Not Found">
-  <main
-    class="bg-bg relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 py-24"
-    id="main-content"
-  >
-    <BackgroundGrid />
+	<main class="bg-bg relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 py-24" id="main-content">
+		<BackgroundGrid />
 
-    <!-- Large decorative "404" in background -->
-    <div
-      class="pointer-events-none absolute inset-0 z-0 flex items-center justify-center select-none"
-      aria-hidden="true"
-    >
-      <span class="text-text text-[25vw] leading-none font-black opacity-[0.02] dark:opacity-[0.03]"
-        >404</span
-      >
-    </div>
+		<!-- Large decorative "404" in background -->
+		<div class="pointer-events-none absolute inset-0 z-0 flex items-center justify-center select-none" aria-hidden="true">
+			<span class="text-text text-[25vw] leading-none font-black opacity-[0.02] dark:opacity-[0.03]">404</span>
+		</div>
 
-    <div class="relative z-10 flex w-full max-w-2xl flex-col items-center text-center">
-      <!-- ASCII Art Container with Glassmorphism -->
-      <figure class="mb-12 transition-transform duration-700 hover:scale-105">
-        <div class="p-8 md:p-12">
-          <pre
-            class="ascii-art text-accent bg-transparent"
-            aria-label="Magnifying glass icon">{magnifyinfASCII.join('\n')}</pre>
-        </div>
-      </figure>
+		<div class="relative z-10 flex w-full max-w-2xl flex-col items-center text-center">
+			<!-- ASCII Art Container with Glassmorphism -->
+			<figure class="mb-12 transition-transform duration-700 hover:scale-105">
+				<div class="p-8 md:p-12">
+					<pre class="ascii-art text-accent bg-transparent" aria-label="Magnifying glass icon">{magnifyinfASCII.join('\n')}</pre>
+				</div>
+			</figure>
 
-      <!-- Content with entrance animations -->
-      <div class="animate-in fade-in slide-in-from-bottom-4 fill-mode-both space-y-6 duration-1000">
-        <h1 class="text-text text-5xl font-black tracking-tighter md:text-7xl">
-          {t['Page not found']}
-        </h1>
+			<!-- Content with entrance animations -->
+			<div class="animate-in fade-in slide-in-from-bottom-4 fill-mode-both space-y-6 duration-1000">
+				<h1 class="text-text text-5xl font-black tracking-tighter md:text-7xl">
+					{t['Page not found']}
+				</h1>
 
-        <p class="text-text-secondary mx-auto max-w-md text-lg leading-relaxed md:text-xl">
-          {t['The page you are looking for does not exist.']}
-        </p>
+				<p class="text-text-secondary mx-auto max-w-md text-lg leading-relaxed md:text-xl">
+					{t['The page you are looking for does not exist.']}
+				</p>
 
-        <nav
-          aria-label="404 navigation"
-          class="flex flex-col items-center justify-center gap-4 pt-8 sm:flex-row"
-        >
-          <a
-            href={getRelativeLocaleUrl(lang, '/')}
-            class="text-btn-primary-foreground bg-btn-primary hover:bg-btn-primary-hover shadow-btn-primary/10 group relative inline-flex items-center justify-center rounded-xl px-8 py-4 font-bold shadow-lg transition-all duration-300 hover:scale-105 active:scale-95"
-          >
-            <span class="relative flex items-center gap-2">
-              {t['Go to Home']}
-            </span>
-          </a>
+				<nav aria-label="404 navigation" class="flex flex-col items-center justify-center gap-4 pt-8 sm:flex-row">
+					<a
+						href={getRelativeLocaleUrl(lang, '/')}
+						class="text-btn-primary-foreground bg-btn-primary hover:bg-btn-primary-hover shadow-btn-primary/10 group relative inline-flex items-center justify-center rounded-xl px-8 py-4 font-bold shadow-lg transition-all duration-300 hover:scale-105 active:scale-95"
+					>
+						<span class="relative flex items-center gap-2">
+							{t['Go to Home']}
+						</span>
+					</a>
 
-          <a
-            href={getRelativeLocaleUrl(lang, '/getting-started/')}
-            class="text-text bg-surface border-border-strong hover:bg-bg-alt hover:border-accent hover:text-accent group inline-flex items-center justify-center rounded-xl border px-8 py-4 font-bold shadow-sm transition-all duration-300 hover:scale-105 active:scale-95"
-          >
-            <span class="flex items-center gap-2">
-              {t['Getting Started']}
-            </span>
-          </a>
-        </nav>
-      </div>
-    </div>
-  </main>
+					<a
+						href={getRelativeLocaleUrl(lang, '/getting-started/')}
+						class="text-text bg-surface border-border-strong hover:bg-bg-alt hover:border-accent hover:text-accent group inline-flex items-center justify-center rounded-xl border px-8 py-4 font-bold shadow-sm transition-all duration-300 hover:scale-105 active:scale-95"
+					>
+						<span class="flex items-center gap-2">
+							{t['Getting Started']}
+						</span>
+					</a>
+				</nav>
+			</div>
+		</div>
+	</main>
 </Layout>
 
 <style>
-  .ascii-art {
-    font-family: monospace;
-    font-size: 12px;
-    line-height: 1.1;
-    white-space: pre;
-    display: block;
-    margin: 0 auto;
-  }
+	.ascii-art {
+		font-family: monospace;
+		font-size: 12px;
+		line-height: 1.1;
+		white-space: pre;
+		display: block;
+		margin: 0 auto;
+	}
 
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
+	@keyframes fade-in {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
 
-  @keyframes slide-in-from-bottom {
-    from {
-      transform: translateY(30px);
-    }
-    to {
-      transform: translateY(0);
-    }
-  }
+	@keyframes slide-in-from-bottom {
+		from {
+			transform: translateY(30px);
+		}
+		to {
+			transform: translateY(0);
+		}
+	}
 
-  .animate-in {
-    animation: fade-in 1.2s ease-out forwards;
-  }
+	.animate-in {
+		animation: fade-in 1.2s ease-out forwards;
+	}
 
-  .slide-in-from-bottom-4 {
-    animation: slide-in-from-bottom 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
+	.slide-in-from-bottom-4 {
+		animation: slide-in-from-bottom 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+	}
 
-  .fill-mode-both {
-    animation-fill-mode: both;
-  }
+	.fill-mode-both {
+		animation-fill-mode: both;
+	}
 </style>
