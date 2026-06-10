@@ -6,8 +6,6 @@
 | --------------------------- | --------------------------------- |
 | `bun install`               | Install dependencies              |
 | `bun run build`             | Build CLI (outputs to `dist/`)    |
-| `bun run lint` / `lint:fix` | Oxlint (ignores `*.js`)           |
-| `bun run fmt` / `fmt:check` | Prettier                          |
 | `bun test`                  | Vitest (test path mirrors source) |
 
 **Single test:** `bun test test/cli/utils/run-bun-command.test.ts`  
@@ -38,17 +36,11 @@ test/cli/       # Tests mirror apps/cli structure
 - **Constants:** UPPER_SNAKE_CASE
 - **Errors:** PascalCase with suffix (e.g., `ServerError`)
 - **Imports:** Type imports for types
-- **Formatting:** Single quotes, no semicolons, trailing commas, width 100
-
-## Husky Pre-commit
-
-Runs `lint:fix` + `fmt` on staged `*.{ts,tsx,js,jsx,astro}`
 
 ## Gotchas
 
 - Bun runtime (not Node)
 - TypeScript `noEmit: true` (bundler workflow)
-- Oxlint ignores `*.js` files
 - Astro web uses Starlight + Tailwind v4
 
 ## Web (apps/web)
