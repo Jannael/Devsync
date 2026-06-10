@@ -9,7 +9,6 @@
 ![Starlight](https://img.shields.io/badge/Starlight-ef4444.svg?style=flat&logo=astro&logoColor=ffffff)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-f8fafc.svg?style=flat&logo=Tailwind%20CSS&logoColor=000000)
 ![Vite](https://img.shields.io/badge/Vite-7c3aed.svg?style=flat&logo=Vite&logoColor=ffffff)
-![Vitest](https://img.shields.io/badge/Vitest-000000.svg?style=flat&logo=Vitest&logoColor=ffffff)
 ![Oxlint](https://img.shields.io/badge/Oxlint-000000.svg?style=flat&logo=Oxlint&logoColor=ffffff)
 ![Prettier](https://img.shields.io/badge/Prettier-f59e0b.svg?style=flat-square&logo=Prettier&logoColor=ffffff)
 ![Husky](https://img.shields.io/badge/Husky-000000.svg?style=flat&logo=Husky&logoColor=ffffff)
