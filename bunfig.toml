@@ -3,3 +3,6 @@ minimumReleaseAge = 259200
 exact = true
 
 minimumReleaseAgeExcludes = ["@types/node", "typescript", "@jannael/config"]
+
+[test]
+timeout = 10000
