@@ -40,3 +40,7 @@ This project uses Bun as its runtime and package manager. You don't need to worr
 ## License
 
 [CC-BY-NC-4.0](LICENSE)
+
+## TODO:
+
+- [ ] feature: minimal readme
