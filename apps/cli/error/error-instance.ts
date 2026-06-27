@@ -41,6 +41,7 @@ type IServerError =
 	| 'Build command failed'
 	| 'Update command failed'
 	| 'CV build failed'
+	| 'Failed to get devsync config'
 	| 'Git operation failed'
 	| 'Workflow execution failed'
 	| 'Unexpected execution error'
