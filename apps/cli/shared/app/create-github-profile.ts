@@ -5,8 +5,8 @@ import { MD_SEPARATOR } from '@/constants/md-separator'
 import { README as README_PATH } from '@/constants/paths'
 import { GREEN, BOLD } from '@/utils/colors'
 import { CHECK, SPACE } from '@/utils/icons-terminal'
-import { writeFileMixin } from '../infra/write-file'
-import type { GConstructor } from '../infra/mixin-constructor'
+import { writeFileMixin } from '@/shared/infra/write-file'
+import type { GConstructor } from '@/shared/infra/mixin-constructor'
 
 export function CreateGithubProfileMixin<TBase extends GConstructor>(Base: TBase) {
 	return class extends writeFileMixin(mdUtilsMixin(Base)) {

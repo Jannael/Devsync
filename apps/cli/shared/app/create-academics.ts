@@ -2,7 +2,7 @@ import { type DevsyncPartial, getLangData, translations, type availableLangsType
 import { mdUtilsMixin } from '@/utils/md-utils.ts'
 import { MD_SEPARATOR } from '@/constants/md-separator'
 import type { GConstructor } from '@/shared/infra/mixin-constructor'
-import { writeFileMixin } from '../infra/write-file'
+import { writeFileMixin } from '@/shared/infra/write-file'
 import { GREEN, BOLD } from '@/utils/colors'
 import { CHECK, SPACE } from '@/utils/icons-terminal'
 import { ACADEMICS } from '@/constants/paths'
