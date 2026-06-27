@@ -16,6 +16,7 @@ export function CreateGithubProfileMixin<TBase extends GConstructor>(Base: TBase
 			md += this.getHeader({ devsync, defaultLang })
 			md += this.getExperienceSection({ devsync, defaultLang })
 			md += this.getProjectsSection({ devsync, defaultLang })
+			md += this.getOpenSourceSection({ devsync, defaultLang })
 
 			return md
 		}
@@ -88,6 +89,40 @@ ${skills}
 			md += '<table>'
 
 			for (const proj of Array.isArray(devsyncTranslation?.projects) ? devsyncTranslation.projects : []) {
+				const links = this.getLinks({ links: proj.links })
+				const listItems = proj.list?.items ? this.getListItems({ items: proj.list.items }) : ''
+				const skills = this.getSkills({ skills: proj.skills })
+
+				md += `
+      <tr>
+        <td>
+          <h3>${proj.name ?? 'Project'}</h3>\n
+${links}
+          <p>${proj.description ?? ''}</p>
+          ${(proj.list?.title?.length ?? 0) > 1 ? proj.list?.title : MD_SEPARATOR}
+          <ul>
+            ${listItems}
+          </ul>
+          </br>\n
+${skills}
+        </td>
+        ${this.getTdImg({ img: proj.img ?? '', link: proj.web ?? '#', alt: proj.name ?? 'Project' })}
+      </tr>`
+			}
+
+			md += '</table> \n\n'
+
+			return md
+		}
+
+		private getOpenSourceSection({ devsync, defaultLang }: { devsync: DevsyncPartial; defaultLang: string }) {
+			const devsyncTranslation = getLangData(devsync, defaultLang)
+			const translation = translations[defaultLang as availableLangsType]
+			let md = ''
+			md += `## ${translation['Open Source']} \n\n`
+			md += '<table>'
+
+			for (const proj of Array.isArray(devsyncTranslation?.openSource) ? devsyncTranslation.openSource : []) {
 				const links = this.getLinks({ links: proj.links })
 				const listItems = proj.list?.items ? this.getListItems({ items: proj.list.items }) : ''
 				const skills = this.getSkills({ skills: proj.skills })

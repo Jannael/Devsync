@@ -63,6 +63,18 @@ const projectSchema = z
 	})
 	.partial()
 
+const openSourceSchema = z
+	.object({
+		name: z.string({ message: 'Open source project name is required' }),
+		img: z.string({ message: 'Image is required' }),
+		web: z.string({ message: 'Web is required' }),
+		links: z.array(linkSchema),
+		description: z.string({ message: 'Description is required' }),
+		list: ListSchema,
+		skills: z.array(skillsSchema),
+	})
+	.partial()
+
 const educationSchema = z
 	.object({
 		name: z.string({ message: 'Institution name is required' }),
@@ -96,6 +108,7 @@ export const devsyncObjectSchema = z
 		projects: z.array(projectSchema),
 		education: z.array(educationSchema),
 		certifications: z.array(certificationSchema),
+		openSource: z.array(openSourceSchema),
 	})
 	.partial()
 

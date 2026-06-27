@@ -142,6 +142,38 @@
 					}
 				]
 			}
+		],
+		"openSource": [
+			{
+				"name": "Your Open Source Project Name",
+				"img": "https://your-image-url.com/open-source-image.jpg",
+				"web": "https://your-open-source-project-url.com",
+				"links": [
+					{
+						"name": "GitHub",
+						"url": "https://github.com/your-github-username/your-open-source-repo",
+						"mdBadge": "![GitHub Repo](https://img.shields.io/badge/Repo-GitHub-181717?logo=github&logoColor=white)",
+						"icon": "/icons/github.svg"
+					}
+				],
+				"description": "Describe the open source project and your contribution.",
+				"list": {
+					"title": "open-source-highlights",
+					"items": [
+						{
+							"highlight": "Contribution highlight",
+							"description": "Describe one concrete contribution, feature, or impact from this open source project."
+						}
+					]
+				},
+				"skills": [
+					{
+						"name": "Open Source Skill",
+						"mdBadge": "![Skill](https://img.shields.io/badge/Skill-Open%20Source-34A853)",
+						"icon": "https://cdn.simpleicons.org/git"
+					}
+				]
+			}
 		]
 	}
 }

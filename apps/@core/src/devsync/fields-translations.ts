@@ -10,6 +10,7 @@ export const translations = {
 		Projects: 'Projects',
 		Education: 'Education',
 		Certifications: 'Certifications',
+		'Open Source': 'Open Source',
 		'Core Skills': 'Core Skills',
 		credential: 'Credential',
 
@@ -30,6 +31,7 @@ export const translations = {
 		Projects: 'Proyectos',
 		Education: 'Educación',
 		Certifications: 'Certificaciones',
+		'Open Source': 'Código Abierto',
 		'Core Skills': 'Habilidades principales',
 		credential: 'Credencial',
 
@@ -50,6 +52,7 @@ export const translations = {
 		Projects: 'Projets',
 		Education: 'Éducation',
 		Certifications: 'Certifications',
+		'Open Source': 'Open Source',
 		'Core Skills': 'Compétences essentielles',
 		credential: 'Titre de compétence',
 
@@ -70,6 +73,7 @@ export const translations = {
 		Projects: 'Projetos',
 		Education: 'Educação',
 		Certifications: 'Certificações',
+		'Open Source': 'Código Aberto',
 		'Core Skills': 'Habilidades principais',
 		credential: 'Credencial',
 
@@ -90,6 +94,7 @@ export const translations = {
 		Projects: 'Projekte',
 		Education: 'Ausbildung',
 		Certifications: 'Zertifizierungen',
+		'Open Source': 'Open Source',
 		'Core Skills': 'Kernkompetenzen',
 		credential: 'Zertifikat',
 
@@ -110,6 +115,7 @@ export const translations = {
 		Projects: '项目',
 		Education: '教育',
 		Certifications: '证书',
+		'Open Source': '开源',
 		'Core Skills': '核心技能',
 		credential: '资质',
 
@@ -130,6 +136,7 @@ export const translations = {
 		Projects: 'プロジェクト',
 		Education: '学歴',
 		Certifications: '資格',
+		'Open Source': 'オープンソース',
 		'Core Skills': 'コアスキル',
 		credential: '資格証明',
 
@@ -150,6 +157,7 @@ export const translations = {
 		Projects: '프로젝트',
 		Education: '학력',
 		Certifications: '자격증',
+		'Open Source': '오픈소스',
 		'Core Skills': '핵심 역량',
 		credential: '자격 증명',
 
