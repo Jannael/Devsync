@@ -4,14 +4,13 @@ import { CHECK, SPACE } from '@/utils/icons-terminal'
 import { CV_PDF } from '@/constants/paths'
 import { createPDFMixin } from '@/shared/infra/create-pdf'
 import { getHTMLMixin } from '@/shared/infra/get-html'
-import { $ } from 'bun'
 
-// to get the CV route we get it from package.json (devsync.pathToCompiledCv)
+// the CV path is obtained from package.json (devsync.pathToCompiledCV)
 // and we replace [lang] with the current language
 export function createCVMixin<TBase extends GConstructor>(Base: TBase) {
 	return class extends getHTMLMixin(createPDFMixin(Base)) {
-		async buildCV({ name = 'CV', lang }: { name: string | undefined; lang: string }) {
-			const CVPath = (await $`bun pm pkg get devsync.pathToCompiledCV`.text()).trim().replace('[lang]', lang).replace(/"/g, '')
+		async buildCV({ name = 'CV', lang, path }: { name: string | undefined; lang: string; path: string }) {
+			const CVPath = path.replace('[lang]', lang)
 
 			console.log(`${SPACE}${GREEN('-')} Building CV and generating PDF...`)
 			const html = await this.getHTML({ path: CVPath })
