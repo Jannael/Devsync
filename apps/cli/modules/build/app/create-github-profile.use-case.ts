@@ -2,7 +2,7 @@ import { type DevsyncPartial, getLangData, translations, type availableLangsType
 import { academicsBadge } from '@/constants/academics-badge'
 import { MdUtils } from '@/utils/md-utils'
 import { MD_SEPARATOR } from '@/constants/md-separator'
-import { README as README_PATH } from '@/constants/paths'
+import { PATH_README } from '@/constants/paths'
 import { GREEN, BOLD } from '@/utils/colors'
 import { CHECK, SPACE } from '@/utils/icons-terminal'
 import type { IBuildInfrastructure } from '@/modules/build/domain/build-infrastructure'
@@ -155,8 +155,8 @@ ${skills}
 	async execute({ devsync, defaultLang }: { devsync: DevsyncPartial; defaultLang: string }) {
 		console.log(`${SPACE}${GREEN('-')} Generating GitHub profile README...`)
 		const README = this.createGithubProfileMd({ devsync, defaultLang })
-		await this.infrastructure.writeFile(README_PATH, README)
-		console.log(`${SPACE}${CHECK(`README generated at ${BOLD(README_PATH)}`)}`)
+		await this.infrastructure.writeFile(PATH_README, README)
+		console.log(`${SPACE}${CHECK(`README generated at ${BOLD(PATH_README)}`)}`)
 		console.log('')
 	}
 }

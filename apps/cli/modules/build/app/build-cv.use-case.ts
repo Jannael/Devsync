@@ -1,6 +1,6 @@
 import { GREEN, BOLD } from '@/utils/colors'
 import { CHECK, SPACE } from '@/utils/icons-terminal'
-import { CV_PDF } from '@/constants/paths'
+import { PATH_CV_PDF } from '@/constants/paths'
 import type { IBuildInfrastructure } from '@/modules/build/domain/build-infrastructure'
 
 export class BuildCvUseCase {
@@ -11,9 +11,9 @@ export class BuildCvUseCase {
 
 		console.log(`${SPACE}${GREEN('-')} Building CV and generating PDF...`)
 		const html = await this.infrastructure.getHTML(CVPath)
-		await this.infrastructure.createPDF(html, CV_PDF(name, lang))
+		await this.infrastructure.createPDF(html, PATH_CV_PDF(name, lang))
 
-		console.log(`${SPACE}${CHECK(`CV generated at ${BOLD(CV_PDF(name, lang))}`)}`)
+		console.log(`${SPACE}${CHECK(`CV generated at ${BOLD(PATH_CV_PDF(name, lang))}`)}`)
 		console.log('')
 	}
 }
