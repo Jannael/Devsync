@@ -5,7 +5,7 @@ import { $ } from 'bun'
 import puppeteer from 'puppeteer'
 import { ZodError } from 'zod'
 import { availableLangs, parseDevsync, type DevsyncPartial } from '@devsync/core'
-import { CWD_PACKAGE_JSON, DEVSYNC_JSON } from '@/constants/paths'
+import { PATH_CWD_PACKAGE_JSON, PATH_DEVSYNC_JSON } from '@/constants/paths'
 import { BadRequest, NotFound, ServerError } from '@/error/error-instance'
 import { SPACE } from '@/utils/icons-terminal'
 import { BOLD, GREEN } from '@/utils/colors'
@@ -38,7 +38,7 @@ export class BuildInfrastructure implements IBuildInfrastructure {
 	}
 
 	async getHTML(path: string): Promise<string> {
-		if (!existsSync(CWD_PACKAGE_JSON)) {
+		if (!existsSync(PATH_CWD_PACKAGE_JSON)) {
 			throw new NotFound(
 				'Package.json not found',
 				`${SPACE}${SPACE}${GREEN('1.')} Run ${BOLD('devsync init')}\n` +
@@ -107,7 +107,7 @@ export class BuildInfrastructure implements IBuildInfrastructure {
 		let raw: string
 
 		try {
-			raw = await this.readFile(DEVSYNC_JSON)
+			raw = await this.readFile(PATH_DEVSYNC_JSON)
 		} catch {
 			throw new ServerError(
 				'Failed to read DEVSYNC.json',
