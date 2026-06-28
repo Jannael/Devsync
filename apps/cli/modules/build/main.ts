@@ -14,10 +14,11 @@ export default async function build() {
 
 	const buildCv = new BuildCvUseCase(infrastructure)
 	const createAcademics = new CreateAcademicsUseCase(infrastructure, mdUtils)
+	const createLinkedin = new CreateLinkedinUseCase(infrastructure)
+
 	const githubDefault = new GithubDefault(mdUtils)
 	const githubMinimal = new GithubMinimal(mdUtils)
 	const createGithubProfile = new CreateGithubProfileUseCase(infrastructure, githubDefault, githubMinimal)
-	const createLinkedin = new CreateLinkedinUseCase(infrastructure)
 
 	const command = new BuildCommand(infrastructure, buildCv, createAcademics, createGithubProfile, createLinkedin)
 
