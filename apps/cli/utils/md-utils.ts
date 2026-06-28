@@ -1,6 +1,8 @@
 import type { Link, ListSchema, Skills } from '@devsync/core'
 
 export class MdUtils {
+	MD_SEPARATOR = '---'
+
 	badgeWithLink({ badge, link }: { badge: string; link: string }) {
 		return `[${badge}](${link})`
 	}

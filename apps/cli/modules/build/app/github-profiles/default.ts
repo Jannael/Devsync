@@ -1,7 +1,6 @@
 import { type DevsyncPartial, getLangData, translations, type availableLangsType } from '@devsync/core'
 import { academicsBadge } from '@/constants/academics-badge'
 import { MdUtils } from '@/utils/md-utils'
-import { MD_SEPARATOR } from '@/constants/md-separator'
 
 export class GithubDefault {
 	constructor(private readonly mdUtils: MdUtils) {}
@@ -62,7 +61,7 @@ export class GithubDefault {
           <h3>${ex.company ?? 'Company'}</h3>\n
 ${links}
           <p>${ex.description ?? ''}</p>
-          ${(ex.list?.title?.length ?? 0) > 1 ? ex.list?.title : MD_SEPARATOR}
+          ${(ex.list?.title?.length ?? 0) > 1 ? ex.list?.title : this.mdUtils.MD_SEPARATOR}
           <ul>
             ${listItems}
           </ul>
@@ -95,7 +94,7 @@ ${skills}
           <h3>${proj.name ?? 'Project'}</h3>\n
 ${links}
           <p>${proj.description ?? ''}</p>
-          ${(proj.list?.title?.length ?? 0) > 1 ? proj.list?.title : MD_SEPARATOR}
+          ${(proj.list?.title?.length ?? 0) > 1 ? proj.list?.title : this.mdUtils.MD_SEPARATOR}
           <ul>
             ${listItems}
           </ul>
@@ -129,7 +128,7 @@ ${skills}
           <h3>${proj.name ?? 'Project'}</h3>\n
 ${links}
           <p>${proj.description ?? ''}</p>
-          ${(proj.list?.title?.length ?? 0) > 1 ? proj.list?.title : MD_SEPARATOR}
+          ${(proj.list?.title?.length ?? 0) > 1 ? proj.list?.title : this.mdUtils.MD_SEPARATOR}
           <ul>
             ${listItems}
           </ul>

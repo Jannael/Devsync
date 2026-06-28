@@ -1,6 +1,5 @@
 import { type DevsyncPartial, getLangData, translations, type availableLangsType } from '@devsync/core'
 import { MdUtils } from '@/utils/md-utils'
-import { MD_SEPARATOR } from '@/constants/md-separator'
 import { CHECK, SPACE } from '@/utils/icons-terminal'
 import { PATH_ACADEMICS } from '@/constants/paths'
 import { GREEN, BOLD } from '@/utils/colors'
@@ -37,7 +36,7 @@ export class CreateAcademicsUseCase {
           <h3>${ed.name ?? 'Name'} | ${ed.degree ?? 'Degree'} | ${ed.date ?? 'Date'}</h3>\n
 ${links}
           <br>
-          ${(ed.list?.title?.length ?? 0) > 1 ? ed.list?.title : MD_SEPARATOR}
+          ${(ed.list?.title?.length ?? 0) > 1 ? ed.list?.title : this.mdUtils.MD_SEPARATOR}
           <ul>
             ${listItems}
           </ul>
@@ -68,7 +67,7 @@ ${links}
 <tr>
 <td>
 <h3>${cert.name ?? 'Certification'}</h3>
-${(cert.list?.title?.length ?? 0) > 1 ? cert.list?.title : MD_SEPARATOR}
+${(cert.list?.title?.length ?? 0) > 1 ? cert.list?.title : this.mdUtils.MD_SEPARATOR}
 <ul>
   ${listItems}
 </ul>
