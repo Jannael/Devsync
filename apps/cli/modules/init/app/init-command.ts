@@ -3,7 +3,7 @@ import { BOLD, GREEN } from '@/utils/colors'
 import { errorHandler } from '@/error/error-handler'
 import type CloneRepositoryUseCase from '@/modules/init/app/clone-repository.use-case'
 import PrintASCII from '@/ascii'
-import { DEFAULT_TEMPLATE_URL } from '@/constants/paths'
+import { PATH_DEFAULT_TEMPLATE_URL } from '@/constants/paths'
 
 /*
 Copy template repository to cwd
@@ -24,7 +24,7 @@ class InitCommand extends BaseInitCommand {
 		try {
 			if (templateFlag === -1) {
 				// if no template is provided clone the default template
-				await this.cloneRepository.execute(DEFAULT_TEMPLATE_URL)
+				await this.cloneRepository.execute(PATH_DEFAULT_TEMPLATE_URL)
 			} else {
 				const [owner, repo] = (args[templateFlag + 1] ?? '').replace('@', '').trim().split('/')
 
