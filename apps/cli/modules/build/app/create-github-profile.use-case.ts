@@ -5,11 +5,13 @@ import { CHECK, SPACE } from '@/utils/icons-terminal'
 import { GITHUB_STYLES } from '@/constants/github-profile-styles'
 import type { IBuildInfrastructure } from '@/modules/build/domain/build-infrastructure'
 import { GithubDefault } from '@/modules/build/app/github-profiles/default'
+import type { GithubMinimal } from './github-profiles/minimal'
 
 export class CreateGithubProfileUseCase {
 	constructor(
 		private readonly infrastructure: IBuildInfrastructure,
 		private readonly githubDefault: GithubDefault,
+		private readonly githubMinimal: GithubMinimal,
 	) {}
 
 	async execute({ devsync, defaultLang, style }: { devsync: DevsyncPartial; defaultLang: string; style: string }) {
@@ -18,8 +20,7 @@ export class CreateGithubProfileUseCase {
 		let readme: string
 
 		if (style === GITHUB_STYLES.minimal) {
-			console.log(`${SPACE}${YELLOW('-')} Minimal style is not implemented yet. Falling back to default.`)
-			readme = this.githubDefault.generate({ devsync, defaultLang })
+			readme = this.githubMinimal.generate({ devsync, defaultLang })
 		} else {
 			readme = this.githubDefault.generate({ devsync, defaultLang })
 		}
