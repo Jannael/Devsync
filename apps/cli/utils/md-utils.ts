@@ -2,6 +2,7 @@ import type { Link, ListSchema, Skills } from '@devsync/core'
 
 export class MdUtils {
 	MD_SEPARATOR = '---'
+	ACADEMICS_BADGE = '![Academics](https://img.shields.io/badge/Academics-9C27B0?style=flat&logo=education&logoColor=white)'
 
 	badgeWithLink({ badge, link }: { badge: string; link: string }) {
 		return `[${badge}](${link})`

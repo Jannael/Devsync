@@ -1,5 +1,4 @@
 import { type DevsyncPartial, getLangData, translations, type availableLangsType } from '@devsync/core'
-import { academicsBadge } from '@/constants/academics-badge'
 import { MdUtils } from '@/utils/md-utils'
 
 export class GithubDefault {
@@ -31,7 +30,7 @@ export class GithubDefault {
 		}
 
 		md += this.mdUtils.badgeWithLink({
-			badge: academicsBadge,
+			badge: this.mdUtils.ACADEMICS_BADGE,
 			link: `https://github.com/${devsync?.githubUserName ?? ''}/${devsync?.githubUserName ?? ''}/tree/main/academics`,
 		})
 
