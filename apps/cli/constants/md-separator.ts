@@ -1,1 +1,1 @@
-export const MD_SEPARATOR = '-'.repeat(100)
+export const MD_SEPARATOR = '-'.repeat(3)
