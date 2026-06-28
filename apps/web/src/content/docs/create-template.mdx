@@ -24,32 +24,32 @@ Devsync templates do not require a specific framework as long as they compile to
 
 2. This will generate a template structure like this:
 
-<FileTree>
-- .agents
-  - skills
-    - devsync-portfolio
-      - SKILL.md
-- .github
-  - workflows
-    - update-on-devsync-change.yml
-- public
-  - poster-dark-mode.webp
-  - poster-light-mode.webp
-- src
-  - devsync
-    - devsync-validator.ts
-    - devsync.ts
-    - fields-translations.ts
-- DEVSYNC.json
-- package.json
-</FileTree>
+   <FileTree>
+     - .agents
+       - skills
+         - devsync-portfolio
+           - SKILL.md
+     - .github
+       - workflows
+         - update-on-devsync-change.yml
+     - public
+       - poster-dark-mode.webp
+       - poster-light-mode.webp
+     - src
+       - devsync
+         - devsync-validator.ts
+         - devsync.ts
+         - fields-translations.ts
+     - DEVSYNC.json
+     - package.json
+   </FileTree>
 
-The important files are:
+   The important files are:
 
-- **`fields-translations.ts`**: This file contains the translations the `Devsync CLI` uses to build the `GitHub Profile`, `LinkedIn`, `CV`, and `academics`. This defines which languages are available for the build.
-- **`skills`**: This directory contains an agent skill that helps AI understand how to operate the template and build portfolios from prompts.
-- **`update-on-devsync-change.yml`**: This is a GitHub Action that automatically updates your `GitHub Profile`, `LinkedIn`, `CV`, and `academics` whenever you update the `DEVSYNC.json` file.
-- **`devsync.ts`**: This file exports everything necessary to use the template within your project.
+   - **`fields-translations.ts`**: This file contains the translations the `Devsync CLI` uses to build the `GitHub Profile`, `LinkedIn`, `CV`, and `academics`. This defines which languages are available for the build.
+   - **`skills`**: This directory contains an agent skill that helps AI understand how to operate the template and build portfolios from prompts.
+   - **`update-on-devsync-change.yml`**: This is a GitHub Action that automatically updates your `GitHub Profile`, `LinkedIn`, `CV`, and `academics` whenever you update the `DEVSYNC.json` file.
+   - **`devsync.ts`**: This file exports everything necessary to use the template within your project.
 
 3. Create your portfolio or refactor your current portfolio to use `Devsync`, you can use the `skill` to ask AI to do it for you.
 
