@@ -20,7 +20,9 @@ export const translations = {
 		"Let's connect": "Let's connect",
 		'Github Profile': 'Github Profile',
 		'I am': 'I am',
+		Connect: 'Connect',
 		Links: 'Links',
+		'Stuff I made': 'Stuff I made',
 	},
 	es: {
 		Description: 'Descripción',
@@ -41,7 +43,9 @@ export const translations = {
 		"Let's connect": 'Conectemos',
 		'Github Profile': 'Perfil de Github',
 		'I am': 'Soy',
+		Connect: 'Conectar',
 		Links: 'Enlaces',
+		'Stuff I made': 'Cosas que hice',
 	},
 	fr: {
 		Description: 'Description',
@@ -62,7 +66,9 @@ export const translations = {
 		"Let's connect": 'Connectons-nous',
 		'Github Profile': 'Profil GitHub',
 		'I am': 'Je suis',
+		Connect: 'Connecter',
 		Links: 'Liens',
+		'Stuff I made': "Ce que j'ai créé",
 	},
 	pt: {
 		Description: 'Descrição',
@@ -83,7 +89,9 @@ export const translations = {
 		"Let's connect": 'Vamos nos conectar',
 		'Github Profile': 'Perfil do Github',
 		'I am': 'Sou',
+		Connect: 'Conectar',
 		Links: 'Links',
+		'Stuff I made': 'Stuff I made',
 	},
 	de: {
 		Description: 'Beschreibung',
@@ -104,7 +112,9 @@ export const translations = {
 		"Let's connect": 'Lass uns vernetzen',
 		'Github Profile': 'Github-Profil',
 		'I am': 'Ich bin',
+		Connect: 'Verbinden',
 		Links: 'Links',
+		'Stuff I made': 'Stuff I made',
 	},
 	zh: {
 		Description: '描述',
@@ -125,7 +135,9 @@ export const translations = {
 		"Let's connect": '让我们联系',
 		'Github Profile': 'Github 主页',
 		'I am': '我是',
+		Connect: '联系',
 		Links: '链接',
+		'Stuff I made': '我做的东西',
 	},
 	ja: {
 		Description: '概要',
@@ -146,7 +158,9 @@ export const translations = {
 		"Let's connect": 'つながりましょう',
 		'Github Profile': 'Githubプロフィール',
 		'I am': '私は',
+		Connect: 'つながる',
 		Links: 'リンク',
+		'Stuff I made': '作ったもの',
 	},
 	ko: {
 		Description: '설명',
@@ -167,7 +181,9 @@ export const translations = {
 		"Let's connect": '연결해요',
 		'Github Profile': 'Github 프로필',
 		'I am': '저는',
+		Connect: '연결',
 		Links: '링크',
+		'Stuff I made': '내가 만든 것',
 	},
 } as const
 
