@@ -55,6 +55,18 @@ This guide will help you get started with Devsync. Follow the steps below to cre
 
 Now you can update `DEVSYNC.json` to refresh your portfolio, resume, GitHub profile, LinkedIn profile, and academic sections simultaneously, whenever you want.
 
+## Configuration
+
+You can customize how Devsync generates your GitHub profile by adding a `devsync` section to your `package.json`:
+
+```json
+"devsync": {
+  "githubProfileStyle": "minimal"
+}
+```
+
+Setting `"minimal"` gives you a compact profile with your name, description, social badges, and project links. If you don't set `githubProfileStyle`, you'll get the default full profile with header, experience table, projects table, and open source section.
+
 ## Tips
 
 - `DEVSYNC.json` is flexible; you can remove fields you don't need, and they will be omitted from the output. Note that the behavior of omitted fields depends on the specific template you are using.
