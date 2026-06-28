@@ -11,6 +11,7 @@
 # naming
 
 - Name use case files as `{verb}-{noun}.use-case.ts`. Confidence: 0.70
+- Name path constants with `PATH_` prefix in all caps (e.g., `PATH_ACADEMICS` instead of `ACADEMICS`) and always use `resolve()` for path construction. Confidence: 0.80
 
 # code-style
 
