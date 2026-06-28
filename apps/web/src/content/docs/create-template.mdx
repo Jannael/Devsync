@@ -65,6 +65,20 @@ Devsync templates do not require a specific framework as long as they compile to
 
    If you are using internationalization for your template, the `[lang]` placeholder will be replaced with the language codes defined in `DEVSYNC.json`. If you do not need this feature, simply remove `[lang]` from the path and point it directly to your CV file.
 
+   Optionally, you can configure the GitHub profile style:
+
+   ```json
+   "devsync": {
+     "pathToCompiledCV": "./dist/[lang]/cv/index.html",
+     "githubProfileStyle": "minimal"
+   },
+   ```
+
+   - **`default`** (default): Full profile with header, experience table, projects table, and open source section.
+   - **`minimal`**: Compact profile with name, description, social badges, and project links.
+
+   If `githubProfileStyle` isn't set, `default` is used.
+
 </Steps>
 
 <Aside>

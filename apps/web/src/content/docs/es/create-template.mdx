@@ -65,6 +65,20 @@ Las plantillas de Devsync no requieren un framework específico siempre y cuando
 
    Si estás usando internacionalización para tu plantilla, el placeholder `[lang]` será reemplazado con los códigos de idioma definidos en `DEVSYNC.json`. Si no necesitas esta característica, simplemente elimina `[lang]` de la ruta y apúntala directamente a tu archivo CV.
 
+   Opcionalmente, puedes configurar el estilo del perfil de GitHub:
+
+   ```json
+   "devsync": {
+     "pathToCompiledCV": "./dist/[lang]/cv/index.html",
+     "githubProfileStyle": "minimal"
+   },
+   ```
+
+   - **`default`** (por defecto): Perfil completo con encabezado, tabla de experiencia, tabla de proyectos y sección de open source.
+   - **`minimal`**: Perfil compacto con nombre, descripción, insignias sociales y enlaces a proyectos.
+
+   Si no se especifica `githubProfileStyle`, se usa `default`.
+
 </Steps>
 
 <Aside>
