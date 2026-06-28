@@ -11,7 +11,7 @@ export class GithubMinimal {
 		const translation = translations[defaultLang as availableLangsType]
 
 		md += `# ${firstName}\n\n`
-		md += `${devsyncTranslation.description ?? ''}`
+		md += `${devsyncTranslation.description ?? ''}\n\n`
 
 		md += `## ${translation['Connect']}\n\n`
 
@@ -20,9 +20,11 @@ export class GithubMinimal {
 				badge: social.mdBadge ?? '',
 				link: social.url ?? '',
 			})
+			md += '\n'
 		}
 
-		md += `## ${translation['Stuff I made']}`
+		md += '\n\n'
+		md += `## ${translation['Stuff I made']}\n\n`
 
 		for (const project of Array.isArray(devsyncTranslation?.projects) ? devsyncTranslation.projects : []) {
 			md += `- [${project.name}](${project.web}): ${project.description}\n`
