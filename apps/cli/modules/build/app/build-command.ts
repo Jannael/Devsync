@@ -5,8 +5,7 @@ import { availableLangs } from '@devsync/core'
 import { runBunCommand } from '@/utils/run-bun-command'
 import { GITHUB_STYLES } from '@/constants/github-profile-styles'
 import { DEVSYNC_CONFIG } from '@/constants/devsync-config-fields'
-import type { IDevsyncValidator } from '@/modules/build/domain/devsync-validator'
-import type { IDevsyncConfigReader } from '@/modules/build/domain/devsync-config-reader'
+import type { IBuildInfrastructure } from '@/modules/build/domain/build-infrastructure'
 import { BuildCvUseCase } from '@/modules/build/app/build-cv.use-case'
 import { CreateAcademicsUseCase } from '@/modules/build/app/create-academics.use-case'
 import { CreateGithubProfileUseCase } from '@/modules/build/app/create-github-profile.use-case'
@@ -14,8 +13,7 @@ import { CreateLinkedinUseCase } from '@/modules/build/app/create-linkedin.use-c
 
 export default class BuildCommand {
 	constructor(
-		private readonly devsyncValidator: IDevsyncValidator,
-		private readonly devsyncConfigReader: IDevsyncConfigReader,
+		private readonly infrastructure: IBuildInfrastructure,
 		private readonly buildCv: BuildCvUseCase,
 		private readonly createAcademics: CreateAcademicsUseCase,
 		private readonly createGithubProfile: CreateGithubProfileUseCase,
@@ -32,12 +30,12 @@ export default class BuildCommand {
 			await runBunCommand(['run', 'build'])
 			console.log(`${SPACE}${CHECK(`${BOLD('Built successfully.')}`)}`)
 
-			const devsync = await this.devsyncValidator.validate()
+			const devsync = await this.infrastructure.validateDevsync()
 			const languages = Object.keys(devsync).filter((key) => availableLangs.includes(key as (typeof availableLangs)[number]))
 			const defaultLang = devsync.defaultLang ?? 'en'
 
-			const cvPath = await this.devsyncConfigReader.get({ field: DEVSYNC_CONFIG.pathToCompiledCV })
-			const githubProfileStyle = await this.devsyncConfigReader.get({
+			const cvPath = await this.infrastructure.getDevsyncConfig({ field: DEVSYNC_CONFIG.pathToCompiledCV })
+			const githubProfileStyle = await this.infrastructure.getDevsyncConfig({
 				field: DEVSYNC_CONFIG.githubProfileStyle,
 				required: false,
 				defaultValue: GITHUB_STYLES.default,

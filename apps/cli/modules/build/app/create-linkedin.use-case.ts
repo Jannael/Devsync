@@ -2,10 +2,10 @@ import { type DevsyncPartial, getLangData, translations, type availableLangsType
 import { BOLD, GREEN } from '@/utils/colors'
 import { CHECK, SPACE } from '@/utils/icons-terminal'
 import { LINKEDIN } from '@/constants/paths'
-import type { IFileWriter } from '@/modules/build/domain/file-writer'
+import type { IBuildInfrastructure } from '@/modules/build/domain/build-infrastructure'
 
 export class CreateLinkedinUseCase {
-	constructor(private readonly fileWriter: IFileWriter) {}
+	constructor(private readonly infrastructure: IBuildInfrastructure) {}
 
 	private getLinkedinSkills({ devsync, lang }: { devsync: DevsyncPartial; lang: string }) {
 		const translation = getLangData(devsync, lang)
@@ -131,7 +131,7 @@ export class CreateLinkedinUseCase {
 	async execute({ devsync, lang }: { devsync: DevsyncPartial; lang: string }) {
 		console.log(`${SPACE}${GREEN('-')} Generating LinkedIn presentation...`)
 		const linkedin = this.getMD({ devsync, lang })
-		await this.fileWriter.write(LINKEDIN(lang), linkedin)
+		await this.infrastructure.writeFile(LINKEDIN(lang), linkedin)
 		console.log(`${SPACE}${CHECK(`LinkedIn markdown generated at ${BOLD(LINKEDIN(lang))}`)}`)
 		console.log('')
 	}

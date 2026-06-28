@@ -1,15 +1,15 @@
 import { type DevsyncPartial, getLangData, translations, type availableLangsType } from '@devsync/core'
+import { MdUtils } from '@/utils/md-utils'
 import { MD_SEPARATOR } from '@/constants/md-separator'
 import { CHECK, SPACE } from '@/utils/icons-terminal'
 import { ACADEMICS } from '@/constants/paths'
 import { GREEN, BOLD } from '@/utils/colors'
-import type { IFileWriter } from '@/modules/build/domain/file-writer'
-import type { IMdUtils } from '@/modules/build/domain/md-utils'
+import type { IBuildInfrastructure } from '@/modules/build/domain/build-infrastructure'
 
 export class CreateAcademicsUseCase {
 	constructor(
-		private readonly fileWriter: IFileWriter,
-		private readonly mdUtils: IMdUtils,
+		private readonly infrastructure: IBuildInfrastructure,
+		private readonly mdUtils: MdUtils,
 	) {}
 
 	private createAcademicsMd({ devsync, defaultLang }: { devsync: DevsyncPartial; defaultLang: string }) {
@@ -87,7 +87,7 @@ ${skills}
 	async execute({ devsync, defaultLang }: { devsync: DevsyncPartial; defaultLang: string }) {
 		console.log(`${SPACE}${GREEN('-')} Generating academics README...`)
 		const academics = this.createAcademicsMd({ devsync, defaultLang })
-		await this.fileWriter.write(ACADEMICS, academics)
+		await this.infrastructure.writeFile(ACADEMICS, academics)
 		console.log(`${SPACE}${CHECK(`Academics file generated at ${BOLD(ACADEMICS)}`)}`)
 		console.log('')
 	}
