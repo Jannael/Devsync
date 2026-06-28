@@ -41,16 +41,13 @@ export default class BuildCommand {
 				defaultValue: GITHUB_STYLES.default,
 			})
 
-			await this.createAcademics.execute({ devsync, defaultLang })
-
 			for (const lang of languages) {
 				await this.buildCv.execute({ name: devsync.name, lang, path: cvPath })
 				await this.createLinkedin.execute({ devsync, lang })
 			}
 
-			if (githubProfileStyle === GITHUB_STYLES.default) {
-				await this.createGithubProfile.execute({ devsync, defaultLang })
-			}
+			await this.createAcademics.execute({ devsync, defaultLang })
+			await this.createGithubProfile.execute({ devsync, defaultLang, style: githubProfileStyle })
 
 			console.log(`${SPACE}${CHECK(`${BOLD('Build process completed successfully.')}`)}`)
 		} catch (e) {
