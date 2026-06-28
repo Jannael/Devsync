@@ -24,7 +24,8 @@ Las plantillas de Devsync no requieren un framework específico siempre y cuando
 
 2. Esto generará una estructura de plantilla como esta:
 
-   <FileTree>
+<FileTree>
+
 - .agents
   - skills
     - devsync-portfolio
@@ -43,13 +44,14 @@ Las plantillas de Devsync no requieren un framework específico siempre y cuando
 - DEVSYNC.json
 - package.json
 
-   </FileTree>
+</FileTree>
 
-   Los archivos importantes son:
-   - **`fields-translations.ts`**: Este archivo contiene las traducciones que el `Devsync CLI` usa para construir el `Perfil de GitHub`, `LinkedIn`, `CV`, y `académicos`. Esto define qué idiomas están disponibles para el build.
-   - **`skills`**: Este directorio contiene un agent skill que ayuda a la IA a entender cómo operar la plantilla y construir portafolios desde prompts.
-   - **`update-on-devsync-change.yml`**: Esta es una GitHub Action que actualiza automáticamente tu `Perfil de GitHub`, `LinkedIn`, `CV`, y `académicos` cada vez que actualizas el archivo `DEVSYNC.json`.
-   - **`devsync.ts`**: Este archivo exporta todo lo necesario para usar la plantilla dentro de tu proyecto.
+Los archivos importantes son:
+
+- **`fields-translations.ts`**: Este archivo contiene las traducciones que el `Devsync CLI` usa para construir el `Perfil de GitHub`, `LinkedIn`, `CV`, y `académicos`. Esto define qué idiomas están disponibles para el build.
+- **`skills`**: Este directorio contiene un agent skill que ayuda a la IA a entender cómo operar la plantilla y construir portafolios desde prompts.
+- **`update-on-devsync-change.yml`**: Esta es una GitHub Action que actualiza automáticamente tu `Perfil de GitHub`, `LinkedIn`, `CV`, y `académicos` cada vez que actualizas el archivo `DEVSYNC.json`.
+- **`devsync.ts`**: Este archivo exporta todo lo necesario para usar la plantilla dentro de tu proyecto.
 
 3. Crea tu portafolio o refactoriza tu portafolio actual para usar `Devsync`, puedes usar el `skill` para pedirle a la IA que lo haga por ti.
 
