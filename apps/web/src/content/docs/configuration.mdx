@@ -180,6 +180,35 @@ All fields under language codes (e.g., `en`, `es`, `fr`) are translated per lang
 | `list`        | `object` | No       | Highlights section                 |
 | `skills`      | `array`  | No       | Skills/technologies used           |
 
+## Open Source Entry
+
+Open source contributions share the same structure as [Project Entry](#project-entry). They are shown in the Open Source section of your GitHub profile.
+
+```json
+{
+  "name": "Project Name",
+  "img": "https://project-image.com.jpg",
+  "web": "https://project-url.com",
+  "links": [ ... ],
+  "description": "What the project does and why it matters",
+  "list": {
+    "title": "project-highlights",
+    "items": [ ... ]
+  },
+  "skills": [ ... ]
+}
+```
+
+| Field         | Type     | Required | Description                        |
+| ------------- | -------- | -------- | ---------------------------------- |
+| `name`        | `string` | Yes      | Project name                       |
+| `img`         | `string` | No       | Project image URL                  |
+| `web`         | `string` | No       | Project website                    |
+| `links`       | `array`  | No       | Related links (GitHub, demo, etc.) |
+| `description` | `string` | Yes      | Project description                |
+| `list`        | `object` | No       | Highlights section                 |
+| `skills`      | `array`  | No       | Skills/technologies used           |
+
 ## Education Entry
 
 ```json
@@ -295,6 +324,7 @@ All fields under language codes (e.g., `en`, `es`, `fr`) are translated per lang
 			}
 		],
 		"projects": [],
+		"openSource": [],
 		"education": [],
 		"certifications": []
 	}
