@@ -12,5 +12,6 @@ export const PATH_DEFAULT_TEMPLATE_URL = 'https://github.com/jannael/devsync-def
 
 // Multi-language outputs
 export const PATH_LINKEDIN = (lang: string) => resolve(process.cwd(), `linkedin-${lang}.md`)
+export const PATH_CV_TXT = (lang: string) => resolve(process.cwd(), `cv-${lang}.txt`)
 export const PATH_CV_PDF = (name: string, lang: string) => resolve(process.cwd(), 'public', `${name}-${lang}.pdf`)
 export const PATH_CV_ROUTE_OUTPUT = (lang: string) => resolve(process.cwd(), 'dist', lang, 'cv', 'index.html')
