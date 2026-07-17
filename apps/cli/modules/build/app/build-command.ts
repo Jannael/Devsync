@@ -10,6 +10,7 @@ import { BuildCvUseCase } from '@/modules/build/app/build-cv.use-case'
 import { CreateAcademicsUseCase } from '@/modules/build/app/create-academics.use-case'
 import { CreateGithubProfileUseCase } from '@/modules/build/app/create-github-profile.use-case'
 import { CreateLinkedinUseCase } from '@/modules/build/app/create-linkedin.use-case'
+import type { CreateCvTxt } from './create-cv-txt'
 
 export default class BuildCommand {
 	constructor(
@@ -18,6 +19,7 @@ export default class BuildCommand {
 		private readonly createAcademics: CreateAcademicsUseCase,
 		private readonly createGithubProfile: CreateGithubProfileUseCase,
 		private readonly createLinkedin: CreateLinkedinUseCase,
+		private readonly createCvTxt: CreateCvTxt,
 	) {}
 
 	async execute(): Promise<void> {
@@ -44,6 +46,7 @@ export default class BuildCommand {
 			for (const lang of languages) {
 				await this.buildCv.execute({ name: devsync.name, lang, path: cvPath })
 				await this.createLinkedin.execute({ devsync, lang })
+				await this.createCvTxt.execute({ devsync, lang })
 			}
 
 			await this.createAcademics.execute({ devsync, defaultLang })
