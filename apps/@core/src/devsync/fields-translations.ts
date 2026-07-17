@@ -11,6 +11,7 @@ export const translations = {
 		Education: 'Education',
 		Certifications: 'Certifications',
 		'Open Source': 'Open Source',
+		'Open Source Contributions': 'Open Source Contributions',
 		'Core Skills': 'Core Skills',
 		credential: 'Credential',
 
@@ -34,6 +35,7 @@ export const translations = {
 		Education: 'Educación',
 		Certifications: 'Certificaciones',
 		'Open Source': 'Código Abierto',
+		'Open Source Contributions': 'Contribuciones de Código Abierto',
 		'Core Skills': 'Habilidades principales',
 		credential: 'Credencial',
 
@@ -57,6 +59,7 @@ export const translations = {
 		Education: 'Éducation',
 		Certifications: 'Certifications',
 		'Open Source': 'Open Source',
+		'Open Source Contributions': 'Contributions Open Source',
 		'Core Skills': 'Compétences essentielles',
 		credential: 'Titre de compétence',
 
@@ -80,6 +83,7 @@ export const translations = {
 		Education: 'Educação',
 		Certifications: 'Certificações',
 		'Open Source': 'Código Aberto',
+		'Open Source Contributions': 'Contribuições de Código Aberto',
 		'Core Skills': 'Habilidades principais',
 		credential: 'Credencial',
 
@@ -103,6 +107,7 @@ export const translations = {
 		Education: 'Ausbildung',
 		Certifications: 'Zertifizierungen',
 		'Open Source': 'Open Source',
+		'Open Source Contributions': 'Open Source-Beiträge',
 		'Core Skills': 'Kernkompetenzen',
 		credential: 'Zertifikat',
 
@@ -126,6 +131,7 @@ export const translations = {
 		Education: '教育',
 		Certifications: '证书',
 		'Open Source': '开源',
+		'Open Source Contributions': '开源贡献',
 		'Core Skills': '核心技能',
 		credential: '资质',
 
@@ -149,6 +155,7 @@ export const translations = {
 		Education: '学歴',
 		Certifications: '資格',
 		'Open Source': 'オープンソース',
+		'Open Source Contributions': 'オープンソースの貢献',
 		'Core Skills': 'コアスキル',
 		credential: '資格証明',
 
@@ -172,6 +179,7 @@ export const translations = {
 		Education: '학력',
 		Certifications: '자격증',
 		'Open Source': '오픈소스',
+		'Open Source Contributions': '오픈소스 기여',
 		'Core Skills': '핵심 역량',
 		credential: '자격 증명',
 

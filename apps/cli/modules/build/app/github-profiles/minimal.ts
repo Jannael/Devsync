@@ -32,7 +32,7 @@ export class GithubMinimal {
 		}
 
 		if (devsyncTranslation.openSource) {
-			md += `## ${translation['Open Source']}\n\n`
+			md += `## ${translation['Open Source Contributions']}\n\n`
 			for (const project of Array.isArray(devsyncTranslation?.openSource) ? devsyncTranslation.openSource : []) {
 				md += `- [${project.name}](${project.web}): ${project.description}\n`
 			}
