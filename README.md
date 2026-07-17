@@ -41,6 +41,3 @@ This project uses Bun as its runtime and package manager. You don't need to worr
 
 [CC-BY-NC-4.0](LICENSE)
 
-## TODOS:
-
-- [ ] move devsync templates to a monorepo, because it's kinda annoying in different repos jajajja
