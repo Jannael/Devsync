@@ -23,6 +23,7 @@ export class GithubDefault {
 		md += `${devsyncTranslation?.description ?? ''}\n\n`
 
 		for (const socialMedia of devsync?.socialMedia ?? []) {
+			if (socialMedia.name && socialMedia?.name.replace(/\w+/g, '').includes('github')) continue
 			md += this.mdUtils.badgeWithLink({
 				badge: socialMedia.mdBadge ?? '',
 				link: socialMedia.url ?? '',

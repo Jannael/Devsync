@@ -60,6 +60,8 @@ export class CreateCvTxtUseCase {
 		}
 
 		for (const social of devsync?.socialMedia ?? []) {
+			if (social.name && social?.name.replace(/\w+/g, '').includes('github')) continue
+
 			if (social?.name && social?.url) {
 				txt += `${social.name}: ${social.url}\n`
 			}

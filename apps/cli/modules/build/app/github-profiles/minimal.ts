@@ -16,6 +16,7 @@ export class GithubMinimal {
 		md += `## ${translation['Connect']}\n\n`
 
 		for (const social of devsync.socialMedia ?? []) {
+			if (social.name && social?.name.replace(/\w+/g, '').includes('github')) continue
 			md += this.mdUtils.badgeWithLink({
 				badge: social.mdBadge ?? '',
 				link: social.url ?? '',
