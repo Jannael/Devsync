@@ -31,6 +31,13 @@ export class GithubMinimal {
 			md += `- [${project.name}](${project.web}): ${project.description}\n`
 		}
 
+		if (devsyncTranslation.openSource) {
+			md += `## ${translation['Open Source']}`
+			for (const project of Array.isArray(devsyncTranslation?.openSource) ? devsyncTranslation.openSource : []) {
+				md += `- [${project.name}](${project.web}): ${project.description}\n`
+			}
+		}
+
 		return md
 	}
 }
