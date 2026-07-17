@@ -5,7 +5,7 @@ import { CHECK, SPACE } from '@/utils/icons-terminal'
 import { GITHUB_STYLES } from '@/constants/github-profile-styles'
 import type { IBuildInfrastructure } from '@/modules/build/domain/build-infrastructure'
 import { GithubDefault } from '@/modules/build/app/github-profiles/default'
-import type { GithubMinimal } from './github-profiles/minimal'
+import type { GithubMinimal } from '@/modules/build/app/github-profiles/minimal'
 
 export class CreateGithubProfileUseCase {
 	constructor(

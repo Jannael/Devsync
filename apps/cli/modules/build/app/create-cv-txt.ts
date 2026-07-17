@@ -1,5 +1,5 @@
 import type { DevsyncPartial } from '@devsync/core'
-import type { IBuildInfrastructure } from '../domain/build-infrastructure'
+import type { IBuildInfrastructure } from '@/modules/build/domain/build-infrastructure'
 
 export class CreateCvTxt {
 	constructor(private readonly infrastructure: IBuildInfrastructure) {}
