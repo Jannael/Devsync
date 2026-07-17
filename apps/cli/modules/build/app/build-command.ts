@@ -10,7 +10,7 @@ import { BuildCvUseCase } from '@/modules/build/app/build-cv.use-case'
 import { CreateAcademicsUseCase } from '@/modules/build/app/create-academics.use-case'
 import { CreateGithubProfileUseCase } from '@/modules/build/app/create-github-profile.use-case'
 import { CreateLinkedinUseCase } from '@/modules/build/app/create-linkedin.use-case'
-import type { CreateCvTxt } from '@/modules/build/app/create-cv-txt'
+import type { CreateCvTxt } from '@/modules/build/app/create-cv-txt.use-case'
 
 export default class BuildCommand {
 	constructor(

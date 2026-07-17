@@ -7,7 +7,7 @@ import { GithubDefault } from '@/modules/build/app/github-profiles/default'
 import { BuildInfrastructure } from '@/modules/build/infra/build-infrastructure'
 import { MdUtils } from '@/utils/md-utils'
 import { GithubMinimal } from '@/modules/build/app/github-profiles/minimal'
-import { CreateCvTxt } from '@/modules/build/app/create-cv-txt'
+import { CreateCvTxt } from '@/modules/build/app/create-cv-txt.use-case'
 
 export default async function build() {
 	const infrastructure = new BuildInfrastructure()
