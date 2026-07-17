@@ -3,11 +3,13 @@ import { SPACE } from '@/utils/icons-terminal'
 import { AVAILABLE_COMMANDS } from '@/commands'
 import { COMMANDS_FN } from '@/commands-fn'
 import { GREEN } from '@/utils/colors'
+import { version } from '../../package.json'
 
 const args = Bun.argv.slice(2)
 const command = AVAILABLE_COMMANDS.find((command) => command.name === args[0])
 
 if (command) {
+	console.log(`${SPACE}${GREEN('devsync')} v${version}`)
 	await COMMANDS_FN[command.name](args)
 } else {
 	console.log(`${SPACE}Available commands:`)
