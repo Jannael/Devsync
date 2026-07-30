@@ -83,6 +83,9 @@ ${skills}
 		const devsyncTranslation = getLangData(devsync, defaultLang)
 		const translation = translations[defaultLang as availableLangsType]
 		let md = ''
+
+		if (Array.isArray(devsyncTranslation.projects) && devsyncTranslation.projects.length === 0) return md
+
 		md += `## ${translation['Projects']} \n\n`
 		md += '<table>'
 
