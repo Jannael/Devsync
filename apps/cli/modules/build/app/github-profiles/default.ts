@@ -47,6 +47,9 @@ export class GithubDefault {
 		const translation = translations[defaultLang as availableLangsType]
 
 		let md = ''
+
+		if (Array.isArray(devsyncTranslation.experience) && devsyncTranslation.experience.length === 0) return md
+
 		md += `## ${translation['Professional Experience']} \n\n`
 		md += '<table>'
 
