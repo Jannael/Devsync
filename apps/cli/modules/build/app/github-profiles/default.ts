@@ -59,20 +59,20 @@ export class GithubDefault {
 			const skills = this.mdUtils.getSkills({ skills: ex.skills })
 
 			md += `
-      <tr>
-        <td>
-          <h3>${ex.company ?? 'Company'}</h3>\n
+<tr>
+<td>
+<h3>${ex.company ?? 'Company'}</h3>\n
 ${links}
-          <p>${ex.description ?? ''}</p>
-          ${(ex.list?.title?.length ?? 0) > 1 ? ex.list?.title : this.mdUtils.MD_SEPARATOR}
-          <ul>
-            ${listItems}
-          </ul>
-          </br>\n
+<p>${ex.description ?? ''}</p>
+${(ex.list?.title?.length ?? 0) > 1 ? ex.list?.title : this.mdUtils.MD_SEPARATOR}
+<ul>
+${listItems}
+</ul>
+</br>\n
 ${skills}
-        </td>
-        ${this.mdUtils.getTdImg({ img: ex.img ?? '', link: ex.web ?? '#', alt: ex.company ?? 'Company' })}
-      </tr>`
+</td>
+${this.mdUtils.getTdImg({ img: ex.img ?? '', link: ex.web ?? '#', alt: ex.company ?? 'Company' })}
+</tr>`
 		}
 		md += '</table> \n\n'
 
@@ -95,20 +95,20 @@ ${skills}
 			const skills = this.mdUtils.getSkills({ skills: proj.skills })
 
 			md += `
-      <tr>
-        <td>
-          <h3>${proj.name ?? 'Project'}</h3>\n
+<tr>
+<td>
+<h3>${proj.name ?? 'Project'}</h3>\n
 ${links}
-          <p>${proj.description ?? ''}</p>
-          ${(proj.list?.title?.length ?? 0) > 1 ? proj.list?.title : this.mdUtils.MD_SEPARATOR}
-          <ul>
-            ${listItems}
-          </ul>
-          </br>\n
+<p>${proj.description ?? ''}</p>
+${(proj.list?.title?.length ?? 0) > 1 ? proj.list?.title : this.mdUtils.MD_SEPARATOR}
+<ul>
+${listItems}
+</ul>
+</br>\n
 ${skills}
-        </td>
-        ${this.mdUtils.getTdImg({ img: proj.img ?? '', link: proj.web ?? '#', alt: proj.name ?? 'Project' })}
-      </tr>`
+</td>
+${this.mdUtils.getTdImg({ img: proj.img ?? '', link: proj.web ?? '#', alt: proj.name ?? 'Project' })}
+</tr>`
 		}
 
 		md += '</table> \n\n'
@@ -132,20 +132,20 @@ ${skills}
 			const skills = this.mdUtils.getSkills({ skills: proj.skills })
 
 			md += `
-      <tr>
-        <td>
-          <h3>${proj.name ?? 'Project'}</h3>\n
+<tr>
+<td>
+<h3>${proj.name ?? 'Project'}</h3>\n
 ${links}
-          <p>${proj.description ?? ''}</p>
-          ${(proj.list?.title?.length ?? 0) > 1 ? proj.list?.title : this.mdUtils.MD_SEPARATOR}
-          <ul>
-            ${listItems}
-          </ul>
-          </br>\n
+<p>${proj.description ?? ''}</p>
+${(proj.list?.title?.length ?? 0) > 1 ? proj.list?.title : this.mdUtils.MD_SEPARATOR}
+<ul>
+${listItems}
+</ul>
+</br>\n
 ${skills}
-        </td>
-        ${this.mdUtils.getTdImg({ img: proj.img ?? '', link: proj.web ?? '#', alt: proj.name ?? 'Project' })}
-      </tr>`
+</td>
+${this.mdUtils.getTdImg({ img: proj.img ?? '', link: proj.web ?? '#', alt: proj.name ?? 'Project' })}
+</tr>`
 		}
 
 		md += '</table> \n\n'

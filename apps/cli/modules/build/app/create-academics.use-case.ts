@@ -34,19 +34,19 @@ export class CreateAcademicsUseCase {
 			const listItems = ed.list?.items ? this.mdUtils.getListItems({ items: ed.list.items }) : ''
 
 			md += `
-      <tr>
-        <td>
-          <h3>${ed.name ?? 'Name'} | ${ed.degree ?? 'Degree'} | ${ed.date ?? 'Date'}</h3>\n
+<tr>
+<td>
+<h3>${ed.name ?? 'Name'} | ${ed.degree ?? 'Degree'} | ${ed.date ?? 'Date'}</h3>\n
 ${links}
-          <br>
-          ${(ed.list?.title?.length ?? 0) > 1 ? ed.list?.title : this.mdUtils.MD_SEPARATOR}
-          <ul>
-            ${listItems}
-          </ul>
-          </br>
-        </td>
-        ${this.mdUtils.getTdImg({ img: ed.img ?? '', link: '#', alt: ed.degree ?? 'Degree' })}
-      </tr>`
+<br>
+${(ed.list?.title?.length ?? 0) > 1 ? ed.list?.title : this.mdUtils.MD_SEPARATOR}
+<ul>
+${listItems}
+</ul>
+</br>
+</td>
+${this.mdUtils.getTdImg({ img: ed.img ?? '', link: '#', alt: ed.degree ?? 'Degree' })}
+</tr>`
 		}
 
 		md += '</table> \n\n'
