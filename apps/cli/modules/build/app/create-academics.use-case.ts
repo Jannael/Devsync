@@ -23,6 +23,9 @@ export class CreateAcademicsUseCase {
 		const devsyncTranslation = getLangData(devsync, defaultLang)
 		const translation = translations[defaultLang as availableLangsType]
 		let md = ''
+
+		if (Array.isArray(devsyncTranslation?.education) && devsyncTranslation.education.length === 0) return md
+
 		md += `# ${translation['academics']} \n\n`
 		md += '<table>'
 
@@ -55,6 +58,8 @@ ${links}
 		const devsyncTranslation = getLangData(devsync, defaultLang)
 		const translation = translations[defaultLang as availableLangsType]
 		let md = ''
+
+		if (Array.isArray(devsyncTranslation?.certifications) && devsyncTranslation.certifications.length === 0) return md
 
 		md += `## ${translation['Certifications']} \n\n`
 		md += '<table>'
