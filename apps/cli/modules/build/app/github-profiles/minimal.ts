@@ -25,10 +25,13 @@ export class GithubMinimal {
 		}
 
 		md += '\n\n'
-		md += `## ${translation['Stuff I made']}\n\n`
 
-		for (const project of Array.isArray(devsyncTranslation?.projects) ? devsyncTranslation.projects : []) {
-			md += `- [${project.name}](${project.web}): ${project.description}\n`
+		if (devsyncTranslation.projects) {
+			md += `## ${translation['Stuff I made']}\n\n`
+
+			for (const project of Array.isArray(devsyncTranslation?.projects) ? devsyncTranslation.projects : []) {
+				md += `- [${project.name}](${project.web}): ${project.description}\n`
+			}
 		}
 
 		if (devsyncTranslation.openSource) {
