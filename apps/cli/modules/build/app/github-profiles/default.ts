@@ -120,6 +120,9 @@ ${skills}
 		const devsyncTranslation = getLangData(devsync, defaultLang)
 		const translation = translations[defaultLang as availableLangsType]
 		let md = ''
+
+		if (Array.isArray(devsyncTranslation.openSource) && devsyncTranslation.openSource.length === 0) return md
+
 		md += `## ${translation['Open Source']} \n\n`
 		md += '<table>'
 
