@@ -2,13 +2,13 @@
 
 ![Devsync](apps/web/public/og.png)
 
-One file to keep your portfolio, CV, GitHub and LinkedIn in sync.
+One file, Infinity outputs.
 
 > **Full documentation, features, and live demo** at [devsync.work](https://devsync.work)
 
 ## What is Devsync?
 
-A CLI tool that generates your professional resume, portfolio site, GitHub profile, LinkedIn summary, and academic history — all from a single `DEVSYNC.json` configuration file.
+A CLI tool that generates your professional resume, portfolio site, GitHub profile, LinkedIn summary, and academic history — all from a single file.
 
 ## Quick Start
 
@@ -25,4 +25,3 @@ This project uses Bun as its runtime and package manager. You don't need to worr
 ## License
 
 [CC-BY-NC-4.0](LICENSE)
-
