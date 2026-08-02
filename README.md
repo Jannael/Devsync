@@ -1,20 +1,19 @@
-# Devsync
-
 ![Devsync](apps/web/public/og.png)
+
+<div align="center">
+
+# Devsync
 
 One file, Infinite outputs.
 
-> **Full documentation, features, and live demo** at [devsync.work](https://devsync.work)
+</div>
+
 
 ## What is Devsync?
 
 A CLI tool that generates your professional resume, portfolio site, GitHub profile, LinkedIn summary, and academic history — all from a single file.
 
-## Quick Start
-
-```bash
-bunx @jannael/devsync init
-```
+> **Full documentation, features, and live demo** at [devsync.work](https://devsync.work)
 
 ## Security
 
