@@ -9,7 +9,7 @@ interface Props {
 const { lines, scrambleChars = '█▓▒░─═┬┴┤├┴┬┼╔╦╗╠╬╣╚╩╝║╬', batchSize = 5, delay = 1 } = Astro.props
 ---
 
-<pre class="ascii-scramble text-accent" id="asciiArt"></pre>
+<pre class="ascii-scramble text-accent" id="asciiArt" aria-hidden="true"></pre>
 
 <script define:vars={{ lines, scrambleChars, batchSize, delay }}>
 	const container = document.getElementById('asciiArt')
