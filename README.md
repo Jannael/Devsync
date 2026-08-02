@@ -2,7 +2,7 @@
 
 ![Devsync](apps/web/public/og.png)
 
-One file, Infinity outputs.
+One file, Infinite outputs.
 
 > **Full documentation, features, and live demo** at [devsync.work](https://devsync.work)
 
