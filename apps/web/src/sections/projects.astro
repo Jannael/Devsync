@@ -1,0 +1,247 @@
+---
+import { getTranslation } from '@/i18n/translation'
+
+const lang = Astro.currentLocale ?? 'en'
+const t = getTranslation(lang)
+
+interface Project {
+	slug: string
+	name: string
+	url: string
+	command: string
+	tags: string[]
+}
+
+const projects: Project[] = [
+	{
+		slug: 'glinter',
+		name: 'Glinter',
+		url: 'https://glinter.jannael.com',
+		command: 'npm i -g @jannael/glinter',
+		tags: ['Git', 'CLI', 'Interactive'],
+	},
+	{
+		slug: 'config',
+		name: 'Config',
+		url: 'https://config.jannael.com',
+		command: 'npx @jannael/config',
+		tags: ['ESLint', 'Prettier', 'Biome'],
+	},
+]
+---
+
+<section
+	id="projects-section"
+	class="projects relative flex flex-col items-center justify-center overflow-hidden px-4 py-16 sm:px-6 sm:py-24"
+	aria-labelledby="projects-title"
+>
+	<div class="relative z-10 flex w-full max-w-5xl flex-col items-center">
+		<!-- Section header -->
+		<div class="mb-12 flex flex-col items-center text-center sm:mb-16">
+			<h2 id="projects-title" class="projects-title text-text mb-4 text-2xl font-semibold tracking-tight sm:text-3xl md:text-4xl">
+				{t.projects.title}
+			</h2>
+			<p class="projects-subtitle text-text-secondary mx-auto max-w-xl text-base sm:text-lg">
+				{t.projects.subtitle}
+			</p>
+		</div>
+
+		<!-- Projects grid -->
+		<div class="projects-grid grid w-full grid-cols-1 gap-8 sm:grid-cols-2 lg:gap-10">
+			{
+				projects.map((project, index) => (
+					<div
+						class="project-card border-border bg-surface group flex h-full flex-col overflow-hidden rounded-2xl border shadow-sm transition-all duration-300"
+						style={`animation-delay: ${0.15 * index}s`}
+					>
+						<div class="border-border bg-surface-sunken flex items-center gap-2 border-b px-4 py-2.5 sm:px-5">
+							<div class="flex gap-1.5">
+								<span class="bg-error/60 h-3 w-3 rounded-full" />
+								<span class="bg-warning/60 h-3 w-3 rounded-full" />
+								<span class="bg-success/60 h-3 w-3 rounded-full" />
+							</div>
+							<span class="text-text-muted ml-2 font-mono text-xs sm:text-sm">~/projects/{project.slug}</span>
+						</div>
+
+						<div class="flex flex-1 flex-col gap-4 p-6">
+							<h3 class="text-text text-xl font-semibold">{project.name}</h3>
+
+							<p class="text-text-secondary flex-1 text-sm leading-relaxed">{t.projects.items[project.slug]}</p>
+
+							<div class="flex flex-wrap gap-2">
+								{project.tags.map((tag) => (
+									<span class="border-border bg-surface-sunken text-text-secondary inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium">
+										{tag}
+									</span>
+								))}
+							</div>
+
+							<div class="border-border bg-surface-sunken flex items-center gap-3 rounded-lg border px-4 py-3">
+								<code class="text-text-secondary min-w-0 flex-1 truncate font-mono text-[0.85rem]">$ {project.command}</code>
+								<button
+									type="button"
+									class="project-copy-btn text-text-secondary hover:text-accent relative ml-auto flex h-10 w-5 shrink-0 cursor-pointer items-center justify-center rounded p-1 transition-colors duration-200"
+									aria-label={t.projects.copyCommand}
+								>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="16"
+										height="16"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										class="copy-icon absolute inset-0 my-auto transition-opacity duration-200"
+									>
+										<rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+										<path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+									</svg>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="16"
+										height="16"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="currentColor"
+										stroke-width="2"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										class="check-icon text-accent absolute inset-0 my-auto opacity-0 transition-opacity duration-200"
+									>
+										<polyline points="20 6 9 17 4 12" />
+									</svg>
+								</button>
+							</div>
+
+							<a
+								href={project.url}
+								target="_blank"
+								rel="noopener noreferrer"
+								class="border-accent/30 text-accent hover:bg-accent mt-auto inline-flex h-10 items-center justify-center gap-2 rounded-lg border px-5 py-[0.6rem] text-sm font-semibold transition-all duration-200 hover:scale-105 hover:text-white active:scale-95"
+							>
+								{t.projects.viewProject}
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									aria-hidden="true"
+								>
+									<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+									<polyline points="15 3 21 3 21 9" />
+									<line x1="10" y1="14" x2="21" y2="3" />
+								</svg>
+							</a>
+						</div>
+					</div>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<script>
+	function setupObserver() {
+		const section = document.getElementById('projects-section')
+		if (!section) return
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						section.classList.add('animate')
+						observer.disconnect()
+					}
+				})
+			},
+			{ threshold: 0.1 },
+		)
+		observer.observe(section)
+	}
+
+	function setupCopyButtons() {
+		const copyButtons = document.querySelectorAll('.project-copy-btn')
+		copyButtons.forEach((button) => {
+			button.addEventListener('click', async () => {
+				const commandEl = button.parentElement?.querySelector('code')
+				const command = commandEl?.textContent?.replace('$ ', '').trim()
+				if (!command) return
+
+				const copyIcon = button.querySelector('.copy-icon') as HTMLElement
+				const checkIcon = button.querySelector('.check-icon') as HTMLElement
+
+				try {
+					await navigator.clipboard.writeText(command)
+					copyIcon.classList.add('opacity-0')
+					checkIcon.classList.remove('opacity-0')
+
+					setTimeout(() => {
+						copyIcon.classList.remove('opacity-0')
+						checkIcon.classList.add('opacity-0')
+					}, 2000)
+				} catch {
+					const textarea = document.createElement('textarea')
+					textarea.value = command
+					textarea.style.position = 'fixed'
+					textarea.style.opacity = '0'
+					document.body.appendChild(textarea)
+					textarea.select()
+					document.execCommand('copy')
+					document.body.removeChild(textarea)
+				}
+			})
+		})
+	}
+
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', setupObserver)
+		document.addEventListener('DOMContentLoaded', setupCopyButtons)
+	} else {
+		setupObserver()
+		setupCopyButtons()
+	}
+</script>
+
+<style>
+	/* ── Entrance animations ── */
+	.projects-title,
+	.projects-subtitle {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+
+	.projects.animate .projects-title,
+	.projects.animate .projects-subtitle {
+		animation: projects-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+	}
+
+	.projects.animate .projects-title {
+		animation-delay: 0s;
+	}
+
+	.projects.animate .projects-subtitle {
+		animation-delay: 0.15s;
+	}
+
+	.project-card {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+
+	.projects.animate .project-card {
+		animation: projects-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+	}
+
+	@keyframes projects-fade-up {
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+</style>

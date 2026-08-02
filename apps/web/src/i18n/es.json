@@ -60,6 +60,16 @@
 		"title": "El Creador",
 		"description": "Devsync empezó como un script personal para resolver un problema que todo desarrollador conoce: actualizar la misma información en cinco plataformas distintas. Currículum, portafolio, GitHub, LinkedIn, registros académicos — distintos formatos, mismo contenido, repetición infinita.\n\nLo construí primero para mí. Luego me di cuenta de que podía ayudar a otros. Así que lo hice open source. Sin paywalls, sin cuentas, sin fricción. Solo un archivo que genera todo lo que necesitas."
 	},
+	"projects": {
+		"title": "Más del Creador",
+		"subtitle": "Otras herramientas que construí para que el flujo de trabajo del desarrollador sea más rápido y seguro.",
+		"viewProject": "Ver Proyecto",
+		"copyCommand": "Copiar comando",
+		"items": {
+			"glinter": "Un CLI de Git interactivo que reduce errores proporcionando comandos interactivos y valores predeterminados más seguros.",
+			"config": "Un solo comando para configurar tu linter y formateador en ESLint, Prettier, Biome y más."
+		}
+	},
 	"footer": {
 		"tagline": "Hecho para desarrolladores",
 		"subtitle": "Un archivo. Salidas infinitas.",

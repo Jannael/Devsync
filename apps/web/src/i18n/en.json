@@ -60,6 +60,16 @@
 		"title": "The Creator",
 		"description": "Devsync started as a personal script to solve a problem every developer knows: updating the same information across five different platforms. Resume, portfolio, GitHub, LinkedIn, academic records — different formats, same content, endless repetition.\n\nI built it for myself first. Then I realized this could help others too. So I open-sourced it. No paywalls, no accounts, no friction. Just one file that generates everything you need."
 	},
+	"projects": {
+		"title": "More from the Creator",
+		"subtitle": "Other tools I built to make the developer workflow faster and safer.",
+		"viewProject": "View Project",
+		"copyCommand": "Copy command",
+		"items": {
+			"glinter": "An interactive Git CLI that reduces errors by providing interactive commands and safer defaults.",
+			"config": "One command to configure your linter and formatter across ESLint, Prettier, Biome and more."
+		}
+	},
 	"footer": {
 		"tagline": "Built For Developers",
 		"subtitle": "One file. Infinite outputs.",
