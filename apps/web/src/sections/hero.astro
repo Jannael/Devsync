@@ -25,7 +25,7 @@ const t = getTranslation(lang)
 				target="_blank"
 				rel="noopener noreferrer"
 				class="nav-item text-text-secondary hover:text-accent inline-flex items-center justify-center rounded-full p-2 transition-colors duration-200"
-				aria-label="View source on GitHub"
+				aria-label={t.nav.viewSource}
 			>
 				<GitHub />
 			</a>
@@ -54,17 +54,17 @@ const t = getTranslation(lang)
 
 		<!-- Tagline -->
 		<p class="hero-tagline text-accent mb-5 text-xs font-semibold tracking-[0.15em] uppercase sm:mb-16 sm:text-sm sm:tracking-[0.3em]">
-			<small>{t['Resume. Portfolio. GitHub profile.']}</small>
+			<small>{t.hero.tagline}</small>
 		</p>
 
 		<!-- Main headline -->
 		<h1 id="hero-title" class="hero-title text-text mb-3 text-xl font-semibold tracking-tight sm:mb-6 sm:text-2xl md:text-4xl lg:text-5xl">
-			{t['Synchronization tool for developers']}
+			{t.hero.title}
 		</h1>
 
 		<!-- Description -->
 		<p class="hero-description text-text-secondary mx-auto mb-6 max-w-2xl text-sm leading-relaxed text-balance sm:mb-16 sm:text-lg md:text-xl">
-			{t['Generate your professional resume...']}
+			{t.hero.description}
 		</p>
 
 		<!-- CTAs -->
@@ -80,7 +80,7 @@ const t = getTranslation(lang)
 						rel="noopener noreferrer"
 						class="border-accent/30 text-accent hover:bg-accent inline-flex items-center gap-2 rounded-xl border px-6 py-3 text-sm font-semibold transition-all duration-200 hover:scale-105 hover:text-white active:scale-95 sm:px-10 sm:py-3.5 sm:text-base"
 					>
-						{t['Live Demo']}
+						{t.hero.ctaDemo}
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							width="14"
@@ -107,7 +107,7 @@ const t = getTranslation(lang)
 						href={getRelativeLocaleUrl(lang, '/getting-started/')}
 						class="border-border/30 text-text-secondary hover:border-accent hover:text-accent inline-flex items-center gap-2 rounded-xl border px-5 py-2.5 text-xs font-semibold transition-all duration-200 hover:scale-105 active:scale-95 sm:px-8 sm:py-3.5 sm:text-base"
 					>
-						{t['Read the Docs']}
+						{t.hero.ctaDocs}
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							width="14"

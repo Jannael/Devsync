@@ -6,7 +6,7 @@ import { getTranslation } from '@/i18n/translation'
 const lang = Astro.currentLocale ?? 'en'
 const t = getTranslation(lang)
 
-const paragraphs = t['creator description'].split('\n\n')
+const paragraphs = t.creator.description.split('\n\n')
 ---
 
 <section
@@ -48,7 +48,7 @@ const paragraphs = t['creator description'].split('\n\n')
 				</div>
 				<div class="flex flex-col gap-4">
 					<h2 id="creator-title" class="creator-title text-text text-lg font-semibold sm:text-xl">
-						{t['The Creator']}
+						{t.creator.title}
 					</h2>
 					<div class="creator-content text-text-secondary text-base leading-relaxed sm:text-lg">
 						<p class="creator-description">{paragraphs[0]}</p>

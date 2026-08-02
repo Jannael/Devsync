@@ -1,75 +1,113 @@
 {
-	"hello world": "Hola mundo",
-	"Synchronization tool for developers": "La herramienta de sincronización para desarrolladores",
-	"Resume. Portfolio. GitHub profile.": "Currículum. Portafolio. Perfil de GitHub.",
-	"Generate your professional resume...": "Genera tu currículum profesional, portafolio, historial académico y perfil de GitHub; todo desde un solo archivo de configuración.",
-	"Start Now": "Empezar ahora",
-	"Live Demo": "Demo en vivo",
-	"Read the Docs": "Leer la documentación",
-	"Page not found": "Página no encontrada",
-	"The page you are looking for does not exist.": "La página que buscas no existe.",
-	"Go to Home": "Volver al inicio",
-	"Getting Started": "Primeros pasos",
-	"Everything you need": "Todo lo que necesitas",
-	"One config file": "Un solo archivo de configuración",
-	"Generate your resume, portfolio, and profiles from a single DEVSYNC.json file.": "Genera tu currículum, portafolio y perfiles desde un único archivo DEVSYNC.json.",
-	"Professional Resume": "Currículum profesional",
-	"Clean, ATS-friendly resumes with customizable templates.": "Currículums limpios y compatibles con ATS con plantillas personalizables.",
-	"CV in TXT": "CV en TXT",
-	"Plain-text resume generated from your config, ready to paste into any form or ATS.": "Currículum en texto, listo para pegar en cualquier formulario o ATS.",
-	"Portfolio Site": "Sitio de portafolio",
-	"Beautiful portfolio pages that showcase your work.": "Páginas de portafolio que muestran tu trabajo.",
-	"GitHub Profile": "Perfil de GitHub",
-	"Beautiful github profile page by default.": "Perfil de github bonita por defecto.",
-	"Academic History": "Historial académico",
-	"Update your certification and education records in one place and show them everywhere.": "Actualiza tus registros de certificaciones y educación en un solo sitio y muéstralo en todos lados.",
-	"Academic Record": "Registro académico",
-	"Generate an academics README to keep your education and certifications on GitHub.": "Genera un README académico para mantener tu educación y certificaciones en GitHub.",
-	"LinkedIn Profile": "Perfil de LinkedIn",
-	"Generate a polished LinkedIn-ready profile summary.": "Genera un resumen de perfil listo para LinkedIn.",
-	"Customizable Templates": "Plantillas personalizables",
-	"Create Your Own Templates": "Crea tus propias plantillas",
-	"Build custom templates with any framework you want and make them yours.": "Construye plantillas personalizadas con el framework que quieras y hazlas tuyas.",
-	"Start with a polished template that looks great out of the box and customize it to your needs.": "Empieza con una plantilla que se ve genial desde el primer momento.",
-	"i18n Support": "Soporte i18n",
-	"Templates support internationalization out of the box.": "Las plantillas soportan internacionalización por defecto.",
-	"Why?": "¿Por qué?",
-	"why description": "La mayoría de los desarrolladores pierden horas manteniendo currículums, portafolios y perfiles de GitHub por separado. Devsync soluciona esto generando todo desde una única fuente de verdad. Un archivo, infinitas salidas. No más copiar y pegar, no más información desactualizada.\n\nTu carrera evoluciona constantemente. Nuevos proyectos, nuevas habilidades, nuevas certificaciones. Mantener cada plataforma actualizada es un trabajo de tiempo completo. Devsync automatiza esto leyendo tu DEVSYNC.json y produciendo salidas profesionales y pulidas en cada canal que importa.\n\nDevsync también es para desarrolladores backend, científicos de datos, ingenieros DevOps, estudiantes, personas en transición profesional, y cualquiera que quiera un portafolio web profesional sin programar ni investigar tecnologías web. No solo un portafolio: un CV listo para ATS que pasa filtros automáticos sin estudiar las normativas de Harvard. Tener una buena documentación para buscar trabajo incluye muchos detalles; Devsync lo convierte en un solo archivo.\n\nConcéntrate en lo que mejor haces: construir. Deja que Devsync se encargue del resto. Desde currículums compatibles con ATS hasta sitios de portafolio impresionantes, todo se mantiene en perfecta armonía sin esfuerzo manual.",
-	"The Creator": "El Creador",
-	"creator description": "Devsync empezó como un script personal para resolver un problema que todo desarrollador conoce: actualizar la misma información en cinco plataformas distintas. Currículum, portafolio, GitHub, LinkedIn, registros académicos — distintos formatos, mismo contenido, repetición infinita.\n\nLo construí primero para mí. Luego me di cuenta de que podía ayudar a otros. Así que lo hice open source. Sin paywalls, sin cuentas, sin fricción. Solo un archivo que genera todo lo que necesitas.",
-	"Built For Developers": "Hecho para desarrolladores",
-	"One file. Infinite outputs.": "Un archivo. Salidas infinitas.",
-	"GitHub": "GitHub",
-	"Docs": "Documentación",
-	"Issues": "Reportes",
-	"Beautiful by Default": "Bonito por Defecto",
-	"templates description": "Empieza con una plantilla que se ve genial desde el primer momento. Elige una y hazla tuya. O lee más sobre cómo crear tu propia plantilla.",
-	"View Repository": "Ver Repositorio",
-	"Live Preview": "Demo en vivo",
-	"Create your own": "Crear tu propia plantilla",
-	"why security": "La seguridad es una prioridad. Devsync usa Bun como su runtime y gestor de paquetes. No tienes que preocuparte por vulnerabilidades de paquetes — la configuración `bunfig.toml` incluye `minimumReleaseAge = 259200` (3 días), lo que evita que paquetes recién publicados se instalen automáticamente. Esto protege contra ataques a la cadena de suministro.",
-	"Choose Your Path": "Elige Tu Camino",
-	"get started description": "Empieza con una plantilla lista o construye la tuya desde cero. Ambos caminos te dan control total.",
-	"Use a Template": "Usar una Plantilla",
-	"use template description": "Elige entre nuestras plantillas seleccionadas y empieza a construir tu portafolio en minutos. Perfecto para empezar rápido.",
-	"Browse Templates": "Ver Plantillas",
-	"Create from Scratch": "Crear desde Cero",
-	"create from scratch description": "Construye una plantilla personalizada con cualquier framework que quieras. Obtén la estructura base y flexibilidad total para hacerla tuya.",
-	"Learn How": "Aprende Cómo",
-	"Use with AI": "Usar con IA",
-	"use with ai description": "Deja que la IA construya tu portafolio por ti. Devsync incluye una skill de IA que entiende cómo trabajar con tus plantillas.",
-	"View Skill": "Ver Skill",
-	"Badge Builder": "Creador de Insignias MD",
-	"badge builder description": "Crea insignias shields.io profesionales para tu perfil de GitHub, README y documentación. Personaliza colores, estilos y logos — luego copia el markdown con un clic.",
-	"Custom Colors": "Colores Personalizados",
-	"custom colors description": "Elige cualquier color para el fondo y el logo. Vista previa en tiempo real.",
-	"Multiple Styles": "Múltiples Estilos",
-	"multiple styles description": "Elige entre estilo plano, cuadrado, plástico, for-the-badge y social.",
-	"Logo Integration": "Integración de Logos",
-	"logo integration description": "Añade cualquier logo de SimpleIcons con color personalizado para destacar tus insignias.",
-	"Copy to Clipboard": "Copiar al Portapapeles",
-	"copy to clipboard description": "Haz clic en cualquier insignia para copiar el markdown — listo para pegar en cualquier sitio.",
-	"Try It Now": "Pruébalo Ahora",
+	"nav": {
+		"viewSource": "Ver código fuente en GitHub"
+	},
+	"hero": {
+		"tagline": "Currículum. Portafolio. Perfil de GitHub.",
+		"title": "La herramienta de sincronización para desarrolladores",
+		"description": "Genera tu currículum profesional, portafolio, historial académico y perfil de GitHub; todo desde un solo archivo de configuración.",
+		"ctaDemo": "Demo en vivo",
+		"ctaDocs": "Leer la documentación"
+	},
+	"features": {
+		"title": "Todo lo que necesitas",
+		"subtitle": "Genera tu currículum, portafolio y perfiles desde un único archivo DEVSYNC.json.",
+		"items": [
+			{
+				"title": "Currículum profesional",
+				"description": "Currículums limpios y compatibles con ATS con plantillas personalizables."
+			},
+			{
+				"title": "CV en TXT",
+				"description": "Currículum en texto, listo para pegar en cualquier formulario o ATS."
+			},
+			{
+				"title": "Sitio de portafolio",
+				"description": "Páginas de portafolio que muestran tu trabajo."
+			},
+			{
+				"title": "Perfil de GitHub",
+				"description": "Perfil de github bonita por defecto."
+			},
+			{
+				"title": "Registro académico",
+				"description": "Genera un README académico para mantener tu educación y certificaciones en GitHub."
+			},
+			{
+				"title": "Soporte i18n",
+				"description": "Las plantillas soportan internacionalización por defecto."
+			},
+			{
+				"title": "Perfil de LinkedIn",
+				"description": "Genera un resumen de perfil listo para LinkedIn."
+			},
+			{
+				"title": "Plantillas personalizables",
+				"description": "Empieza con una plantilla que se ve genial desde el primer momento."
+			},
+			{
+				"title": "Crea tus propias plantillas",
+				"description": "Construye plantillas personalizadas con el framework que quieras y hazlas tuyas."
+			}
+		]
+	},
+	"why": {
+		"title": "¿Por qué?",
+		"description": "La mayoría de los desarrolladores pierden horas manteniendo currículums, portafolios y perfiles de GitHub por separado. Devsync soluciona esto generando todo desde una única fuente de verdad. Un archivo, infinitas salidas. No más copiar y pegar, no más información desactualizada.\n\nTu carrera evoluciona constantemente. Nuevos proyectos, nuevas habilidades, nuevas certificaciones. Mantener cada plataforma actualizada es un trabajo de tiempo completo. Devsync automatiza esto leyendo tu DEVSYNC.json y produciendo salidas profesionales y pulidas en cada canal que importa.\n\nDevsync también es para desarrolladores backend, científicos de datos, ingenieros DevOps, estudiantes, personas en transición profesional, y cualquiera que quiera un portafolio web profesional sin programar ni investigar tecnologías web. No solo un portafolio: un CV listo para ATS que pasa filtros automáticos sin estudiar las normativas de Harvard. Tener una buena documentación para buscar trabajo incluye muchos detalles; Devsync lo convierte en un solo archivo.\n\nConcéntrate en lo que mejor haces: construir. Deja que Devsync se encargue del resto. Desde currículums compatibles con ATS hasta sitios de portafolio impresionantes, todo se mantiene en perfecta armonía sin esfuerzo manual.",
+		"security": "La seguridad es una prioridad. Devsync usa Bun como su runtime y gestor de paquetes. No tienes que preocuparte por vulnerabilidades de paquetes — la configuración `bunfig.toml` incluye `minimumReleaseAge = 259200` (3 días), lo que evita que paquetes recién publicados se instalen automáticamente. Esto protege contra ataques a la cadena de suministro."
+	},
+	"creator": {
+		"title": "El Creador",
+		"description": "Devsync empezó como un script personal para resolver un problema que todo desarrollador conoce: actualizar la misma información en cinco plataformas distintas. Currículum, portafolio, GitHub, LinkedIn, registros académicos — distintos formatos, mismo contenido, repetición infinita.\n\nLo construí primero para mí. Luego me di cuenta de que podía ayudar a otros. Así que lo hice open source. Sin paywalls, sin cuentas, sin fricción. Solo un archivo que genera todo lo que necesitas."
+	},
+	"footer": {
+		"tagline": "Hecho para desarrolladores",
+		"subtitle": "Un archivo. Salidas infinitas.",
+		"github": "GitHub",
+		"docs": "Documentación",
+		"issues": "Reportes"
+	},
+	"templates": {
+		"title": "Bonito por Defecto",
+		"subtitle": "Empieza con una plantilla que se ve genial desde el primer momento. Elige una y hazla tuya. O lee más sobre cómo crear tu propia plantilla.",
+		"viewRepository": "Ver Repositorio",
+		"livePreview": "Demo en vivo",
+		"createOwn": "Crear tu propia plantilla"
+	},
+	"getStarted": {
+		"title": "Elige Tu Camino",
+		"subtitle": "Empieza con una plantilla lista o construye la tuya desde cero. Ambos caminos te dan control total.",
+		"useTemplate": "Usar una Plantilla",
+		"useTemplateDescription": "Elige entre nuestras plantillas seleccionadas y empieza a construir tu portafolio en minutos. Perfecto para empezar rápido.",
+		"browseTemplates": "Ver Plantillas",
+		"createFromScratch": "Crear desde Cero",
+		"createFromScratchDescription": "Construye una plantilla personalizada con cualquier framework que quieras. Obtén la estructura base y flexibilidad total para hacerla tuya.",
+		"learnHow": "Aprende Cómo",
+		"useWithAi": "Usar con IA",
+		"useWithAiDescription": "Deja que la IA construya tu portafolio por ti. Devsync incluye una skill de IA que entiende cómo trabajar con tus plantillas.",
+		"viewSkill": "Ver Skill"
+	},
+	"badgeBuilder": {
+		"title": "Creador de Insignias MD",
+		"subtitle": "Crea insignias shields.io profesionales para tu perfil de GitHub, README y documentación. Personaliza colores, estilos y logos — luego copia el markdown con un clic.",
+		"features": {
+			"customColors": "Colores Personalizados",
+			"customColorsDescription": "Elige cualquier color para el fondo y el logo. Vista previa en tiempo real.",
+			"multipleStyles": "Múltiples Estilos",
+			"multipleStylesDescription": "Elige entre estilo plano, cuadrado, plástico, for-the-badge y social.",
+			"logoIntegration": "Integración de Logos",
+			"logoIntegrationDescription": "Añade cualquier logo de SimpleIcons con color personalizado para destacar tus insignias.",
+			"copyToClipboard": "Copiar al Portapapeles",
+			"copyToClipboardDescription": "Haz clic en cualquier insignia para copiar el markdown — listo para pegar en cualquier sitio."
+		},
+		"cta": "Pruébalo Ahora"
+	},
+	"notFound": {
+		"title": "Página no encontrada",
+		"subtitle": "La página que buscas no existe.",
+		"home": "Volver al inicio",
+		"gettingStarted": "Primeros pasos"
+	},
 	"builder": {
 		"title": "MD Creador de Insignias — Devsync",
 		"description": "Crea insignias de shields.io para tu perfil de GitHub, README y más.",
@@ -81,7 +119,7 @@
 		"messageHelp": "Texto del lado derecho (ej. passing, v1.0, MIT)",
 		"logoColor": "Color del Logo",
 		"styleHelp": "Cambia la forma, bordes y sombreado de la insignia",
-		"logHelp": "Slug de SimpleIcons para un icono",
+		"logoHelp": "Slug de SimpleIcons para un icono",
 		"label": "Etiqueta",
 		"labelPlaceholder": "ej. construir",
 		"message": "Mensaje",

@@ -6,59 +6,7 @@ import { getTranslation } from '@/i18n/translation'
 const lang = Astro.currentLocale ?? 'en'
 const t = getTranslation(lang)
 
-interface Feature {
-	icon: string
-	title: string
-	description: string
-}
-
-const features: Feature[] = [
-	{
-		icon: checkAscii,
-		title: t['Professional Resume'],
-		description: t['Clean, ATS-friendly resumes with customizable templates.'],
-	},
-	{
-		icon: checkAscii,
-		title: t['CV in TXT'],
-		description: t['Plain-text resume generated from your config, ready to paste into any form or ATS.'],
-	},
-	{
-		icon: checkAscii,
-		title: t['Portfolio Site'],
-		description: t['Beautiful portfolio pages that showcase your work.'],
-	},
-	{
-		icon: checkAscii,
-		title: t['GitHub Profile'],
-		description: t['Beautiful github profile page by default.'],
-	},
-	{
-		icon: checkAscii,
-		title: t['Academic Record'],
-		description: t['Generate an academics README to keep your education and certifications on GitHub.'],
-	},
-	{
-		icon: checkAscii,
-		title: t['i18n Support'],
-		description: t['Templates support internationalization out of the box.'],
-	},
-	{
-		icon: checkAscii,
-		title: t['LinkedIn Profile'],
-		description: t['Generate a polished LinkedIn-ready profile summary.'],
-	},
-	{
-		icon: checkAscii,
-		title: t['Customizable Templates'],
-		description: t['Start with a polished template that looks great out of the box and customize it to your needs.'],
-	},
-	{
-		icon: checkAscii,
-		title: t['Create Your Own Templates'],
-		description: t['Build custom templates with any framework you want and make them yours.'],
-	},
-]
+const features = t.features.items
 ---
 
 <section
@@ -70,10 +18,10 @@ const features: Feature[] = [
 		<!-- Section header -->
 		<div class="mb-12 flex flex-col items-center text-center sm:mb-16">
 			<h2 id="features-title" class="features-title text-text mb-4 text-2xl font-semibold tracking-tight sm:text-3xl md:text-4xl">
-				{t['Everything you need']}
+				{t.features.title}
 			</h2>
 			<p class="features-subtitle text-text-secondary mx-auto max-w-xl text-base sm:text-lg">
-				{t['Generate your resume, portfolio, and profiles from a single DEVSYNC.json file.']}
+				{t.features.subtitle}
 			</p>
 		</div>
 
@@ -87,7 +35,7 @@ const features: Feature[] = [
 					>
 						<div class="flex items-start gap-3">
 							<span class="feature-icon text-accent shrink-0 font-mono text-sm leading-none" aria-hidden="true">
-								{feature.icon}
+								{checkAscii}
 							</span>
 							<div class="flex flex-col gap-1">
 								<h3 class="feature-title text-text text-sm font-semibold sm:text-base">{feature.title}</h3>

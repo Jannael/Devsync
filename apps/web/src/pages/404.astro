@@ -30,11 +30,11 @@ const t = getTranslation(lang)
 			<!-- Content with entrance animations -->
 			<div class="animate-in fade-in slide-in-from-bottom-4 fill-mode-both space-y-6 duration-1000">
 				<h1 class="text-text text-5xl font-black tracking-tighter md:text-7xl">
-					{t['Page not found']}
+					{t.notFound.title}
 				</h1>
 
 				<p class="text-text-secondary mx-auto max-w-md text-lg leading-relaxed md:text-xl">
-					{t['The page you are looking for does not exist.']}
+					{t.notFound.subtitle}
 				</p>
 
 				<nav aria-label="404 navigation" class="flex flex-col items-center justify-center gap-4 pt-8 sm:flex-row">
@@ -43,7 +43,7 @@ const t = getTranslation(lang)
 						class="text-btn-primary-foreground bg-btn-primary hover:bg-btn-primary-hover shadow-btn-primary/10 group relative inline-flex items-center justify-center rounded-xl px-8 py-4 font-bold shadow-lg transition-all duration-300 hover:scale-105 active:scale-95"
 					>
 						<span class="relative flex items-center gap-2">
-							{t['Go to Home']}
+							{t.notFound.home}
 						</span>
 					</a>
 
@@ -52,7 +52,7 @@ const t = getTranslation(lang)
 						class="text-text bg-surface border-border-strong hover:bg-bg-alt hover:border-accent hover:text-accent group inline-flex items-center justify-center rounded-xl border px-8 py-4 font-bold shadow-sm transition-all duration-300 hover:scale-105 active:scale-95"
 					>
 						<span class="flex items-center gap-2">
-							{t['Getting Started']}
+							{t.notFound.gettingStarted}
 						</span>
 					</a>
 				</nav>

@@ -5,7 +5,7 @@ import { getTranslation } from '@/i18n/translation'
 const lang = Astro.currentLocale ?? 'en'
 const t = getTranslation(lang)
 
-const paragraphs = t['why description'].split('\n\n')
+const paragraphs = t.why.description.split('\n\n')
 ---
 
 <section
@@ -17,7 +17,7 @@ const paragraphs = t['why description'].split('\n\n')
 		<!-- Section header -->
 		<div class="mb-12 flex flex-col items-center text-center sm:mb-16">
 			<h2 id="why-title" class="why-title text-text mb-4 text-2xl font-semibold tracking-tight sm:text-3xl md:text-4xl">
-				{t['Why?']}
+				{t.why.title}
 			</h2>
 		</div>
 
@@ -33,7 +33,7 @@ const paragraphs = t['why description'].split('\n\n')
 			<p class="why-description">{paragraphs[0]}</p>
 			<p class="why-description-2 mt-4">{paragraphs[1]}</p>
 			<p class="why-description-3 mt-4">{paragraphs[2]}</p>
-			<p class="why-security mt-4">{t['why security']}</p>
+			<p class="why-security mt-4">{t.why.security}</p>
 		</div>
 	</div>
 </section>
