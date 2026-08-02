@@ -8,10 +8,8 @@ interface Props {
 	description?: string
 }
 
-const {
-	title = 'Devsync - Everything you need to get a job in seconds',
-	description = 'Devsync is tool to create your resume, portfolio, academics history, github profile and more in seconds from one file.',
-} = Astro.props
+const { title = 'Devsync - One File. Infinite outputs.', description = 'Create and keep updated, your portfolio, resume, linkedin and more.' } =
+	Astro.props
 
 const site = Astro.site ?? new URL('https://devsync.work')
 const canonicalUrl = new URL(Astro.url.pathname, site).toString()
