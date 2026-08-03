@@ -6,6 +6,9 @@
 
 One file, Infinite outputs.
 
+## Social Media
+[![X](https://img.shields.io/badge/X-000000.svg?style=flat&logoColor=ffffff)](https://x.com/JannaelCode)
+[![Linkedin](https://img.shields.io/badge/Linkedin-3b82f6.svg?style=flat&logo=Linkedin&logoColor=ffffff)](https://www.linkedin.com/in/jannael-orlando-hernández-macedo-44604a349)
 </div>
 
 
@@ -14,6 +17,8 @@ One file, Infinite outputs.
 A CLI tool that generates your professional resume, portfolio site, GitHub profile, LinkedIn summary, and academic history — all from a single file.
 
 > **Full documentation, features, and live demo** at [devsync.work](https://devsync.work)
+
+
 
 ## Security
 
