@@ -8,8 +8,19 @@ export default defineConfig({
 	site: 'https://devsync.work',
 	integrations: [
 		starlight({
-			title: 'Devsync documentation',
+			title: 'Devsync',
 			disable404Route: true,
+			customCss: ['./src/styles/starlight.css'],
+			expressiveCode: {
+				styleOverrides: {
+					borderRadius: '0.75rem',
+					frames: {
+						editorBackground: 'var(--sl-color-bg-code)',
+						terminalBackground: 'var(--sl-color-bg-code)',
+						editorActiveTabBackground: 'var(--sl-color-bg-code)',
+					},
+				},
+			},
 			head: [
 				{
 					tag: 'link',
