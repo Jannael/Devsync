@@ -17,3 +17,11 @@
 
 - Use object parameters instead of positional parameters for interface method signatures to enforce contract adherence. Confidence: 0.75
 - For pure utility/helper classes without I/O, skip the interface and use the concrete class directly as the type. Confidence: 0.70
+
+# tooling
+
+- Uses Astro Starlight for documentation, integrated in the web app (apps/web). Confidence: 0.75
+
+# design
+
+- Wants the documentation site styled to visually match the main landing page (apps/web/src/pages/index.astro) — same fonts, colors, and background effects. Confidence: 0.70
