@@ -1,6 +1,7 @@
 {
 	"nav": {
-		"viewSource": "View source on GitHub"
+		"viewSource": "View source on GitHub",
+		"sponsor": "Sponsor on GitHub"
 	},
 	"hero": {
 		"tagline": "One File. Infinite outputs.",

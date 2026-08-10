@@ -8,6 +8,7 @@ import LanguageSelector from '@/components/language-selector.astro'
 import NavTheme from '@/components/nav-theme.astro'
 import { getTranslation } from '@/i18n/translation'
 import Footer from '@/components/footer.astro'
+import Heart from '@/assets/heart-svg.astro'
 
 const lang = Astro.currentLocale ?? 'en'
 const t = getTranslation(lang)
@@ -29,9 +30,12 @@ const b = t['builder']
 			<div
 				class="nav-bar-inner border-border/40 bg-surface/90 flex items-center gap-1 rounded-full border px-3 py-2 shadow-lg backdrop-blur-xl sm:gap-2 sm:px-4 sm:py-2.5 dark:border-white/15 dark:shadow-2xl"
 			>
+				<LanguageSelector />
+				<div class="nav-divider bg-border/30 h-4 w-px" aria-hidden="true"></div>
+
 				<a
 					href="/"
-					class="nav-item text-text-secondary hover:text-accent mr-1 inline-flex items-center gap-1.5 rounded-full px-2 py-1 text-xs font-medium transition-colors duration-200 sm:mr-2 sm:text-sm"
+					class="nav-item text-text-secondary hover:text-accent inline-flex items-center justify-center rounded-full p-2 transition-colors duration-200"
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -49,7 +53,7 @@ const b = t['builder']
 						<polyline points="9 22 9 12 15 12 15 22"></polyline>
 					</svg>
 				</a>
-				<div class="nav-divider bg-border/30 h-4 w-px" aria-hidden="true"></div>
+
 				<a
 					href="https://github.com/jannael/devsync"
 					target="_blank"
@@ -59,10 +63,16 @@ const b = t['builder']
 				>
 					<GitHub />
 				</a>
-				<div class="nav-divider bg-border/30 h-4 w-px" aria-hidden="true"></div>
+				<a
+					href="https://github.com/sponsors/Jannael"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="nav-item text-text-secondary hover:text-accent inline-flex items-center justify-center rounded-full p-2 transition-colors duration-200"
+					aria-label={t.nav.sponsor}
+				>
+					<Heart />
+				</a>
 				<NavTheme />
-				<div class="nav-divider bg-border/30 h-4 w-px" aria-hidden="true"></div>
-				<LanguageSelector />
 			</div>
 		</header>
 

@@ -1,6 +1,7 @@
 {
 	"nav": {
-		"viewSource": "Ver código fuente en GitHub"
+		"viewSource": "Ver código fuente en GitHub",
+		"sponsor": "Patrocinar en GitHub"
 	},
 	"hero": {
 		"tagline": "Un archivo. Infinitos outputs.",
