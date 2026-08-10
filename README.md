@@ -30,3 +30,15 @@ This project uses Bun as its runtime and package manager. You don't need to worr
 ## License
 
 [CC-BY-NC-4.0](LICENSE)
+
+## Next steps
+
+- [STYLES] documentation styling
+- [REFACTOR] generate cv from **cli** instead of been compiled from the template
+- [CHORE] tutorials
+    - How to use Devsync - EN/ES
+    - How to create a template for devsync - EN/ES
+    - How to get a job using Devsync - EN/ES
+- [FEATURE]: Terminal style README ref: https://www.linkedin.com/posts/pedropini_steal-like-an-artist-i-found-andrew6rant-share-7487433980762537984-b-_f/
+- [FEATURE]: template gallery/more portfolio templates
+
