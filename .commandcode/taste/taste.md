@@ -21,6 +21,15 @@
 # tooling
 
 - Uses Astro Starlight for documentation, integrated in the web app (apps/web). Confidence: 0.75
+- Monorepo uses bun as the package manager / script runner (e.g., `bun run build`, `bun run preview` inside apps/*). Confidence: 0.65
+
+# i18n
+
+- apps/web landing page is bilingual (English + Spanish) via src/i18n/en.json, es.json and a getTranslation helper; new user-facing strings must be added to both locale files. Confidence: 0.70
+
+# code-style-web
+
+- External links in apps/web open in a new tab with `target="_blank" rel="noopener noreferrer"`. Confidence: 0.60
 
 # design
 
