@@ -180,6 +180,8 @@ bunx @jannael/devsync init
 
 **Solution:**
 
+If `devsync.pathToCompiledCV` is set in `package.json`:
+
 1. Check that `package.json` has correct path:
 
 ```json
@@ -193,6 +195,8 @@ bunx @jannael/devsync init
 2. Verify HTML file exists at that path
 
 3. Check build command actually generates the HTML
+
+If the field is not set, the CLI generates the CV from `DEVSYNC.json` — verify that `DEVSYNC.json` is valid and contains at least one language key.
 
 ### PDF Quality Issues
 

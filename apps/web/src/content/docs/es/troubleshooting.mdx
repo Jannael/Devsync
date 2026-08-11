@@ -181,6 +181,8 @@ bunx @jannael/devsync init
 
 **Solución:**
 
+Si `devsync.pathToCompiledCV` está definido en `package.json`:
+
 1. Verifica que `package.json` tenga la ruta correcta:
 
 ```json
@@ -194,6 +196,8 @@ bunx @jannael/devsync init
 2. Verifica que el archivo HTML exista en esa ruta
 
 3. Verifica que el comando build realmente genere el HTML
+
+Si el campo no está definido, el CLI genera el CV desde `DEVSYNC.json` — verifica que `DEVSYNC.json` sea válido y contenga al menos una clave de idioma.
 
 ### Problemas de Calidad de PDF
 
