@@ -63,6 +63,8 @@ Devsync templates do not require a specific framework as long as they compile to
 
    `Devsync` generates the CV PDF from pure HTML, so ensure this path points to the HTML file containing your CV.
 
+   This field is optional: if your template doesn't compile its own CV, the CLI generates a default CV from `DEVSYNC.json` instead, writing the PDF to the same output path (`public/{name}-{lang}.pdf`).
+
    If you are using internationalization for your template, the `[lang]` placeholder will be replaced with the language codes defined in `DEVSYNC.json`. If you do not need this feature, simply remove `[lang]` from the path and point it directly to your CV file.
 
    Optionally, you can configure the GitHub profile style:

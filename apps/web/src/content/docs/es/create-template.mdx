@@ -63,6 +63,8 @@ Las plantillas de Devsync no requieren un framework específico siempre y cuando
 
    `Devsync` genera el PDF del CV desde HTML puro, así que asegúrate de que esta ruta apunte al archivo HTML que contiene tu CV.
 
+   Este campo es opcional: si tu plantilla no compila su propio CV, el CLI genera un CV predeterminado desde `DEVSYNC.json`, escribiendo el PDF en la misma ruta de salida (`public/{name}-{lang}.pdf`).
+
    Si estás usando internacionalización para tu plantilla, el placeholder `[lang]` será reemplazado con los códigos de idioma definidos en `DEVSYNC.json`. Si no necesitas esta característica, simplemente elimina `[lang]` de la ruta y apúntala directamente a tu archivo CV.
 
    Opcionalmente, puedes configurar el estilo del perfil de GitHub:
