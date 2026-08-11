@@ -7,6 +7,7 @@ import { GITHUB_STYLES } from '@/constants/github-profile-styles'
 import { DEVSYNC_CONFIG } from '@/constants/devsync-config-fields'
 import type { IBuildInfrastructure } from '@/modules/build/domain/build-infrastructure'
 import { BuildCvUseCase } from '@/modules/build/app/build-cv.use-case'
+import { GenerateCvUseCase } from '@/modules/build/app/generate-cv.use-case'
 import { CreateAcademicsUseCase } from '@/modules/build/app/create-academics.use-case'
 import { CreateGithubProfileUseCase } from '@/modules/build/app/create-github-profile.use-case'
 import { CreateLinkedinUseCase } from '@/modules/build/app/create-linkedin.use-case'
@@ -16,6 +17,7 @@ export default class BuildCommand {
 	constructor(
 		private readonly infrastructure: IBuildInfrastructure,
 		private readonly buildCv: BuildCvUseCase,
+		private readonly generateCv: GenerateCvUseCase,
 		private readonly createAcademics: CreateAcademicsUseCase,
 		private readonly createGithubProfile: CreateGithubProfileUseCase,
 		private readonly createLinkedin: CreateLinkedinUseCase,
@@ -36,7 +38,11 @@ export default class BuildCommand {
 			const languages = Object.keys(devsync).filter((key) => availableLangs.includes(key as (typeof availableLangs)[number]))
 			const defaultLang = devsync.defaultLang ?? 'en'
 
-			const cvPath = await this.infrastructure.getDevsyncConfig({ field: DEVSYNC_CONFIG.pathToCompiledCV })
+			const cvPath = await this.infrastructure.getDevsyncConfig({
+				field: DEVSYNC_CONFIG.pathToCompiledCV,
+				required: false,
+				defaultValue: '',
+			})
 			const githubProfileStyle = await this.infrastructure.getDevsyncConfig({
 				field: DEVSYNC_CONFIG.githubProfileStyle,
 				required: false,
@@ -44,7 +50,11 @@ export default class BuildCommand {
 			})
 
 			for (const lang of languages) {
-				await this.buildCv.execute({ name: devsync.name, lang, path: cvPath })
+				if (cvPath) {
+					await this.buildCv.execute({ name: devsync.name, lang, path: cvPath })
+				} else {
+					await this.generateCv.execute({ devsync, name: devsync.name, lang })
+				}
 				await this.createLinkedin.execute({ devsync, lang })
 				await this.createCvTxt.execute({ devsync, lang })
 			}
