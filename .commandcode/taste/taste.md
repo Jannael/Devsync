@@ -4,7 +4,9 @@
 
 # architecture
 
-- Organize CLI modules using Clean Architecture layers: domain/ (interfaces), app/ (use cases + command), infra/ (implementations). Confidence: 0.65
+- Organize CLI modules using Clean Architecture layers: domain/ (interfaces), app/ (use cases + command, e.g. apps/cli/modules/build/app/build-command.ts), infra/ (implementations). Confidence: 0.75
+- Prefer graceful fallbacks for optional configuration: when a setting (e.g. `pathToCompiledCV` in the user's package.json) is absent, the CLI should generate the artifact itself at the default/same path rather than failing. Confidence: 0.55
+- apps/@core/DEVSYNC.json is the central data source the CLI iterates over to generate the CV. Confidence: 0.55
 - Prefer constructor injection over mixin/class-extension patterns for composing dependencies. Confidence: 0.70
 - Consolidate domain into a single interface per module; prefer one file per infra module with all related functions. Confidence: 0.70
 

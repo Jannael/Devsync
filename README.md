@@ -40,4 +40,3 @@ This project uses Bun as its runtime and package manager. You don't need to worr
     - How to get a job using Devsync - EN/ES
 - [FEATURE]: Terminal style README ref: https://www.linkedin.com/posts/pedropini_steal-like-an-artist-i-found-andrew6rant-share-7487433980762537984-b-_f/
 - [FEATURE]: template gallery/more portfolio templates
-
