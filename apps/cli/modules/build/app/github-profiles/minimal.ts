@@ -7,11 +7,11 @@ export class GithubMinimal {
 	generate({ devsync, defaultLang }: { devsync: DevsyncPartial; defaultLang: string }) {
 		let md = ''
 		const firstName = devsync?.name?.split(' ')[0] ?? ''
-		const devsyncTranslation = getLangData(devsync, defaultLang)
+		const user = getLangData(devsync, defaultLang)
 		const translation = translations[defaultLang as availableLangsType]
 
 		md += `# ${firstName}\n\n`
-		md += `${devsyncTranslation.description ?? ''}\n\n`
+		md += `${user.description ?? ''}\n\n`
 
 		md += `## ${translation['Connect']}\n\n`
 
@@ -26,17 +26,17 @@ export class GithubMinimal {
 
 		md += '\n\n'
 
-		if (devsyncTranslation.projects) {
+		if (user.projects) {
 			md += `## ${translation['Stuff I made']}\n\n`
 
-			for (const project of Array.isArray(devsyncTranslation?.projects) ? devsyncTranslation.projects : []) {
+			for (const project of Array.isArray(user?.projects) ? user.projects : []) {
 				md += `- [${project.name}](${project.web}): ${project.description}\n`
 			}
 		}
 
-		if (devsyncTranslation.openSource) {
+		if (user.openSource) {
 			md += `## ${translation['Open Source Contributions']}\n\n`
-			for (const project of Array.isArray(devsyncTranslation?.openSource) ? devsyncTranslation.openSource : []) {
+			for (const project of Array.isArray(user?.openSource) ? user.openSource : []) {
 				md += `- [${project.name}](${project.web}): ${project.description}\n`
 			}
 		}

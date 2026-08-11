@@ -8,9 +8,9 @@ export class CreateLinkedinUseCase {
 	constructor(private readonly infrastructure: IBuildInfrastructure) {}
 
 	private getLinkedinSkills({ devsync, lang }: { devsync: DevsyncPartial; lang: string }) {
-		const translation = getLangData(devsync, lang)
+		const user = getLangData(devsync, lang)
 		const skills = new Set<string>()
-		const experiences = Array.isArray(translation?.experience) ? translation!.experience : Object.values(translation?.experience ?? {})
+		const experiences = Array.isArray(user?.experience) ? user!.experience : Object.values(user?.experience ?? {})
 
 		for (const ex of experiences) {
 			for (const skill of ex.skills ?? []) {
@@ -19,7 +19,7 @@ export class CreateLinkedinUseCase {
 				}
 			}
 		}
-		const projects = Array.isArray(translation?.projects) ? translation!.projects : Object.values(translation?.projects ?? {})
+		const projects = Array.isArray(user?.projects) ? user!.projects : Object.values(user?.projects ?? {})
 
 		for (const project of projects) {
 			for (const skill of project.skills ?? []) {
@@ -28,7 +28,7 @@ export class CreateLinkedinUseCase {
 				}
 			}
 		}
-		const certifications = Array.isArray(translation?.certifications) ? translation!.certifications : Object.values(translation?.certifications ?? {})
+		const certifications = Array.isArray(user?.certifications) ? user!.certifications : Object.values(user?.certifications ?? {})
 
 		for (const cert of certifications) {
 			for (const skill of cert.skills ?? []) {
@@ -43,20 +43,20 @@ export class CreateLinkedinUseCase {
 
 	private getMD({ devsync, lang }: { devsync: DevsyncPartial; lang: string }) {
 		let md = ''
-		const translation = getLangData(devsync, lang)
-		const innerTranslation = translations[lang as availableLangsType]
+		const user = getLangData(devsync, lang)
+		const translation = translations[lang as availableLangsType]
 
-		md += `# ${translation?.jobTitle ?? 'Professional Update'}\n\n`
-		md += `${innerTranslation['I am']} ${devsync?.name ?? 'a software engineer'}.\n\n`
+		md += `# ${user?.jobTitle ?? 'Professional Update'}\n\n`
+		md += `${translation['I am']} ${devsync?.name ?? 'a software engineer'}.\n\n`
 
-		if (translation?.description) {
-			md += `${translation.description}\n\n`
+		if (user?.description) {
+			md += `${user.description}\n\n`
 		}
 
-		const experiences = Array.isArray(translation?.experience) ? translation.experience : Object.values(translation?.experience ?? {})
+		const experiences = Array.isArray(user?.experience) ? user.experience : Object.values(user?.experience ?? {})
 
 		if (experiences.length > 0) {
-			md += `## ${innerTranslation['Professional Experience']} \n\n`
+			md += `## ${translation['Professional Experience']} \n\n`
 
 			for (const ex of experiences) {
 				md += `- **${ex.position ?? 'Position'}** at **${ex.company ?? 'Company'}** (${ex.date ?? 'Date'})\n`
@@ -74,10 +74,10 @@ export class CreateLinkedinUseCase {
 			md += '\n'
 		}
 
-		const projects = Array.isArray(translation?.projects) ? translation.projects : Object.values(translation?.projects ?? {})
+		const projects = Array.isArray(user?.projects) ? user.projects : Object.values(user?.projects ?? {})
 
 		if (projects.length > 0) {
-			md += `## ${innerTranslation['Selected projects']} \n\n`
+			md += `## ${translation['Selected projects']} \n\n`
 
 			for (const project of projects) {
 				md += `- **${project.name ?? 'Project'}**\n`
@@ -92,7 +92,7 @@ export class CreateLinkedinUseCase {
 				}
 
 				if ((project.links?.length ?? 0) > 0) {
-					md += ` - ${innerTranslation['Links']}: ${(project.links ?? []).map((link: { url: string }) => link.url).join(' | ')}\n`
+					md += ` - ${translation['Links']}: ${(project.links ?? []).map((link: { url: string }) => link.url).join(' | ')}\n`
 				}
 			}
 
@@ -102,27 +102,27 @@ export class CreateLinkedinUseCase {
 		const skills = this.getLinkedinSkills({ devsync, lang })
 
 		if (skills.size > 0) {
-			md += `## ${innerTranslation['Core Skills']} \n\n`
+			md += `## ${translation['Core Skills']} \n\n`
 			md += `${Array.from(skills).join(' | ')}\n\n`
 		}
 
-		const certifications = Array.isArray(translation?.certifications) ? translation.certifications : Object.values(translation?.certifications ?? {})
+		const certifications = Array.isArray(user?.certifications) ? user.certifications : Object.values(user?.certifications ?? {})
 
 		if (certifications.length > 0) {
-			md += `## ${innerTranslation['Certifications']} \n\n`
+			md += `## ${translation['Certifications']} \n\n`
 			for (const cert of certifications) {
 				md += `- ${cert.name}${cert.url ? ` — ${cert.url}` : ''}\n`
 			}
 			md += '\n'
 		}
 
-		md += `## ${innerTranslation["Let's connect"]} \n\n`
+		md += `## ${translation["Let's connect"]} \n\n`
 		for (const social of devsync?.socialMedia ?? []) {
 			md += `- ${social.name}: ${social.url}\n`
 		}
 
 		if (devsync?.githubUserName) {
-			md += `- ${innerTranslation['Github Profile']}: https://github.com/${devsync?.githubUserName}\n`
+			md += `- ${translation['Github Profile']}: https://github.com/${devsync?.githubUserName}\n`
 		}
 
 		return md

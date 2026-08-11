@@ -12,10 +12,10 @@ export class CreateCvTxtUseCase {
 	) {}
 
 	private getCvSkills({ devsync, lang }: { devsync: DevsyncPartial; lang: string }) {
-		const translation = getLangData(devsync, lang)
+		const user = getLangData(devsync, lang)
 		const skills = new Set<string>(devsync?.coreSkills ?? [])
 
-		const experiences = Array.isArray(translation?.experience) ? translation.experience : Object.values(translation?.experience ?? {})
+		const experiences = Array.isArray(user?.experience) ? user.experience : Object.values(user?.experience ?? {})
 
 		for (const ex of experiences) {
 			for (const skill of ex.skills ?? []) {
@@ -24,7 +24,7 @@ export class CreateCvTxtUseCase {
 				}
 			}
 		}
-		const projects = Array.isArray(translation?.projects) ? translation.projects : Object.values(translation?.projects ?? {})
+		const projects = Array.isArray(user?.projects) ? user.projects : Object.values(user?.projects ?? {})
 
 		for (const project of projects) {
 			for (const skill of project.skills ?? []) {
@@ -33,7 +33,7 @@ export class CreateCvTxtUseCase {
 				}
 			}
 		}
-		const certifications = Array.isArray(translation?.certifications) ? translation.certifications : Object.values(translation?.certifications ?? {})
+		const certifications = Array.isArray(user?.certifications) ? user.certifications : Object.values(user?.certifications ?? {})
 
 		for (const cert of certifications) {
 			for (const skill of cert.skills ?? []) {
@@ -48,10 +48,10 @@ export class CreateCvTxtUseCase {
 
 	private getTxt({ devsync, lang }: { devsync: DevsyncPartial; lang: string }) {
 		let txt = ''
-		const translation = getLangData(devsync, lang)
-		const innerTranslation = translations[lang as availableLangsType]
+		const user = getLangData(devsync, lang)
+		const translation = translations[lang as availableLangsType]
 
-		txt += this.txtUtils.headline({ name: devsync?.name, jobTitle: translation?.jobTitle as string | undefined })
+		txt += this.txtUtils.headline({ name: devsync?.name, jobTitle: user?.jobTitle as string | undefined })
 
 		const contact = [devsync?.email, devsync?.phone, devsync?.address, devsync?.site].filter(Boolean).join(' | ')
 
@@ -68,18 +68,18 @@ export class CreateCvTxtUseCase {
 		}
 
 		if (devsync?.githubUserName) {
-			txt += `${innerTranslation['Github Profile']}: https://github.com/${devsync.githubUserName}\n`
+			txt += `${translation['Github Profile']}: https://github.com/${devsync.githubUserName}\n`
 		}
 
-		if (translation?.description) {
-			txt += this.txtUtils.section({ title: innerTranslation.Description })
-			txt += `${translation.description}\n`
+		if (user?.description) {
+			txt += this.txtUtils.section({ title: translation.Description })
+			txt += `${user.description}\n`
 		}
 
-		const experiences = Array.isArray(translation?.experience) ? translation.experience : Object.values(translation?.experience ?? {})
+		const experiences = Array.isArray(user?.experience) ? user.experience : Object.values(user?.experience ?? {})
 
 		if (experiences.length > 0) {
-			txt += this.txtUtils.section({ title: innerTranslation['Professional Experience'] })
+			txt += this.txtUtils.section({ title: translation['Professional Experience'] })
 
 			for (const ex of experiences) {
 				txt += `\n${ex.position ?? 'Position'} - ${ex.company ?? 'Company'} (${ex.date ?? 'Date'})\n`
@@ -90,10 +90,10 @@ export class CreateCvTxtUseCase {
 			}
 		}
 
-		const projects = Array.isArray(translation?.projects) ? translation.projects : Object.values(translation?.projects ?? {})
+		const projects = Array.isArray(user?.projects) ? user.projects : Object.values(user?.projects ?? {})
 
 		if (projects.length > 0) {
-			txt += this.txtUtils.section({ title: innerTranslation.Projects })
+			txt += this.txtUtils.section({ title: translation.Projects })
 
 			for (const project of projects) {
 				txt += `\n${project.name ?? 'Project'}\n`
@@ -105,10 +105,10 @@ export class CreateCvTxtUseCase {
 			}
 		}
 
-		const education = Array.isArray(translation?.education) ? translation.education : Object.values(translation?.education ?? {})
+		const education = Array.isArray(user?.education) ? user.education : Object.values(user?.education ?? {})
 
 		if (education.length > 0) {
-			txt += this.txtUtils.section({ title: innerTranslation.Education })
+			txt += this.txtUtils.section({ title: translation.Education })
 
 			for (const edu of education) {
 				txt += `\n${edu.degree ?? 'Degree'} - ${edu.name ?? 'Institution'} (${edu.date ?? 'Date'})\n`
@@ -116,10 +116,10 @@ export class CreateCvTxtUseCase {
 			}
 		}
 
-		const certifications = Array.isArray(translation?.certifications) ? translation.certifications : Object.values(translation?.certifications ?? {})
+		const certifications = Array.isArray(user?.certifications) ? user.certifications : Object.values(user?.certifications ?? {})
 
 		if (certifications.length > 0) {
-			txt += this.txtUtils.section({ title: innerTranslation.Certifications })
+			txt += this.txtUtils.section({ title: translation.Certifications })
 			for (const cert of certifications) {
 				txt += `  - ${cert.name ?? ''}${cert.url ? `: ${cert.url}` : ''}\n`
 			}
@@ -128,14 +128,14 @@ export class CreateCvTxtUseCase {
 		const skills = this.getCvSkills({ devsync, lang })
 
 		if (skills.size > 0) {
-			txt += this.txtUtils.section({ title: innerTranslation['Core Skills'] })
+			txt += this.txtUtils.section({ title: translation['Core Skills'] })
 			txt += `${Array.from(skills).join(' | ')}\n`
 		}
 
-		const languages = Array.isArray(translation?.languages) ? translation.languages : Object.values(translation?.languages ?? {})
+		const languages = Array.isArray(user?.languages) ? user.languages : Object.values(user?.languages ?? {})
 
 		if (languages.length > 0) {
-			txt += this.txtUtils.section({ title: innerTranslation.Languages })
+			txt += this.txtUtils.section({ title: translation.Languages })
 			for (const language of languages) {
 				if (language?.name) {
 					txt += `  - ${language.name}\n`

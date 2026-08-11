@@ -12,10 +12,10 @@ export class GenerateCvUseCase {
 	) {}
 
 	private getCvSkills({ devsync, lang }: { devsync: DevsyncPartial; lang: string }) {
-		const translation = getLangData(devsync, lang)
+		const user = getLangData(devsync, lang)
 		const skills = new Set<string>(devsync?.coreSkills ?? [])
 
-		const experiences = Array.isArray(translation?.experience) ? translation.experience : Object.values(translation?.experience ?? {})
+		const experiences = Array.isArray(user?.experience) ? user.experience : Object.values(user?.experience ?? {})
 
 		for (const ex of experiences) {
 			for (const skill of ex.skills ?? []) {
@@ -24,7 +24,7 @@ export class GenerateCvUseCase {
 				}
 			}
 		}
-		const projects = Array.isArray(translation?.projects) ? translation.projects : Object.values(translation?.projects ?? {})
+		const projects = Array.isArray(user?.projects) ? user.projects : Object.values(user?.projects ?? {})
 
 		for (const project of projects) {
 			for (const skill of project.skills ?? []) {
@@ -33,7 +33,7 @@ export class GenerateCvUseCase {
 				}
 			}
 		}
-		const certifications = Array.isArray(translation?.certifications) ? translation.certifications : Object.values(translation?.certifications ?? {})
+		const certifications = Array.isArray(user?.certifications) ? user.certifications : Object.values(user?.certifications ?? {})
 
 		for (const cert of certifications) {
 			for (const skill of cert.skills ?? []) {
@@ -48,10 +48,10 @@ export class GenerateCvUseCase {
 
 	private getHtml({ devsync, name, lang }: { devsync: DevsyncPartial; name: string; lang: string }) {
 		let body = ''
-		const translation = getLangData(devsync, lang)
-		const innerTranslation = translations[lang as availableLangsType]
+		const user = getLangData(devsync, lang)
+		const translation = translations[lang as availableLangsType]
 
-		body += this.htmlUtils.headline({ name: devsync?.name, jobTitle: translation?.jobTitle as string | undefined })
+		body += this.htmlUtils.headline({ name: devsync?.name, jobTitle: user?.jobTitle as string | undefined })
 
 		const contact = [devsync?.email, devsync?.phone, devsync?.address, devsync?.site]
 
@@ -61,17 +61,17 @@ export class GenerateCvUseCase {
 
 		if (devsync?.githubUserName) {
 			socials.push(
-				`<a href="https://github.com/${devsync.githubUserName}" target="_blank" rel="noopener noreferrer">${innerTranslation['Github Profile']}</a>`,
+				`<a href="https://github.com/${devsync.githubUserName}" target="_blank" rel="noopener noreferrer">${translation['Github Profile']}</a>`,
 			)
 		}
 
 		body += this.htmlUtils.contactLine({ items: [...contact, ...socials] })
 
-		if (translation?.description && typeof translation.description === 'string') {
-			body += this.htmlUtils.section({ title: innerTranslation.Description, content: this.htmlUtils.paragraph({ text: translation.description }) })
+		if (user?.description && typeof user.description === 'string') {
+			body += this.htmlUtils.section({ title: translation.Description, content: this.htmlUtils.paragraph({ text: user.description }) })
 		}
 
-		const experiences = Array.isArray(translation?.experience) ? translation.experience : Object.values(translation?.experience ?? {})
+		const experiences = Array.isArray(user?.experience) ? user.experience : Object.values(user?.experience ?? {})
 
 		if (experiences.length > 0) {
 			let content = ''
@@ -82,10 +82,10 @@ export class GenerateCvUseCase {
 				}
 				content += this.htmlUtils.getListItems({ items: ex.list?.items })
 			}
-			body += this.htmlUtils.section({ title: innerTranslation['Professional Experience'], content })
+			body += this.htmlUtils.section({ title: translation['Professional Experience'], content })
 		}
 
-		const projects = Array.isArray(translation?.projects) ? translation.projects : Object.values(translation?.projects ?? {})
+		const projects = Array.isArray(user?.projects) ? user.projects : Object.values(user?.projects ?? {})
 
 		if (projects.length > 0) {
 			let content = ''
@@ -97,10 +97,10 @@ export class GenerateCvUseCase {
 				content += this.htmlUtils.getListItems({ items: project.list?.items })
 				content += this.htmlUtils.getLinks({ links: project.links })
 			}
-			body += this.htmlUtils.section({ title: innerTranslation.Projects, content })
+			body += this.htmlUtils.section({ title: translation.Projects, content })
 		}
 
-		const education = Array.isArray(translation?.education) ? translation.education : Object.values(translation?.education ?? {})
+		const education = Array.isArray(user?.education) ? user.education : Object.values(user?.education ?? {})
 
 		if (education.length > 0) {
 			let content = ''
@@ -108,29 +108,29 @@ export class GenerateCvUseCase {
 				content += this.htmlUtils.entryHeader({ title: edu.degree ?? 'Degree', subtitle: edu.name ?? 'Institution', date: edu.date ?? 'Date' })
 				content += this.htmlUtils.getListItems({ items: edu.list?.items })
 			}
-			body += this.htmlUtils.section({ title: innerTranslation.Education, content })
+			body += this.htmlUtils.section({ title: translation.Education, content })
 		}
 
-		const certifications = Array.isArray(translation?.certifications) ? translation.certifications : Object.values(translation?.certifications ?? {})
+		const certifications = Array.isArray(user?.certifications) ? user.certifications : Object.values(user?.certifications ?? {})
 
 		if (certifications.length > 0) {
-			body += this.htmlUtils.section({ title: innerTranslation.Certifications, content: this.htmlUtils.getLinks({ links: certifications }) })
+			body += this.htmlUtils.section({ title: translation.Certifications, content: this.htmlUtils.getLinks({ links: certifications }) })
 		}
 
 		const skills = this.getCvSkills({ devsync, lang })
 
 		if (skills.size > 0) {
 			body += this.htmlUtils.section({
-				title: innerTranslation['Core Skills'],
+				title: translation['Core Skills'],
 				content: this.htmlUtils.paragraph({ text: Array.from(skills).join(' | ') }),
 			})
 		}
 
-		const languages = Array.isArray(translation?.languages) ? translation.languages : Object.values(translation?.languages ?? {})
+		const languages = Array.isArray(user?.languages) ? user.languages : Object.values(user?.languages ?? {})
 
 		if (languages.length > 0) {
 			body += this.htmlUtils.section({
-				title: innerTranslation.Languages,
+				title: translation.Languages,
 				content: this.htmlUtils.getTextList({ items: languages.map((language) => language?.name) }),
 			})
 		}

@@ -16,11 +16,11 @@ export class GithubDefault {
 	}
 
 	private getHeader({ devsync, defaultLang }: { devsync: DevsyncPartial; defaultLang: string }) {
-		const devsyncTranslation = getLangData(devsync, defaultLang)
+		const user = getLangData(devsync, defaultLang)
 		let md = ''
-		md += `# ${devsyncTranslation?.jobTitle ?? 'Professional'}\n\n`
-		md += `${(devsyncTranslation.status as { badge?: string } | undefined)?.badge ?? 'Active'}\n\n`
-		md += `${devsyncTranslation?.description ?? ''}\n\n`
+		md += `# ${user?.jobTitle ?? 'Professional'}\n\n`
+		md += `${(user.status as { badge?: string } | undefined)?.badge ?? 'Active'}\n\n`
+		md += `${user?.description ?? ''}\n\n`
 
 		for (const socialMedia of devsync?.socialMedia ?? []) {
 			if (socialMedia.name && socialMedia?.name.replace(/\s+/g, '').toLowerCase().includes('github')) continue
@@ -35,7 +35,7 @@ export class GithubDefault {
 			link: `https://github.com/${devsync?.githubUserName ?? ''}/${devsync?.githubUserName ?? ''}/tree/main/academics`,
 		})
 
-		for (const lang of Array.isArray(devsyncTranslation?.languages) ? devsyncTranslation.languages : []) {
+		for (const lang of Array.isArray(user?.languages) ? user.languages : []) {
 			md += lang.mdBadge
 		}
 		md += '\n\n'
@@ -43,17 +43,17 @@ export class GithubDefault {
 	}
 
 	private getExperienceSection({ devsync, defaultLang }: { devsync: DevsyncPartial; defaultLang: string }) {
-		const devsyncTranslation = getLangData(devsync, defaultLang)
+		const user = getLangData(devsync, defaultLang)
 		const translation = translations[defaultLang as availableLangsType]
 
 		let md = ''
 
-		if (Array.isArray(devsyncTranslation.experience) && devsyncTranslation.experience.length === 0) return md
+		if (Array.isArray(user.experience) && user.experience.length === 0) return md
 
 		md += `## ${translation['Professional Experience']} \n\n`
 		md += '<table>'
 
-		for (const ex of Array.isArray(devsyncTranslation?.experience) ? devsyncTranslation.experience : []) {
+		for (const ex of Array.isArray(user?.experience) ? user.experience : []) {
 			const links = this.mdUtils.getLinks({ links: ex.links })
 			const listItems = ex.list?.items ? this.mdUtils.getListItems({ items: ex.list.items }) : ''
 			const skills = this.mdUtils.getSkills({ skills: ex.skills })
@@ -80,16 +80,16 @@ ${this.mdUtils.getTdImg({ img: ex.img ?? '', link: ex.web ?? '#', alt: ex.compan
 	}
 
 	private getProjectsSection({ devsync, defaultLang }: { devsync: DevsyncPartial; defaultLang: string }) {
-		const devsyncTranslation = getLangData(devsync, defaultLang)
+		const user = getLangData(devsync, defaultLang)
 		const translation = translations[defaultLang as availableLangsType]
 		let md = ''
 
-		if (Array.isArray(devsyncTranslation.projects) && devsyncTranslation.projects.length === 0) return md
+		if (Array.isArray(user.projects) && user.projects.length === 0) return md
 
 		md += `## ${translation['Projects']} \n\n`
 		md += '<table>'
 
-		for (const proj of Array.isArray(devsyncTranslation?.projects) ? devsyncTranslation.projects : []) {
+		for (const proj of Array.isArray(user?.projects) ? user.projects : []) {
 			const links = this.mdUtils.getLinks({ links: proj.links })
 			const listItems = proj.list?.items ? this.mdUtils.getListItems({ items: proj.list.items }) : ''
 			const skills = this.mdUtils.getSkills({ skills: proj.skills })
@@ -117,16 +117,16 @@ ${this.mdUtils.getTdImg({ img: proj.img ?? '', link: proj.web ?? '#', alt: proj.
 	}
 
 	private getOpenSourceSection({ devsync, defaultLang }: { devsync: DevsyncPartial; defaultLang: string }) {
-		const devsyncTranslation = getLangData(devsync, defaultLang)
+		const user = getLangData(devsync, defaultLang)
 		const translation = translations[defaultLang as availableLangsType]
 		let md = ''
 
-		if (Array.isArray(devsyncTranslation.openSource) && devsyncTranslation.openSource.length === 0) return md
+		if (Array.isArray(user.openSource) && user.openSource.length === 0) return md
 
 		md += `## ${translation['Open Source']} \n\n`
 		md += '<table>'
 
-		for (const proj of Array.isArray(devsyncTranslation?.openSource) ? devsyncTranslation.openSource : []) {
+		for (const proj of Array.isArray(user?.openSource) ? user.openSource : []) {
 			const links = this.mdUtils.getLinks({ links: proj.links })
 			const listItems = proj.list?.items ? this.mdUtils.getListItems({ items: proj.list.items }) : ''
 			const skills = this.mdUtils.getSkills({ skills: proj.skills })

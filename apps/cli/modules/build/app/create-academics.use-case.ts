@@ -20,16 +20,16 @@ export class CreateAcademicsUseCase {
 	}
 
 	private getEducationTimeline({ devsync, defaultLang }: { devsync: DevsyncPartial; defaultLang: string }) {
-		const devsyncTranslation = getLangData(devsync, defaultLang)
+		const user = getLangData(devsync, defaultLang)
 		const translation = translations[defaultLang as availableLangsType]
 		let md = ''
 
-		if (Array.isArray(devsyncTranslation?.education) && devsyncTranslation.education.length === 0) return md
+		if (Array.isArray(user?.education) && user.education.length === 0) return md
 
 		md += `# ${translation['academics']} \n\n`
 		md += '<table>'
 
-		for (const ed of Array.isArray(devsyncTranslation?.education) ? devsyncTranslation.education : []) {
+		for (const ed of Array.isArray(user?.education) ? user.education : []) {
 			const links = this.mdUtils.getLinks({ links: ed.links })
 			const listItems = ed.list?.items ? this.mdUtils.getListItems({ items: ed.list.items }) : ''
 
@@ -55,16 +55,16 @@ ${this.mdUtils.getTdImg({ img: ed.img ?? '', link: '#', alt: ed.degree ?? 'Degre
 	}
 
 	private getCertifications({ devsync, defaultLang }: { devsync: DevsyncPartial; defaultLang: string }) {
-		const devsyncTranslation = getLangData(devsync, defaultLang)
+		const user = getLangData(devsync, defaultLang)
 		const translation = translations[defaultLang as availableLangsType]
 		let md = ''
 
-		if (Array.isArray(devsyncTranslation?.certifications) && devsyncTranslation.certifications.length === 0) return md
+		if (Array.isArray(user?.certifications) && user.certifications.length === 0) return md
 
 		md += `## ${translation['Certifications']} \n\n`
 		md += '<table>'
 
-		for (const cert of Array.isArray(devsyncTranslation?.certifications) ? devsyncTranslation.certifications : []) {
+		for (const cert of Array.isArray(user?.certifications) ? user.certifications : []) {
 			const listItems = cert.list?.items ? this.mdUtils.getListItems({ items: cert.list.items }) : ''
 			const skills = this.mdUtils.getSkills({ skills: cert.skills })
 
