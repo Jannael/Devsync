@@ -22,7 +22,7 @@ El comando `build` genera todos los artefactos de tu portafolio desde `DEVSYNC.j
 
 3. **Validar `DEVSYNC.json`** para asegurar que la configuración sea correcta.
 
-4. **Construir CV para cada idioma** - Lee la configuración `devsync` para determinar la ruta al CV HTML compilado.
+4. **Construir CV para cada idioma** - Si `devsync.pathToCompiledCV` está definido en `package.json`, el PDF se genera desde el HTML del CV compilado en esa ruta. Si no está definido, el CLI genera el CV desde `DEVSYNC.json`. Ambos escriben en la misma salida (`public/{name}-{lang}.pdf`).
 
 5. **Crear perfil de LinkedIn** para cada idioma configurado.
 
@@ -41,4 +41,7 @@ Después de ejecutar `build`, tendrás:
 - **GitHub Profile README** - Tu `README.md` para perfil de GitHub
 - **Academics profile** - Credenciales académicas en markdown
 
-<Aside type="tip">Revisa tu `package.json` para el campo `devsync.pathToCompiledCV` para ver dónde se genera tu CV HTML.</Aside>
+<Aside type="tip">
+	Si tu plantilla compila su propio CV, revisa tu `package.json` para el campo `devsync.pathToCompiledCV` para ver dónde se genera tu CV HTML. Si no
+	está configurado, el CLI genera el CV por ti desde `DEVSYNC.json`.
+</Aside>

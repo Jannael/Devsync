@@ -20,7 +20,7 @@ The `build` command generates all your portfolio artifacts from `DEVSYNC.json`.
 
 3. **Validate `DEVSYNC.json`** to ensure configuration is correct.
 
-4. **Build CV for each language** - Reads the `devsync` configuration to determine the path to the compiled CV HTML.
+4. **Build CV for each language** - If `devsync.pathToCompiledCV` is set in `package.json`, the PDF is generated from the compiled CV HTML at that path. If it's not set, the CLI generates the CV itself from `DEVSYNC.json`. Both paths write to the same output (`public/{name}-{lang}.pdf`).
 
 5. **Create LinkedIn profile** for each language configured.
 
