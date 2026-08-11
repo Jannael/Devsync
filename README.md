@@ -33,7 +33,6 @@ This project uses Bun as its runtime and package manager. You don't need to worr
 
 ## Next steps
 
-- [REFACTOR] generate cv from **cli** instead of been compiled from the template
 - [CHORE] tutorials
     - How to use Devsync - EN/ES
     - How to create a template for devsync - EN/ES
